@@ -453,6 +453,105 @@ Object.assign(TEXT.nl, {
 });
 
 Object.assign(TEXT.en, {
+  "area.elementarySchool": "Haneul Elementary School",
+  "npc.hangulTeacher": "Teacher Seo",
+  "npc.hangulTeacher.line1": "Welcome to the first reading classroom.",
+  "npc.hangulTeacher.line2": "Start by looking at the vowel and consonant maps on the wall.",
+  "npc.schoolStudentA": "Student Hana",
+  "npc.schoolStudentA.line1": "I am checking ㅏ and ㄱ before the teacher asks us to combine them.",
+  "npc.schoolStudentA.line2": "The fountain outside will make more sense after these maps.",
+  "npc.schoolStudentB": "Student Min",
+  "npc.schoolStudentB.line1": "I say the vowel names quietly while I walk.",
+  "npc.schoolStudentB.line2": "ㅏ, ㅓ, ㅗ, and ㅜ each point in a different direction.",
+  "npc.schoolStudentC": "Student Jae",
+  "npc.schoolStudentC.line1": "The consonant names are longer than the shapes.",
+  "npc.schoolStudentC.line2": "I remember ㄴ because nieun turns like a corner.",
+  "object.consonantWallMap": "Basic Consonant Map",
+  "object.elementarySchool": "Elementary School",
+  "object.elementarySchool.door": "Elementary School Door",
+  "object.schoolBlackboard": "Class Blackboard",
+  "object.schoolBlackboard.line1": "A clean blackboard waits for Hangul combination practice.",
+  "object.schoolBookshelf": "Class Bookshelf",
+  "object.schoolBookshelf.line1": "Beginner books are sorted by vowels, consonants, and simple syllables.",
+  "object.studentDesk": "Student Desk",
+  "object.studentDesk.line1": "A workbook is open to the first Hangul page.",
+  "object.studentSeat": "Student Seat",
+  "object.teacherDesk": "Teacher Desk",
+  "object.teacherDesk.line1": "The teacher's notes mark today's basics: vowels first, then consonants.",
+  "object.vowelWallMap": "Basic Vowel Map",
+  "study.basicConsonants.subtitle": "Read each consonant shape and its letter name.",
+  "study.basicConsonants.title": "Basic Consonants",
+  "study.basicVowels.subtitle": "Read each vowel shape and its basic sound name.",
+  "study.basicVowels.title": "Basic Vowels",
+});
+
+Object.assign(TEXT.ko, {
+  "area.elementarySchool": "하늘 초등학교",
+  "npc.hangulTeacher": "서 선생님",
+  "npc.hangulTeacher.line1": "첫 읽기 교실에 온 것을 환영합니다.",
+  "npc.hangulTeacher.line2": "먼저 벽에 있는 모음 지도와 자음 지도를 살펴보세요.",
+  "npc.schoolStudentA": "학생 하나",
+  "npc.schoolStudentA.line1": "선생님이 합치라고 하기 전에 ㅏ와 ㄱ을 확인하고 있어요.",
+  "npc.schoolStudentA.line2": "이 지도를 보면 밖의 분수가 더 잘 이해될 거예요.",
+  "npc.schoolStudentB": "학생 민",
+  "npc.schoolStudentB.line1": "걸어 다니면서 모음 이름을 조용히 말해요.",
+  "npc.schoolStudentB.line2": "ㅏ, ㅓ, ㅗ, ㅜ는 각각 다른 방향을 가리켜요.",
+  "npc.schoolStudentC": "학생 재",
+  "npc.schoolStudentC.line1": "자음 이름은 모양보다 더 길어요.",
+  "npc.schoolStudentC.line2": "ㄴ은 니은이 모서리처럼 돌아서 기억하기 쉬워요.",
+  "object.consonantWallMap": "기본 자음 지도",
+  "object.elementarySchool": "초등학교",
+  "object.elementarySchool.door": "초등학교 문",
+  "object.schoolBlackboard": "교실 칠판",
+  "object.schoolBlackboard.line1": "깨끗한 칠판이 한글 조합 연습을 기다립니다.",
+  "object.schoolBookshelf": "교실 책장",
+  "object.schoolBookshelf.line1": "초급 책들이 모음, 자음, 쉬운 음절별로 정리되어 있습니다.",
+  "object.studentDesk": "학생 책상",
+  "object.studentDesk.line1": "워크북이 첫 한글 페이지에 펼쳐져 있습니다.",
+  "object.studentSeat": "학생 의자",
+  "object.teacherDesk": "선생님 책상",
+  "object.teacherDesk.line1": "선생님의 노트에는 오늘의 기본이 적혀 있습니다. 먼저 모음, 다음은 자음입니다.",
+  "object.vowelWallMap": "기본 모음 지도",
+  "study.basicConsonants.subtitle": "각 자음 모양과 글자 이름을 읽어 보세요.",
+  "study.basicConsonants.title": "기본 자음",
+  "study.basicVowels.subtitle": "각 모음 모양과 기본 소리 이름을 읽어 보세요.",
+  "study.basicVowels.title": "기본 모음",
+});
+
+Object.assign(TEXT.nl, {
+  "area.elementarySchool": "Haneul Basisschool",
+  "npc.hangulTeacher": "Juf Seo",
+  "npc.hangulTeacher.line1": "Welkom in het eerste leeslokaal.",
+  "npc.hangulTeacher.line2": "Begin met de klinkerkaart en medeklinkerkaart aan de muur.",
+  "npc.schoolStudentA": "Leerling Hana",
+  "npc.schoolStudentA.line1": "Ik controleer ㅏ en ㄱ voordat de juf vraagt om ze te combineren.",
+  "npc.schoolStudentA.line2": "De fontein buiten wordt logischer na deze kaarten.",
+  "npc.schoolStudentB": "Leerling Min",
+  "npc.schoolStudentB.line1": "Ik zeg de klinkernamen zachtjes terwijl ik loop.",
+  "npc.schoolStudentB.line2": "ㅏ, ㅓ, ㅗ en ㅜ wijzen elk een andere kant op.",
+  "npc.schoolStudentC": "Leerling Jae",
+  "npc.schoolStudentC.line1": "De medeklinkernamen zijn langer dan de vormen.",
+  "npc.schoolStudentC.line2": "Ik onthoud ㄴ omdat nieun draait als een hoek.",
+  "object.consonantWallMap": "Basismedeklinkerkaart",
+  "object.elementarySchool": "Basisschool",
+  "object.elementarySchool.door": "Deur van de Basisschool",
+  "object.schoolBlackboard": "Klasbord",
+  "object.schoolBlackboard.line1": "Een schoon bord wacht op Hangul-combinatieoefeningen.",
+  "object.schoolBookshelf": "Klasboekenkast",
+  "object.schoolBookshelf.line1": "Beginnerboeken zijn gesorteerd op klinkers, medeklinkers en eenvoudige lettergrepen.",
+  "object.studentDesk": "Leerlingtafel",
+  "object.studentDesk.line1": "Een werkboek ligt open op de eerste Hangul-pagina.",
+  "object.studentSeat": "Leerlingstoel",
+  "object.teacherDesk": "Juffenbureau",
+  "object.teacherDesk.line1": "De aantekeningen markeren de basis van vandaag: eerst klinkers, daarna medeklinkers.",
+  "object.vowelWallMap": "Basisklinkerkaart",
+  "study.basicConsonants.subtitle": "Lees elke medeklinkervorm en de naam van de letter.",
+  "study.basicConsonants.title": "Basismedeklinkers",
+  "study.basicVowels.subtitle": "Lees elke klinkervorm en de basisgeluidnaam.",
+  "study.basicVowels.title": "Basisklinkers",
+});
+
+Object.assign(TEXT.en, {
   "object.actionPracticeSign": "Action Practice Sign",
   "object.actionPracticeSign.line1": "The sign pairs simple Korean action sentences with what people do.",
   "object.hangulBookshelf": "Hangul Bookcase",
@@ -1722,6 +1821,45 @@ const DRILLS = {
   },
 };
 
+const STUDY_BOARDS = {
+  basicVowels: {
+    titleKey: "study.basicVowels.title",
+    subtitleKey: "study.basicVowels.subtitle",
+    entries: [
+      { glyph: "ㅏ", name: "a" },
+      { glyph: "ㅑ", name: "ya" },
+      { glyph: "ㅓ", name: "eo" },
+      { glyph: "ㅕ", name: "yeo" },
+      { glyph: "ㅗ", name: "o" },
+      { glyph: "ㅛ", name: "yo" },
+      { glyph: "ㅜ", name: "u" },
+      { glyph: "ㅠ", name: "yu" },
+      { glyph: "ㅡ", name: "eu" },
+      { glyph: "ㅣ", name: "i" },
+    ],
+  },
+  basicConsonants: {
+    titleKey: "study.basicConsonants.title",
+    subtitleKey: "study.basicConsonants.subtitle",
+    entries: [
+      { glyph: "ㄱ", name: "giyeok" },
+      { glyph: "ㄴ", name: "nieun" },
+      { glyph: "ㄷ", name: "digeut" },
+      { glyph: "ㄹ", name: "rieul" },
+      { glyph: "ㅁ", name: "mieum" },
+      { glyph: "ㅂ", name: "bieup" },
+      { glyph: "ㅅ", name: "siot" },
+      { glyph: "ㅇ", name: "ieung" },
+      { glyph: "ㅈ", name: "jieut" },
+      { glyph: "ㅊ", name: "chieut" },
+      { glyph: "ㅋ", name: "kieuk" },
+      { glyph: "ㅌ", name: "tieut" },
+      { glyph: "ㅍ", name: "pieup" },
+      { glyph: "ㅎ", name: "hieut" },
+    ],
+  },
+};
+
 function mergeExternalDrillPacks() {
   const packs = window.KOREA_ADVENTURE_DRILL_PACKS || [];
 
@@ -1890,6 +2028,18 @@ function createRectInteractions({
 const map = createTileMap(WORLD_WIDTH, WORLD_HEIGHT, "grass");
 
 const buildings = [
+  {
+    labelKey: "object.elementarySchool",
+    sceneId: "elementarySchool",
+    x: 3,
+    y: 3,
+    w: 9,
+    h: 7,
+    doorX: 7,
+    doorY: 9,
+    roof: "#c88942",
+    trim: "#87542e",
+  },
   {
     labelKey: "object.yourGuesthouse",
     sceneId: "yourGuesthouse",
@@ -2101,6 +2251,7 @@ let cameraX = 0;
 let cameraY = 0;
 let dialog = null;
 let drill = null;
+let studyBoard = null;
 let lastTime = performance.now();
 let speechRetryTimer = null;
 
@@ -2384,6 +2535,7 @@ function changeScene(sceneId, x, y, dirName) {
   stopSpeech();
   currentSceneId = sceneId;
   dialog = null;
+  studyBoard = null;
   ui.menuOpen = false;
   ui.quit = false;
   clearMovementInput();
@@ -2494,6 +2646,10 @@ function buildMap() {
     [25, 23],
   ];
   for (const [x, y] of ledges) setTile(x, y, "ledge");
+
+  setTile(7, 9, "path");
+  fillRectTiles(6, 10, 8, 2, "path");
+  fillRectTiles(13, 11, 6, 1, "path");
 }
 
 function buildScenes() {
@@ -3170,6 +3326,99 @@ function createTrail1Scene() {
 function createInteriorScenes() {
   const bySceneId = Object.fromEntries(buildings.map((building) => [building.sceneId, building]));
 
+  const elementarySchool = createInteriorScene({
+    id: "elementarySchool",
+    areaKey: "area.elementarySchool",
+    width: 22,
+    height: 16,
+    entryX: 11,
+    returnBuilding: bySceneId.elementarySchool,
+  });
+  fillInteriorObject(elementarySchool, 2, 1, 5, 1, "mapBoard", "object.consonantWallMap", {
+    studyBoardKey: "basicConsonants",
+  });
+  fillInteriorObject(elementarySchool, 8, 1, 6, 1, "blackboard", "object.schoolBlackboard", {
+    conversationKeys: ["object.schoolBlackboard.line1"],
+  });
+  fillInteriorObject(elementarySchool, 15, 1, 5, 1, "mapBoard", "object.vowelWallMap", {
+    studyBoardKey: "basicVowels",
+  });
+  fillInteriorObject(elementarySchool, 1, 4, 2, 3, "bookcase", "object.schoolBookshelf", {
+    conversationKeys: ["object.schoolBookshelf.line1"],
+  });
+  fillInteriorObject(elementarySchool, 19, 5, 2, 3, "bookcase", "object.schoolBookshelf", {
+    conversationKeys: ["object.schoolBookshelf.line1"],
+  });
+  fillInteriorObject(elementarySchool, 9, 4, 5, 1, "teacherDesk", "object.teacherDesk", {
+    conversationKeys: ["object.teacherDesk.line1"],
+  });
+
+  const studentDeskSpots = [
+    [4, 8],
+    [9, 8],
+    [14, 8],
+    [4, 11],
+    [9, 11],
+    [14, 11],
+  ];
+  for (const [deskX, deskY] of studentDeskSpots) {
+    fillInteriorObject(elementarySchool, deskX, deskY, 2, 1, "studentDesk", "object.studentDesk", {
+      conversationKeys: ["object.studentDesk.line1"],
+    });
+    placeInteriorObject(elementarySchool, deskX, deskY + 1, "chair", "object.studentSeat", {
+      solid: false,
+    });
+    placeInteriorObject(elementarySchool, deskX + 1, deskY + 1, "chair", "object.studentSeat", {
+      solid: false,
+    });
+  }
+
+  addInteriorNpc(elementarySchool, {
+    nameKey: "npc.hangulTeacher",
+    x: 11,
+    y: 3,
+    dir: "down",
+    jacket: "#9b5f42",
+    voiceGender: "female",
+    voiceId: "hangulTeacher",
+    conversationKeys: ["npc.hangulTeacher.line1", "npc.hangulTeacher.line2"],
+  });
+  addInteriorNpc(elementarySchool, {
+    nameKey: "npc.schoolStudentA",
+    x: 11,
+    y: 6,
+    dir: "up",
+    jacket: "#4f8cc9",
+    voiceGender: "female",
+    voiceId: "schoolStudentA",
+    conversationKeys: ["npc.schoolStudentA.line1", "npc.schoolStudentA.line2"],
+    kind: "child",
+  });
+  addInteriorNpc(elementarySchool, {
+    nameKey: "npc.schoolStudentB",
+    x: 6,
+    y: 10,
+    dir: "right",
+    jacket: "#d28a4d",
+    voiceGender: "male",
+    voiceId: "schoolStudentB",
+    conversationKeys: ["npc.schoolStudentB.line1", "npc.schoolStudentB.line2"],
+    kind: "child",
+    wander: true,
+  });
+  addInteriorNpc(elementarySchool, {
+    nameKey: "npc.schoolStudentC",
+    x: 17,
+    y: 12,
+    dir: "left",
+    jacket: "#7a6fb2",
+    voiceGender: "female",
+    voiceId: "schoolStudentC",
+    conversationKeys: ["npc.schoolStudentC.line1", "npc.schoolStudentC.line2"],
+    kind: "child",
+    wander: true,
+  });
+
   const yourGuesthouse = createInteriorScene({
     id: "yourGuesthouse",
     areaKey: "area.yourGuesthouse",
@@ -3404,6 +3653,7 @@ function createInteriorScenes() {
   });
 
   return {
+    elementarySchool,
     yourGuesthouse,
     rivalGuesthouse,
     hanokTeaHouse,
@@ -3841,10 +4091,11 @@ function addInteriorObjectInteraction(scene, x, y, labelKey, options = {}) {
     labelKey,
     x,
     y,
-    solid: true,
+    solid: options.solid ?? true,
     kind: options.kind || "furniture",
     conversationKeys: options.conversationKeys || null,
     drillKey: options.drillKey || null,
+    studyBoardKey: options.studyBoardKey || null,
   });
 }
 
@@ -3975,6 +4226,11 @@ function openDialogFor(target) {
     return;
   }
 
+  if (target.item?.studyBoardKey) {
+    openStudyBoard(target.item.studyBoardKey);
+    return;
+  }
+
   if (target.item?.drillKey) {
     startDrill(target.item.drillKey);
     return;
@@ -3996,6 +4252,32 @@ function openDialogFor(target) {
     spoken: false,
     textVisible: true,
   };
+}
+
+function openStudyBoard(studyBoardKey) {
+  if (!STUDY_BOARDS[studyBoardKey]) return;
+  stopSpeech();
+  dialog = null;
+  drill = null;
+  studyBoard = studyBoardKey;
+  clearMovementInput();
+}
+
+function closeStudyBoard() {
+  studyBoard = null;
+  clearMovementInput();
+}
+
+function handleStudyBoardInput(event) {
+  if (!studyBoard) return;
+  if (event.code in keyToDir) {
+    event.preventDefault();
+    return;
+  }
+  if (event.code === "Space" || event.code === "Enter" || event.code === "Escape") {
+    event.preventDefault();
+    closeStudyBoard();
+  }
 }
 
 function dialogLineText(language = activeLanguage()) {
@@ -4213,7 +4495,7 @@ function cycleLanguage(settingName, delta) {
 }
 
 function handleMovementPress(dirName) {
-  if (ui.menuOpen || ui.quit || dialog || drill || player.moving) return;
+  if (ui.menuOpen || ui.quit || dialog || drill || studyBoard || player.moving) return;
 
   if (player.dir !== dirName) {
     player.dir = dirName;
@@ -4264,7 +4546,7 @@ function updatePlayer(dt) {
 }
 
 function processHeldMovement(dt) {
-  if (ui.menuOpen || ui.quit || dialog || drill || player.moving) return;
+  if (ui.menuOpen || ui.quit || dialog || drill || studyBoard || player.moving) return;
 
   const dir = currentHeldDirection();
   if (!dir) {
@@ -4333,7 +4615,7 @@ function updateNpcs(now) {
     if (!npc.nextTurn) {
       npc.nextTurn = now + randomBetween(1200, 3600);
     }
-    if (now >= npc.nextTurn && !dialog && !drill && !ui.menuOpen && !ui.quit) {
+    if (now >= npc.nextTurn && !dialog && !drill && !studyBoard && !ui.menuOpen && !ui.quit) {
       const dir = dirs[Math.floor(Math.random() * dirs.length)];
       if (npc.wander && Math.random() > 0.45) {
         tryMoveNpc(scene, npc, dir);
@@ -4435,6 +4717,7 @@ function draw() {
 
   if (ui.quit) drawQuitScreen();
   if (dialog && !ui.quit) drawDialog(dialogDisplayText());
+  if (studyBoard && !ui.quit) drawStudyBoard();
   if (drill && !ui.quit) drawDrill();
   if (ui.menuOpen) drawMenu();
 }
@@ -4650,8 +4933,19 @@ function drawFurnitureObject(object) {
     return;
   }
 
-  if (object.type === "table" || object.type === "teaTable" || object.type === "desk") {
+  if (
+    object.type === "table" ||
+    object.type === "teaTable" ||
+    object.type === "desk" ||
+    object.type === "studentDesk" ||
+    object.type === "teacherDesk"
+  ) {
     drawTableObject(x, y, w, h, object.type);
+    return;
+  }
+
+  if (object.type === "blackboard") {
+    drawBlackboardObject(x, y, w, h);
     return;
   }
 
@@ -4705,8 +4999,9 @@ function drawBedObject(x, y, w, h) {
 function drawTableObject(x, y, w, h, type) {
   drawObjectShadow(x, y, w, h);
   const topHeight = Math.max(8, Math.min(18, Math.floor(h * 0.34)));
-  const bodyColor = type === "teaTable" ? "#7d5736" : "#805535";
-  const topColor = type === "desk" ? "#c6975f" : "#b8804d";
+  const bodyColor = type === "teaTable" ? "#7d5736" : type === "studentDesk" ? "#765432" : "#805535";
+  const topColor =
+    type === "desk" || type === "studentDesk" || type === "teacherDesk" ? "#c6975f" : "#b8804d";
 
   ctx.fillStyle = bodyColor;
   ctx.fillRect(x + 6, y + topHeight + 5, w - 12, h - topHeight - 11);
@@ -4722,12 +5017,40 @@ function drawTableObject(x, y, w, h, type) {
     ctx.fillRect(x + Math.floor(w / 2) - 2, y + h - 9, 4, 6);
   }
 
-  if (type === "desk") {
+  if (type === "desk" || type === "studentDesk" || type === "teacherDesk") {
     ctx.fillStyle = "#f0e6bf";
     ctx.fillRect(x + 11, y + 8, Math.min(22, w - 22), 5);
     ctx.fillStyle = "#6d4e35";
     ctx.fillRect(x + w - 24, y + 9, 13, 3);
   }
+
+  if (type === "studentDesk") {
+    ctx.fillStyle = "#4d7fab";
+    ctx.fillRect(x + w - 35, y + 8, 18, 7);
+    ctx.fillStyle = "#f4d36b";
+    ctx.fillRect(x + w - 32, y + 10, 12, 2);
+  }
+
+  if (type === "teacherDesk") {
+    ctx.fillStyle = "#9b5f42";
+    ctx.fillRect(x + w - 35, y + 8, 12, 8);
+    ctx.fillStyle = "#f0e6bf";
+    ctx.fillRect(x + 38, y + 8, 28, 6);
+  }
+}
+
+function drawBlackboardObject(x, y, w, h) {
+  drawObjectShadow(x, y, w, h);
+  ctx.fillStyle = "#5c412c";
+  ctx.fillRect(x + 3, y + 5, w - 6, h - 8);
+  ctx.fillStyle = "#244d3a";
+  ctx.fillRect(x + 7, y + 8, w - 14, h - 16);
+  ctx.fillStyle = "#dfe8d8";
+  ctx.font = `14px ${UI_FONT}`;
+  ctx.textBaseline = "top";
+  ctx.fillText("ㄱ + ㅏ", x + 14, y + 11);
+  ctx.fillStyle = "#e6d9b6";
+  ctx.fillRect(x + w - 42, y + h - 10, 28, 3);
 }
 
 function drawCounterObject(x, y, w, h) {
@@ -5477,6 +5800,90 @@ function drawDialog(text) {
   }
 }
 
+function drawStudyBoard() {
+  const board = STUDY_BOARDS[studyBoard];
+  if (!board) return;
+
+  ctx.fillStyle = "rgba(10, 10, 14, 0.38)";
+  ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+  const narrow = window.innerWidth < 520;
+  const columns = board.entries.length > 12 ? (narrow ? 3 : 5) : (narrow ? 2 : 5);
+  const rows = Math.ceil(board.entries.length / columns);
+  const cellGap = narrow ? 8 : 12;
+  const preferredCellHeight = narrow ? 58 : 72;
+  const w = Math.min(760, window.innerWidth - 36);
+  const gridW = w - 72;
+  const h = Math.min(
+    window.innerHeight - 36,
+    132 + rows * preferredCellHeight + (rows - 1) * cellGap + 36,
+  );
+  const cellHeight = Math.max(
+    narrow ? 48 : 56,
+    Math.min(preferredCellHeight, (h - 168 - (rows - 1) * cellGap) / rows),
+  );
+  const x = (window.innerWidth - w) / 2;
+  const y = (window.innerHeight - h) / 2;
+  const innerX = x + 36;
+  const innerY = y + 92;
+  const cellWidth = (gridW - cellGap * (columns - 1)) / columns;
+
+  drawStudyBoardFrame(x, y, w, h);
+  drawCenteredFittedText(t(board.titleKey), x + w / 2, y + 28, w - 76, narrow ? 18 : 24, true);
+  drawCenteredFittedText(t(board.subtitleKey), x + w / 2, y + 58, w - 86, narrow ? 12 : 15, false);
+
+  board.entries.forEach((entry, index) => {
+    const column = index % columns;
+    const row = Math.floor(index / columns);
+    const cellX = innerX + column * (cellWidth + cellGap);
+    const cellY = innerY + row * (cellHeight + cellGap);
+
+    ctx.fillStyle = "#f4e7c4";
+    ctx.fillRect(cellX, cellY, cellWidth, cellHeight);
+    ctx.fillStyle = "#b28a55";
+    ctx.fillRect(cellX, cellY, cellWidth, 3);
+    ctx.fillRect(cellX, cellY + cellHeight - 3, cellWidth, 3);
+    ctx.fillStyle = "#e1c993";
+    ctx.fillRect(cellX, cellY, 3, cellHeight);
+    ctx.fillRect(cellX + cellWidth - 3, cellY, 3, cellHeight);
+
+    drawCenteredFittedText(
+      entry.glyph,
+      cellX + cellWidth / 2,
+      cellY + Math.max(7, cellHeight * 0.12),
+      cellWidth - 16,
+      Math.min(narrow ? 24 : 30, cellHeight * 0.46),
+      true,
+    );
+    drawCenteredFittedText(
+      entry.name,
+      cellX + cellWidth / 2,
+      cellY + Math.max(30, cellHeight * 0.62),
+      cellWidth - 12,
+      Math.min(narrow ? 11 : 13, cellHeight * 0.22),
+      false,
+    );
+  });
+
+  drawDrillPulse(x + w - 46, y + h - 42);
+}
+
+function drawStudyBoardFrame(x, y, w, h) {
+  ctx.fillStyle = "#3e2a1e";
+  ctx.fillRect(x + 14, y + 6, w - 28, h - 12);
+  ctx.fillStyle = "#8b5f35";
+  ctx.fillRect(x + 8, y, w - 16, 12);
+  ctx.fillRect(x + 8, y + h - 12, w - 16, 12);
+  ctx.fillStyle = "#b7844a";
+  ctx.fillRect(x + 2, y + 3, w - 4, 6);
+  ctx.fillRect(x + 2, y + h - 9, w - 4, 6);
+  ctx.fillStyle = "#ead7aa";
+  ctx.fillRect(x + 22, y + 14, w - 44, h - 28);
+  ctx.fillStyle = "#c0935c";
+  ctx.fillRect(x + 30, y + 20, w - 60, 5);
+  ctx.fillRect(x + 30, y + h - 25, w - 60, 4);
+}
+
 function drawDrill() {
   const data = currentDrillData();
   if (!data) return;
@@ -5588,6 +5995,23 @@ function drawFittedText(text, x, y, maxWidth, fontSize, bold) {
   ctx.fillText(text, x, y);
 }
 
+function drawCenteredFittedText(text, centerX, y, maxWidth, fontSize, bold) {
+  let size = fontSize;
+  const weight = bold ? "bold " : "";
+  ctx.fillStyle = COLORS.text;
+  ctx.textBaseline = "top";
+  ctx.textAlign = "center";
+
+  do {
+    ctx.font = `${weight}${size}px ${UI_FONT}`;
+    if (ctx.measureText(text).width <= maxWidth || size <= 9) break;
+    size -= 1;
+  } while (size > 9);
+
+  ctx.fillText(text, centerX, y);
+  ctx.textAlign = "left";
+}
+
 function wrapText(text, maxWidth, font) {
   ctx.font = font;
   const words = text.split(" ");
@@ -5666,6 +6090,11 @@ window.addEventListener("keydown", (event) => {
 
   if (drill) {
     handleDrillInput(event);
+    return;
+  }
+
+  if (studyBoard) {
+    handleStudyBoardInput(event);
     return;
   }
 
