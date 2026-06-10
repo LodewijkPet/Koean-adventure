@@ -141,6 +141,8 @@ const TEXT = {
     "panel.area": "Area",
     "panel.facing": "Facing",
     "panel.primary": "Primary",
+    "panel.quest": "Quest",
+    "panel.questStep": "Step",
     "panel.secondary": "Secondary",
     "panel.tile": "Tile",
     "quit.message": "Game quit.",
@@ -191,6 +193,8 @@ const TEXT = {
     "panel.area": "지역",
     "panel.facing": "방향",
     "panel.primary": "기본",
+    "panel.quest": "퀘스트",
+    "panel.questStep": "단계",
     "panel.secondary": "보조",
     "panel.tile": "위치",
     "quit.message": "게임을 종료했습니다.",
@@ -241,6 +245,8 @@ const TEXT = {
     "panel.area": "Gebied",
     "panel.facing": "Richting",
     "panel.primary": "Primair",
+    "panel.quest": "Quest",
+    "panel.questStep": "Stap",
     "panel.secondary": "Secundair",
     "panel.tile": "Tegel",
     "quit.message": "Spel gestopt.",
@@ -549,6 +555,1071 @@ Object.assign(TEXT.nl, {
   "study.basicConsonants.title": "Basismedeklinkers",
   "study.basicVowels.subtitle": "Lees elke klinkervorm en de basisgeluidnaam.",
   "study.basicVowels.title": "Basisklinkers",
+});
+
+Object.assign(TEXT.en, {
+  "drill.passed": "Quest step passed",
+  "drill.retry": "Try again with every answer correct to pass this quest step.",
+  "drill.town1.choice.a": "a",
+  "drill.town1.choice.bieup": "bieup",
+  "drill.town1.choice.da": "da",
+  "drill.town1.choice.digeut": "digeut",
+  "drill.town1.choice.do": "do",
+  "drill.town1.choice.du": "du",
+  "drill.town1.choice.eo": "eo",
+  "drill.town1.choice.eu": "eu",
+  "drill.town1.choice.ga": "ga",
+  "drill.town1.choice.geo": "geo",
+  "drill.town1.choice.giyeok": "giyeok",
+  "drill.town1.choice.gu": "gu",
+  "drill.town1.choice.i": "i",
+  "drill.town1.choice.mieum": "mieum",
+  "drill.town1.choice.mu": "mu",
+  "drill.town1.choice.na": "na",
+  "drill.town1.choice.neo": "neo",
+  "drill.town1.choice.nieun": "nieun",
+  "drill.town1.choice.no": "no",
+  "drill.town1.choice.o": "o",
+  "drill.town1.choice.rieul": "rieul",
+  "drill.town1.choice.siot": "siot",
+  "drill.town1.choice.to": "to",
+  "drill.town1.choice.u": "u",
+  "drill.town1.choice.ya": "ya",
+  "drill.town1.choice.yo": "yo",
+  "drill.town1BlackboardConsonants.title": "Blackboard Consonant Check",
+  "drill.town1BlackboardConsonants.1.prompt": "Exam: Which name fits ㄱ?",
+  "drill.town1BlackboardConsonants.1.correct": "ㄱ is giyeok.",
+  "drill.town1BlackboardConsonants.1.incorrect": "ㄱ turns like a corner; its name is giyeok.",
+  "drill.town1BlackboardConsonants.2.prompt": "Exam: Which name fits ㄴ?",
+  "drill.town1BlackboardConsonants.2.correct": "ㄴ is nieun.",
+  "drill.town1BlackboardConsonants.2.incorrect": "ㄴ is the corner-shaped consonant named nieun.",
+  "drill.town1BlackboardConsonants.3.prompt": "Exam: Which name fits ㅁ?",
+  "drill.town1BlackboardConsonants.3.correct": "ㅁ is mieum.",
+  "drill.town1BlackboardConsonants.3.incorrect": "The closed square consonant ㅁ is mieum.",
+  "drill.town1BlackboardSyllables.title": "Blackboard First Syllables",
+  "drill.town1BlackboardSyllables.1.prompt": "Exam: ㄱ + ㅏ makes 가. Choose the reading.",
+  "drill.town1BlackboardSyllables.1.correct": "가 reads ga.",
+  "drill.town1BlackboardSyllables.1.incorrect": "ㄱ gives g and ㅏ gives a, so 가 reads ga.",
+  "drill.town1BlackboardSyllables.2.prompt": "Exam: ㄴ + ㅓ makes 너. Choose the reading.",
+  "drill.town1BlackboardSyllables.2.correct": "너 reads neo.",
+  "drill.town1BlackboardSyllables.2.incorrect": "ㄴ gives n and ㅓ gives eo, so 너 reads neo.",
+  "drill.town1BlackboardSyllables.3.prompt": "Exam: ㄷ + ㅗ makes 도. Choose the reading.",
+  "drill.town1BlackboardSyllables.3.correct": "도 reads do.",
+  "drill.town1BlackboardSyllables.3.incorrect": "ㄷ gives d and ㅗ gives o, so 도 reads do.",
+  "drill.town1BlackboardVowels.title": "Blackboard Vowel Check",
+  "drill.town1BlackboardVowels.1.prompt": "Exam: Which sound name fits ㅏ?",
+  "drill.town1BlackboardVowels.1.correct": "ㅏ is a.",
+  "drill.town1BlackboardVowels.1.incorrect": "The right-facing short stroke marks the a vowel.",
+  "drill.town1BlackboardVowels.2.prompt": "Exam: Which sound name fits ㅓ?",
+  "drill.town1BlackboardVowels.2.correct": "ㅓ is eo.",
+  "drill.town1BlackboardVowels.2.incorrect": "The left-facing short stroke marks eo.",
+  "drill.town1BlackboardVowels.3.prompt": "Exam: Which sound name fits ㅜ?",
+  "drill.town1BlackboardVowels.3.correct": "ㅜ is u.",
+  "drill.town1BlackboardVowels.3.incorrect": "The lower short stroke marks u.",
+  "drill.town1DeskSyllables.title": "First Syllable Desks",
+  "drill.town1DeskSyllables.1.prompt": "Combine ㄱ + ㅏ. Which sound is 가?",
+  "drill.town1DeskSyllables.1.correct": "ㄱ plus ㅏ makes 가, read ga.",
+  "drill.town1DeskSyllables.1.incorrect": "Keep the consonant first, then the vowel: ㄱ + ㅏ reads ga.",
+  "drill.town1DeskSyllables.2.prompt": "Combine ㄴ + ㅓ. Which sound is 너?",
+  "drill.town1DeskSyllables.2.correct": "ㄴ plus ㅓ makes 너, read neo.",
+  "drill.town1DeskSyllables.2.incorrect": "ㄴ gives n and ㅓ gives eo, so the block reads neo.",
+  "drill.town1DeskSyllables.3.prompt": "Combine ㄷ + ㅗ. Which sound is 도?",
+  "drill.town1DeskSyllables.3.correct": "ㄷ plus ㅗ makes 도, read do.",
+  "drill.town1DeskSyllables.3.incorrect": "ㄷ gives d and ㅗ gives o, so the block reads do.",
+  "drill.town1DeskSyllables.4.prompt": "Combine ㅁ + ㅜ. Which sound is 무?",
+  "drill.town1DeskSyllables.4.correct": "ㅁ plus ㅜ makes 무, read mu.",
+  "drill.town1DeskSyllables.4.incorrect": "ㅁ gives m and ㅜ gives u, so the block reads mu.",
+  "drill.town1FountainConsonants.title": "Fountain Consonants 1",
+  "drill.town1FountainConsonants.1.prompt": "The fountain shows ㄱ. Choose the letter name.",
+  "drill.town1FountainConsonants.1.correct": "ㄱ is giyeok; it turns like a corner.",
+  "drill.town1FountainConsonants.1.incorrect": "Look for giyeok, the ㄱ corner shape.",
+  "drill.town1FountainConsonants.2.prompt": "The fountain shows ㄴ. Choose the letter name.",
+  "drill.town1FountainConsonants.2.correct": "ㄴ is nieun; it sits like a corner.",
+  "drill.town1FountainConsonants.2.incorrect": "The ㄴ shape is named nieun.",
+  "drill.town1FountainConsonants.3.prompt": "The fountain shows ㄷ. Choose the letter name.",
+  "drill.town1FountainConsonants.3.correct": "ㄷ is digeut; it has three sides.",
+  "drill.town1FountainConsonants.3.incorrect": "The three-sided ㄷ shape is digeut.",
+  "drill.town1FountainConsonants.4.prompt": "The fountain shows ㅁ. Choose the letter name.",
+  "drill.town1FountainConsonants.4.correct": "ㅁ is mieum; it is a closed square.",
+  "drill.town1FountainConsonants.4.incorrect": "The closed square ㅁ is mieum.",
+  "drill.town1FountainReview.title": "Fountain Review",
+  "drill.town1FountainReview.1.prompt": "Review: Which sound name fits ㅗ?",
+  "drill.town1FountainReview.1.correct": "ㅗ is o.",
+  "drill.town1FountainReview.1.incorrect": "The upper short stroke marks o.",
+  "drill.town1FountainReview.2.prompt": "Review: Which name fits ㄴ?",
+  "drill.town1FountainReview.2.correct": "ㄴ is nieun.",
+  "drill.town1FountainReview.2.incorrect": "ㄴ is named nieun.",
+  "drill.town1FountainReview.3.prompt": "Review: Which sound is 가?",
+  "drill.town1FountainReview.3.correct": "가 reads ga.",
+  "drill.town1FountainReview.3.incorrect": "ㄱ plus ㅏ reads ga.",
+  "drill.town1FountainReview.4.prompt": "Review: Which sound is 무?",
+  "drill.town1FountainReview.4.correct": "무 reads mu.",
+  "drill.town1FountainReview.4.incorrect": "ㅁ plus ㅜ reads mu.",
+  "drill.town1FountainVowels.title": "Fountain Vowels 1",
+  "drill.town1FountainVowels.1.prompt": "The fountain shows ㅏ. Choose the sound name.",
+  "drill.town1FountainVowels.1.correct": "ㅏ is read a; the short stroke points right.",
+  "drill.town1FountainVowels.1.incorrect": "Look for the simple a sound: ㅏ.",
+  "drill.town1FountainVowels.2.prompt": "The fountain shows ㅓ. Choose the sound name.",
+  "drill.town1FountainVowels.2.correct": "ㅓ is read eo; the short stroke points left.",
+  "drill.town1FountainVowels.2.incorrect": "ㅓ is the eo sound.",
+  "drill.town1FountainVowels.3.prompt": "The fountain shows ㅗ. Choose the sound name.",
+  "drill.town1FountainVowels.3.correct": "ㅗ is read o; the short stroke rises above the line.",
+  "drill.town1FountainVowels.3.incorrect": "ㅗ is the o sound.",
+  "drill.town1FountainVowels.4.prompt": "The fountain shows ㅜ. Choose the sound name.",
+  "drill.town1FountainVowels.4.correct": "ㅜ is read u; the short stroke hangs below.",
+  "drill.town1FountainVowels.4.incorrect": "ㅜ is the u sound.",
+  "npc.hangulTeacher.line3": "Read a wall map, practice at the fountain, then return to the blackboard for a check.",
+  "object.schoolBlackboard.complete.line1": "The board shows clean marks beside every Town 1 classroom check.",
+  "object.schoolBlackboard.locked.consonants": "Pass the fountain consonant level before taking the consonant check.",
+  "object.schoolBlackboard.locked.syllables": "Practice first syllables at a desk before taking this check.",
+  "object.schoolBlackboard.locked.teacher": "Teacher Seo wants to explain the classroom sequence first.",
+  "object.schoolBlackboard.locked.vowels": "Pass the fountain vowel level before taking the vowel check.",
+  "object.soundFountain.complete.line1": "The fountain is in review mode for the sounds you have unlocked.",
+  "object.soundFountain.locked.consonants": "Read the consonant map inside the school before starting the next fountain level.",
+  "object.soundFountain.locked.vowels": "Read the vowel map inside the school before using the fountain practice.",
+  "object.studentDesk.locked.consonants": "Pass the fountain consonant level before combining syllables here.",
+  "object.studentDesk.locked.vowels": "Pass the fountain vowel level before using this workbook.",
+  "quest.town1.basicConsonants": "Basic Consonants",
+  "quest.town1.basicConsonants.exam": "Pass blackboard consonants",
+  "quest.town1.basicConsonants.practice": "Pass fountain consonants",
+  "quest.town1.basicConsonants.theory": "Read consonant map",
+  "quest.town1.basicVowels": "Basic Vowels",
+  "quest.town1.basicVowels.exam": "Pass blackboard vowels",
+  "quest.town1.basicVowels.practice": "Pass fountain vowels",
+  "quest.town1.basicVowels.theory": "Read vowel map",
+  "quest.town1.firstSyllables": "First Syllables",
+  "quest.town1.firstSyllables.exam": "Pass syllable blackboard",
+  "quest.town1.firstSyllables.practice": "Practice at a desk",
+  "quest.town1.readingBadge": "Town 1 Reading Badge",
+  "quest.town1.readingBadge.ready": "Classroom checks complete",
+});
+
+Object.assign(TEXT.ko, {
+  "drill.passed": "퀘스트 단계 통과",
+  "drill.retry": "이 퀘스트 단계를 통과하려면 모든 답을 맞혀 다시 해 보세요.",
+  "drill.town1.choice.a": "a",
+  "drill.town1.choice.bieup": "bieup",
+  "drill.town1.choice.da": "da",
+  "drill.town1.choice.digeut": "digeut",
+  "drill.town1.choice.do": "do",
+  "drill.town1.choice.du": "du",
+  "drill.town1.choice.eo": "eo",
+  "drill.town1.choice.eu": "eu",
+  "drill.town1.choice.ga": "ga",
+  "drill.town1.choice.geo": "geo",
+  "drill.town1.choice.giyeok": "giyeok",
+  "drill.town1.choice.gu": "gu",
+  "drill.town1.choice.i": "i",
+  "drill.town1.choice.mieum": "mieum",
+  "drill.town1.choice.mu": "mu",
+  "drill.town1.choice.na": "na",
+  "drill.town1.choice.neo": "neo",
+  "drill.town1.choice.nieun": "nieun",
+  "drill.town1.choice.no": "no",
+  "drill.town1.choice.o": "o",
+  "drill.town1.choice.rieul": "rieul",
+  "drill.town1.choice.siot": "siot",
+  "drill.town1.choice.to": "to",
+  "drill.town1.choice.u": "u",
+  "drill.town1.choice.ya": "ya",
+  "drill.town1.choice.yo": "yo",
+  "drill.town1BlackboardConsonants.title": "칠판 자음 확인",
+  "drill.town1BlackboardConsonants.1.prompt": "시험: ㄱ에 맞는 이름은 무엇인가요?",
+  "drill.town1BlackboardConsonants.1.correct": "ㄱ은 giyeok입니다.",
+  "drill.town1BlackboardConsonants.1.incorrect": "ㄱ은 모서리처럼 꺾입니다. 이름은 giyeok입니다.",
+  "drill.town1BlackboardConsonants.2.prompt": "시험: ㄴ에 맞는 이름은 무엇인가요?",
+  "drill.town1BlackboardConsonants.2.correct": "ㄴ은 nieun입니다.",
+  "drill.town1BlackboardConsonants.2.incorrect": "ㄴ은 모서리 모양의 자음이고 이름은 nieun입니다.",
+  "drill.town1BlackboardConsonants.3.prompt": "시험: ㅁ에 맞는 이름은 무엇인가요?",
+  "drill.town1BlackboardConsonants.3.correct": "ㅁ은 mieum입니다.",
+  "drill.town1BlackboardConsonants.3.incorrect": "닫힌 네모 자음 ㅁ은 mieum입니다.",
+  "drill.town1BlackboardSyllables.title": "칠판 첫 음절",
+  "drill.town1BlackboardSyllables.1.prompt": "시험: ㄱ + ㅏ는 가가 됩니다. 읽는 소리를 고르세요.",
+  "drill.town1BlackboardSyllables.1.correct": "가는 ga로 읽습니다.",
+  "drill.town1BlackboardSyllables.1.incorrect": "ㄱ은 g, ㅏ는 a라서 가는 ga로 읽습니다.",
+  "drill.town1BlackboardSyllables.2.prompt": "시험: ㄴ + ㅓ는 너가 됩니다. 읽는 소리를 고르세요.",
+  "drill.town1BlackboardSyllables.2.correct": "너는 neo로 읽습니다.",
+  "drill.town1BlackboardSyllables.2.incorrect": "ㄴ은 n, ㅓ는 eo라서 너는 neo로 읽습니다.",
+  "drill.town1BlackboardSyllables.3.prompt": "시험: ㄷ + ㅗ는 도가 됩니다. 읽는 소리를 고르세요.",
+  "drill.town1BlackboardSyllables.3.correct": "도는 do로 읽습니다.",
+  "drill.town1BlackboardSyllables.3.incorrect": "ㄷ은 d, ㅗ는 o라서 도는 do로 읽습니다.",
+  "drill.town1BlackboardVowels.title": "칠판 모음 확인",
+  "drill.town1BlackboardVowels.1.prompt": "시험: ㅏ에 맞는 소리 이름은 무엇인가요?",
+  "drill.town1BlackboardVowels.1.correct": "ㅏ는 a입니다.",
+  "drill.town1BlackboardVowels.1.incorrect": "오른쪽을 향한 짧은 획은 a 모음입니다.",
+  "drill.town1BlackboardVowels.2.prompt": "시험: ㅓ에 맞는 소리 이름은 무엇인가요?",
+  "drill.town1BlackboardVowels.2.correct": "ㅓ는 eo입니다.",
+  "drill.town1BlackboardVowels.2.incorrect": "왼쪽을 향한 짧은 획은 eo입니다.",
+  "drill.town1BlackboardVowels.3.prompt": "시험: ㅜ에 맞는 소리 이름은 무엇인가요?",
+  "drill.town1BlackboardVowels.3.correct": "ㅜ는 u입니다.",
+  "drill.town1BlackboardVowels.3.incorrect": "아래쪽 짧은 획은 u입니다.",
+  "drill.town1DeskSyllables.title": "첫 음절 책상",
+  "drill.town1DeskSyllables.1.prompt": "ㄱ + ㅏ를 합치세요. 가는 어떤 소리인가요?",
+  "drill.town1DeskSyllables.1.correct": "ㄱ과 ㅏ가 만나 가가 되고, ga로 읽습니다.",
+  "drill.town1DeskSyllables.1.incorrect": "자음을 먼저, 그다음 모음을 보세요. ㄱ + ㅏ는 ga입니다.",
+  "drill.town1DeskSyllables.2.prompt": "ㄴ + ㅓ를 합치세요. 너는 어떤 소리인가요?",
+  "drill.town1DeskSyllables.2.correct": "ㄴ과 ㅓ가 만나 너가 되고, neo로 읽습니다.",
+  "drill.town1DeskSyllables.2.incorrect": "ㄴ은 n, ㅓ는 eo라서 이 블록은 neo로 읽습니다.",
+  "drill.town1DeskSyllables.3.prompt": "ㄷ + ㅗ를 합치세요. 도는 어떤 소리인가요?",
+  "drill.town1DeskSyllables.3.correct": "ㄷ과 ㅗ가 만나 도가 되고, do로 읽습니다.",
+  "drill.town1DeskSyllables.3.incorrect": "ㄷ은 d, ㅗ는 o라서 이 블록은 do로 읽습니다.",
+  "drill.town1DeskSyllables.4.prompt": "ㅁ + ㅜ를 합치세요. 무는 어떤 소리인가요?",
+  "drill.town1DeskSyllables.4.correct": "ㅁ과 ㅜ가 만나 무가 되고, mu로 읽습니다.",
+  "drill.town1DeskSyllables.4.incorrect": "ㅁ은 m, ㅜ는 u라서 이 블록은 mu로 읽습니다.",
+  "drill.town1FountainConsonants.title": "분수 자음 1",
+  "drill.town1FountainConsonants.1.prompt": "분수가 ㄱ을 보여 줍니다. 글자 이름을 고르세요.",
+  "drill.town1FountainConsonants.1.correct": "ㄱ은 giyeok입니다. 모서리처럼 꺾입니다.",
+  "drill.town1FountainConsonants.1.incorrect": "ㄱ 모서리 모양인 giyeok을 찾으세요.",
+  "drill.town1FountainConsonants.2.prompt": "분수가 ㄴ을 보여 줍니다. 글자 이름을 고르세요.",
+  "drill.town1FountainConsonants.2.correct": "ㄴ은 nieun입니다. 모서리처럼 놓입니다.",
+  "drill.town1FountainConsonants.2.incorrect": "ㄴ 모양의 이름은 nieun입니다.",
+  "drill.town1FountainConsonants.3.prompt": "분수가 ㄷ을 보여 줍니다. 글자 이름을 고르세요.",
+  "drill.town1FountainConsonants.3.correct": "ㄷ은 digeut입니다. 세 면이 있습니다.",
+  "drill.town1FountainConsonants.3.incorrect": "세 면이 있는 ㄷ 모양은 digeut입니다.",
+  "drill.town1FountainConsonants.4.prompt": "분수가 ㅁ을 보여 줍니다. 글자 이름을 고르세요.",
+  "drill.town1FountainConsonants.4.correct": "ㅁ은 mieum입니다. 닫힌 네모입니다.",
+  "drill.town1FountainConsonants.4.incorrect": "닫힌 네모 ㅁ은 mieum입니다.",
+  "drill.town1FountainReview.title": "분수 복습",
+  "drill.town1FountainReview.1.prompt": "복습: ㅗ에 맞는 소리 이름은 무엇인가요?",
+  "drill.town1FountainReview.1.correct": "ㅗ는 o입니다.",
+  "drill.town1FountainReview.1.incorrect": "위쪽 짧은 획은 o입니다.",
+  "drill.town1FountainReview.2.prompt": "복습: ㄴ에 맞는 이름은 무엇인가요?",
+  "drill.town1FountainReview.2.correct": "ㄴ은 nieun입니다.",
+  "drill.town1FountainReview.2.incorrect": "ㄴ의 이름은 nieun입니다.",
+  "drill.town1FountainReview.3.prompt": "복습: 가는 어떤 소리인가요?",
+  "drill.town1FountainReview.3.correct": "가는 ga로 읽습니다.",
+  "drill.town1FountainReview.3.incorrect": "ㄱ과 ㅏ는 ga로 읽습니다.",
+  "drill.town1FountainReview.4.prompt": "복습: 무는 어떤 소리인가요?",
+  "drill.town1FountainReview.4.correct": "무는 mu로 읽습니다.",
+  "drill.town1FountainReview.4.incorrect": "ㅁ과 ㅜ는 mu로 읽습니다.",
+  "drill.town1FountainVowels.title": "분수 모음 1",
+  "drill.town1FountainVowels.1.prompt": "분수가 ㅏ를 보여 줍니다. 소리 이름을 고르세요.",
+  "drill.town1FountainVowels.1.correct": "ㅏ는 a로 읽습니다. 짧은 획이 오른쪽을 향합니다.",
+  "drill.town1FountainVowels.1.incorrect": "기본 a 소리인 ㅏ를 찾으세요.",
+  "drill.town1FountainVowels.2.prompt": "분수가 ㅓ를 보여 줍니다. 소리 이름을 고르세요.",
+  "drill.town1FountainVowels.2.correct": "ㅓ는 eo로 읽습니다. 짧은 획이 왼쪽을 향합니다.",
+  "drill.town1FountainVowels.2.incorrect": "ㅓ는 eo 소리입니다.",
+  "drill.town1FountainVowels.3.prompt": "분수가 ㅗ를 보여 줍니다. 소리 이름을 고르세요.",
+  "drill.town1FountainVowels.3.correct": "ㅗ는 o로 읽습니다. 짧은 획이 위로 올라갑니다.",
+  "drill.town1FountainVowels.3.incorrect": "ㅗ는 o 소리입니다.",
+  "drill.town1FountainVowels.4.prompt": "분수가 ㅜ를 보여 줍니다. 소리 이름을 고르세요.",
+  "drill.town1FountainVowels.4.correct": "ㅜ는 u로 읽습니다. 짧은 획이 아래로 내려갑니다.",
+  "drill.town1FountainVowels.4.incorrect": "ㅜ는 u 소리입니다.",
+  "npc.hangulTeacher.line3": "벽 지도를 읽고, 분수에서 연습한 다음, 칠판으로 돌아와 확인하세요.",
+  "object.schoolBlackboard.complete.line1": "칠판에는 마을 1 교실 확인마다 깔끔한 표시가 되어 있습니다.",
+  "object.schoolBlackboard.locked.consonants": "자음 확인을 보기 전에 분수 자음 단계를 통과하세요.",
+  "object.schoolBlackboard.locked.syllables": "이 확인을 보기 전에 책상에서 첫 음절을 연습하세요.",
+  "object.schoolBlackboard.locked.teacher": "서 선생님이 먼저 교실 순서를 설명하려고 합니다.",
+  "object.schoolBlackboard.locked.vowels": "모음 확인을 보기 전에 분수 모음 단계를 통과하세요.",
+  "object.soundFountain.complete.line1": "분수는 지금 배운 소리를 복습하는 모드입니다.",
+  "object.soundFountain.locked.consonants": "다음 분수 단계를 시작하기 전에 학교 안의 자음 지도를 읽으세요.",
+  "object.soundFountain.locked.vowels": "분수 연습을 시작하기 전에 학교 안의 모음 지도를 읽으세요.",
+  "object.studentDesk.locked.consonants": "여기에서 음절을 합치기 전에 분수 자음 단계를 통과하세요.",
+  "object.studentDesk.locked.vowels": "이 워크북을 사용하기 전에 분수 모음 단계를 통과하세요.",
+  "quest.town1.basicConsonants": "기본 자음",
+  "quest.town1.basicConsonants.exam": "칠판 자음 통과",
+  "quest.town1.basicConsonants.practice": "분수 자음 통과",
+  "quest.town1.basicConsonants.theory": "자음 지도 읽기",
+  "quest.town1.basicVowels": "기본 모음",
+  "quest.town1.basicVowels.exam": "칠판 모음 통과",
+  "quest.town1.basicVowels.practice": "분수 모음 통과",
+  "quest.town1.basicVowels.theory": "모음 지도 읽기",
+  "quest.town1.firstSyllables": "첫 음절",
+  "quest.town1.firstSyllables.exam": "칠판 음절 통과",
+  "quest.town1.firstSyllables.practice": "책상에서 연습",
+  "quest.town1.readingBadge": "마을 1 읽기 배지",
+  "quest.town1.readingBadge.ready": "교실 확인 완료",
+});
+
+Object.assign(TEXT.nl, {
+  "drill.passed": "Queststap gehaald",
+  "drill.retry": "Probeer opnieuw met alle antwoorden goed om deze queststap te halen.",
+  "drill.town1.choice.a": "a",
+  "drill.town1.choice.bieup": "bieup",
+  "drill.town1.choice.da": "da",
+  "drill.town1.choice.digeut": "digeut",
+  "drill.town1.choice.do": "do",
+  "drill.town1.choice.du": "du",
+  "drill.town1.choice.eo": "eo",
+  "drill.town1.choice.eu": "eu",
+  "drill.town1.choice.ga": "ga",
+  "drill.town1.choice.geo": "geo",
+  "drill.town1.choice.giyeok": "giyeok",
+  "drill.town1.choice.gu": "gu",
+  "drill.town1.choice.i": "i",
+  "drill.town1.choice.mieum": "mieum",
+  "drill.town1.choice.mu": "mu",
+  "drill.town1.choice.na": "na",
+  "drill.town1.choice.neo": "neo",
+  "drill.town1.choice.nieun": "nieun",
+  "drill.town1.choice.no": "no",
+  "drill.town1.choice.o": "o",
+  "drill.town1.choice.rieul": "rieul",
+  "drill.town1.choice.siot": "siot",
+  "drill.town1.choice.to": "to",
+  "drill.town1.choice.u": "u",
+  "drill.town1.choice.ya": "ya",
+  "drill.town1.choice.yo": "yo",
+  "drill.town1BlackboardConsonants.title": "Bordcontrole Medeklinkers",
+  "drill.town1BlackboardConsonants.1.prompt": "Toets: welke naam hoort bij ㄱ?",
+  "drill.town1BlackboardConsonants.1.correct": "ㄱ is giyeok.",
+  "drill.town1BlackboardConsonants.1.incorrect": "ㄱ draait als een hoek; de naam is giyeok.",
+  "drill.town1BlackboardConsonants.2.prompt": "Toets: welke naam hoort bij ㄴ?",
+  "drill.town1BlackboardConsonants.2.correct": "ㄴ is nieun.",
+  "drill.town1BlackboardConsonants.2.incorrect": "ㄴ is de hoekvormige medeklinker nieun.",
+  "drill.town1BlackboardConsonants.3.prompt": "Toets: welke naam hoort bij ㅁ?",
+  "drill.town1BlackboardConsonants.3.correct": "ㅁ is mieum.",
+  "drill.town1BlackboardConsonants.3.incorrect": "De gesloten vierkante medeklinker ㅁ is mieum.",
+  "drill.town1BlackboardSyllables.title": "Bordcontrole Eerste Lettergrepen",
+  "drill.town1BlackboardSyllables.1.prompt": "Toets: ㄱ + ㅏ maakt 가. Kies de lezing.",
+  "drill.town1BlackboardSyllables.1.correct": "가 lees je als ga.",
+  "drill.town1BlackboardSyllables.1.incorrect": "ㄱ geeft g en ㅏ geeft a, dus 가 lees je als ga.",
+  "drill.town1BlackboardSyllables.2.prompt": "Toets: ㄴ + ㅓ maakt 너. Kies de lezing.",
+  "drill.town1BlackboardSyllables.2.correct": "너 lees je als neo.",
+  "drill.town1BlackboardSyllables.2.incorrect": "ㄴ geeft n en ㅓ geeft eo, dus 너 lees je als neo.",
+  "drill.town1BlackboardSyllables.3.prompt": "Toets: ㄷ + ㅗ maakt 도. Kies de lezing.",
+  "drill.town1BlackboardSyllables.3.correct": "도 lees je als do.",
+  "drill.town1BlackboardSyllables.3.incorrect": "ㄷ geeft d en ㅗ geeft o, dus 도 lees je als do.",
+  "drill.town1BlackboardVowels.title": "Bordcontrole Klinkers",
+  "drill.town1BlackboardVowels.1.prompt": "Toets: welke klanknaam hoort bij ㅏ?",
+  "drill.town1BlackboardVowels.1.correct": "ㅏ is a.",
+  "drill.town1BlackboardVowels.1.incorrect": "De korte streep naar rechts markeert de klinker a.",
+  "drill.town1BlackboardVowels.2.prompt": "Toets: welke klanknaam hoort bij ㅓ?",
+  "drill.town1BlackboardVowels.2.correct": "ㅓ is eo.",
+  "drill.town1BlackboardVowels.2.incorrect": "De korte streep naar links markeert eo.",
+  "drill.town1BlackboardVowels.3.prompt": "Toets: welke klanknaam hoort bij ㅜ?",
+  "drill.town1BlackboardVowels.3.correct": "ㅜ is u.",
+  "drill.town1BlackboardVowels.3.incorrect": "De onderste korte streep markeert u.",
+  "drill.town1DeskSyllables.title": "Eerste Lettergreeptafels",
+  "drill.town1DeskSyllables.1.prompt": "Combineer ㄱ + ㅏ. Welke klank is 가?",
+  "drill.town1DeskSyllables.1.correct": "ㄱ plus ㅏ maakt 가, gelezen als ga.",
+  "drill.town1DeskSyllables.1.incorrect": "Houd eerst de medeklinker, daarna de klinker: ㄱ + ㅏ is ga.",
+  "drill.town1DeskSyllables.2.prompt": "Combineer ㄴ + ㅓ. Welke klank is 너?",
+  "drill.town1DeskSyllables.2.correct": "ㄴ plus ㅓ maakt 너, gelezen als neo.",
+  "drill.town1DeskSyllables.2.incorrect": "ㄴ geeft n en ㅓ geeft eo, dus het blok leest neo.",
+  "drill.town1DeskSyllables.3.prompt": "Combineer ㄷ + ㅗ. Welke klank is 도?",
+  "drill.town1DeskSyllables.3.correct": "ㄷ plus ㅗ maakt 도, gelezen als do.",
+  "drill.town1DeskSyllables.3.incorrect": "ㄷ geeft d en ㅗ geeft o, dus het blok leest do.",
+  "drill.town1DeskSyllables.4.prompt": "Combineer ㅁ + ㅜ. Welke klank is 무?",
+  "drill.town1DeskSyllables.4.correct": "ㅁ plus ㅜ maakt 무, gelezen als mu.",
+  "drill.town1DeskSyllables.4.incorrect": "ㅁ geeft m en ㅜ geeft u, dus het blok leest mu.",
+  "drill.town1FountainConsonants.title": "Fontein Medeklinkers 1",
+  "drill.town1FountainConsonants.1.prompt": "De fontein toont ㄱ. Kies de letternaam.",
+  "drill.town1FountainConsonants.1.correct": "ㄱ is giyeok; hij draait als een hoek.",
+  "drill.town1FountainConsonants.1.incorrect": "Zoek giyeok, de hoekvorm ㄱ.",
+  "drill.town1FountainConsonants.2.prompt": "De fontein toont ㄴ. Kies de letternaam.",
+  "drill.town1FountainConsonants.2.correct": "ㄴ is nieun; hij ligt als een hoek.",
+  "drill.town1FountainConsonants.2.incorrect": "De ㄴ-vorm heet nieun.",
+  "drill.town1FountainConsonants.3.prompt": "De fontein toont ㄷ. Kies de letternaam.",
+  "drill.town1FountainConsonants.3.correct": "ㄷ is digeut; hij heeft drie zijden.",
+  "drill.town1FountainConsonants.3.incorrect": "De driezijdige ㄷ-vorm is digeut.",
+  "drill.town1FountainConsonants.4.prompt": "De fontein toont ㅁ. Kies de letternaam.",
+  "drill.town1FountainConsonants.4.correct": "ㅁ is mieum; het is een gesloten vierkant.",
+  "drill.town1FountainConsonants.4.incorrect": "Het gesloten vierkant ㅁ is mieum.",
+  "drill.town1FountainReview.title": "Fonteinherhaling",
+  "drill.town1FountainReview.1.prompt": "Herhaling: welke klanknaam hoort bij ㅗ?",
+  "drill.town1FountainReview.1.correct": "ㅗ is o.",
+  "drill.town1FountainReview.1.incorrect": "De bovenste korte streep markeert o.",
+  "drill.town1FountainReview.2.prompt": "Herhaling: welke naam hoort bij ㄴ?",
+  "drill.town1FountainReview.2.correct": "ㄴ is nieun.",
+  "drill.town1FountainReview.2.incorrect": "ㄴ heet nieun.",
+  "drill.town1FountainReview.3.prompt": "Herhaling: welke klank is 가?",
+  "drill.town1FountainReview.3.correct": "가 lees je als ga.",
+  "drill.town1FountainReview.3.incorrect": "ㄱ plus ㅏ lees je als ga.",
+  "drill.town1FountainReview.4.prompt": "Herhaling: welke klank is 무?",
+  "drill.town1FountainReview.4.correct": "무 lees je als mu.",
+  "drill.town1FountainReview.4.incorrect": "ㅁ plus ㅜ lees je als mu.",
+  "drill.town1FountainVowels.title": "Fontein Klinkers 1",
+  "drill.town1FountainVowels.1.prompt": "De fontein toont ㅏ. Kies de klanknaam.",
+  "drill.town1FountainVowels.1.correct": "ㅏ lees je als a; de korte streep wijst naar rechts.",
+  "drill.town1FountainVowels.1.incorrect": "Zoek de eenvoudige a-klank: ㅏ.",
+  "drill.town1FountainVowels.2.prompt": "De fontein toont ㅓ. Kies de klanknaam.",
+  "drill.town1FountainVowels.2.correct": "ㅓ lees je als eo; de korte streep wijst naar links.",
+  "drill.town1FountainVowels.2.incorrect": "ㅓ is de eo-klank.",
+  "drill.town1FountainVowels.3.prompt": "De fontein toont ㅗ. Kies de klanknaam.",
+  "drill.town1FountainVowels.3.correct": "ㅗ lees je als o; de korte streep staat boven de lijn.",
+  "drill.town1FountainVowels.3.incorrect": "ㅗ is de o-klank.",
+  "drill.town1FountainVowels.4.prompt": "De fontein toont ㅜ. Kies de klanknaam.",
+  "drill.town1FountainVowels.4.correct": "ㅜ lees je als u; de korte streep hangt onder de lijn.",
+  "drill.town1FountainVowels.4.incorrect": "ㅜ is de u-klank.",
+  "npc.hangulTeacher.line3": "Lees een wandkaart, oefen bij de fontein en kom dan terug naar het bord voor een controle.",
+  "object.schoolBlackboard.complete.line1": "Op het bord staan nette vinkjes naast elke klascontrole van Stad 1.",
+  "object.schoolBlackboard.locked.consonants": "Haal het fonteinlevel medeklinkers voordat je de medeklinkercontrole doet.",
+  "object.schoolBlackboard.locked.syllables": "Oefen eerste lettergrepen aan een tafel voordat je deze controle doet.",
+  "object.schoolBlackboard.locked.teacher": "Juf Seo wil eerst de volgorde in het lokaal uitleggen.",
+  "object.schoolBlackboard.locked.vowels": "Haal het fonteinlevel klinkers voordat je de klinkercontrole doet.",
+  "object.soundFountain.complete.line1": "De fontein staat nu in herhalingsmodus voor de klanken die je hebt vrijgespeeld.",
+  "object.soundFountain.locked.consonants": "Lees de medeklinkerkaart in de school voordat je het volgende fonteinlevel start.",
+  "object.soundFountain.locked.vowels": "Lees de klinkerkaart in de school voordat je de fonteintraining gebruikt.",
+  "object.studentDesk.locked.consonants": "Haal het fonteinlevel medeklinkers voordat je hier lettergrepen combineert.",
+  "object.studentDesk.locked.vowels": "Haal het fonteinlevel klinkers voordat je dit werkboek gebruikt.",
+  "quest.town1.basicConsonants": "Basismedeklinkers",
+  "quest.town1.basicConsonants.exam": "Haal bordmedeklinkers",
+  "quest.town1.basicConsonants.practice": "Haal fonteinmedeklinkers",
+  "quest.town1.basicConsonants.theory": "Lees medeklinkerkaart",
+  "quest.town1.basicVowels": "Basisklinkers",
+  "quest.town1.basicVowels.exam": "Haal bordklinkers",
+  "quest.town1.basicVowels.practice": "Haal fonteinklinkers",
+  "quest.town1.basicVowels.theory": "Lees klinkerkaart",
+  "quest.town1.firstSyllables": "Eerste Lettergrepen",
+  "quest.town1.firstSyllables.exam": "Haal bordlettergrepen",
+  "quest.town1.firstSyllables.practice": "Oefen aan een tafel",
+  "quest.town1.readingBadge": "Stad 1 Leesbadge",
+  "quest.town1.readingBadge.ready": "Klascontroles voltooid",
+});
+
+Object.assign(TEXT.en, {
+  "area.rivalGuesthouse": "Final Sound House",
+  "drill.town1.choice.anj": "앉",
+  "drill.town1.choice.b": "b",
+  "drill.town1.choice.ch": "ch",
+  "drill.town1.choice.chieutSign": "ㅊ",
+  "drill.town1.choice.d": "d",
+  "drill.town1.choice.dalk": "닭",
+  "drill.town1.choice.finalK": "final k",
+  "drill.town1.choice.finalN": "final n",
+  "drill.town1.choice.finalP": "final p",
+  "drill.town1.choice.firstFinal": "first final",
+  "drill.town1.choice.g": "g",
+  "drill.town1.choice.gan": "간",
+  "drill.town1.choice.gap": "값",
+  "drill.town1.choice.hasBatchim": "Has batchim",
+  "drill.town1.choice.h": "h",
+  "drill.town1.choice.hieutSign": "ㅎ",
+  "drill.town1.choice.j": "j",
+  "drill.town1.choice.k": "k",
+  "drill.town1.choice.kieukSign": "ㅋ",
+  "drill.town1.choice.mun": "문",
+  "drill.town1.choice.noBatchim": "No batchim",
+  "drill.town1.choice.p": "p",
+  "drill.town1.choice.pieupSign": "ㅍ",
+  "drill.town1.choice.secondFinal": "second final",
+  "drill.town1.choice.t": "t",
+  "drill.town1.choice.tieutSign": "ㅌ",
+  "drill.town1.choice.wordDecides": "word decides",
+  "drill.town1BlackboardAspirated.title": "Blackboard Aspirated Check",
+  "drill.town1BlackboardAspirated.1.prompt": "Exam: Which sound fits ㅋ?",
+  "drill.town1BlackboardAspirated.1.correct": "ㅋ is the aspirated k sound.",
+  "drill.town1BlackboardAspirated.1.incorrect": "ㄱ plus the ㅎ breath leads to the stronger k sign ㅋ.",
+  "drill.town1BlackboardAspirated.2.prompt": "Exam: Which aspirated sign comes from ㄷ + ㅎ?",
+  "drill.town1BlackboardAspirated.2.correct": "ㄷ with ㅎ points to ㅌ.",
+  "drill.town1BlackboardAspirated.2.incorrect": "The d-side consonant becomes the stronger t sign ㅌ.",
+  "drill.town1BlackboardAspirated.3.prompt": "Exam: Which aspirated sign comes from ㅂ + ㅎ?",
+  "drill.town1BlackboardAspirated.3.correct": "ㅂ with ㅎ points to ㅍ.",
+  "drill.town1BlackboardAspirated.3.incorrect": "The b-side consonant becomes the stronger p sign ㅍ.",
+  "drill.town1FountainAspirated.title": "Fountain Aspirated Signs",
+  "drill.town1FountainAspirated.1.prompt": "The book shows ㄱ + ㅎ. Choose the aspirated sign.",
+  "drill.town1FountainAspirated.1.correct": "ㄱ plus the ㅎ breath is shown by ㅋ, the k sound.",
+  "drill.town1FountainAspirated.1.incorrect": "Look for ㅋ, the stronger sign related to ㄱ.",
+  "drill.town1FountainAspirated.2.prompt": "The book shows ㄷ + ㅎ. Choose the aspirated sign.",
+  "drill.town1FountainAspirated.2.correct": "ㄷ plus the ㅎ breath is shown by ㅌ.",
+  "drill.town1FountainAspirated.2.incorrect": "Look for ㅌ, the stronger sign related to ㄷ.",
+  "drill.town1FountainAspirated.3.prompt": "The book shows ㅂ + ㅎ. Choose the aspirated sign.",
+  "drill.town1FountainAspirated.3.correct": "ㅂ plus the ㅎ breath is shown by ㅍ.",
+  "drill.town1FountainAspirated.3.incorrect": "Look for ㅍ, the stronger sign related to ㅂ.",
+  "drill.town1FountainAspirated.4.prompt": "The book shows ㅈ + ㅎ. Choose the aspirated sign.",
+  "drill.town1FountainAspirated.4.correct": "ㅈ plus the ㅎ breath is shown by ㅊ.",
+  "drill.town1FountainAspirated.4.incorrect": "Look for ㅊ, the stronger sign related to ㅈ.",
+  "drill.town1FountainBatchimDouble.title": "Fountain Double Batchim",
+  "drill.town1FountainBatchimDouble.1.prompt": "The note shows 앉 with ㄵ. In this word, which final sound is taught?",
+  "drill.town1FountainBatchimDouble.1.correct": "앉 uses the first final ㄴ in this basic reading.",
+  "drill.town1FountainBatchimDouble.1.incorrect": "For this first example, ㄵ points to the first final ㄴ.",
+  "drill.town1FountainBatchimDouble.2.prompt": "The note shows 닭 with ㄺ. In this word, which final sound is taught?",
+  "drill.town1FountainBatchimDouble.2.correct": "닭 uses the second final ㄱ in this basic reading.",
+  "drill.town1FountainBatchimDouble.2.incorrect": "For this example, ㄺ points to the second final ㄱ.",
+  "drill.town1FountainBatchimDouble.3.prompt": "What is the rule idea for double batchim?",
+  "drill.town1FountainBatchimDouble.3.correct": "The word decides which final consonant you hear.",
+  "drill.town1FountainBatchimDouble.3.incorrect": "Do not guess by shape only. The word decides.",
+  "drill.town1FountainBatchimSingle.title": "Fountain First Batchim",
+  "drill.town1FountainBatchimSingle.1.prompt": "Does 간 have a consonant under the block?",
+  "drill.town1FountainBatchimSingle.1.correct": "간 has ㄴ under the block, so it has batchim.",
+  "drill.town1FountainBatchimSingle.1.incorrect": "The bottom ㄴ is the final consonant.",
+  "drill.town1FountainBatchimSingle.2.prompt": "What final sound does 문 use?",
+  "drill.town1FountainBatchimSingle.2.correct": "문 ends with final ㄴ, read as final n.",
+  "drill.town1FountainBatchimSingle.2.incorrect": "Look under the block: 문 has ㄴ at the bottom.",
+  "drill.town1FountainBatchimSingle.3.prompt": "Which block has no batchim?",
+  "drill.town1FountainBatchimSingle.3.correct": "나 has no consonant under the vowel.",
+  "drill.town1FountainBatchimSingle.3.incorrect": "Batchim sits at the bottom. 나 has no bottom consonant.",
+  "npc.doubleFinalLearner.afterNote.line1": "Practice the double-final examples at the fountain.",
+  "npc.doubleFinalLearner.done.line1": "Double batchim takes review. For now, remember that the word decides.",
+  "npc.doubleFinalLearner.intro.line1": "Some blocks have two consonants at the bottom.",
+  "npc.doubleFinalLearner.intro.line2": "You do not always hear both. In each word, learn whether the first or second final is used.",
+  "npc.doubleFinalLearner.locked.line1": "Practice the first batchim level before my double-final notes.",
+  "npc.doubleFinalLearner.readNote.line1": "Read the double-final note on the bookcase, then return to the fountain.",
+  "npc.finalSoundCoach.afterNote.line1": "Now use the fountain to practice finding final ㄴ.",
+  "npc.finalSoundCoach.done.line1": "You can now spot the first final consonant under a block.",
+  "npc.finalSoundCoach.intro.line1": "Welcome to the Final Sound House.",
+  "npc.finalSoundCoach.intro.line2": "Batchim is a consonant placed under a syllable block. Start with final ㄴ.",
+  "npc.finalSoundCoach.locked.line1": "Finish the double consonant check at school before starting batchim here.",
+  "npc.finalSoundCoach.readNote.line1": "Read the desk note about final ㄴ, then practice at the fountain.",
+  "npc.hangulTeacher.aspiratedBook.line1": "Read the aspirated consonant bookcase. It shows how ㅎ adds breath to familiar consonants.",
+  "npc.hangulTeacher.aspiratedDone.line1": "Good. The next reading step is outside school at the Final Sound House.",
+  "npc.hangulTeacher.aspiratedIntro.line1": "There is one more consonant family before batchim.",
+  "npc.hangulTeacher.aspiratedIntro.line2": "The ㅎ sound adds breath. ㄱ with that breath becomes ㅋ, a stronger k sound.",
+  "npc.hangulTeacher.aspiratedIntro.line3": "Read the aspirated consonant bookcase, then the fountain will show those signs.",
+  "npc.hangulTeacher.aspiratedPractice.line1": "The fountain is ready for aspirated consonant practice.",
+  "object.aspiratedBookcase": "Aspirated Sound Bookcase",
+  "object.aspiratedBookcase.locked.line1": "Teacher Seo should introduce these special breath signs first.",
+  "object.batchimDoubleNotebook": "Double-Final Note",
+  "object.batchimDoubleNotebook.locked.line1": "The second learner will explain double batchim after your first final practice.",
+  "object.batchimSingleNotebook": "Final ㄴ Note",
+  "object.batchimSingleNotebook.locked.line1": "The Final Sound Coach should introduce batchim first.",
+  "object.rivalGuesthouse": "Final Sound House",
+  "object.rivalGuesthouse.door": "Final Sound House Door",
+  "object.schoolBlackboard.locked.aspirated": "Practice the aspirated signs at the fountain before this check.",
+  "object.soundFountain.locked.aspirated": "Teacher Seo has the next consonant lesson inside the school.",
+  "object.soundFountain.locked.batchimDouble": "Return to the Final Sound House for the double-batchim note.",
+  "object.soundFountain.locked.batchimSingle": "Visit the Final Sound House before starting batchim practice.",
+  "quest.town1.aspiratedConsonants": "Aspirated Consonants",
+  "quest.town1.aspiratedConsonants.book": "Read aspirated book",
+  "quest.town1.aspiratedConsonants.exam": "Pass aspirated blackboard",
+  "quest.town1.aspiratedConsonants.practice": "Pass fountain aspiration",
+  "quest.town1.aspiratedConsonants.theory": "Talk to Teacher Seo",
+  "quest.town1.doubleBatchim": "Double Batchim",
+  "quest.town1.doubleBatchim.book": "Read double-final note",
+  "quest.town1.doubleBatchim.practice": "Pass double-batchim fountain",
+  "quest.town1.doubleBatchim.theory": "Talk to double-final learner",
+  "quest.town1.singleBatchim": "First Batchim",
+  "quest.town1.singleBatchim.book": "Read final ㄴ note",
+  "quest.town1.singleBatchim.practice": "Pass final ㄴ fountain",
+  "quest.town1.singleBatchim.theory": "Visit Final Sound House",
+  "study.aspiratedConsonants.subtitle": "See how ㅎ breath makes stronger consonant signs.",
+  "study.aspiratedConsonants.title": "Aspirated Consonants",
+  "study.doubleBatchim.subtitle": "Double batchim depends on the word. Learn each first example.",
+  "study.doubleBatchim.title": "Double Batchim",
+  "study.singleBatchim.subtitle": "Batchim is a consonant under a syllable block.",
+  "study.singleBatchim.title": "First Batchim: final ㄴ",
+});
+
+Object.assign(TEXT.ko, {
+  "area.rivalGuesthouse": "끝소리 집",
+  "drill.town1.choice.anj": "앉",
+  "drill.town1.choice.b": "b",
+  "drill.town1.choice.ch": "ch",
+  "drill.town1.choice.chieutSign": "ㅊ",
+  "drill.town1.choice.d": "d",
+  "drill.town1.choice.dalk": "닭",
+  "drill.town1.choice.finalK": "끝소리 k",
+  "drill.town1.choice.finalN": "끝소리 n",
+  "drill.town1.choice.finalP": "끝소리 p",
+  "drill.town1.choice.firstFinal": "첫 번째 받침",
+  "drill.town1.choice.g": "g",
+  "drill.town1.choice.gan": "간",
+  "drill.town1.choice.gap": "값",
+  "drill.town1.choice.hasBatchim": "받침 있음",
+  "drill.town1.choice.h": "h",
+  "drill.town1.choice.hieutSign": "ㅎ",
+  "drill.town1.choice.j": "j",
+  "drill.town1.choice.k": "k",
+  "drill.town1.choice.kieukSign": "ㅋ",
+  "drill.town1.choice.mun": "문",
+  "drill.town1.choice.noBatchim": "받침 없음",
+  "drill.town1.choice.p": "p",
+  "drill.town1.choice.pieupSign": "ㅍ",
+  "drill.town1.choice.secondFinal": "두 번째 받침",
+  "drill.town1.choice.t": "t",
+  "drill.town1.choice.tieutSign": "ㅌ",
+  "drill.town1.choice.wordDecides": "단어마다 다름",
+  "drill.town1BlackboardAspirated.title": "칠판 거센소리 확인",
+  "drill.town1BlackboardAspirated.1.prompt": "시험: ㅋ에 맞는 소리는 무엇인가요?",
+  "drill.town1BlackboardAspirated.1.correct": "ㅋ은 거센 k 소리입니다.",
+  "drill.town1BlackboardAspirated.1.incorrect": "ㄱ에 ㅎ의 숨이 더해지면 더 센 k 표시 ㅋ이 됩니다.",
+  "drill.town1BlackboardAspirated.2.prompt": "시험: ㄷ + ㅎ에서 나온 거센소리 글자는 무엇인가요?",
+  "drill.town1BlackboardAspirated.2.correct": "ㄷ에 ㅎ이 더해지면 ㅌ을 떠올립니다.",
+  "drill.town1BlackboardAspirated.2.incorrect": "d 쪽 자음은 더 센 t 표시 ㅌ이 됩니다.",
+  "drill.town1BlackboardAspirated.3.prompt": "시험: ㅂ + ㅎ에서 나온 거센소리 글자는 무엇인가요?",
+  "drill.town1BlackboardAspirated.3.correct": "ㅂ에 ㅎ이 더해지면 ㅍ을 떠올립니다.",
+  "drill.town1BlackboardAspirated.3.incorrect": "b 쪽 자음은 더 센 p 표시 ㅍ이 됩니다.",
+  "drill.town1FountainAspirated.title": "분수 거센소리",
+  "drill.town1FountainAspirated.1.prompt": "책에 ㄱ + ㅎ이 보입니다. 거센소리 글자를 고르세요.",
+  "drill.town1FountainAspirated.1.correct": "ㄱ에 ㅎ의 숨이 더해지면 k 소리 ㅋ으로 보입니다.",
+  "drill.town1FountainAspirated.1.incorrect": "ㄱ과 관련된 더 센 표시 ㅋ을 찾으세요.",
+  "drill.town1FountainAspirated.2.prompt": "책에 ㄷ + ㅎ이 보입니다. 거센소리 글자를 고르세요.",
+  "drill.town1FountainAspirated.2.correct": "ㄷ에 ㅎ의 숨이 더해지면 ㅌ으로 보입니다.",
+  "drill.town1FountainAspirated.2.incorrect": "ㄷ과 관련된 더 센 표시 ㅌ을 찾으세요.",
+  "drill.town1FountainAspirated.3.prompt": "책에 ㅂ + ㅎ이 보입니다. 거센소리 글자를 고르세요.",
+  "drill.town1FountainAspirated.3.correct": "ㅂ에 ㅎ의 숨이 더해지면 ㅍ으로 보입니다.",
+  "drill.town1FountainAspirated.3.incorrect": "ㅂ과 관련된 더 센 표시 ㅍ을 찾으세요.",
+  "drill.town1FountainAspirated.4.prompt": "책에 ㅈ + ㅎ이 보입니다. 거센소리 글자를 고르세요.",
+  "drill.town1FountainAspirated.4.correct": "ㅈ에 ㅎ의 숨이 더해지면 ㅊ으로 보입니다.",
+  "drill.town1FountainAspirated.4.incorrect": "ㅈ과 관련된 더 센 표시 ㅊ을 찾으세요.",
+  "drill.town1FountainBatchimDouble.title": "분수 겹받침",
+  "drill.town1FountainBatchimDouble.1.prompt": "노트에 ㄵ이 있는 앉이 보입니다. 이 단어에서는 어떤 끝소리를 배웠나요?",
+  "drill.town1FountainBatchimDouble.1.correct": "앉은 이 기본 읽기에서 첫 번째 ㄴ 받침을 씁니다.",
+  "drill.town1FountainBatchimDouble.1.incorrect": "이 첫 예시는 ㄵ에서 첫 번째 ㄴ을 봅니다.",
+  "drill.town1FountainBatchimDouble.2.prompt": "노트에 ㄺ이 있는 닭이 보입니다. 이 단어에서는 어떤 끝소리를 배웠나요?",
+  "drill.town1FountainBatchimDouble.2.correct": "닭은 이 기본 읽기에서 두 번째 ㄱ 받침을 씁니다.",
+  "drill.town1FountainBatchimDouble.2.incorrect": "이 예시는 ㄺ에서 두 번째 ㄱ을 봅니다.",
+  "drill.town1FountainBatchimDouble.3.prompt": "겹받침의 기본 생각은 무엇인가요?",
+  "drill.town1FountainBatchimDouble.3.correct": "어떤 끝소리가 들리는지는 단어마다 배웁니다.",
+  "drill.town1FountainBatchimDouble.3.incorrect": "모양만 보고 추측하지 마세요. 단어마다 다릅니다.",
+  "drill.town1FountainBatchimSingle.title": "분수 첫 받침",
+  "drill.town1FountainBatchimSingle.1.prompt": "간에는 글자 아래 자음이 있나요?",
+  "drill.town1FountainBatchimSingle.1.correct": "간에는 아래에 ㄴ이 있어서 받침이 있습니다.",
+  "drill.town1FountainBatchimSingle.1.incorrect": "아래 ㄴ이 끝 자음입니다.",
+  "drill.town1FountainBatchimSingle.2.prompt": "문은 어떤 끝소리를 쓰나요?",
+  "drill.town1FountainBatchimSingle.2.correct": "문은 끝 ㄴ으로 끝나며 final n으로 읽습니다.",
+  "drill.town1FountainBatchimSingle.2.incorrect": "글자 아래를 보세요. 문에는 아래에 ㄴ이 있습니다.",
+  "drill.town1FountainBatchimSingle.3.prompt": "어떤 글자에 받침이 없나요?",
+  "drill.town1FountainBatchimSingle.3.correct": "나는 모음 아래 자음이 없습니다.",
+  "drill.town1FountainBatchimSingle.3.incorrect": "받침은 아래에 있습니다. 나에는 아래 자음이 없습니다.",
+  "npc.doubleFinalLearner.afterNote.line1": "분수에서 겹받침 예시를 연습하세요.",
+  "npc.doubleFinalLearner.done.line1": "겹받침은 복습이 필요합니다. 지금은 단어마다 다르다는 것을 기억하세요.",
+  "npc.doubleFinalLearner.intro.line1": "어떤 글자는 아래에 자음이 두 개 있습니다.",
+  "npc.doubleFinalLearner.intro.line2": "항상 둘 다 들리지는 않습니다. 단어마다 첫 번째인지 두 번째인지 배웁니다.",
+  "npc.doubleFinalLearner.locked.line1": "제 겹받침 노트 전에 첫 받침 단계를 연습하세요.",
+  "npc.doubleFinalLearner.readNote.line1": "책장의 겹받침 노트를 읽고 분수로 돌아가세요.",
+  "npc.finalSoundCoach.afterNote.line1": "이제 분수에서 끝 ㄴ 찾기를 연습하세요.",
+  "npc.finalSoundCoach.done.line1": "이제 글자 아래의 첫 끝 자음을 찾을 수 있습니다.",
+  "npc.finalSoundCoach.intro.line1": "끝소리 집에 오신 것을 환영합니다.",
+  "npc.finalSoundCoach.intro.line2": "받침은 글자 아래에 놓인 자음입니다. 끝 ㄴ부터 시작하세요.",
+  "npc.finalSoundCoach.locked.line1": "여기서 받침을 시작하기 전에 학교의 쌍자음 확인을 끝내세요.",
+  "npc.finalSoundCoach.readNote.line1": "끝 ㄴ 책상 노트를 읽고 분수에서 연습하세요.",
+  "npc.hangulTeacher.aspiratedBook.line1": "거센소리 책장을 읽으세요. ㅎ이 익숙한 자음에 숨을 더하는 모습을 보여 줍니다.",
+  "npc.hangulTeacher.aspiratedDone.line1": "좋아요. 다음 읽기 단계는 학교 밖의 끝소리 집입니다.",
+  "npc.hangulTeacher.aspiratedIntro.line1": "받침 전에 자음 가족이 하나 더 있습니다.",
+  "npc.hangulTeacher.aspiratedIntro.line2": "ㅎ 소리는 숨을 더합니다. ㄱ에 그 숨이 더해지면 더 센 k 소리 ㅋ이 됩니다.",
+  "npc.hangulTeacher.aspiratedIntro.line3": "거센소리 책장을 읽으면 분수가 그 글자들을 보여 줄 것입니다.",
+  "npc.hangulTeacher.aspiratedPractice.line1": "분수가 거센소리 연습을 준비했습니다.",
+  "object.aspiratedBookcase": "거센소리 책장",
+  "object.aspiratedBookcase.locked.line1": "서 선생님이 먼저 특별한 숨소리 글자를 소개해야 합니다.",
+  "object.batchimDoubleNotebook": "겹받침 노트",
+  "object.batchimDoubleNotebook.locked.line1": "두 번째 학습자가 첫 받침 연습 뒤에 겹받침을 설명합니다.",
+  "object.batchimSingleNotebook": "끝 ㄴ 노트",
+  "object.batchimSingleNotebook.locked.line1": "끝소리 선생님이 먼저 받침을 소개해야 합니다.",
+  "object.rivalGuesthouse": "끝소리 집",
+  "object.rivalGuesthouse.door": "끝소리 집 문",
+  "object.schoolBlackboard.locked.aspirated": "이 확인 전에 분수에서 거센소리를 연습하세요.",
+  "object.soundFountain.locked.aspirated": "다음 자음 수업은 학교 안의 서 선생님에게 있습니다.",
+  "object.soundFountain.locked.batchimDouble": "겹받침 노트를 보려면 끝소리 집으로 돌아가세요.",
+  "object.soundFountain.locked.batchimSingle": "받침 연습을 시작하기 전에 끝소리 집을 방문하세요.",
+  "quest.town1.aspiratedConsonants": "거센소리 자음",
+  "quest.town1.aspiratedConsonants.book": "거센소리 책 읽기",
+  "quest.town1.aspiratedConsonants.exam": "칠판 거센소리 통과",
+  "quest.town1.aspiratedConsonants.practice": "분수 거센소리 통과",
+  "quest.town1.aspiratedConsonants.theory": "서 선생님과 대화",
+  "quest.town1.doubleBatchim": "겹받침",
+  "quest.town1.doubleBatchim.book": "겹받침 노트 읽기",
+  "quest.town1.doubleBatchim.practice": "분수 겹받침 통과",
+  "quest.town1.doubleBatchim.theory": "겹받침 학습자와 대화",
+  "quest.town1.singleBatchim": "첫 받침",
+  "quest.town1.singleBatchim.book": "끝 ㄴ 노트 읽기",
+  "quest.town1.singleBatchim.practice": "분수 끝 ㄴ 통과",
+  "quest.town1.singleBatchim.theory": "끝소리 집 방문",
+  "study.aspiratedConsonants.subtitle": "ㅎ의 숨이 더 센 자음 글자를 만드는 모습을 봅니다.",
+  "study.aspiratedConsonants.title": "거센소리 자음",
+  "study.doubleBatchim.subtitle": "겹받침은 단어마다 다릅니다. 첫 예시를 배워 보세요.",
+  "study.doubleBatchim.title": "겹받침",
+  "study.singleBatchim.subtitle": "받침은 글자 아래에 있는 자음입니다.",
+  "study.singleBatchim.title": "첫 받침: 끝 ㄴ",
+});
+
+Object.assign(TEXT.nl, {
+  "area.rivalGuesthouse": "Eindklankhuis",
+  "drill.town1.choice.anj": "앉",
+  "drill.town1.choice.b": "b",
+  "drill.town1.choice.ch": "ch",
+  "drill.town1.choice.chieutSign": "ㅊ",
+  "drill.town1.choice.d": "d",
+  "drill.town1.choice.dalk": "닭",
+  "drill.town1.choice.finalK": "eind-k",
+  "drill.town1.choice.finalN": "eind-n",
+  "drill.town1.choice.finalP": "eind-p",
+  "drill.town1.choice.firstFinal": "eerste eindklank",
+  "drill.town1.choice.g": "g",
+  "drill.town1.choice.gan": "간",
+  "drill.town1.choice.gap": "값",
+  "drill.town1.choice.hasBatchim": "Heeft batchim",
+  "drill.town1.choice.h": "h",
+  "drill.town1.choice.hieutSign": "ㅎ",
+  "drill.town1.choice.j": "j",
+  "drill.town1.choice.k": "k",
+  "drill.town1.choice.kieukSign": "ㅋ",
+  "drill.town1.choice.mun": "문",
+  "drill.town1.choice.noBatchim": "Geen batchim",
+  "drill.town1.choice.p": "p",
+  "drill.town1.choice.pieupSign": "ㅍ",
+  "drill.town1.choice.secondFinal": "tweede eindklank",
+  "drill.town1.choice.t": "t",
+  "drill.town1.choice.tieutSign": "ㅌ",
+  "drill.town1.choice.wordDecides": "woord beslist",
+  "drill.town1BlackboardAspirated.title": "Bordcontrole Aangeblazen Klanken",
+  "drill.town1BlackboardAspirated.1.prompt": "Toets: welke klank hoort bij ㅋ?",
+  "drill.town1BlackboardAspirated.1.correct": "ㅋ is de aangeblazen k-klank.",
+  "drill.town1BlackboardAspirated.1.incorrect": "ㄱ plus de ㅎ-adem leidt naar het sterkere k-teken ㅋ.",
+  "drill.town1BlackboardAspirated.2.prompt": "Toets: welk aangeblazen teken komt van ㄷ + ㅎ?",
+  "drill.town1BlackboardAspirated.2.correct": "ㄷ met ㅎ wijst naar ㅌ.",
+  "drill.town1BlackboardAspirated.2.incorrect": "De d-kant wordt het sterkere t-teken ㅌ.",
+  "drill.town1BlackboardAspirated.3.prompt": "Toets: welk aangeblazen teken komt van ㅂ + ㅎ?",
+  "drill.town1BlackboardAspirated.3.correct": "ㅂ met ㅎ wijst naar ㅍ.",
+  "drill.town1BlackboardAspirated.3.incorrect": "De b-kant wordt het sterkere p-teken ㅍ.",
+  "drill.town1FountainAspirated.title": "Fontein Aangeblazen Tekens",
+  "drill.town1FountainAspirated.1.prompt": "Het boek toont ㄱ + ㅎ. Kies het aangeblazen teken.",
+  "drill.town1FountainAspirated.1.correct": "ㄱ plus de ㅎ-adem wordt getoond door ㅋ, de k-klank.",
+  "drill.town1FountainAspirated.1.incorrect": "Zoek ㅋ, het sterkere teken dat bij ㄱ hoort.",
+  "drill.town1FountainAspirated.2.prompt": "Het boek toont ㄷ + ㅎ. Kies het aangeblazen teken.",
+  "drill.town1FountainAspirated.2.correct": "ㄷ plus de ㅎ-adem wordt getoond door ㅌ.",
+  "drill.town1FountainAspirated.2.incorrect": "Zoek ㅌ, het sterkere teken dat bij ㄷ hoort.",
+  "drill.town1FountainAspirated.3.prompt": "Het boek toont ㅂ + ㅎ. Kies het aangeblazen teken.",
+  "drill.town1FountainAspirated.3.correct": "ㅂ plus de ㅎ-adem wordt getoond door ㅍ.",
+  "drill.town1FountainAspirated.3.incorrect": "Zoek ㅍ, het sterkere teken dat bij ㅂ hoort.",
+  "drill.town1FountainAspirated.4.prompt": "Het boek toont ㅈ + ㅎ. Kies het aangeblazen teken.",
+  "drill.town1FountainAspirated.4.correct": "ㅈ plus de ㅎ-adem wordt getoond door ㅊ.",
+  "drill.town1FountainAspirated.4.incorrect": "Zoek ㅊ, het sterkere teken dat bij ㅈ hoort.",
+  "drill.town1FountainBatchimDouble.title": "Fontein Dubbele Batchim",
+  "drill.town1FountainBatchimDouble.1.prompt": "De notitie toont 앉 met ㄵ. Welke eindklank leer je in dit woord?",
+  "drill.town1FountainBatchimDouble.1.correct": "앉 gebruikt in deze basislezing de eerste eindklank ㄴ.",
+  "drill.town1FountainBatchimDouble.1.incorrect": "In dit eerste voorbeeld wijst ㄵ naar de eerste eindklank ㄴ.",
+  "drill.town1FountainBatchimDouble.2.prompt": "De notitie toont 닭 met ㄺ. Welke eindklank leer je in dit woord?",
+  "drill.town1FountainBatchimDouble.2.correct": "닭 gebruikt in deze basislezing de tweede eindklank ㄱ.",
+  "drill.town1FountainBatchimDouble.2.incorrect": "In dit voorbeeld wijst ㄺ naar de tweede eindklank ㄱ.",
+  "drill.town1FountainBatchimDouble.3.prompt": "Wat is het idee bij dubbele batchim?",
+  "drill.town1FountainBatchimDouble.3.correct": "Het woord beslist welke eindmedeklinker je hoort.",
+  "drill.town1FountainBatchimDouble.3.incorrect": "Raad niet alleen op vorm. Het woord beslist.",
+  "drill.town1FountainBatchimSingle.title": "Fontein Eerste Batchim",
+  "drill.town1FountainBatchimSingle.1.prompt": "Heeft 간 een medeklinker onder het blok?",
+  "drill.town1FountainBatchimSingle.1.correct": "간 heeft ㄴ onder het blok, dus het heeft batchim.",
+  "drill.town1FountainBatchimSingle.1.incorrect": "De onderste ㄴ is de eindmedeklinker.",
+  "drill.town1FountainBatchimSingle.2.prompt": "Welke eindklank gebruikt 문?",
+  "drill.town1FountainBatchimSingle.2.correct": "문 eindigt met eind-ㄴ, gelezen als eind-n.",
+  "drill.town1FountainBatchimSingle.2.incorrect": "Kijk onder het blok: 문 heeft ㄴ onderaan.",
+  "drill.town1FountainBatchimSingle.3.prompt": "Welk blok heeft geen batchim?",
+  "drill.town1FountainBatchimSingle.3.correct": "나 heeft geen medeklinker onder de klinker.",
+  "drill.town1FountainBatchimSingle.3.incorrect": "Batchim staat onderaan. 나 heeft geen onderste medeklinker.",
+  "npc.doubleFinalLearner.afterNote.line1": "Oefen de dubbele-eindklankvoorbeelden bij de fontein.",
+  "npc.doubleFinalLearner.done.line1": "Dubbele batchim vraagt herhaling. Onthoud nu dat het woord beslist.",
+  "npc.doubleFinalLearner.intro.line1": "Sommige blokken hebben twee medeklinkers onderaan.",
+  "npc.doubleFinalLearner.intro.line2": "Je hoort niet altijd beide. Per woord leer je of de eerste of tweede eindklank telt.",
+  "npc.doubleFinalLearner.locked.line1": "Oefen het eerste batchimlevel voor mijn dubbele-eindklanknotities.",
+  "npc.doubleFinalLearner.readNote.line1": "Lees de dubbele-eindklanknotitie op de boekenkast en ga dan naar de fontein.",
+  "npc.finalSoundCoach.afterNote.line1": "Gebruik nu de fontein om eind-ㄴ te vinden.",
+  "npc.finalSoundCoach.done.line1": "Je kunt nu de eerste eindmedeklinker onder een blok vinden.",
+  "npc.finalSoundCoach.intro.line1": "Welkom in het Eindklankhuis.",
+  "npc.finalSoundCoach.intro.line2": "Batchim is een medeklinker onder een lettergreepblok. Begin met eind-ㄴ.",
+  "npc.finalSoundCoach.locked.line1": "Rond op school de controle van dubbele medeklinkers af voordat je hier batchim start.",
+  "npc.finalSoundCoach.readNote.line1": "Lees de tafelnotitie over eind-ㄴ en oefen daarna bij de fontein.",
+  "npc.hangulTeacher.aspiratedBook.line1": "Lees de boekenkast met aangeblazen klanken. Die toont hoe ㅎ adem toevoegt aan bekende medeklinkers.",
+  "npc.hangulTeacher.aspiratedDone.line1": "Goed. De volgende leesstap is buiten school in het Eindklankhuis.",
+  "npc.hangulTeacher.aspiratedIntro.line1": "Er is nog een medeklinkerfamilie voor batchim.",
+  "npc.hangulTeacher.aspiratedIntro.line2": "De ㅎ-klank voegt adem toe. ㄱ met die adem wordt ㅋ, een sterkere k-klank.",
+  "npc.hangulTeacher.aspiratedIntro.line3": "Lees de boekenkast met aangeblazen klanken; daarna toont de fontein die tekens.",
+  "npc.hangulTeacher.aspiratedPractice.line1": "De fontein is klaar voor oefening met aangeblazen medeklinkers.",
+  "object.aspiratedBookcase": "Boekenkast Aangeblazen Klanken",
+  "object.aspiratedBookcase.locked.line1": "Juf Seo moet deze speciale ademtekens eerst introduceren.",
+  "object.batchimDoubleNotebook": "Dubbele-Eindklanknotitie",
+  "object.batchimDoubleNotebook.locked.line1": "De tweede leerling legt dubbele batchim uit na je eerste eindklankoefening.",
+  "object.batchimSingleNotebook": "Eind-ㄴ-notitie",
+  "object.batchimSingleNotebook.locked.line1": "De Eindklankcoach moet batchim eerst introduceren.",
+  "object.rivalGuesthouse": "Eindklankhuis",
+  "object.rivalGuesthouse.door": "Deur van het Eindklankhuis",
+  "object.schoolBlackboard.locked.aspirated": "Oefen de aangeblazen tekens bij de fontein voor deze controle.",
+  "object.soundFountain.locked.aspirated": "Juf Seo heeft de volgende medeklinkerles in de school.",
+  "object.soundFountain.locked.batchimDouble": "Ga terug naar het Eindklankhuis voor de dubbele-batchimnotitie.",
+  "object.soundFountain.locked.batchimSingle": "Bezoek het Eindklankhuis voordat je batchim oefent.",
+  "quest.town1.aspiratedConsonants": "Aangeblazen Medeklinkers",
+  "quest.town1.aspiratedConsonants.book": "Lees aangeblazen boek",
+  "quest.town1.aspiratedConsonants.exam": "Haal aangeblazen bord",
+  "quest.town1.aspiratedConsonants.practice": "Haal fonteinaangeblazen",
+  "quest.town1.aspiratedConsonants.theory": "Praat met Juf Seo",
+  "quest.town1.doubleBatchim": "Dubbele Batchim",
+  "quest.town1.doubleBatchim.book": "Lees dubbele-eindklanknotitie",
+  "quest.town1.doubleBatchim.practice": "Haal dubbele-batchimfontein",
+  "quest.town1.doubleBatchim.theory": "Praat met dubbele-eindklankleerling",
+  "quest.town1.singleBatchim": "Eerste Batchim",
+  "quest.town1.singleBatchim.book": "Lees eind-ㄴ-notitie",
+  "quest.town1.singleBatchim.practice": "Haal eind-ㄴ-fontein",
+  "quest.town1.singleBatchim.theory": "Bezoek Eindklankhuis",
+  "study.aspiratedConsonants.subtitle": "Zie hoe ㅎ-adem sterkere medeklinkertekens maakt.",
+  "study.aspiratedConsonants.title": "Aangeblazen Medeklinkers",
+  "study.doubleBatchim.subtitle": "Dubbele batchim hangt af van het woord. Leer elk eerste voorbeeld.",
+  "study.doubleBatchim.title": "Dubbele Batchim",
+  "study.singleBatchim.subtitle": "Batchim is een medeklinker onder een lettergreepblok.",
+  "study.singleBatchim.title": "Eerste Batchim: eind-ㄴ",
+});
+
+Object.assign(TEXT.en, {
+  "drill.town1.choice.jj": "jj",
+  "drill.town1.choice.kk": "kk",
+  "drill.town1.choice.naBlock": "나",
+  "drill.town1.choice.pp": "pp",
+  "drill.town1.choice.ss": "ss",
+  "drill.town1.choice.ssangBieupSign": "ㅃ",
+  "drill.town1.choice.ssangDigeutSign": "ㄸ",
+  "drill.town1.choice.ssangGiyeokSign": "ㄲ",
+  "drill.town1.choice.ssangJieutSign": "ㅉ",
+  "drill.town1.choice.ssangSiotSign": "ㅆ",
+  "drill.town1.choice.tt": "tt",
+  "drill.town1BlackboardDoubleConsonants.title": "Blackboard Double Consonant Check",
+  "drill.town1BlackboardDoubleConsonants.1.prompt": "Exam: Which sound fits ㄲ?",
+  "drill.town1BlackboardDoubleConsonants.1.correct": "ㄲ is the double ㄱ sign, read here as kk.",
+  "drill.town1BlackboardDoubleConsonants.1.incorrect": "Look for the tense doubled sound: ㄲ is kk.",
+  "drill.town1BlackboardDoubleConsonants.2.prompt": "Exam: Which double sign comes from ㄷ + ㄷ?",
+  "drill.town1BlackboardDoubleConsonants.2.correct": "ㄷ doubled becomes ㄸ.",
+  "drill.town1BlackboardDoubleConsonants.2.incorrect": "Double the ㄷ shape to make ㄸ.",
+  "drill.town1BlackboardDoubleConsonants.3.prompt": "Exam: Which double sign comes from ㅅ + ㅅ?",
+  "drill.town1BlackboardDoubleConsonants.3.correct": "ㅅ doubled becomes ㅆ.",
+  "drill.town1BlackboardDoubleConsonants.3.incorrect": "Two ㅅ signs together make ㅆ.",
+  "drill.town1FountainDoubleConsonants.title": "Fountain Double Consonants",
+  "drill.town1FountainDoubleConsonants.1.prompt": "The book shows ㄱ + ㄱ. Choose the double sign.",
+  "drill.town1FountainDoubleConsonants.1.correct": "ㄱ doubled is ㄲ, practiced here as kk.",
+  "drill.town1FountainDoubleConsonants.1.incorrect": "Look for two ㄱ strokes together: ㄲ.",
+  "drill.town1FountainDoubleConsonants.2.prompt": "The book shows ㄷ + ㄷ. Choose the double sign.",
+  "drill.town1FountainDoubleConsonants.2.correct": "ㄷ doubled is ㄸ, practiced here as tt.",
+  "drill.town1FountainDoubleConsonants.2.incorrect": "Look for the doubled ㄷ shape: ㄸ.",
+  "drill.town1FountainDoubleConsonants.3.prompt": "The book shows ㅂ + ㅂ. Choose the double sign.",
+  "drill.town1FountainDoubleConsonants.3.correct": "ㅂ doubled is ㅃ, practiced here as pp.",
+  "drill.town1FountainDoubleConsonants.3.incorrect": "Look for the doubled ㅂ shape: ㅃ.",
+  "drill.town1FountainDoubleConsonants.4.prompt": "The book shows ㅅ + ㅅ. Choose the double sign.",
+  "drill.town1FountainDoubleConsonants.4.correct": "ㅅ doubled is ㅆ, practiced here as ss.",
+  "drill.town1FountainDoubleConsonants.4.incorrect": "Look for the doubled ㅅ shape: ㅆ.",
+  "drill.town1FountainDoubleConsonants.5.prompt": "The book shows ㅈ + ㅈ. Choose the double sign.",
+  "drill.town1FountainDoubleConsonants.5.correct": "ㅈ doubled is ㅉ, practiced here as jj.",
+  "drill.town1FountainDoubleConsonants.5.incorrect": "Look for the doubled ㅈ shape: ㅉ.",
+  "npc.hangulTeacher.doubleConsonantBook.line1": "Read the double consonant bookcase. It shows how familiar signs become tense double signs.",
+  "npc.hangulTeacher.doubleConsonantDone.line1": "Good. You have now checked the school consonant alphabet. The next step is final sounds.",
+  "npc.hangulTeacher.doubleConsonantIntro.line1": "One more school alphabet lesson remains.",
+  "npc.hangulTeacher.doubleConsonantIntro.line2": "Some consonants can be doubled: ㄱ becomes ㄲ, and ㄷ becomes ㄸ.",
+  "npc.hangulTeacher.doubleConsonantIntro.line3": "Read the double consonant bookcase, then practice those signs at the fountain.",
+  "npc.hangulTeacher.doubleConsonantPractice.line1": "The fountain is ready for double consonant practice.",
+  "npc.rivalDad": "Final Sound Coach",
+  "npc.rivalStudent": "Double-Final Learner",
+  "object.doubleConsonantBookcase": "Double Consonant Bookcase",
+  "object.doubleConsonantBookcase.locked.line1": "Teacher Seo should introduce these doubled signs first.",
+  "object.schoolBlackboard.locked.doubleConsonants": "Practice the double consonants at the fountain before this check.",
+  "object.soundFountain.locked.doubleConsonants": "Teacher Seo has the final school alphabet lesson inside the school.",
+  "quest.town1.doubleConsonants": "Double Consonants",
+  "quest.town1.doubleConsonants.book": "Read double-consonant book",
+  "quest.town1.doubleConsonants.exam": "Pass double-consonant blackboard",
+  "quest.town1.doubleConsonants.practice": "Pass double-consonant fountain",
+  "quest.town1.doubleConsonants.theory": "Talk to Teacher Seo",
+  "quest.town1.readingBadge.ready": "Final sound practice complete",
+  "study.aspiratedConsonants.entry.bieup": "ㅂ + ㅎ -> ㅍ p",
+  "study.aspiratedConsonants.entry.digeut": "ㄷ + ㅎ -> ㅌ t",
+  "study.aspiratedConsonants.entry.giyeok": "ㄱ + ㅎ -> ㅋ k",
+  "study.aspiratedConsonants.entry.hieut": "ㅎ breath",
+  "study.aspiratedConsonants.entry.jieut": "ㅈ + ㅎ -> ㅊ ch",
+  "study.doubleBatchim.entry.anj": "ㄵ -> first ㄴ",
+  "study.doubleBatchim.entry.dalk": "ㄺ -> second ㄱ",
+  "study.doubleBatchim.entry.gap": "ㅄ -> first ㅂ",
+  "study.doubleBatchim.entry.rule": "word decides",
+  "study.doubleConsonants.entry.bieup": "ㅂ + ㅂ -> ㅃ pp",
+  "study.doubleConsonants.entry.digeut": "ㄷ + ㄷ -> ㄸ tt",
+  "study.doubleConsonants.entry.giyeok": "ㄱ + ㄱ -> ㄲ kk",
+  "study.doubleConsonants.entry.jieut": "ㅈ + ㅈ -> ㅉ jj",
+  "study.doubleConsonants.entry.siot": "ㅅ + ㅅ -> ㅆ ss",
+  "study.doubleConsonants.subtitle": "See how familiar consonants double into tense signs.",
+  "study.doubleConsonants.title": "Double Consonants",
+  "study.singleBatchim.entry.gan": "bottom ㄴ -> final n",
+  "study.singleBatchim.entry.mun": "bottom ㄴ -> final n",
+  "study.singleBatchim.entry.na": "no bottom consonant",
+});
+
+Object.assign(TEXT.ko, {
+  "drill.town1.choice.jj": "jj",
+  "drill.town1.choice.kk": "kk",
+  "drill.town1.choice.naBlock": "나",
+  "drill.town1.choice.pp": "pp",
+  "drill.town1.choice.ss": "ss",
+  "drill.town1.choice.ssangBieupSign": "ㅃ",
+  "drill.town1.choice.ssangDigeutSign": "ㄸ",
+  "drill.town1.choice.ssangGiyeokSign": "ㄲ",
+  "drill.town1.choice.ssangJieutSign": "ㅉ",
+  "drill.town1.choice.ssangSiotSign": "ㅆ",
+  "drill.town1.choice.tt": "tt",
+  "drill.town1BlackboardDoubleConsonants.title": "칠판 쌍자음 확인",
+  "drill.town1BlackboardDoubleConsonants.1.prompt": "시험: ㄲ에 맞는 소리는 무엇인가요?",
+  "drill.town1BlackboardDoubleConsonants.1.correct": "ㄲ은 ㄱ을 두 번 쓴 글자로, 여기서는 kk로 연습합니다.",
+  "drill.town1BlackboardDoubleConsonants.1.incorrect": "된소리 쌍자음을 찾으세요. ㄲ은 kk입니다.",
+  "drill.town1BlackboardDoubleConsonants.2.prompt": "시험: ㄷ + ㄷ에서 나온 쌍자음은 무엇인가요?",
+  "drill.town1BlackboardDoubleConsonants.2.correct": "ㄷ을 두 번 쓰면 ㄸ이 됩니다.",
+  "drill.town1BlackboardDoubleConsonants.2.incorrect": "ㄷ 모양을 두 번 써서 ㄸ을 만듭니다.",
+  "drill.town1BlackboardDoubleConsonants.3.prompt": "시험: ㅅ + ㅅ에서 나온 쌍자음은 무엇인가요?",
+  "drill.town1BlackboardDoubleConsonants.3.correct": "ㅅ을 두 번 쓰면 ㅆ이 됩니다.",
+  "drill.town1BlackboardDoubleConsonants.3.incorrect": "ㅅ 두 개가 함께 있으면 ㅆ입니다.",
+  "drill.town1FountainDoubleConsonants.title": "분수 쌍자음",
+  "drill.town1FountainDoubleConsonants.1.prompt": "책에 ㄱ + ㄱ이 보입니다. 쌍자음을 고르세요.",
+  "drill.town1FountainDoubleConsonants.1.correct": "ㄱ을 두 번 쓰면 ㄲ이고, 여기서는 kk로 연습합니다.",
+  "drill.town1FountainDoubleConsonants.1.incorrect": "ㄱ 두 개가 함께 있는 ㄲ을 찾으세요.",
+  "drill.town1FountainDoubleConsonants.2.prompt": "책에 ㄷ + ㄷ이 보입니다. 쌍자음을 고르세요.",
+  "drill.town1FountainDoubleConsonants.2.correct": "ㄷ을 두 번 쓰면 ㄸ이고, 여기서는 tt로 연습합니다.",
+  "drill.town1FountainDoubleConsonants.2.incorrect": "ㄷ 모양이 두 번 있는 ㄸ을 찾으세요.",
+  "drill.town1FountainDoubleConsonants.3.prompt": "책에 ㅂ + ㅂ이 보입니다. 쌍자음을 고르세요.",
+  "drill.town1FountainDoubleConsonants.3.correct": "ㅂ을 두 번 쓰면 ㅃ이고, 여기서는 pp로 연습합니다.",
+  "drill.town1FountainDoubleConsonants.3.incorrect": "ㅂ 모양이 두 번 있는 ㅃ을 찾으세요.",
+  "drill.town1FountainDoubleConsonants.4.prompt": "책에 ㅅ + ㅅ이 보입니다. 쌍자음을 고르세요.",
+  "drill.town1FountainDoubleConsonants.4.correct": "ㅅ을 두 번 쓰면 ㅆ이고, 여기서는 ss로 연습합니다.",
+  "drill.town1FountainDoubleConsonants.4.incorrect": "ㅅ 모양이 두 번 있는 ㅆ을 찾으세요.",
+  "drill.town1FountainDoubleConsonants.5.prompt": "책에 ㅈ + ㅈ이 보입니다. 쌍자음을 고르세요.",
+  "drill.town1FountainDoubleConsonants.5.correct": "ㅈ을 두 번 쓰면 ㅉ이고, 여기서는 jj로 연습합니다.",
+  "drill.town1FountainDoubleConsonants.5.incorrect": "ㅈ 모양이 두 번 있는 ㅉ을 찾으세요.",
+  "npc.hangulTeacher.doubleConsonantBook.line1": "쌍자음 책장을 읽으세요. 익숙한 글자가 된소리 쌍자음이 되는 모습을 보여 줍니다.",
+  "npc.hangulTeacher.doubleConsonantDone.line1": "좋아요. 이제 학교의 자음 알파벳을 확인했습니다. 다음은 끝소리입니다.",
+  "npc.hangulTeacher.doubleConsonantIntro.line1": "학교 알파벳 수업이 하나 더 남았습니다.",
+  "npc.hangulTeacher.doubleConsonantIntro.line2": "어떤 자음은 두 번 쓸 수 있습니다. ㄱ은 ㄲ이 되고, ㄷ은 ㄸ이 됩니다.",
+  "npc.hangulTeacher.doubleConsonantIntro.line3": "쌍자음 책장을 읽고 분수에서 그 글자들을 연습하세요.",
+  "npc.hangulTeacher.doubleConsonantPractice.line1": "분수가 쌍자음 연습을 준비했습니다.",
+  "npc.rivalDad": "끝소리 선생님",
+  "npc.rivalStudent": "겹받침 학습자",
+  "object.doubleConsonantBookcase": "쌍자음 책장",
+  "object.doubleConsonantBookcase.locked.line1": "서 선생님이 먼저 이 쌍자음을 소개해야 합니다.",
+  "object.schoolBlackboard.locked.doubleConsonants": "이 확인 전에 분수에서 쌍자음을 연습하세요.",
+  "object.soundFountain.locked.doubleConsonants": "학교 안의 서 선생님에게 마지막 학교 알파벳 수업이 있습니다.",
+  "quest.town1.doubleConsonants": "쌍자음",
+  "quest.town1.doubleConsonants.book": "쌍자음 책 읽기",
+  "quest.town1.doubleConsonants.exam": "칠판 쌍자음 통과",
+  "quest.town1.doubleConsonants.practice": "분수 쌍자음 통과",
+  "quest.town1.doubleConsonants.theory": "서 선생님과 대화",
+  "quest.town1.readingBadge.ready": "끝소리 연습 완료",
+  "study.aspiratedConsonants.entry.bieup": "ㅂ + ㅎ -> ㅍ p",
+  "study.aspiratedConsonants.entry.digeut": "ㄷ + ㅎ -> ㅌ t",
+  "study.aspiratedConsonants.entry.giyeok": "ㄱ + ㅎ -> ㅋ k",
+  "study.aspiratedConsonants.entry.hieut": "ㅎ 숨소리",
+  "study.aspiratedConsonants.entry.jieut": "ㅈ + ㅎ -> ㅊ ch",
+  "study.doubleBatchim.entry.anj": "ㄵ -> 첫 ㄴ",
+  "study.doubleBatchim.entry.dalk": "ㄺ -> 둘째 ㄱ",
+  "study.doubleBatchim.entry.gap": "ㅄ -> 첫 ㅂ",
+  "study.doubleBatchim.entry.rule": "단어마다 다름",
+  "study.doubleConsonants.entry.bieup": "ㅂ + ㅂ -> ㅃ pp",
+  "study.doubleConsonants.entry.digeut": "ㄷ + ㄷ -> ㄸ tt",
+  "study.doubleConsonants.entry.giyeok": "ㄱ + ㄱ -> ㄲ kk",
+  "study.doubleConsonants.entry.jieut": "ㅈ + ㅈ -> ㅉ jj",
+  "study.doubleConsonants.entry.siot": "ㅅ + ㅅ -> ㅆ ss",
+  "study.doubleConsonants.subtitle": "익숙한 자음이 된소리 쌍자음이 되는 모습을 봅니다.",
+  "study.doubleConsonants.title": "쌍자음",
+  "study.singleBatchim.entry.gan": "아래 ㄴ -> 끝 n",
+  "study.singleBatchim.entry.mun": "아래 ㄴ -> 끝 n",
+  "study.singleBatchim.entry.na": "아래 자음 없음",
+});
+
+Object.assign(TEXT.nl, {
+  "drill.town1.choice.jj": "jj",
+  "drill.town1.choice.kk": "kk",
+  "drill.town1.choice.naBlock": "나",
+  "drill.town1.choice.pp": "pp",
+  "drill.town1.choice.ss": "ss",
+  "drill.town1.choice.ssangBieupSign": "ㅃ",
+  "drill.town1.choice.ssangDigeutSign": "ㄸ",
+  "drill.town1.choice.ssangGiyeokSign": "ㄲ",
+  "drill.town1.choice.ssangJieutSign": "ㅉ",
+  "drill.town1.choice.ssangSiotSign": "ㅆ",
+  "drill.town1.choice.tt": "tt",
+  "drill.town1BlackboardDoubleConsonants.title": "Bordcontrole Dubbele Medeklinkers",
+  "drill.town1BlackboardDoubleConsonants.1.prompt": "Toets: welke klank hoort bij ㄲ?",
+  "drill.town1BlackboardDoubleConsonants.1.correct": "ㄲ is het dubbele ㄱ-teken, hier gelezen als kk.",
+  "drill.town1BlackboardDoubleConsonants.1.incorrect": "Zoek de gespannen dubbele klank: ㄲ is kk.",
+  "drill.town1BlackboardDoubleConsonants.2.prompt": "Toets: welk dubbel teken komt van ㄷ + ㄷ?",
+  "drill.town1BlackboardDoubleConsonants.2.correct": "Dubbele ㄷ wordt ㄸ.",
+  "drill.town1BlackboardDoubleConsonants.2.incorrect": "Verdubbel de ㄷ-vorm om ㄸ te maken.",
+  "drill.town1BlackboardDoubleConsonants.3.prompt": "Toets: welk dubbel teken komt van ㅅ + ㅅ?",
+  "drill.town1BlackboardDoubleConsonants.3.correct": "Dubbele ㅅ wordt ㅆ.",
+  "drill.town1BlackboardDoubleConsonants.3.incorrect": "Twee ㅅ-tekens samen maken ㅆ.",
+  "drill.town1FountainDoubleConsonants.title": "Fontein Dubbele Medeklinkers",
+  "drill.town1FountainDoubleConsonants.1.prompt": "Het boek toont ㄱ + ㄱ. Kies het dubbele teken.",
+  "drill.town1FountainDoubleConsonants.1.correct": "Dubbele ㄱ is ㄲ, hier geoefend als kk.",
+  "drill.town1FountainDoubleConsonants.1.incorrect": "Zoek twee ㄱ-strepen samen: ㄲ.",
+  "drill.town1FountainDoubleConsonants.2.prompt": "Het boek toont ㄷ + ㄷ. Kies het dubbele teken.",
+  "drill.town1FountainDoubleConsonants.2.correct": "Dubbele ㄷ is ㄸ, hier geoefend als tt.",
+  "drill.town1FountainDoubleConsonants.2.incorrect": "Zoek de dubbele ㄷ-vorm: ㄸ.",
+  "drill.town1FountainDoubleConsonants.3.prompt": "Het boek toont ㅂ + ㅂ. Kies het dubbele teken.",
+  "drill.town1FountainDoubleConsonants.3.correct": "Dubbele ㅂ is ㅃ, hier geoefend als pp.",
+  "drill.town1FountainDoubleConsonants.3.incorrect": "Zoek de dubbele ㅂ-vorm: ㅃ.",
+  "drill.town1FountainDoubleConsonants.4.prompt": "Het boek toont ㅅ + ㅅ. Kies het dubbele teken.",
+  "drill.town1FountainDoubleConsonants.4.correct": "Dubbele ㅅ is ㅆ, hier geoefend als ss.",
+  "drill.town1FountainDoubleConsonants.4.incorrect": "Zoek de dubbele ㅅ-vorm: ㅆ.",
+  "drill.town1FountainDoubleConsonants.5.prompt": "Het boek toont ㅈ + ㅈ. Kies het dubbele teken.",
+  "drill.town1FountainDoubleConsonants.5.correct": "Dubbele ㅈ is ㅉ, hier geoefend als jj.",
+  "drill.town1FountainDoubleConsonants.5.incorrect": "Zoek de dubbele ㅈ-vorm: ㅉ.",
+  "npc.hangulTeacher.doubleConsonantBook.line1": "Lees de boekenkast met dubbele medeklinkers. Die toont hoe bekende tekens gespannen dubbele tekens worden.",
+  "npc.hangulTeacher.doubleConsonantDone.line1": "Goed. Je hebt nu het schoolmedeklinkeralfabet gecontroleerd. De volgende stap is eindklanken.",
+  "npc.hangulTeacher.doubleConsonantIntro.line1": "Er blijft nog een schoolalfabetles over.",
+  "npc.hangulTeacher.doubleConsonantIntro.line2": "Sommige medeklinkers kun je verdubbelen: ㄱ wordt ㄲ, en ㄷ wordt ㄸ.",
+  "npc.hangulTeacher.doubleConsonantIntro.line3": "Lees de boekenkast met dubbele medeklinkers en oefen die tekens daarna bij de fontein.",
+  "npc.hangulTeacher.doubleConsonantPractice.line1": "De fontein is klaar voor oefening met dubbele medeklinkers.",
+  "npc.rivalDad": "Eindklankcoach",
+  "npc.rivalStudent": "Dubbele-Eindklankleerling",
+  "object.doubleConsonantBookcase": "Boekenkast Dubbele Medeklinkers",
+  "object.doubleConsonantBookcase.locked.line1": "Juf Seo moet deze dubbele tekens eerst introduceren.",
+  "object.schoolBlackboard.locked.doubleConsonants": "Oefen de dubbele medeklinkers bij de fontein voor deze controle.",
+  "object.soundFountain.locked.doubleConsonants": "Juf Seo heeft de laatste schoolalfabetles in de school.",
+  "quest.town1.doubleConsonants": "Dubbele Medeklinkers",
+  "quest.town1.doubleConsonants.book": "Lees dubbel-medeklinkerboek",
+  "quest.town1.doubleConsonants.exam": "Haal dubbele-medeklinkerbord",
+  "quest.town1.doubleConsonants.practice": "Haal dubbele-medeklinkerfontein",
+  "quest.town1.doubleConsonants.theory": "Praat met Juf Seo",
+  "quest.town1.readingBadge.ready": "Eindklankoefening klaar",
+  "study.aspiratedConsonants.entry.bieup": "ㅂ + ㅎ -> ㅍ p",
+  "study.aspiratedConsonants.entry.digeut": "ㄷ + ㅎ -> ㅌ t",
+  "study.aspiratedConsonants.entry.giyeok": "ㄱ + ㅎ -> ㅋ k",
+  "study.aspiratedConsonants.entry.hieut": "ㅎ adem",
+  "study.aspiratedConsonants.entry.jieut": "ㅈ + ㅎ -> ㅊ ch",
+  "study.doubleBatchim.entry.anj": "ㄵ -> eerste ㄴ",
+  "study.doubleBatchim.entry.dalk": "ㄺ -> tweede ㄱ",
+  "study.doubleBatchim.entry.gap": "ㅄ -> eerste ㅂ",
+  "study.doubleBatchim.entry.rule": "woord beslist",
+  "study.doubleConsonants.entry.bieup": "ㅂ + ㅂ -> ㅃ pp",
+  "study.doubleConsonants.entry.digeut": "ㄷ + ㄷ -> ㄸ tt",
+  "study.doubleConsonants.entry.giyeok": "ㄱ + ㄱ -> ㄲ kk",
+  "study.doubleConsonants.entry.jieut": "ㅈ + ㅈ -> ㅉ jj",
+  "study.doubleConsonants.entry.siot": "ㅅ + ㅅ -> ㅆ ss",
+  "study.doubleConsonants.subtitle": "Zie hoe bekende medeklinkers gespannen dubbele tekens worden.",
+  "study.doubleConsonants.title": "Dubbele Medeklinkers",
+  "study.singleBatchim.entry.gan": "onderste ㄴ -> eind-n",
+  "study.singleBatchim.entry.mun": "onderste ㄴ -> eind-n",
+  "study.singleBatchim.entry.na": "geen onderste medeklinker",
+});
+
+Object.assign(TEXT.en, {
+  "npc.guesthouseHost": "Guesthouse Host",
+  "npc.guesthouseKid": "Guesthouse Kid",
+  "npc.joon": "Joon",
+  "npc.marketClerk": "Market Clerk",
+  "npc.marketCustomer": "Market Customer",
+  "npc.marketStocker": "Market Stocker",
+  "npc.mina": "Mina",
+  "npc.mrHan": "Mr. Han",
+  "npc.sora": "Sora",
+  "npc.teaCustomer": "Tea Customer",
+  "npc.teaOwner": "Tea Owner",
+  "npc.trailKeeper": "Trail Keeper",
+  "npc.travelGuide": "Travel Guide",
+  "npc.travelGuest": "Travel Guest",
+  "npc.travelTrainee": "Travel Trainee",
+});
+
+Object.assign(TEXT.ko, {
+  "npc.guesthouseHost": "게스트하우스 주인",
+  "npc.guesthouseKid": "게스트하우스 아이",
+  "npc.joon": "준",
+  "npc.marketClerk": "시장 점원",
+  "npc.marketCustomer": "시장 손님",
+  "npc.marketStocker": "시장 정리원",
+  "npc.mina": "미나",
+  "npc.mrHan": "한 선생님",
+  "npc.sora": "소라",
+  "npc.teaCustomer": "찻집 손님",
+  "npc.teaOwner": "찻집 주인",
+  "npc.trailKeeper": "길지기",
+  "npc.travelGuide": "여행 안내원",
+  "npc.travelGuest": "여행 손님",
+  "npc.travelTrainee": "여행 견습생",
+});
+
+Object.assign(TEXT.nl, {
+  "npc.guesthouseHost": "Pensionhouder",
+  "npc.guesthouseKid": "Pensionkind",
+  "npc.joon": "Joon",
+  "npc.marketClerk": "Marktverkoper",
+  "npc.marketCustomer": "Marktklant",
+  "npc.marketStocker": "Marktmedewerker",
+  "npc.mina": "Mina",
+  "npc.mrHan": "Meneer Han",
+  "npc.sora": "Sora",
+  "npc.teaCustomer": "Theeklant",
+  "npc.teaOwner": "Theehuisbaas",
+  "npc.trailKeeper": "Padwachter",
+  "npc.travelGuide": "Reisgids",
+  "npc.travelGuest": "Reisgast",
+  "npc.travelTrainee": "Reisstagiair",
 });
 
 Object.assign(TEXT.en, {
@@ -1634,6 +2705,630 @@ const DRILLS = {
       },
     ],
   },
+  town1FountainVowels: {
+    titleKey: "drill.town1FountainVowels.title",
+    completionFlags: ["town1.vowelPracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1FountainVowels.1.prompt",
+        choices: [
+          "drill.town1.choice.a",
+          "drill.town1.choice.eo",
+          "drill.town1.choice.o",
+          "drill.town1.choice.i",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainVowels.1.correct",
+        incorrectKey: "drill.town1FountainVowels.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainVowels.2.prompt",
+        choices: [
+          "drill.town1.choice.o",
+          "drill.town1.choice.eo",
+          "drill.town1.choice.u",
+          "drill.town1.choice.eu",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainVowels.2.correct",
+        incorrectKey: "drill.town1FountainVowels.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainVowels.3.prompt",
+        choices: [
+          "drill.town1.choice.yo",
+          "drill.town1.choice.o",
+          "drill.town1.choice.u",
+          "drill.town1.choice.eo",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainVowels.3.correct",
+        incorrectKey: "drill.town1FountainVowels.3.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainVowels.4.prompt",
+        choices: [
+          "drill.town1.choice.eu",
+          "drill.town1.choice.u",
+          "drill.town1.choice.a",
+          "drill.town1.choice.o",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainVowels.4.correct",
+        incorrectKey: "drill.town1FountainVowels.4.incorrect",
+      },
+    ],
+  },
+  town1FountainConsonants: {
+    titleKey: "drill.town1FountainConsonants.title",
+    completionFlags: ["town1.consonantPracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1FountainConsonants.1.prompt",
+        choices: [
+          "drill.town1.choice.giyeok",
+          "drill.town1.choice.nieun",
+          "drill.town1.choice.digeut",
+          "drill.town1.choice.mieum",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainConsonants.1.correct",
+        incorrectKey: "drill.town1FountainConsonants.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainConsonants.2.prompt",
+        choices: [
+          "drill.town1.choice.digeut",
+          "drill.town1.choice.nieun",
+          "drill.town1.choice.rieul",
+          "drill.town1.choice.giyeok",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainConsonants.2.correct",
+        incorrectKey: "drill.town1FountainConsonants.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainConsonants.3.prompt",
+        choices: [
+          "drill.town1.choice.siot",
+          "drill.town1.choice.digeut",
+          "drill.town1.choice.bieup",
+          "drill.town1.choice.rieul",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainConsonants.3.correct",
+        incorrectKey: "drill.town1FountainConsonants.3.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainConsonants.4.prompt",
+        choices: [
+          "drill.town1.choice.mieum",
+          "drill.town1.choice.bieup",
+          "drill.town1.choice.nieun",
+          "drill.town1.choice.siot",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainConsonants.4.correct",
+        incorrectKey: "drill.town1FountainConsonants.4.incorrect",
+      },
+    ],
+  },
+  town1FountainReview: {
+    titleKey: "drill.town1FountainReview.title",
+    steps: [
+      {
+        promptKey: "drill.town1FountainReview.1.prompt",
+        choices: [
+          "drill.town1.choice.a",
+          "drill.town1.choice.o",
+          "drill.town1.choice.u",
+          "drill.town1.choice.eo",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainReview.1.correct",
+        incorrectKey: "drill.town1FountainReview.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainReview.2.prompt",
+        choices: [
+          "drill.town1.choice.giyeok",
+          "drill.town1.choice.nieun",
+          "drill.town1.choice.digeut",
+          "drill.town1.choice.mieum",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainReview.2.correct",
+        incorrectKey: "drill.town1FountainReview.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainReview.3.prompt",
+        choices: [
+          "drill.town1.choice.ga",
+          "drill.town1.choice.na",
+          "drill.town1.choice.da",
+          "drill.town1.choice.mu",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainReview.3.correct",
+        incorrectKey: "drill.town1FountainReview.3.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainReview.4.prompt",
+        choices: [
+          "drill.town1.choice.mu",
+          "drill.town1.choice.no",
+          "drill.town1.choice.gu",
+          "drill.town1.choice.du",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainReview.4.correct",
+        incorrectKey: "drill.town1FountainReview.4.incorrect",
+      },
+    ],
+  },
+  town1DeskSyllables: {
+    titleKey: "drill.town1DeskSyllables.title",
+    completionFlags: ["town1.firstSyllablePracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1DeskSyllables.1.prompt",
+        choices: [
+          "drill.town1.choice.ga",
+          "drill.town1.choice.na",
+          "drill.town1.choice.da",
+          "drill.town1.choice.mu",
+        ],
+        answer: 0,
+        correctKey: "drill.town1DeskSyllables.1.correct",
+        incorrectKey: "drill.town1DeskSyllables.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1DeskSyllables.2.prompt",
+        choices: [
+          "drill.town1.choice.geo",
+          "drill.town1.choice.neo",
+          "drill.town1.choice.no",
+          "drill.town1.choice.mu",
+        ],
+        answer: 1,
+        correctKey: "drill.town1DeskSyllables.2.correct",
+        incorrectKey: "drill.town1DeskSyllables.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1DeskSyllables.3.prompt",
+        choices: [
+          "drill.town1.choice.do",
+          "drill.town1.choice.du",
+          "drill.town1.choice.da",
+          "drill.town1.choice.to",
+        ],
+        answer: 0,
+        correctKey: "drill.town1DeskSyllables.3.correct",
+        incorrectKey: "drill.town1DeskSyllables.3.incorrect",
+      },
+      {
+        promptKey: "drill.town1DeskSyllables.4.prompt",
+        choices: [
+          "drill.town1.choice.mu",
+          "drill.town1.choice.gu",
+          "drill.town1.choice.no",
+          "drill.town1.choice.du",
+        ],
+        answer: 0,
+        correctKey: "drill.town1DeskSyllables.4.correct",
+        incorrectKey: "drill.town1DeskSyllables.4.incorrect",
+      },
+    ],
+  },
+  town1BlackboardVowels: {
+    titleKey: "drill.town1BlackboardVowels.title",
+    completionFlags: ["town1.vowelExamPassed"],
+    steps: [
+      {
+        promptKey: "drill.town1BlackboardVowels.1.prompt",
+        choices: [
+          "drill.town1.choice.a",
+          "drill.town1.choice.eo",
+          "drill.town1.choice.o",
+          "drill.town1.choice.u",
+        ],
+        answer: 0,
+        correctKey: "drill.town1BlackboardVowels.1.correct",
+        incorrectKey: "drill.town1BlackboardVowels.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardVowels.2.prompt",
+        choices: [
+          "drill.town1.choice.a",
+          "drill.town1.choice.eo",
+          "drill.town1.choice.o",
+          "drill.town1.choice.u",
+        ],
+        answer: 1,
+        correctKey: "drill.town1BlackboardVowels.2.correct",
+        incorrectKey: "drill.town1BlackboardVowels.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardVowels.3.prompt",
+        choices: [
+          "drill.town1.choice.o",
+          "drill.town1.choice.eu",
+          "drill.town1.choice.u",
+          "drill.town1.choice.i",
+        ],
+        answer: 2,
+        correctKey: "drill.town1BlackboardVowels.3.correct",
+        incorrectKey: "drill.town1BlackboardVowels.3.incorrect",
+      },
+    ],
+  },
+  town1BlackboardConsonants: {
+    titleKey: "drill.town1BlackboardConsonants.title",
+    completionFlags: ["town1.consonantExamPassed"],
+    steps: [
+      {
+        promptKey: "drill.town1BlackboardConsonants.1.prompt",
+        choices: [
+          "drill.town1.choice.giyeok",
+          "drill.town1.choice.nieun",
+          "drill.town1.choice.digeut",
+          "drill.town1.choice.mieum",
+        ],
+        answer: 0,
+        correctKey: "drill.town1BlackboardConsonants.1.correct",
+        incorrectKey: "drill.town1BlackboardConsonants.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardConsonants.2.prompt",
+        choices: [
+          "drill.town1.choice.digeut",
+          "drill.town1.choice.nieun",
+          "drill.town1.choice.rieul",
+          "drill.town1.choice.siot",
+        ],
+        answer: 1,
+        correctKey: "drill.town1BlackboardConsonants.2.correct",
+        incorrectKey: "drill.town1BlackboardConsonants.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardConsonants.3.prompt",
+        choices: [
+          "drill.town1.choice.bieup",
+          "drill.town1.choice.mieum",
+          "drill.town1.choice.siot",
+          "drill.town1.choice.rieul",
+        ],
+        answer: 1,
+        correctKey: "drill.town1BlackboardConsonants.3.correct",
+        incorrectKey: "drill.town1BlackboardConsonants.3.incorrect",
+      },
+    ],
+  },
+  town1BlackboardSyllables: {
+    titleKey: "drill.town1BlackboardSyllables.title",
+    completionFlags: ["town1.firstSyllablesPassed"],
+    steps: [
+      {
+        promptKey: "drill.town1BlackboardSyllables.1.prompt",
+        choices: [
+          "drill.town1.choice.ga",
+          "drill.town1.choice.geo",
+          "drill.town1.choice.no",
+          "drill.town1.choice.mu",
+        ],
+        answer: 0,
+        correctKey: "drill.town1BlackboardSyllables.1.correct",
+        incorrectKey: "drill.town1BlackboardSyllables.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardSyllables.2.prompt",
+        choices: [
+          "drill.town1.choice.na",
+          "drill.town1.choice.neo",
+          "drill.town1.choice.geo",
+          "drill.town1.choice.no",
+        ],
+        answer: 1,
+        correctKey: "drill.town1BlackboardSyllables.2.correct",
+        incorrectKey: "drill.town1BlackboardSyllables.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardSyllables.3.prompt",
+        choices: [
+          "drill.town1.choice.do",
+          "drill.town1.choice.du",
+          "drill.town1.choice.to",
+          "drill.town1.choice.da",
+        ],
+        answer: 0,
+        correctKey: "drill.town1BlackboardSyllables.3.correct",
+        incorrectKey: "drill.town1BlackboardSyllables.3.incorrect",
+      },
+    ],
+  },
+  town1FountainAspirated: {
+    titleKey: "drill.town1FountainAspirated.title",
+    completionFlags: ["town1.aspiratedPracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1FountainAspirated.1.prompt",
+        choices: [
+          "drill.town1.choice.kieukSign",
+          "drill.town1.choice.tieutSign",
+          "drill.town1.choice.pieupSign",
+          "drill.town1.choice.chieutSign",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainAspirated.1.correct",
+        incorrectKey: "drill.town1FountainAspirated.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainAspirated.2.prompt",
+        choices: [
+          "drill.town1.choice.kieukSign",
+          "drill.town1.choice.tieutSign",
+          "drill.town1.choice.pieupSign",
+          "drill.town1.choice.chieutSign",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainAspirated.2.correct",
+        incorrectKey: "drill.town1FountainAspirated.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainAspirated.3.prompt",
+        choices: [
+          "drill.town1.choice.kieukSign",
+          "drill.town1.choice.tieutSign",
+          "drill.town1.choice.pieupSign",
+          "drill.town1.choice.chieutSign",
+        ],
+        answer: 2,
+        correctKey: "drill.town1FountainAspirated.3.correct",
+        incorrectKey: "drill.town1FountainAspirated.3.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainAspirated.4.prompt",
+        choices: [
+          "drill.town1.choice.kieukSign",
+          "drill.town1.choice.tieutSign",
+          "drill.town1.choice.pieupSign",
+          "drill.town1.choice.chieutSign",
+        ],
+        answer: 3,
+        correctKey: "drill.town1FountainAspirated.4.correct",
+        incorrectKey: "drill.town1FountainAspirated.4.incorrect",
+      },
+    ],
+  },
+  town1BlackboardAspirated: {
+    titleKey: "drill.town1BlackboardAspirated.title",
+    completionFlags: ["town1.aspiratedExamPassed"],
+    steps: [
+      {
+        promptKey: "drill.town1BlackboardAspirated.1.prompt",
+        choices: [
+          "drill.town1.choice.k",
+          "drill.town1.choice.g",
+          "drill.town1.choice.h",
+          "drill.town1.choice.t",
+        ],
+        answer: 0,
+        correctKey: "drill.town1BlackboardAspirated.1.correct",
+        incorrectKey: "drill.town1BlackboardAspirated.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardAspirated.2.prompt",
+        choices: [
+          "drill.town1.choice.kieukSign",
+          "drill.town1.choice.tieutSign",
+          "drill.town1.choice.pieupSign",
+          "drill.town1.choice.chieutSign",
+        ],
+        answer: 1,
+        correctKey: "drill.town1BlackboardAspirated.2.correct",
+        incorrectKey: "drill.town1BlackboardAspirated.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardAspirated.3.prompt",
+        choices: [
+          "drill.town1.choice.kieukSign",
+          "drill.town1.choice.tieutSign",
+          "drill.town1.choice.pieupSign",
+          "drill.town1.choice.chieutSign",
+        ],
+        answer: 2,
+        correctKey: "drill.town1BlackboardAspirated.3.correct",
+        incorrectKey: "drill.town1BlackboardAspirated.3.incorrect",
+      },
+    ],
+  },
+  town1FountainDoubleConsonants: {
+    titleKey: "drill.town1FountainDoubleConsonants.title",
+    completionFlags: ["town1.doubleConsonantPracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1FountainDoubleConsonants.1.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangBieupSign",
+          "drill.town1.choice.ssangSiotSign",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainDoubleConsonants.1.correct",
+        incorrectKey: "drill.town1FountainDoubleConsonants.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainDoubleConsonants.2.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangBieupSign",
+          "drill.town1.choice.ssangJieutSign",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainDoubleConsonants.2.correct",
+        incorrectKey: "drill.town1FountainDoubleConsonants.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainDoubleConsonants.3.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangBieupSign",
+          "drill.town1.choice.ssangSiotSign",
+        ],
+        answer: 2,
+        correctKey: "drill.town1FountainDoubleConsonants.3.correct",
+        incorrectKey: "drill.town1FountainDoubleConsonants.3.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainDoubleConsonants.4.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangSiotSign",
+          "drill.town1.choice.ssangJieutSign",
+        ],
+        answer: 2,
+        correctKey: "drill.town1FountainDoubleConsonants.4.correct",
+        incorrectKey: "drill.town1FountainDoubleConsonants.4.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainDoubleConsonants.5.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangBieupSign",
+          "drill.town1.choice.ssangJieutSign",
+        ],
+        answer: 3,
+        correctKey: "drill.town1FountainDoubleConsonants.5.correct",
+        incorrectKey: "drill.town1FountainDoubleConsonants.5.incorrect",
+      },
+    ],
+  },
+  town1BlackboardDoubleConsonants: {
+    titleKey: "drill.town1BlackboardDoubleConsonants.title",
+    completionFlags: ["town1.doubleConsonantExamPassed"],
+    steps: [
+      {
+        promptKey: "drill.town1BlackboardDoubleConsonants.1.prompt",
+        choices: [
+          "drill.town1.choice.kk",
+          "drill.town1.choice.k",
+          "drill.town1.choice.g",
+          "drill.town1.choice.h",
+        ],
+        answer: 0,
+        correctKey: "drill.town1BlackboardDoubleConsonants.1.correct",
+        incorrectKey: "drill.town1BlackboardDoubleConsonants.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardDoubleConsonants.2.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangBieupSign",
+          "drill.town1.choice.ssangJieutSign",
+        ],
+        answer: 1,
+        correctKey: "drill.town1BlackboardDoubleConsonants.2.correct",
+        incorrectKey: "drill.town1BlackboardDoubleConsonants.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1BlackboardDoubleConsonants.3.prompt",
+        choices: [
+          "drill.town1.choice.ssangGiyeokSign",
+          "drill.town1.choice.ssangDigeutSign",
+          "drill.town1.choice.ssangSiotSign",
+          "drill.town1.choice.ssangJieutSign",
+        ],
+        answer: 2,
+        correctKey: "drill.town1BlackboardDoubleConsonants.3.correct",
+        incorrectKey: "drill.town1BlackboardDoubleConsonants.3.incorrect",
+      },
+    ],
+  },
+  town1FountainBatchimSingle: {
+    titleKey: "drill.town1FountainBatchimSingle.title",
+    completionFlags: ["town1.batchimSinglePracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1FountainBatchimSingle.1.prompt",
+        choices: [
+          "drill.town1.choice.hasBatchim",
+          "drill.town1.choice.noBatchim",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainBatchimSingle.1.correct",
+        incorrectKey: "drill.town1FountainBatchimSingle.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainBatchimSingle.2.prompt",
+        choices: [
+          "drill.town1.choice.finalN",
+          "drill.town1.choice.finalK",
+          "drill.town1.choice.finalP",
+          "drill.town1.choice.noBatchim",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainBatchimSingle.2.correct",
+        incorrectKey: "drill.town1FountainBatchimSingle.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainBatchimSingle.3.prompt",
+        choices: [
+          "drill.town1.choice.gan",
+          "drill.town1.choice.mun",
+          "drill.town1.choice.naBlock",
+          "drill.town1.choice.gap",
+        ],
+        answer: 2,
+        correctKey: "drill.town1FountainBatchimSingle.3.correct",
+        incorrectKey: "drill.town1FountainBatchimSingle.3.incorrect",
+      },
+    ],
+  },
+  town1FountainBatchimDouble: {
+    titleKey: "drill.town1FountainBatchimDouble.title",
+    completionFlags: ["town1.batchimDoublePracticePassed1"],
+    steps: [
+      {
+        promptKey: "drill.town1FountainBatchimDouble.1.prompt",
+        choices: [
+          "drill.town1.choice.firstFinal",
+          "drill.town1.choice.secondFinal",
+          "drill.town1.choice.wordDecides",
+        ],
+        answer: 0,
+        correctKey: "drill.town1FountainBatchimDouble.1.correct",
+        incorrectKey: "drill.town1FountainBatchimDouble.1.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainBatchimDouble.2.prompt",
+        choices: [
+          "drill.town1.choice.firstFinal",
+          "drill.town1.choice.secondFinal",
+          "drill.town1.choice.wordDecides",
+        ],
+        answer: 1,
+        correctKey: "drill.town1FountainBatchimDouble.2.correct",
+        incorrectKey: "drill.town1FountainBatchimDouble.2.incorrect",
+      },
+      {
+        promptKey: "drill.town1FountainBatchimDouble.3.prompt",
+        choices: [
+          "drill.town1.choice.firstFinal",
+          "drill.town1.choice.secondFinal",
+          "drill.town1.choice.wordDecides",
+        ],
+        answer: 2,
+        correctKey: "drill.town1FountainBatchimDouble.3.correct",
+        incorrectKey: "drill.town1FountainBatchimDouble.3.incorrect",
+      },
+    ],
+  },
   batchimBridge: {
     titleKey: "drill.batchimBridge.title",
     steps: [
@@ -1858,7 +3553,397 @@ const STUDY_BOARDS = {
       { glyph: "ㅎ", name: "hieut" },
     ],
   },
+  aspiratedConsonants: {
+    titleKey: "study.aspiratedConsonants.title",
+    subtitleKey: "study.aspiratedConsonants.subtitle",
+    entries: [
+      { glyph: "ㅎ", nameKey: "study.aspiratedConsonants.entry.hieut" },
+      { glyph: "ㅋ", nameKey: "study.aspiratedConsonants.entry.giyeok" },
+      { glyph: "ㅌ", nameKey: "study.aspiratedConsonants.entry.digeut" },
+      { glyph: "ㅍ", nameKey: "study.aspiratedConsonants.entry.bieup" },
+      { glyph: "ㅊ", nameKey: "study.aspiratedConsonants.entry.jieut" },
+    ],
+  },
+  doubleConsonants: {
+    titleKey: "study.doubleConsonants.title",
+    subtitleKey: "study.doubleConsonants.subtitle",
+    entries: [
+      { glyph: "ㄲ", nameKey: "study.doubleConsonants.entry.giyeok" },
+      { glyph: "ㄸ", nameKey: "study.doubleConsonants.entry.digeut" },
+      { glyph: "ㅃ", nameKey: "study.doubleConsonants.entry.bieup" },
+      { glyph: "ㅆ", nameKey: "study.doubleConsonants.entry.siot" },
+      { glyph: "ㅉ", nameKey: "study.doubleConsonants.entry.jieut" },
+    ],
+  },
+  singleBatchim: {
+    titleKey: "study.singleBatchim.title",
+    subtitleKey: "study.singleBatchim.subtitle",
+    entries: [
+      { glyph: "간", nameKey: "study.singleBatchim.entry.gan" },
+      { glyph: "문", nameKey: "study.singleBatchim.entry.mun" },
+      { glyph: "나", nameKey: "study.singleBatchim.entry.na" },
+    ],
+  },
+  doubleBatchim: {
+    titleKey: "study.doubleBatchim.title",
+    subtitleKey: "study.doubleBatchim.subtitle",
+    entries: [
+      { glyph: "앉", nameKey: "study.doubleBatchim.entry.anj" },
+      { glyph: "닭", nameKey: "study.doubleBatchim.entry.dalk" },
+      { glyph: "값", nameKey: "study.doubleBatchim.entry.gap" },
+      { glyph: "?", nameKey: "study.doubleBatchim.entry.rule" },
+    ],
+  },
 };
+
+const TOWN1_FLAGS = {
+  schoolEntered: "town1.schoolEntered",
+  vowelMapRead: "town1.vowelMapRead",
+  consonantMapRead: "town1.consonantMapRead",
+  teacherIntroDone: "town1.teacherIntroDone",
+  vowelPracticePassed1: "town1.vowelPracticePassed1",
+  consonantPracticePassed1: "town1.consonantPracticePassed1",
+  firstSyllablePracticePassed1: "town1.firstSyllablePracticePassed1",
+  vowelExamPassed: "town1.vowelExamPassed",
+  consonantExamPassed: "town1.consonantExamPassed",
+  firstSyllablesPassed: "town1.firstSyllablesPassed",
+  aspiratedIntroDone: "town1.aspiratedIntroDone",
+  aspiratedBookRead: "town1.aspiratedBookRead",
+  aspiratedPracticePassed1: "town1.aspiratedPracticePassed1",
+  aspiratedExamPassed: "town1.aspiratedExamPassed",
+  doubleConsonantIntroDone: "town1.doubleConsonantIntroDone",
+  doubleConsonantBookRead: "town1.doubleConsonantBookRead",
+  doubleConsonantPracticePassed1: "town1.doubleConsonantPracticePassed1",
+  doubleConsonantExamPassed: "town1.doubleConsonantExamPassed",
+  batchimSingleIntroDone: "town1.batchimSingleIntroDone",
+  batchimSingleBookRead: "town1.batchimSingleBookRead",
+  batchimSinglePracticePassed1: "town1.batchimSinglePracticePassed1",
+  batchimDoubleIntroDone: "town1.batchimDoubleIntroDone",
+  batchimDoubleBookRead: "town1.batchimDoubleBookRead",
+  batchimDoublePracticePassed1: "town1.batchimDoublePracticePassed1",
+};
+
+const progress = {
+  flags: new Set(),
+  questLevels: {},
+};
+
+const TOWN1_QUESTS = [
+  {
+    id: "basicVowels",
+    titleKey: "quest.town1.basicVowels",
+    steps: [
+      { flag: TOWN1_FLAGS.vowelMapRead, objectiveKey: "quest.town1.basicVowels.theory" },
+      { flag: TOWN1_FLAGS.vowelPracticePassed1, objectiveKey: "quest.town1.basicVowels.practice" },
+      { flag: TOWN1_FLAGS.vowelExamPassed, objectiveKey: "quest.town1.basicVowels.exam" },
+    ],
+  },
+  {
+    id: "basicConsonants",
+    titleKey: "quest.town1.basicConsonants",
+    steps: [
+      { flag: TOWN1_FLAGS.consonantMapRead, objectiveKey: "quest.town1.basicConsonants.theory" },
+      { flag: TOWN1_FLAGS.consonantPracticePassed1, objectiveKey: "quest.town1.basicConsonants.practice" },
+      { flag: TOWN1_FLAGS.consonantExamPassed, objectiveKey: "quest.town1.basicConsonants.exam" },
+    ],
+  },
+  {
+    id: "firstSyllables",
+    titleKey: "quest.town1.firstSyllables",
+    steps: [
+      { flag: TOWN1_FLAGS.firstSyllablePracticePassed1, objectiveKey: "quest.town1.firstSyllables.practice" },
+      { flag: TOWN1_FLAGS.firstSyllablesPassed, objectiveKey: "quest.town1.firstSyllables.exam" },
+    ],
+  },
+  {
+    id: "aspiratedConsonants",
+    titleKey: "quest.town1.aspiratedConsonants",
+    steps: [
+      { flag: TOWN1_FLAGS.aspiratedIntroDone, objectiveKey: "quest.town1.aspiratedConsonants.theory" },
+      { flag: TOWN1_FLAGS.aspiratedBookRead, objectiveKey: "quest.town1.aspiratedConsonants.book" },
+      { flag: TOWN1_FLAGS.aspiratedPracticePassed1, objectiveKey: "quest.town1.aspiratedConsonants.practice" },
+      { flag: TOWN1_FLAGS.aspiratedExamPassed, objectiveKey: "quest.town1.aspiratedConsonants.exam" },
+    ],
+  },
+  {
+    id: "doubleConsonants",
+    titleKey: "quest.town1.doubleConsonants",
+    steps: [
+      { flag: TOWN1_FLAGS.doubleConsonantIntroDone, objectiveKey: "quest.town1.doubleConsonants.theory" },
+      { flag: TOWN1_FLAGS.doubleConsonantBookRead, objectiveKey: "quest.town1.doubleConsonants.book" },
+      { flag: TOWN1_FLAGS.doubleConsonantPracticePassed1, objectiveKey: "quest.town1.doubleConsonants.practice" },
+      { flag: TOWN1_FLAGS.doubleConsonantExamPassed, objectiveKey: "quest.town1.doubleConsonants.exam" },
+    ],
+  },
+  {
+    id: "singleBatchim",
+    titleKey: "quest.town1.singleBatchim",
+    steps: [
+      { flag: TOWN1_FLAGS.batchimSingleIntroDone, objectiveKey: "quest.town1.singleBatchim.theory" },
+      { flag: TOWN1_FLAGS.batchimSingleBookRead, objectiveKey: "quest.town1.singleBatchim.book" },
+      { flag: TOWN1_FLAGS.batchimSinglePracticePassed1, objectiveKey: "quest.town1.singleBatchim.practice" },
+    ],
+  },
+  {
+    id: "doubleBatchim",
+    titleKey: "quest.town1.doubleBatchim",
+    steps: [
+      { flag: TOWN1_FLAGS.batchimDoubleIntroDone, objectiveKey: "quest.town1.doubleBatchim.theory" },
+      { flag: TOWN1_FLAGS.batchimDoubleBookRead, objectiveKey: "quest.town1.doubleBatchim.book" },
+      { flag: TOWN1_FLAGS.batchimDoublePracticePassed1, objectiveKey: "quest.town1.doubleBatchim.practice" },
+    ],
+  },
+  {
+    id: "readingBadge",
+    titleKey: "quest.town1.readingBadge",
+    steps: [
+      { flag: TOWN1_FLAGS.batchimDoublePracticePassed1, objectiveKey: "quest.town1.readingBadge.ready" },
+    ],
+  },
+];
+
+function hasProgressFlag(flag) {
+  return progress.flags.has(flag);
+}
+
+function setProgressFlag(flag) {
+  if (!flag || progress.flags.has(flag)) return false;
+  progress.flags.add(flag);
+  refreshQuestLevels();
+  return true;
+}
+
+function setProgressFlags(flags = []) {
+  flags.forEach((flag) => setProgressFlag(flag));
+}
+
+function refreshQuestLevels() {
+  TOWN1_QUESTS.forEach((quest) => {
+    let level = 0;
+    for (const step of quest.steps) {
+      if (!hasProgressFlag(step.flag)) break;
+      level += 1;
+    }
+    progress.questLevels[quest.id] = level;
+  });
+}
+
+function currentTown1QuestStatus() {
+  for (const quest of TOWN1_QUESTS) {
+    const level = progress.questLevels[quest.id] || 0;
+    if (level < quest.steps.length) {
+      return { titleKey: quest.titleKey, objectiveKey: quest.steps[level].objectiveKey };
+    }
+  }
+
+  const finalQuest = TOWN1_QUESTS[TOWN1_QUESTS.length - 1];
+  return { titleKey: finalQuest.titleKey, objectiveKey: "quest.town1.readingBadge.ready" };
+}
+
+function resolveTown1FountainDrill() {
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelMapRead)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelPracticePassed1)) return "town1FountainVowels";
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantMapRead)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantPracticePassed1)) return "town1FountainConsonants";
+  if (!hasProgressFlag(TOWN1_FLAGS.firstSyllablesPassed)) return "town1FountainReview";
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedBookRead)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedPracticePassed1)) return "town1FountainAspirated";
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedExamPassed)) return "town1FountainReview";
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantBookRead)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantPracticePassed1)) return "town1FountainDoubleConsonants";
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantExamPassed)) return "town1FountainReview";
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSingleBookRead)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSinglePracticePassed1)) return "town1FountainBatchimSingle";
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimDoubleBookRead)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimDoublePracticePassed1)) return "town1FountainBatchimDouble";
+  return "town1FountainReview";
+}
+
+function resolveTown1FountainConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelMapRead)) return ["object.soundFountain.locked.vowels"];
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantMapRead) && hasProgressFlag(TOWN1_FLAGS.vowelPracticePassed1)) {
+    return ["object.soundFountain.locked.consonants"];
+  }
+  if (hasProgressFlag(TOWN1_FLAGS.firstSyllablesPassed) && !hasProgressFlag(TOWN1_FLAGS.aspiratedBookRead)) {
+    return ["object.soundFountain.locked.aspirated"];
+  }
+  if (hasProgressFlag(TOWN1_FLAGS.aspiratedExamPassed) && !hasProgressFlag(TOWN1_FLAGS.doubleConsonantBookRead)) {
+    return ["object.soundFountain.locked.doubleConsonants"];
+  }
+  if (hasProgressFlag(TOWN1_FLAGS.doubleConsonantExamPassed) && !hasProgressFlag(TOWN1_FLAGS.batchimSingleBookRead)) {
+    return ["object.soundFountain.locked.batchimSingle"];
+  }
+  if (hasProgressFlag(TOWN1_FLAGS.batchimSinglePracticePassed1) && !hasProgressFlag(TOWN1_FLAGS.batchimDoubleBookRead)) {
+    return ["object.soundFountain.locked.batchimDouble"];
+  }
+  return ["object.soundFountain.complete.line1"];
+}
+
+function resolveTown1DeskDrill() {
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelPracticePassed1)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantPracticePassed1)) return null;
+  return "town1DeskSyllables";
+}
+
+function resolveTown1DeskConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelPracticePassed1)) return ["object.studentDesk.locked.vowels"];
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantPracticePassed1)) return ["object.studentDesk.locked.consonants"];
+  return ["object.studentDesk.line1"];
+}
+
+function resolveTown1BlackboardDrill() {
+  if (!hasProgressFlag(TOWN1_FLAGS.teacherIntroDone)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelPracticePassed1)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelExamPassed)) return "town1BlackboardVowels";
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantPracticePassed1)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantExamPassed)) return "town1BlackboardConsonants";
+  if (!hasProgressFlag(TOWN1_FLAGS.firstSyllablePracticePassed1)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.firstSyllablesPassed)) return "town1BlackboardSyllables";
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedPracticePassed1)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedExamPassed)) return "town1BlackboardAspirated";
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantPracticePassed1)) return null;
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantExamPassed)) return "town1BlackboardDoubleConsonants";
+  return null;
+}
+
+function resolveTown1BlackboardConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.teacherIntroDone)) return ["object.schoolBlackboard.locked.teacher"];
+  if (!hasProgressFlag(TOWN1_FLAGS.vowelPracticePassed1)) return ["object.schoolBlackboard.locked.vowels"];
+  if (!hasProgressFlag(TOWN1_FLAGS.consonantPracticePassed1) || !hasProgressFlag(TOWN1_FLAGS.consonantMapRead)) {
+    return ["object.schoolBlackboard.locked.consonants"];
+  }
+  if (!hasProgressFlag(TOWN1_FLAGS.firstSyllablePracticePassed1)) return ["object.schoolBlackboard.locked.syllables"];
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedPracticePassed1)) return ["object.schoolBlackboard.locked.aspirated"];
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantPracticePassed1)) {
+    return ["object.schoolBlackboard.locked.doubleConsonants"];
+  }
+  return ["object.schoolBlackboard.complete.line1"];
+}
+
+function resolveTown1TeacherConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.firstSyllablesPassed)) {
+    return ["npc.hangulTeacher.line1", "npc.hangulTeacher.line2", "npc.hangulTeacher.line3"];
+  }
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedIntroDone)) {
+    return [
+      "npc.hangulTeacher.aspiratedIntro.line1",
+      "npc.hangulTeacher.aspiratedIntro.line2",
+      "npc.hangulTeacher.aspiratedIntro.line3",
+    ];
+  }
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedBookRead)) return ["npc.hangulTeacher.aspiratedBook.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedExamPassed)) return ["npc.hangulTeacher.aspiratedPractice.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantIntroDone)) {
+    return [
+      "npc.hangulTeacher.doubleConsonantIntro.line1",
+      "npc.hangulTeacher.doubleConsonantIntro.line2",
+      "npc.hangulTeacher.doubleConsonantIntro.line3",
+    ];
+  }
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantBookRead)) return ["npc.hangulTeacher.doubleConsonantBook.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantExamPassed)) return ["npc.hangulTeacher.doubleConsonantPractice.line1"];
+  return ["npc.hangulTeacher.doubleConsonantDone.line1"];
+}
+
+function resolveTown1TeacherProgressFlags() {
+  const flags = [];
+  if (!hasProgressFlag(TOWN1_FLAGS.teacherIntroDone)) flags.push(TOWN1_FLAGS.teacherIntroDone);
+  if (hasProgressFlag(TOWN1_FLAGS.firstSyllablesPassed) && !hasProgressFlag(TOWN1_FLAGS.aspiratedIntroDone)) {
+    flags.push(TOWN1_FLAGS.aspiratedIntroDone);
+  }
+  if (hasProgressFlag(TOWN1_FLAGS.aspiratedExamPassed) && !hasProgressFlag(TOWN1_FLAGS.doubleConsonantIntroDone)) {
+    flags.push(TOWN1_FLAGS.doubleConsonantIntroDone);
+  }
+  return flags;
+}
+
+function resolveTown1AspiratedBookBoard() {
+  return hasProgressFlag(TOWN1_FLAGS.aspiratedIntroDone) ? "aspiratedConsonants" : null;
+}
+
+function resolveTown1AspiratedBookConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.aspiratedIntroDone)) return ["object.aspiratedBookcase.locked.line1"];
+  return ["object.schoolBookshelf.line1"];
+}
+
+function resolveTown1AspiratedBookFlags() {
+  return hasProgressFlag(TOWN1_FLAGS.aspiratedIntroDone) ? [TOWN1_FLAGS.aspiratedBookRead] : [];
+}
+
+function resolveTown1DoubleConsonantBookBoard() {
+  return hasProgressFlag(TOWN1_FLAGS.doubleConsonantIntroDone) ? "doubleConsonants" : null;
+}
+
+function resolveTown1DoubleConsonantBookConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantIntroDone)) return ["object.doubleConsonantBookcase.locked.line1"];
+  return ["object.schoolBookshelf.line1"];
+}
+
+function resolveTown1DoubleConsonantBookFlags() {
+  return hasProgressFlag(TOWN1_FLAGS.doubleConsonantIntroDone) ? [TOWN1_FLAGS.doubleConsonantBookRead] : [];
+}
+
+function resolveTown1FinalSoundCoachConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.doubleConsonantExamPassed)) return ["npc.finalSoundCoach.locked.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSingleIntroDone)) {
+    return ["npc.finalSoundCoach.intro.line1", "npc.finalSoundCoach.intro.line2"];
+  }
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSingleBookRead)) return ["npc.finalSoundCoach.readNote.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSinglePracticePassed1)) return ["npc.finalSoundCoach.afterNote.line1"];
+  return ["npc.finalSoundCoach.done.line1"];
+}
+
+function resolveTown1FinalSoundCoachProgressFlags() {
+  if (hasProgressFlag(TOWN1_FLAGS.doubleConsonantExamPassed) && !hasProgressFlag(TOWN1_FLAGS.batchimSingleIntroDone)) {
+    return [TOWN1_FLAGS.batchimSingleIntroDone];
+  }
+  return [];
+}
+
+function resolveTown1DoubleFinalLearnerConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSinglePracticePassed1)) return ["npc.doubleFinalLearner.locked.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimDoubleIntroDone)) {
+    return ["npc.doubleFinalLearner.intro.line1", "npc.doubleFinalLearner.intro.line2"];
+  }
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimDoubleBookRead)) return ["npc.doubleFinalLearner.readNote.line1"];
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimDoublePracticePassed1)) return ["npc.doubleFinalLearner.afterNote.line1"];
+  return ["npc.doubleFinalLearner.done.line1"];
+}
+
+function resolveTown1DoubleFinalLearnerProgressFlags() {
+  if (hasProgressFlag(TOWN1_FLAGS.batchimSinglePracticePassed1) && !hasProgressFlag(TOWN1_FLAGS.batchimDoubleIntroDone)) {
+    return [TOWN1_FLAGS.batchimDoubleIntroDone];
+  }
+  return [];
+}
+
+function resolveTown1BatchimSingleBoard() {
+  return hasProgressFlag(TOWN1_FLAGS.batchimSingleIntroDone) ? "singleBatchim" : null;
+}
+
+function resolveTown1BatchimSingleConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimSingleIntroDone)) return ["object.batchimSingleNotebook.locked.line1"];
+  return ["npc.finalSoundCoach.readNote.line1"];
+}
+
+function resolveTown1BatchimSingleFlags() {
+  return hasProgressFlag(TOWN1_FLAGS.batchimSingleIntroDone) ? [TOWN1_FLAGS.batchimSingleBookRead] : [];
+}
+
+function resolveTown1BatchimDoubleBoard() {
+  return hasProgressFlag(TOWN1_FLAGS.batchimDoubleIntroDone) ? "doubleBatchim" : null;
+}
+
+function resolveTown1BatchimDoubleConversation() {
+  if (!hasProgressFlag(TOWN1_FLAGS.batchimDoubleIntroDone)) return ["object.batchimDoubleNotebook.locked.line1"];
+  return ["npc.doubleFinalLearner.readNote.line1"];
+}
+
+function resolveTown1BatchimDoubleFlags() {
+  return hasProgressFlag(TOWN1_FLAGS.batchimDoubleIntroDone) ? [TOWN1_FLAGS.batchimDoubleBookRead] : [];
+}
+
+refreshQuestLevels();
 
 function mergeExternalDrillPacks() {
   const packs = window.KOREA_ADVENTURE_DRILL_PACKS || [];
@@ -2004,6 +4089,14 @@ function createRectInteractions({
   solid = true,
   conversationKeys = null,
   drillKey = null,
+  drillResolver = null,
+  conversationResolver = null,
+  requiredFlags = null,
+  lockedConversationKeys = null,
+  studyBoardKey = null,
+  studyBoardResolver = null,
+  progressFlagOnStudyBoard = null,
+  progressFlagsOnStudyBoardResolver = null,
 }) {
   const interactions = [];
 
@@ -2017,6 +4110,14 @@ function createRectInteractions({
         kind,
         conversationKeys,
         drillKey,
+        drillResolver,
+        conversationResolver,
+        requiredFlags,
+        lockedConversationKeys,
+        studyBoardKey,
+        studyBoardResolver,
+        progressFlagOnStudyBoard,
+        progressFlagsOnStudyBoardResolver,
         hidden: true,
       });
     }
@@ -2119,7 +4220,8 @@ const interactables = [
     w: 3,
     h: 3,
     conversationKeys: ["object.soundFountain.line1"],
-    drillKey: "soundFountain",
+    drillResolver: resolveTown1FountainDrill,
+    conversationResolver: resolveTown1FountainConversation,
   }),
   ...createRectInteractions({
     labelKey: "object.speechBench",
@@ -2534,6 +4636,7 @@ function setPlayerTile(x, y, dirName) {
 function changeScene(sceneId, x, y, dirName) {
   stopSpeech();
   currentSceneId = sceneId;
+  if (sceneId === "elementarySchool") setProgressFlag(TOWN1_FLAGS.schoolEntered);
   dialog = null;
   studyBoard = null;
   ui.menuOpen = false;
@@ -3336,18 +5439,26 @@ function createInteriorScenes() {
   });
   fillInteriorObject(elementarySchool, 2, 1, 5, 1, "mapBoard", "object.consonantWallMap", {
     studyBoardKey: "basicConsonants",
+    progressFlagOnStudyBoard: TOWN1_FLAGS.consonantMapRead,
   });
   fillInteriorObject(elementarySchool, 8, 1, 6, 1, "blackboard", "object.schoolBlackboard", {
     conversationKeys: ["object.schoolBlackboard.line1"],
+    drillResolver: resolveTown1BlackboardDrill,
+    conversationResolver: resolveTown1BlackboardConversation,
   });
   fillInteriorObject(elementarySchool, 15, 1, 5, 1, "mapBoard", "object.vowelWallMap", {
     studyBoardKey: "basicVowels",
+    progressFlagOnStudyBoard: TOWN1_FLAGS.vowelMapRead,
   });
-  fillInteriorObject(elementarySchool, 1, 4, 2, 3, "bookcase", "object.schoolBookshelf", {
-    conversationKeys: ["object.schoolBookshelf.line1"],
+  fillInteriorObject(elementarySchool, 1, 4, 2, 3, "bookcase", "object.aspiratedBookcase", {
+    conversationResolver: resolveTown1AspiratedBookConversation,
+    studyBoardResolver: resolveTown1AspiratedBookBoard,
+    progressFlagsOnStudyBoardResolver: resolveTown1AspiratedBookFlags,
   });
-  fillInteriorObject(elementarySchool, 19, 5, 2, 3, "bookcase", "object.schoolBookshelf", {
-    conversationKeys: ["object.schoolBookshelf.line1"],
+  fillInteriorObject(elementarySchool, 19, 5, 2, 3, "bookcase", "object.doubleConsonantBookcase", {
+    conversationResolver: resolveTown1DoubleConsonantBookConversation,
+    studyBoardResolver: resolveTown1DoubleConsonantBookBoard,
+    progressFlagsOnStudyBoardResolver: resolveTown1DoubleConsonantBookFlags,
   });
   fillInteriorObject(elementarySchool, 9, 4, 5, 1, "teacherDesk", "object.teacherDesk", {
     conversationKeys: ["object.teacherDesk.line1"],
@@ -3364,6 +5475,8 @@ function createInteriorScenes() {
   for (const [deskX, deskY] of studentDeskSpots) {
     fillInteriorObject(elementarySchool, deskX, deskY, 2, 1, "studentDesk", "object.studentDesk", {
       conversationKeys: ["object.studentDesk.line1"],
+      drillResolver: resolveTown1DeskDrill,
+      conversationResolver: resolveTown1DeskConversation,
     });
     placeInteriorObject(elementarySchool, deskX, deskY + 1, "chair", "object.studentSeat", {
       solid: false,
@@ -3381,7 +5494,9 @@ function createInteriorScenes() {
     jacket: "#9b5f42",
     voiceGender: "female",
     voiceId: "hangulTeacher",
-    conversationKeys: ["npc.hangulTeacher.line1", "npc.hangulTeacher.line2"],
+    conversationKeys: ["npc.hangulTeacher.line1", "npc.hangulTeacher.line2", "npc.hangulTeacher.line3"],
+    conversationResolver: resolveTown1TeacherConversation,
+    progressFlagsOnTalkResolver: resolveTown1TeacherProgressFlags,
   });
   addInteriorNpc(elementarySchool, {
     nameKey: "npc.schoolStudentA",
@@ -3470,8 +5585,16 @@ function createInteriorScenes() {
   });
   fillInteriorTile(rivalGuesthouse, 4, 7, 6, 2, "carpetBlue");
   fillInteriorObject(rivalGuesthouse, 2, 2, 2, 2, "bed", "object.bed");
-  placeInteriorObject(rivalGuesthouse, 9, 2, "desk", "object.desk");
-  fillInteriorObject(rivalGuesthouse, 10, 2, 2, 1, "bookcase", "object.bookcase");
+  placeInteriorObject(rivalGuesthouse, 9, 2, "desk", "object.batchimSingleNotebook", {
+    conversationResolver: resolveTown1BatchimSingleConversation,
+    studyBoardResolver: resolveTown1BatchimSingleBoard,
+    progressFlagsOnStudyBoardResolver: resolveTown1BatchimSingleFlags,
+  });
+  fillInteriorObject(rivalGuesthouse, 10, 2, 2, 1, "bookcase", "object.batchimDoubleNotebook", {
+    conversationResolver: resolveTown1BatchimDoubleConversation,
+    studyBoardResolver: resolveTown1BatchimDoubleBoard,
+    progressFlagsOnStudyBoardResolver: resolveTown1BatchimDoubleFlags,
+  });
   placeInteriorObject(rivalGuesthouse, 3, 6, "tv", "object.tv");
   fillInteriorObject(rivalGuesthouse, 7, 5, 2, 2, "table", "object.familyTable");
   placeInteriorObject(rivalGuesthouse, 6, 6, "chair", "object.familyTable");
@@ -3485,6 +5608,8 @@ function createInteriorScenes() {
     voiceGender: "male",
     voiceId: "rivalDad",
     conversationKeys: ["npc.rivalDad.line1", "npc.rivalDad.line2"],
+    conversationResolver: resolveTown1FinalSoundCoachConversation,
+    progressFlagsOnTalkResolver: resolveTown1FinalSoundCoachProgressFlags,
   });
   addInteriorNpc(rivalGuesthouse, {
     nameKey: "npc.rivalStudent",
@@ -3495,8 +5620,9 @@ function createInteriorScenes() {
     voiceGender: "male",
     voiceId: "rivalStudent",
     conversationKeys: ["npc.rivalStudent.line1", "npc.rivalStudent.line2"],
+    conversationResolver: resolveTown1DoubleFinalLearnerConversation,
+    progressFlagsOnTalkResolver: resolveTown1DoubleFinalLearnerProgressFlags,
     kind: "child",
-    wander: true,
   });
 
   const hanokTeaHouse = createInteriorScene({
@@ -4095,7 +6221,14 @@ function addInteriorObjectInteraction(scene, x, y, labelKey, options = {}) {
     kind: options.kind || "furniture",
     conversationKeys: options.conversationKeys || null,
     drillKey: options.drillKey || null,
+    drillResolver: options.drillResolver || null,
+    conversationResolver: options.conversationResolver || null,
+    requiredFlags: options.requiredFlags || null,
+    lockedConversationKeys: options.lockedConversationKeys || null,
     studyBoardKey: options.studyBoardKey || null,
+    studyBoardResolver: options.studyBoardResolver || null,
+    progressFlagOnStudyBoard: options.progressFlagOnStudyBoard || null,
+    progressFlagsOnStudyBoardResolver: options.progressFlagsOnStudyBoardResolver || null,
   });
 }
 
@@ -4191,13 +6324,52 @@ function getInteractionTarget() {
   return null;
 }
 
+function hasRequiredProgress(source) {
+  return (source.requiredFlags || []).every((flag) => hasProgressFlag(flag));
+}
+
+function resolveInteractionDrill(source) {
+  if (!source || !hasRequiredProgress(source)) return null;
+  if (typeof source.drillResolver === "function") return source.drillResolver();
+  return source.drillKey || null;
+}
+
+function resolveInteractionStudyBoard(source) {
+  if (!source || !hasRequiredProgress(source)) return null;
+  if (typeof source.studyBoardResolver === "function") return source.studyBoardResolver();
+  return source.studyBoardKey || null;
+}
+
+function resolveInteractionStudyBoardProgressFlags(source) {
+  if (!source) return [];
+  const flags = [];
+  if (source.progressFlagOnStudyBoard) flags.push(source.progressFlagOnStudyBoard);
+  if (typeof source.progressFlagsOnStudyBoardResolver === "function") {
+    flags.push(...source.progressFlagsOnStudyBoardResolver());
+  }
+  return flags;
+}
+
+function resolveInteractionConversationKeys(source) {
+  if (!source) return null;
+  if (typeof source.conversationResolver === "function") return source.conversationResolver();
+  if (!hasRequiredProgress(source) && source.lockedConversationKeys) return source.lockedConversationKeys;
+  return source.conversationKeys || null;
+}
+
 function openDialogFor(target) {
   if (!target) return;
   stopSpeech();
 
   if (target.npc) {
-    if (target.npc.drillKey) {
-      startDrill(target.npc.drillKey);
+    if (target.npc.progressFlagOnTalk) setProgressFlag(target.npc.progressFlagOnTalk);
+    if (typeof target.npc.progressFlagsOnTalkResolver === "function") {
+      setProgressFlags(target.npc.progressFlagsOnTalkResolver());
+    }
+
+    const npcDrillKey = resolveInteractionDrill(target.npc);
+    if (npcDrillKey) {
+      startDrill(npcDrillKey);
       return;
     }
 
@@ -4208,8 +6380,9 @@ function openDialogFor(target) {
       right: "left",
     };
     target.npc.dir = opposite[player.dir];
+    const conversationKeys = resolveInteractionConversationKeys(target.npc) || ["interaction.default"];
     dialog = {
-      lines: target.npc.conversationKeys.map((key) => ({ key })),
+      lines: conversationKeys.map((key) => ({ key })),
       index: 0,
       spoken: true,
       textVisible: false,
@@ -4226,19 +6399,23 @@ function openDialogFor(target) {
     return;
   }
 
-  if (target.item?.studyBoardKey) {
-    openStudyBoard(target.item.studyBoardKey);
+  const itemStudyBoardKey = resolveInteractionStudyBoard(target.item);
+  if (itemStudyBoardKey) {
+    setProgressFlags(resolveInteractionStudyBoardProgressFlags(target.item));
+    openStudyBoard(itemStudyBoardKey);
     return;
   }
 
-  if (target.item?.drillKey) {
-    startDrill(target.item.drillKey);
+  const itemDrillKey = resolveInteractionDrill(target.item);
+  if (itemDrillKey) {
+    startDrill(itemDrillKey);
     return;
   }
 
-  if (target.item?.conversationKeys) {
+  const conversationKeys = resolveInteractionConversationKeys(target.item);
+  if (conversationKeys) {
     dialog = {
-      lines: target.item.conversationKeys.map((key) => ({ key })),
+      lines: conversationKeys.map((key) => ({ key })),
       index: 0,
       spoken: false,
       textVisible: true,
@@ -4329,6 +6506,8 @@ function startDrill(drillKey) {
     complete: false,
     feedbackKey: null,
     correctCount: 0,
+    passed: false,
+    completionApplied: false,
   };
   clearMovementInput();
 }
@@ -4353,9 +6532,7 @@ function advanceDrill() {
   if (!data) return;
 
   if (drill.index >= data.steps.length - 1) {
-    drill.complete = true;
-    drill.answered = false;
-    drill.feedbackKey = null;
+    completeDrillRun();
     return;
   }
 
@@ -4363,6 +6540,31 @@ function advanceDrill() {
   drill.selected = 0;
   drill.answered = false;
   drill.feedbackKey = null;
+}
+
+function drillPassThreshold(data) {
+  return data.passCorrectCount ?? data.steps.length;
+}
+
+function drillRunPassed() {
+  const data = currentDrillData();
+  if (!data) return false;
+  return drill.correctCount >= drillPassThreshold(data);
+}
+
+function completeDrillRun() {
+  const data = currentDrillData();
+  if (!data) return;
+
+  drill.complete = true;
+  drill.answered = false;
+  drill.feedbackKey = null;
+  drill.passed = drillRunPassed();
+
+  if (!drill.completionApplied) {
+    if (drill.passed) setProgressFlags(data.completionFlags || []);
+    drill.completionApplied = true;
+  }
 }
 
 function answerDrillStep() {
@@ -5686,21 +7888,23 @@ function drawPerson(x, y, dir, palette) {
 }
 
 function drawInfoPanel() {
+  const questStatus = currentTown1QuestStatus();
+  const rows = [
+    [t("panel.area"), t(currentScene().areaKey)],
+    [t("panel.facing"), t(`direction.${player.dir}`)],
+    [t("panel.tile"), `${player.tileX}, ${player.tileY}`],
+    [t("panel.quest"), t(questStatus.titleKey)],
+    [t("panel.questStep"), t(questStatus.objectiveKey)],
+    [t("panel.primary"), languageName(settings.primary)],
+    [t("panel.secondary"), languageName(settings.secondary)],
+  ];
   const w = Math.min(230, Math.max(190, window.innerWidth - 28));
-  const h = 138;
+  const h = 54 + rows.length * 17 + 18;
   const x = Math.max(14, window.innerWidth - w - 14);
   const y = 14;
 
   drawUiBox(x, y, w, h);
   drawFittedText(t("game.title"), x + 18, y + 20, w - 36, 14, true);
-
-  const rows = [
-    [t("panel.area"), t(currentScene().areaKey)],
-    [t("panel.facing"), t(`direction.${player.dir}`)],
-    [t("panel.tile"), `${player.tileX}, ${player.tileY}`],
-    [t("panel.primary"), languageName(settings.primary)],
-    [t("panel.secondary"), languageName(settings.secondary)],
-  ];
 
   rows.forEach(([label, value], index) => {
     const rowY = y + 44 + index * 17;
@@ -5856,7 +8060,7 @@ function drawStudyBoard() {
       true,
     );
     drawCenteredFittedText(
-      entry.name,
+      entry.nameKey ? t(entry.nameKey) : entry.name,
       cellX + cellWidth / 2,
       cellY + Math.max(30, cellHeight * 0.62),
       cellWidth - 12,
@@ -5893,7 +8097,7 @@ function drawDrill() {
 
   const step = currentDrillStep();
   const choiceCount = step?.choices.length || 0;
-  const baseHeight = drill.complete ? 178 : 164 + choiceCount * 34 + (drill.answered ? 54 : 0);
+  const baseHeight = drill.complete ? 210 : 164 + choiceCount * 34 + (drill.answered ? 54 : 0);
   const w = Math.min(560, window.innerWidth - 36);
   const h = Math.min(window.innerHeight - 36, baseHeight);
   const x = (window.innerWidth - w) / 2;
@@ -5920,6 +8124,7 @@ function drawDrill() {
       16,
       false,
     );
+    drawFittedText(t(drill.passed ? "drill.passed" : "drill.retry"), x + 28, y + 134, w - 56, 14, false);
     drawDrillPulse(x + w - 42, y + h - 40);
     return;
   }
