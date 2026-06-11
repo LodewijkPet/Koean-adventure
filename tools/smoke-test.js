@@ -129,6 +129,7 @@ try {
 
 const api = vm.runInContext(
   `({
+    KA,
     TEXT, DRILLS, STUDY_BOARDS, scenes, WORD_ITEMS, WORD_CATEGORY_IDS,
     STUDY_BOARD_WORD_ITEMS, QUEST_CHAPTERS, BADGES, progress,
     setProgressFlag, hasProgressFlag, buildDrillRun, earnedBadges,
@@ -140,6 +141,79 @@ const api = vm.runInContext(
   })`,
   context,
 );
+
+// 0. Public API and registration boot shape.
+if (files.includes("src/game.js")) fail("index.html still loads deleted src/game.js");
+
+const helperIndex = files.indexOf("src/world/helpers.js");
+const loopIndex = files.indexOf("src/core/loop.js");
+const worldScripts = [
+  "src/world/town1.js",
+  "src/world/trail1.js",
+  "src/world/town2.js",
+  "src/world/trail2.js",
+  "src/world/town3.js",
+];
+if (helperIndex === -1) fail("index.html missing src/world/helpers.js");
+if (loopIndex === -1) fail("index.html missing src/core/loop.js");
+for (const worldScript of worldScripts) {
+  const index = files.indexOf(worldScript);
+  if (index === -1) fail(`index.html missing ${worldScript}`);
+  if (helperIndex !== -1 && index !== -1 && index < helperIndex) {
+    fail(`${worldScript} loads before src/world/helpers.js`);
+  }
+  if (loopIndex !== -1 && index !== -1 && index > loopIndex) {
+    fail(`${worldScript} loads after src/core/loop.js`);
+  }
+}
+
+function checkApiFunction(pathName) {
+  const parts = pathName.split(".");
+  let value = api.KA;
+  for (const part of parts) value = value?.[part];
+  if (typeof value !== "function") fail(`KA.${pathName} is not a function`);
+}
+
+[
+  "text.register",
+  "drills.register",
+  "drills.buildRun",
+  "drills.currentOrderState",
+  "drills.isOrderStep",
+  "drills.questions.buildOrderStepFromSentence",
+  "drills.questions.generateOrderStepsFromTemplates",
+  "drills.sentences.register",
+  "quests.registerChapter",
+  "quests.refreshLevels",
+  "badges.register",
+  "flags.set",
+  "flags.has",
+  "words.register",
+  "hangul.composeHangulSyllable",
+  "world.registerScene",
+  "world.buildRegisteredScenes",
+  "music.registerTracks",
+  "speech.speakDialogLine",
+  "interactions.isBlockedInScene",
+  "save.load",
+  "t",
+].forEach(checkApiFunction);
+
+if (!Object.keys(api.KA.text.tables?.en || {}).length) fail("KA.text.tables.en is empty");
+if (!Object.keys(api.KA.drills.registry || {}).length) fail("KA.drills.registry is empty");
+if (!api.KA.quests.chapters?.length) fail("KA.quests.chapters is empty");
+if (!api.KA.badges.all?.length) fail("KA.badges.all is empty");
+if (!Object.keys(api.KA.words.items || {}).length) fail("KA.words.items is empty");
+if (!api.KA.words.categoryIds?.length) fail("KA.words.categoryIds is empty");
+if (!api.KA.hangul.allItems?.length) fail("KA.hangul.allItems is empty");
+
+const rootSceneOrder = Object.keys(api.scenes).filter((sceneId) =>
+  ["town", "trail1", "town2", "trail2", "town3"].includes(sceneId),
+);
+const expectedRootSceneOrder = ["town", "trail1", "town2", "trail2", "town3"];
+if (rootSceneOrder.join("|") !== expectedRootSceneOrder.join("|")) {
+  fail(`root scene registration order ${rootSceneOrder.join(", ")} != ${expectedRootSceneOrder.join(", ")}`);
+}
 
 // 1. Scenes exist.
 const expectedScenes = [
@@ -184,15 +258,51 @@ for (const [sceneId, scene] of Object.entries(api.scenes)) {
   for (const building of scene.buildings || []) checkKey(building.labelKey, `scene ${sceneId} building`);
 }
 
+// 3b. Register a smoke-only E1 order drill through the public sentence API.
+try {
+  vm.runInContext(
+    `
+    KA.drills.sentences.register("engineSmoke", [
+      { chunks: ["저는", "물을", "마셔요"], teaches: ["engine.orderSmoke"] },
+    ]);
+    const orderSteps = KA.drills.questions.generateOrderStepsFromTemplates({
+      chapterIds: ["engineSmoke"],
+      count: 1,
+    });
+    if (orderSteps.length !== 1 || orderSteps[0].kind !== "order") {
+      throw new Error("order template did not generate one order step");
+    }
+    KA.drills.register({
+      engineOrderSmoke: {
+        titleKey: "game.title",
+        shuffleSteps: false,
+        steps: orderSteps,
+      },
+    });
+    `,
+    context,
+  );
+} catch (error) {
+  fail(`E1 order drill registration threw: ${error.stack}`);
+}
+
 // 4. Drill integrity: static steps have valid answers + keys.
 for (const [drillKey, data] of Object.entries(api.DRILLS)) {
   checkKey(data.titleKey, `drill ${drillKey}`);
   for (const step of data.steps || []) {
-    if (typeof step.answer !== "number" || step.answer < 0 || step.answer >= step.choices.length) {
-      fail(`drill ${drillKey} has out-of-range answer`);
-    }
-    for (const choice of step.choices) {
-      if (typeof choice === "string") checkKey(choice, `drill ${drillKey} choice`);
+    const kind = step.kind || "choice";
+    if (kind === "order") {
+      if (!Array.isArray(step.chunks) || step.chunks.length < 2) {
+        fail(`drill ${drillKey} order step has fewer than two chunks`);
+      }
+    } else {
+      if (!Array.isArray(step.choices)) fail(`drill ${drillKey} choice step missing choices`);
+      else if (typeof step.answer !== "number" || step.answer < 0 || step.answer >= step.choices.length) {
+        fail(`drill ${drillKey} has out-of-range answer`);
+      }
+      for (const choice of step.choices || []) {
+        if (typeof choice === "string") checkKey(choice, `drill ${drillKey} choice`);
+      }
     }
     checkKey(step.promptKey, `drill ${drillKey} prompt`);
     if (step.correctKey) checkKey(step.correctKey, `drill ${drillKey} correct`);
@@ -288,6 +398,68 @@ for (const generated of ["trail2MirrorVowels", "town3SinoNumbers", "town3NativeN
   if (shuffledAnswers.size === 1 && shuffledAnswers.has(0)) {
     warnings.push(`generated drill ${generated}: first answer always index 0 across 12 runs (shuffle suspect)`);
   }
+}
+
+// 8b. E1 order drill: input path, correct path, incorrect feedback path, and drawing.
+try {
+  vm.runInContext(
+    `
+    (function () {
+      function press(code) {
+        handleDrillInput({ code, preventDefault() {} });
+      }
+
+      startDrill("engineOrderSmoke");
+      let step = currentDrillStep();
+      if (!KA.drills.isOrderStep(step)) throw new Error("engineOrderSmoke did not start on an order step");
+      drill.orderState.available = step.chunks.map((text, id) => ({ id, text }));
+      drill.orderState.placed = [];
+      drill.orderState.zone = "available";
+      drill.orderState.selectedAvailable = 0;
+
+      press("Space");
+      if (drill.orderState.placed.map((chunk) => chunk.text).join(" ") !== "저는") {
+        throw new Error("Space did not place the selected available chunk");
+      }
+      press("ArrowUp");
+      press("Space");
+      if (drill.orderState.placed.length !== 0 || drill.orderState.available.length !== 3) {
+        throw new Error("Space on placed row did not return a chunk");
+      }
+
+      for (const chunkText of step.chunks) {
+        const index = drill.orderState.available.findIndex((chunk) => chunk.text === chunkText);
+        if (index < 0) throw new Error("missing chunk " + chunkText);
+        drill.orderState.zone = "available";
+        drill.orderState.selectedAvailable = index;
+        press("Space");
+      }
+      press("Enter");
+      if (!drill.answered || drill.correctCount !== 1) {
+        throw new Error("correct order path did not score");
+      }
+      draw();
+
+      startDrill("engineOrderSmoke");
+      step = currentDrillStep();
+      drill.orderState.available = [];
+      drill.orderState.placed = step.chunks.slice().reverse().map((text, id) => ({ id, text }));
+      drill.orderState.zone = "placed";
+      press("Enter");
+      if (!drill.answered || drill.correctCount !== 0) {
+        throw new Error("incorrect order path scored incorrectly");
+      }
+      if (drill.feedbackKey !== "drill.order.incorrect" || drill.feedbackParams.answer !== step.chunks.join(" ")) {
+        throw new Error("incorrect order feedback missing answer params");
+      }
+      draw();
+      closeDrill();
+    })();
+    `,
+    context,
+  );
+} catch (error) {
+  fail(`E1 order drill smoke path threw: ${error.stack}`);
 }
 
 // 9. Badge flow: complete town2 stations, run final badge drill to passing.

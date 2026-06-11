@@ -111,7 +111,7 @@ Twelve chapters (towns/regions), eight badges, ~60–100 hours of core content, 
 
 | System | Where | Status |
 | --- | --- | --- |
-| Tile/scene engine, interiors, route triggers | `src/game.js` (`createTileMap`, `buildScenes`, `createRouteTriggers`) | Solid. Extend with new scenes only. |
+| Tile/scene engine, interiors, route triggers | `src/core/loop.js`, `src/world/helpers.js`, `src/world/*.js` | Solid. Extend with registered scene modules only. |
 | Trilingual text (EN/KO/NL), Korean-first dialogue | `TEXT`, `t()`, hold-`T` translation | Contract: every visible key exists in all three languages. |
 | TTS with per-NPC stable voices | `tts.js` | Solid. Korean speech rate 0.92. |
 | Drill engine (multiple choice, pass thresholds, completion flags) | `DRILLS`, `startDrill`, `completeDrillRun` | Extend with new step types (order, fill-blank). |
@@ -137,9 +137,9 @@ Twelve chapters (towns/regions), eight badges, ~60–100 hours of core content, 
 
 ### 5.3 Technical Principles
 
-- **No build step, ever.** Open `index.html` and play. New content = new `data/drills/*.js` pack + scene code.
+- **No build step, ever.** Open `index.html` and play. New content = new `data/drills/*.js` pack + registered scene module.
 - **Data over code.** Chapters ship as drill packs (text + drills), scene builders, quest lists, and word lists. The engine stays small.
-- **`node --check src/game.js` + `node tools/smoke-test.js`** after every edit; the game must boot with zero console errors.
+- **`node --check <changed-file.js>` + `node tools/smoke-test.js`** after every edit; the game must boot with zero console errors.
 - **Every visible string** has `TEXT.en`, `TEXT.ko`, `TEXT.nl` entries.
 - **Never break a save**: additive flags only; save payload versioned with migration.
 - **Mobile-readable** UI (current font-fitting helpers stay mandatory).

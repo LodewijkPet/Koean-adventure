@@ -6,7 +6,7 @@ Use this guide when you want to create a new area like Trail 1, Trail 2, a mount
 
 ## Current Pattern
 
-Trail 1 is implemented as a full scene created by `createTrail1Scene()` in `game.js`.
+Trail 1 is implemented as a full scene in `src/world/trail1.js`.
 
 A route scene has these pieces:
 
@@ -14,7 +14,7 @@ A route scene has these pieces:
 - Decorative terrain placed with `fillMapRect()` and `setMapTile()`.
 - A returned scene object with `id`, `kind`, `map`, `width`, `height`, `objects`, `interactables`, `npcs`, `areaKey`, and `musicKey`.
 - Route triggers created with `createRouteTriggers()`.
-- Translation keys in `TEXT.en`, `TEXT.ko`, and `TEXT.nl`.
+- Translation keys supplied by a `data/drills/<area>.js` pack or `KA.text.register(...)`.
 - Optional grouped objects in `scene.objects`.
 - Optional solid object interactions created with `createRectInteractions()`.
 
@@ -45,26 +45,33 @@ Every visible name or dialogue line should use translation keys. Add keys to all
 Minimum keys for a route:
 
 ```js
-Object.assign(TEXT.en, {
-  "area.trail2": "East Trail",
-  "object.routeTown2": "Town 2 Road",
-  "object.routeTown3": "Town 3 Road",
-  "object.trail2NorthSign": "North Trail Sign",
-  "object.trail2SouthSign": "South Trail Sign",
-  "sign.trail2North.line1": "North: Town 3.",
-  "sign.trail2South.line1": "South: Town 2.",
-  "npc.trail2Guide.line1": "The road narrows near the trees.",
-  "npc.trail2Guide.line2": "Follow the pale dirt if you want the next town.",
+packs.push({
+  id: "trail-2-learning-drills",
+  text: {
+    en: {
+      "area.trail2": "East Trail",
+      "object.routeTown2": "Town 2 Road",
+      "object.routeTown3": "Town 3 Road",
+      "object.trail2NorthSign": "North Trail Sign",
+      "object.trail2SouthSign": "South Trail Sign",
+      "sign.trail2North.line1": "North: Town 3.",
+      "sign.trail2South.line1": "South: Town 2.",
+      "npc.trail2Guide.line1": "The road narrows near the trees.",
+      "npc.trail2Guide.line2": "Follow the pale dirt if you want the next town.",
+    },
+    ko: {},
+    nl: {},
+  },
 });
 ```
 
-Then add the same keys to `TEXT.ko` and `TEXT.nl`.
+Then add the same keys to `ko` and `nl`.
 
 Keep the key names identical across languages. Only the values should change.
 
 ## Step 2: Create The Scene Function
 
-Create a function near `createTrail1Scene()`.
+Create the function in `src/world/trail2.js`.
 
 ```js
 function createTrail2Scene() {
@@ -173,7 +180,7 @@ The helper hides every route marker except the center tile by setting `hidden: t
 
 ## Step 6: Handle Future Routes Safely
 
-Trail 1 already points north to `town2`. Because `town2` does not exist yet, `handleStepTrigger()` checks this:
+Routes can point at scenes that are registered later. `handleStepTrigger()` checks for the target scene before changing scenes:
 
 ```js
 const nextScene = scenes[item.targetSceneId];
@@ -182,7 +189,7 @@ if (nextScene) {
 }
 ```
 
-That means a future route can be placed now without crashing. Add `conversationKeys` to explain that the destination is not ready:
+That means a future route can be placed without crashing. Add `conversationKeys` to explain that the destination is not ready:
 
 ```js
 ...createRouteTriggers({
@@ -284,10 +291,10 @@ if (object.type === "trailRestTable") {
 
 ## Step 10: Register The Scene
 
-Add the scene in `buildScenes()`:
+Add the scene registration at the bottom of `src/world/trail2.js`:
 
 ```js
-scenes.trail2 = createTrail2Scene();
+window.KA.world.registerScene(() => createTrail2Scene());
 ```
 
 Do this before any route needs to enter it. A route can point to a missing scene safely, but the transition will do nothing until the scene is registered.
@@ -319,20 +326,18 @@ Music is selected by `musicKey`:
 musicKey: "trail2",
 ```
 
-The key must exist in `MUSIC_TRACKS`:
+The key must exist in `MUSIC_TRACKS`, or be added through `KA.music.registerTracks(...)`:
 
 ```js
-const MUSIC_TRACKS = {
-  trail2: "Trail2.mp3",
-};
+window.KA.music.registerTracks({ trail2: "Trail2.mp3" });
 ```
 
 The browser starts music after the first keyboard input because autoplay is blocked by browsers.
 
 ## Route Area Checklist
 
-- Add area, object, sign, route, and NPC text in `TEXT.en`, `TEXT.ko`, and `TEXT.nl`.
-- Create a scene function.
+- Add area, object, sign, route, and NPC text in a data pack or `KA.text.register(...)`.
+- Create a scene function in `src/world/<route>.js`.
 - Build a passable path from entrance to exit.
 - Add solid boundaries.
 - Add route triggers for every exit.
@@ -340,14 +345,15 @@ The browser starts music after the first keyboard input because autoplay is bloc
 - Add NPCs only on passable tiles.
 - Add grouped objects through `objects`.
 - Add object interactions through `createRectInteractions()`.
-- Register the scene in `buildScenes()`.
+- Register the scene with `KA.world.registerScene(...)`.
 - Connect the previous scene to this route.
 - Set `musicKey`.
-- Run `node --check .\game.js`.
+- Add the world file and data pack to `index.html`.
+- Run `node --check .\src\world\trail2.js` and `node tools/smoke-test.js`.
 
 ## Common Mistakes
 
-- Forgetting `buildScenes()`: the route exists as code but never gets added to `scenes`.
+- Forgetting `KA.world.registerScene(...)`: the route exists as code but never gets added to `scenes`.
 - Landing on a solid tile: the player appears stuck after changing scenes.
 - Adding an object to `objects` but not adding a drawer in `drawOutdoorObject()`.
 - Adding a solid grouped object but forgetting `createRectInteractions()`.

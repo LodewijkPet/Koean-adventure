@@ -1,46 +1,45 @@
 # How To Create A Town
 
-This guide explains how to create a new town scene based on Town 1 and the future Town 2 hook from Trail 1.
+This guide explains how to create a new town scene module.
 
-Town 1 is currently the main outdoor scene with buildings, doors, NPCs, signs, a shoreline, and a north route to Trail 1. Future towns should use the same scene shape but should be created in their own function, similar to `createTrail1Scene()`, so they do not depend on the global Town 1 map.
+Each town owns one world file in `src/world/<town>.js` and one content pack in `data/drills/<town>.js`. The world file registers its scene with `KA.world.registerScene`; the data pack supplies text, drills, and words through the pack merge path.
 
-## Current Town 1 Structure
+## Current Pattern
 
-Town 1 uses these top-level pieces:
+Existing towns use these pieces:
 
-- `WORLD_WIDTH` and `WORLD_HEIGHT`
-- Global `map`
-- `buildMap()`
-- `buildings`
-- `interactables`
-- `npcs`
-- `scenes.town` in `buildScenes()`
-- Interior scenes from `createInteriorScenes()`
+- A local map from `createTileMap(width, height, "grass")`
+- Local `buildings`, `objects`, `interactables`, and `npcs` arrays
+- Optional interiors created with `createInteriorScene()`
+- Quest and flag tables registered with `KA.quests.registerChapter(...)`
+- Optional badges registered with `KA.badges.register(...)`
+- A final `KA.world.registerScene(...)` call
 
-The Town 1 scene object looks like this:
+The registered scene object looks like this:
 
 ```js
-scenes.town = {
-  id: "town",
+const town4 = {
+  id: "town4",
   kind: "outdoor",
-  map,
-  width: WORLD_WIDTH,
-  height: WORLD_HEIGHT,
-  buildings,
+  map: town4Map,
+  width,
+  height,
+  buildings: town4Buildings,
+  objects: town4Objects,
   interactables,
-  npcs,
-  areaKey: "area.haneulTown",
-  musicKey: "town1",
+  npcs: town4Npcs,
+  areaKey: "area.town4",
+  musicKey: "town4",
 };
 ```
 
-For Town 2, prefer:
+Register it from the same file:
 
 ```js
-scenes.town2 = createTown2Scene();
+window.KA.world.registerScene(() => createTown4Scene());
 ```
 
-This keeps Town 2 self-contained.
+This keeps every chapter self-contained and lets `src/core/loop.js` build scenes from registrations.
 
 ## Step 1: Choose Ids And Keys
 
@@ -62,35 +61,22 @@ Use these consistently. Scene ids are used by route triggers and doors, so chang
 
 Every visible label should be translated.
 
-Add an area key:
+Add area, object, NPC, and dialog keys in the chapter data pack:
 
 ```js
-Object.assign(TEXT.en, {
-  "area.town2": "Town 2",
-});
-```
-
-Then add the same key to `TEXT.ko` and `TEXT.nl`.
-
-Add object keys:
-
-```js
-Object.assign(TEXT.en, {
-  "object.town2WelcomeSign": "Town 2 Welcome Sign",
-  "object.town2Inn": "Town 2 Inn",
-  "object.town2Inn.door": "Town 2 Inn Door",
-  "object.routeSouth": "Route South",
-  "object.routeNorth": "Route North",
-});
-```
-
-Add NPC names and dialogue:
-
-```js
-Object.assign(TEXT.en, {
-  "npc.town2Greeter": "Town Guide",
-  "npc.town2Greeter.line1": "Welcome to the second town.",
-  "npc.town2Greeter.line2": "The southern trail leads back to Haneul Town.",
+packs.push({
+  id: "town-4-learning-drills",
+  text: {
+    en: {
+      "area.town4": "Schedule Harbor",
+    },
+    ko: {
+      "area.town4": "ì¼ì • í•­êµ¬",
+    },
+    nl: {
+      "area.town4": "Schemahaven",
+    },
+  },
 });
 ```
 
@@ -98,34 +84,37 @@ Use the same keys in all language blocks.
 
 ## Step 3: Create The Town Function
 
-Create a function near `createTrail1Scene()`:
+Create the scene in `src/world/town4.js`:
 
 ```js
-function createTown2Scene() {
+function createTown4Scene() {
   const width = 42;
   const height = 35;
   const townMap = createTileMap(width, height, "grass");
 
-  buildTown2Map(townMap, width, height);
+  buildTown4Map(townMap, width, height);
 
-  const town2Buildings = [];
-  const town2Interactables = [];
-  const town2Npcs = [];
+  const town4Buildings = [];
+  const town4Objects = [];
+  const town4Interactables = [];
+  const town4Npcs = [];
 
   return {
-    id: "town2",
+    id: "town4",
     kind: "outdoor",
     map: townMap,
     width,
     height,
-    buildings: town2Buildings,
-    objects: [],
-    interactables: town2Interactables,
-    npcs: town2Npcs,
-    areaKey: "area.town2",
-    musicKey: "town2",
+    buildings: town4Buildings,
+    objects: town4Objects,
+    interactables: town4Interactables,
+    npcs: town4Npcs,
+    areaKey: "area.town4",
+    musicKey: "town4",
   };
 }
+
+window.KA.world.registerScene(() => createTown4Scene());
 ```
 
 Town scenes should include `objects: []` even if empty, because outdoor grouped objects use this field.
@@ -135,7 +124,7 @@ Town scenes should include `objects: []` even if empty, because outdoor grouped 
 Use a separate helper:
 
 ```js
-function buildTown2Map(townMap, width, height) {
+function buildTown4Map(townMap, width, height) {
   for (let x = 0; x < width; x += 1) {
     setMapTile(townMap, x, 0, "stone");
     setMapTile(townMap, x, height - 1, "stone");
@@ -152,7 +141,7 @@ function buildTown2Map(townMap, width, height) {
 }
 ```
 
-Use `setMapTile()` and `fillMapRect()` for new town maps. Do not use `setTile()` or `fillRectTiles()` for future towns unless you intend to modify the original Town 1 global map.
+Use `setMapTile()` and `fillMapRect()` for new town maps.
 
 ## Step 5: Design The Road Network
 
@@ -223,7 +212,7 @@ Town 1 automatically creates door interactables from `buildings`:
 })),
 ```
 
-For Town 2, do the same with `town2Buildings`:
+For the new town, do the same with its local building array:
 
 ```js
 const town2Interactables = [
@@ -238,19 +227,7 @@ const town2Interactables = [
 ];
 ```
 
-Important: `handleStepTrigger()` currently only opens doors when `scene.id === "town"`. To support Town 2 doors, update that condition to allow outdoor scenes with doors:
-
-```js
-if (scene.kind === "outdoor" && item?.kind === "door" && item.sceneId) {
-  const nextScene = scenes[item.sceneId];
-  if (nextScene) {
-    changeScene(nextScene.id, nextScene.entry.x, nextScene.entry.y, nextScene.entry.dir);
-    return true;
-  }
-}
-```
-
-This is needed before Town 2 buildings can enter interiors.
+Door triggers are handled by `handleStepTrigger()` for all outdoor scenes.
 
 ## Step 8: Add Signs And Routes
 
@@ -329,7 +306,7 @@ NPC placement rules:
 
 ## Step 10: Add Optional Grouped Outdoor Objects
 
-Town 2 can use grouped objects just like Trail 1:
+Towns can use grouped objects just like route scenes:
 
 ```js
 objects: [
@@ -354,15 +331,15 @@ Then draw it from `drawOutdoorObject()`.
 
 ## Step 11: Register The Town
 
-Add this in `buildScenes()`:
+Add this at the bottom of `src/world/<town>.js`:
 
 ```js
-scenes.town2 = createTown2Scene();
+window.KA.world.registerScene(() => createTown4Scene());
 ```
 
-After this, Trail 1's existing north route can transition into Town 2 if its target landing coordinates match the new map.
+After this, any route can transition into the town if its target landing coordinates match the new map.
 
-Trail 1 currently lands future Town 2 at:
+Example incoming route:
 
 ```js
 targetX: 17,
@@ -370,7 +347,7 @@ targetY: 52,
 targetDir: "up",
 ```
 
-That coordinate only makes sense for a tall trail map, not a 35-tile-high town. When Town 2 is created, update Trail 1's north route target to a valid Town 2 entrance, for example:
+Make sure the landing coordinate is on a passable tile near the town entrance. For example:
 
 ```js
 targetX: 20,
@@ -380,39 +357,37 @@ targetDir: "up",
 
 ## Step 12: Add Or Reuse Music
 
-Town 2 should use:
+The town should use its own music key:
 
 ```js
-musicKey: "town2",
+musicKey: "town4",
 ```
 
-Make sure `MUSIC_TRACKS` contains:
+Make sure `MUSIC_TRACKS` or `KA.music.registerTracks(...)` contains a matching key:
 
 ```js
-town2: "Town2.mp3",
+window.KA.music.registerTracks({ town4: "Town4.mp3" });
 ```
 
 ## Town Checklist
 
 - Add area, building, door, sign, route, object, and NPC text in all languages.
-- Create `createTown2Scene()`.
+- Create `createTown4Scene()` in `src/world/town4.js`.
 - Create a self-contained `townMap`.
-- Use `setMapTile()` and `fillMapRect()`, not Town 1's `setTile()`.
+- Use `setMapTile()` and `fillMapRect()`.
 - Create local building, interactable, object, and NPC arrays.
 - Add route triggers for entrances and exits.
 - Add buildings and door interactables.
 - Add grouped objects and rectangle interactions where needed.
-- Register the scene in `buildScenes()`.
+- Register the scene with `KA.world.registerScene(...)`.
 - Update incoming route target coordinates.
-- Generalize outdoor door handling if the town has interiors.
-- Run `node --check .\game.js`.
+- Add the world file and data pack to `index.html`.
+- Run `node --check .\src\world\town4.js` and `node tools/smoke-test.js`.
 
 ## Common Mistakes
 
-- Using the global `map` for Town 2, which edits Town 1 by mistake.
-- Forgetting to change Trail 1's future Town 2 landing coordinate.
+- Reusing another town's map or building arrays.
+- Forgetting to update the incoming route landing coordinate.
 - Creating a building with a door that does not touch a path.
 - Adding a door interactable but not creating the interior scene.
-- Leaving `scene.id === "town"` in door handling, which prevents Town 2 doors from opening.
 - Forgetting the `.door` translation key.
-- Reusing Town 1 building arrays for Town 2.

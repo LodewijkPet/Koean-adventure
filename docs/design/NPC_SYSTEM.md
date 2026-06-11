@@ -4,7 +4,7 @@ NPCs are the game's teachers in disguise. This document defines the NPC data mod
 
 ## 1. NPC Data Model
 
-Current (implemented — see `npcs` arrays and `addInteriorNpc` in `src/game.js`):
+Current (implemented - see `npcs` arrays in `src/world/*.js` and `addInteriorNpc` in `src/world/helpers.js`):
 
 ```js
 {

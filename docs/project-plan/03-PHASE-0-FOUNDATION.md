@@ -78,19 +78,19 @@ Boot order in `loop.js`: merge packs → build world scenes (registered factorie
 ## Steps (execute in order; smoke test green after EVERY step)
 
 - [x] **P0.1** Add `tools/smoke-test.js` auto-discovery: parse `index.html` script tags instead of the hardcoded file list (regex `src="([^"]+\.js)"`), so new files are tested automatically. Run: green.
-- [ ] **P0.2** Create `src/core/constants.js`; move the constant blocks; add `window.KA = { }` seed. `index.html` loads it before `game.js`. Delete moved code from game.js. Green.
-- [ ] **P0.3** Move TEXT + `t()` family to `src/core/text.js`; expose `KA.t`, `KA.text.register`. Point `mergeExternalDrillPacks` text merging at it. Green.
-- [ ] **P0.4** Move Hangul item system to `src/core/hangul.js`; words system to `src/core/words.js`; expose question builders under `KA.drills.questions`. Green.
-- [ ] **P0.5** Move save system to `src/core/save.js`; quests/flags/badges to `src/core/quests.js` with `registerChapter`/`register` APIs; convert the three existing chapter registrations to API calls (still inside game.js for now). Green.
-- [ ] **P0.6** Move drills engine to `src/core/drills.js` (registry + run/answer/input). Green.
-- [ ] **P0.7** Move audio to `src/core/audio.js` (+`KA.music.registerTracks`); speech glue to `src/core/speech.js`. Green.
-- [ ] **P0.8** Move render functions to `src/render/*.js` (tiles/objects/actors/buildings). Pure moves. Green.
-- [ ] **P0.9** Move UI draw + menu input to `src/ui/*.js`. Green.
-- [ ] **P0.10** Move world helpers to `src/world/helpers.js` exposing `KA.world`; move interactions/step-trigger logic to `src/core/interactions.js`. Green.
-- [ ] **P0.11** Split world content: `src/world/town1.js`, `trail1.js`, `town2.js`, `trail2.js`, `town3.js` — each file: its scene factory(ies), interiors, NPC resolvers, quest/flag tables, chapter registration, generated-drill config (`configureChapter3GeneratedDrills` moves into town-3's world file or stays in core where shared — sino/price builders are SHARED → keep in `core/words.js`). Register via `KA.world.registerScene`. Green.
-- [ ] **P0.12** Reduce `src/game.js` to nothing; delete it; `src/core/loop.js` is the boot file. Update README structure block + `docs/guides/create-a-town.md` + `create-a-drill.md` to the new pattern (registration API examples). Green.
-- [ ] **P0.13** Add smoke-test assertions: `KA` API surface exists (each function typeof check); registries non-empty; boot uses registration order. Green.
-- [ ] **P0.14** Update `agents.md` anchors (file map), `01-WORKSTREAMS.md` ownership rows if names changed, flip STATUS row to done, announce in STATUS merge log.
+- [x] **P0.2** Create `src/core/constants.js`; move the constant blocks; add `window.KA = { }` seed. `index.html` loads it before `game.js`. Delete moved code from game.js. Green.
+- [x] **P0.3** Move TEXT + `t()` family to `src/core/text.js`; expose `KA.t`, `KA.text.register`. Point `mergeExternalDrillPacks` text merging at it. Green.
+- [x] **P0.4** Move Hangul item system to `src/core/hangul.js`; words system to `src/core/words.js`; expose question builders under `KA.drills.questions`. Green.
+- [x] **P0.5** Move save system to `src/core/save.js`; quests/flags/badges to `src/core/quests.js` with `registerChapter`/`register` APIs; convert the three existing chapter registrations to API calls (still inside game.js for now). Green.
+- [x] **P0.6** Move drills engine to `src/core/drills.js` (registry + run/answer/input). Green.
+- [x] **P0.7** Move audio to `src/core/audio.js` (+`KA.music.registerTracks`); speech glue to `src/core/speech.js`. Green.
+- [x] **P0.8** Move render functions to `src/render/*.js` (tiles/objects/actors/buildings). Pure moves. Green.
+- [x] **P0.9** Move UI draw + menu input to `src/ui/*.js`. Green.
+- [x] **P0.10** Move world helpers to `src/world/helpers.js` exposing `KA.world`; move interactions/step-trigger logic to `src/core/interactions.js`. Green.
+- [x] **P0.11** Split world content: `src/world/town1.js`, `trail1.js`, `town2.js`, `trail2.js`, `town3.js` — each file: its scene factory(ies), interiors, NPC resolvers, quest/flag tables, chapter registration, generated-drill config (`configureChapter3GeneratedDrills` moves into town-3's world file or stays in core where shared — sino/price builders are SHARED → keep in `core/words.js`). Register via `KA.world.registerScene`. Green.
+- [x] **P0.12** Reduce `src/game.js` to nothing; delete it; `src/core/loop.js` is the boot file. Update README structure block + `docs/guides/create-a-town.md` + `create-a-drill.md` to the new pattern (registration API examples). Green.
+- [x] **P0.13** Add smoke-test assertions: `KA` API surface exists (each function typeof check); registries non-empty; boot uses registration order. Green.
+- [x] **P0.14** Update `agents.md` anchors (file map), `01-WORKSTREAMS.md` ownership rows if names changed, flip STATUS row to done, announce in STATUS merge log.
 
 ## Acceptance criteria
 
@@ -101,5 +101,5 @@ Boot order in `loop.js`: merge packs → build world scenes (registered factorie
 
 ## Hand-off notes (fill at completion)
 
-- Deviations from the file map: …
-- API additions content agents should know: …
+- Deviations from the file map: `src/game.js` is gone; runtime boot is `src/core/loop.js`. `src/core/text.js` remains larger than the target because it carries shipped engine text.
+- API additions content agents should know: use `KA.world.registerScene(...)`, `KA.quests.registerChapter(...)`, `KA.badges.register(...)`, `KA.drills.register(...)`, `KA.words.register(...)`, `KA.text.register(...)`, and `KA.music.registerTracks(...)`. A temporary demo chapter was added through `src/world/demo.js` + `data/drills/demo.js` + two `index.html` script lines, smoke-tested green, then deleted.

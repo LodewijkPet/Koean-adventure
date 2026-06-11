@@ -18,10 +18,10 @@ The bridge from recognition to production: the player **orders chunks** into a s
 - Scoring: exact order = correct; on wrong, show correct order in feedback line (params `{answer: chunks.join(" ")}`).
 - Generated builder: `KA.drills.questions.buildOrderStepFromSentence({chunks, wordIds})`; plus a generator that pulls taught sentence templates per chapter (template registry `KA.drills.sentences.register(chapterId, [{chunks, wordIds, teaches}])`).
 - Steps:
-  - [ ] E1.1 step-kind dispatch in run/answer/input/draw paths (default kind "choice" keeps today's behavior).
-  - [ ] E1.2 order-step input + state machine + plain rendering.
-  - [ ] E1.3 sentence template registry + generator + weakness hook (templates carry wordIds).
-  - [ ] E1.4 smoke test: build run with an order step, simulate correct + incorrect submission paths.
+  - [x] E1.1 step-kind dispatch in run/answer/input/draw paths (default kind "choice" keeps today's behavior).
+  - [x] E1.2 order-step input + state machine + plain rendering.
+  - [x] E1.3 sentence template registry + generator + weakness hook (templates carry wordIds).
+  - [x] E1.4 smoke test: build run with an order step, simulate correct + incorrect submission paths.
   - [ ] E1.5 retrofit ONE builder drill into each shipped chapter (town1 chunk sentences, town2 SOV, town3 orders: "사과 두 개 주세요") — these live in world files; do via TODO(E1) handoff rows in STATUS, content owners apply.
 
 ## E2 — Conversation challenges (dialog-embedded choices)
@@ -133,4 +133,5 @@ Quiz race vs. the rival: alternating questions from BOTH players' weakest items 
 
 | Feature | Merged on | Consumers notified (STATUS row) |
 | --- | --- | --- |
+| E1 order drill steps | 2026-06-11 | E1.5 remains for content owners: register templates and retrofit one builder drill per shipped chapter; see `docs/guides/create-order-drill.md` |
 | — | — | — |

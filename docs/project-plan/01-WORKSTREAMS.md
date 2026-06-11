@@ -6,7 +6,7 @@ This document is the law of parallel work. An agent = one claimed workstream. Tw
 
 | Stream | Doc | Owns (may create/edit) | Must NEVER edit |
 | --- | --- | --- | --- |
-| **FOUNDATION** (Phase 0 only) | `03` | everything in `src/`, `index.html`, `tools/smoke-test.js` | `data/drills/*` content text |
+| **FOUNDATION** (Phase 0 complete) | `03` | closed; only reopen for Phase 0 regressions | chapter content text |
 | **ENGINE** | `10` | `src/core/*.js`, `tools/smoke-test.js` (engine checks section) | `src/ui/*`, `src/render/*`, `src/world/*`, `data/*` |
 | **UI/UX** | `11` | `src/ui/*.js`, `src/styles.css` | `src/core/*`, `src/world/*`, `data/*` |
 | **AUDIO** | `12` | `src/core/audio.js` (after E-handoff), `assets/audio/*`, audio section of smoke test | everything else in `src/` |
@@ -15,7 +15,7 @@ This document is the law of parallel work. An agent = one claimed workstream. Tw
 | **QA** | `15` | `tools/*` (tests, scripts), `docs/project-plan/15-WS-QA.md` artifacts | game source (files bugs instead) |
 | **CONTENT-CH4 … CONTENT-WEST** | `21`–`30` | `src/world/<chapter>.js`, `data/drills/<chapter>.js`, `data/story/<chapter>-story.js` | every other chapter's files, `src/core|ui|render` |
 
-Until Phase 0 lands there is no `src/core|ui|render|world` split — therefore **pre-P0 only FOUNDATION touches `src/`**, and content streams may only build their `data/drills/<chapter>.js` pack (text keys, static drills, word lists — all safe, they merge via the pack registry).
+Phase 0 has landed. Use the ownership rows above: content streams own only their chapter world/data/story files, while ENGINE/UI/ART/AUDIO own their respective shared modules.
 
 ## 2. Shared files — the only two, and how to touch them
 

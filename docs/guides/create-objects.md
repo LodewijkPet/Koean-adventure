@@ -391,7 +391,7 @@ If an object appears behind or in front of the wrong thing, check where it is dr
 - Add a drawer for new `object.type` values.
 - Add tile drawing for new tile types.
 - Add solid tiles to `SOLID_TILES` only when movement should be blocked.
-- Run `node --check .\game.js`.
+- Run `node --check <changed-file.js>` and `node tools/smoke-test.js`.
 
 ## Common Mistakes
 

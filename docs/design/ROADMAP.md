@@ -78,7 +78,7 @@ Ferry from Family Village to the optional, badge-free west: **조선 민속 마�
 
 ## Standing Engineering Rules
 
-1. `node --check src/game.js` and `node tools/smoke-test.js` after every JS edit; the smoke test must end with zero failures.
+1. `node --check <changed-file.js>` and `node tools/smoke-test.js` after every JS edit; the smoke test must end with zero failures.
 2. Every visible key in `TEXT.en/ko/nl`; Korean written first.
 3. Flags append-only; save payload versioned (`SAVE_VERSION`), migrations additive.
 4. New chapter content ships as: scene builder(s) + drill pack file + quest list (every step with `whereKey`) + word list + flag table; engine changes only when a new *mechanic* is needed.

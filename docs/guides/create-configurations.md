@@ -2,7 +2,7 @@
 
 This guide explains the configuration patterns currently used by the game: music, language text, speech, map constants, colors, tiles, menu settings, and scene-level configuration.
 
-Most game configuration still lives in `game.js`, with speech provider configuration split into `tts.js`.
+Game configuration is split across `src/core/*.js`, `src/world/*.js`, `src/ui/*.js`, and `src/tts.js`.
 
 ## Configuration Areas
 
@@ -381,7 +381,7 @@ Rules:
 - Use `SOLID_TILES` for tile collision, not custom collision checks.
 - Keep scene ids stable.
 - Keep object `type` values stable after renderers depend on them.
-- Run `node --check .\game.js` after edits.
+- Run `node --check <changed-file.js>` and `node tools/smoke-test.js` after edits.
 
 ## Common Mistakes
 

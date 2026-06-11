@@ -43,7 +43,12 @@ http://localhost:8000
 
 ```text
 index.html          entry point (open this)
-src/                game engine (game.js), speech (tts.js), styles
+src/core/           shared runtime, save/load, registries, audio, loop
+src/render/         map, object, building, and actor drawing helpers
+src/ui/             HUD, menus, study boards, dialogs, and panels
+src/world/          chapter and route scene modules
+src/tts.js          browser speech-synthesis voice selection
+src/styles.css      canvas and page styles
 assets/audio/       music tracks
 data/drills/        per-chapter content packs (text, drills, word lists)
 docs/design/        the design bible: vision, curriculum, world, quests, NPCs, roadmap

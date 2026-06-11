@@ -4,7 +4,7 @@ The quest framework: data model, quest types, authoring templates, rewards, and 
 
 ## 1. Current Implementation (baseline)
 
-Quests are flag-driven step lists (see `TOWN1_QUESTS` in `src/game.js`):
+Quests are flag-driven step lists (see `TOWN1_QUESTS` in `src/world/town1.js`):
 
 ```js
 {
