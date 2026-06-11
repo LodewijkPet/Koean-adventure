@@ -1,68 +1,48 @@
 # Agent Handoff
 
-This project is a browser-based Korean learning mini-game. Continue from the current Town 1 Hangul-basics work unless the user explicitly redirects you.
+Korea Adventure is a browser-based Korean-learning RPG (no build step). Three chapters are playable: Haneul Town (Hangul), Name City (first sentences, First Words Badge), and Number Market (numbers/counters/prices, Number Badge), connected by Trails 1–2.
 
 ## Start Here
 
-Read these first:
+1. `docs/design/MASTER_VISION.md` — what the game is and the design rules.
+2. `docs/design/ROADMAP.md` — what is shipped and what comes next.
+3. `docs/design/CURRICULUM_MAP.md` — the chapter-by-chapter language curriculum.
+4. `docs/guides/create-a-town.md` and `docs/guides/create-a-drill.md` — implementation patterns.
 
-1. `docs/town1-hangul-basics-plan.md`
-2. `docs/learning-implementation-plan.md`
-3. `docs/create-a-drill.md`
-4. `docs/create-objects.md`
+`docs/design/` is the source of truth. `docs/plans/` holds active working notes; `docs/archive/` holds finished plans.
 
-Use `docs/town1-hangul-basics-plan.md` as the active source of truth for the next Town 1 improvements.
+## Layout
 
-## Current Town 1 State
+- `src/game.js` — the whole engine + Town 1/2/3 scenes (TEXT, DRILLS, STUDY_BOARDS, quests, save system, menus, rendering).
+- `src/tts.js` — speech synthesis voice selection.
+- `data/drills/*.js` — per-chapter packs merged at boot: text keys (EN/KO/NL), static drills, word lists.
+- `tools/smoke-test.js` — headless boot + integrity test. **Run it after every change.**
 
-The latest implemented feature is the elementary school in Town 1.
+## Key Systems (search anchors in src/game.js)
 
-Important `game.js` anchors:
-
-- Text keys for the school and study boards: search `area.elementarySchool`.
-- Study-board data: search `const STUDY_BOARDS`.
-- School outdoor building: search `sceneId: "elementarySchool"`.
-- School path shaping: search `setTile(7, 9, "path")`.
-- School interior: search `const elementarySchool = createInteriorScene`.
-- Study-board interactions: search `studyBoardKey`.
-- Study-board renderer: search `function drawStudyBoard`.
-
-Do not start by redesigning Town 2. Town 2 already has separate planning files and should stay out of scope unless requested.
-
-## Next Work
-
-The next agent should implement a clean Town 1 quest/progress system before adding more drills.
-
-Recommended order:
-
-1. Add progress flags and quest-level storage.
-2. Set flags for entering the school, reading the vowel map, reading the consonant map, and talking to the teacher.
-3. Convert the fountain into levelled romanization practice for basic vowels first.
-4. Add consonant practice after the consonant map flag.
-5. Add classroom desk practice for first syllable combinations.
-6. Add blackboard exam checks after practice levels are complete.
-
-Keep the fountain as practice. Keep the blackboard or future gym as exam content.
+- Save system: `SAVE_KEY`, `loadSave`, `scheduleSave` (localStorage, versioned).
+- Quests/flags: `QUEST_CHAPTERS`, `TOWN1_FLAGS`/`TOWN2_FLAGS`/`TRAIL2_FLAGS`/`TOWN3_FLAGS`, `setProgressFlag`. Every quest step has `objectiveKey` + `whereKey` (an `area.*` key).
+- Badges: `BADGES`, awarded via drill `completionFlags`.
+- Dictionaries: Hangul items (`HANGUL_ALL_ITEMS`) and words (`WORD_ITEMS`, registered from pack `words` arrays), both with seen/learning/mastered tracking.
+- Generated drills: `generateHangulStepsFromPool`, `generateSinoSteps`, `generateNativeSteps`, `buildSinoPriceStep`, `buildWordQuestion` — weakness-first selection, multiple question directions per item. Always set `shuffleChoices: true` on generated drills.
+- NPC dialogue: `conversationKeys` (fixed), `conversationPools` (random variety), `conversationResolver` (state-aware). Guides use `chapterGuideLines(chapterId, introKey)` to point players to the next objective.
 
 ## Editing Rules
 
-- Use `apply_patch` for manual file edits.
-- Keep changes scoped to the requested feature.
-- Do not revert user changes.
-- Every visible string must have `TEXT.en`, `TEXT.ko`, and `TEXT.nl` entries.
-- Use existing helper patterns before adding new systems.
-- Keep documents clean and update `docs/town1-hangul-basics-plan.md` when implementation changes the plan.
-- Run `node --check .\game.js` after JavaScript edits.
+- Every visible string needs `TEXT.en`, `TEXT.ko`, and `TEXT.nl` entries (engine text in `src/game.js`, chapter text in its pack).
+- Korean is written first; EN/NL translate the Korean.
+- Flags are append-only; never rename shipped flags (saves depend on them).
+- Quest steps must include a `whereKey` so the panel/journal can say where to go.
+- Ambient NPCs should have at least two conversation pools; quest NPCs use resolvers.
+- New chapters ship as: scene builder(s) in `src/game.js` + a `data/drills/<area>.js` pack + quest list + flags + words.
+- After JavaScript edits run `node --check src/game.js` and `node tools/smoke-test.js` (must end with SMOKE TEST PASSED and zero failures).
+- Do not revert user changes. Keep documentation in sync with what you implement.
 
 ## Browser Verification
 
-For gameplay/UI changes:
+For gameplay/UI changes beyond the smoke test:
 
-1. Start a local server, for example `py -m http.server 8000`.
-2. Open the game in the in-app browser.
-3. Verify the changed interaction by keyboard through the canvas.
-4. Check at least one desktop view.
-5. Check mobile layout when board or UI sizing changed.
-6. Confirm there are no browser console errors.
-
-The current game does not require a build step.
+1. `py -m http.server 8000` and open `http://localhost:8000`.
+2. Drive the changed interaction by keyboard through the canvas.
+3. Check desktop and one narrow/mobile layout when UI sizing changed.
+4. Confirm zero console errors.

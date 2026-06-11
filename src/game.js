@@ -62,33 +62,13 @@ const LANGUAGES = [
   { code: "nl", key: "language.dutch" },
 ];
 
-const SPEECH_LANGUAGE_TAGS = {
-  en: "en-US",
-  ko: "ko-KR",
-  nl: "nl-NL",
-};
-
-const EDGE_NATURAL_VOICE_HINTS = {
-  en: {
-    female: ["aria", "jenny", "michelle", "emma", "ava"],
-    male: ["guy", "davis", "tony", "brian", "andrew"],
-  },
-  ko: {
-    female: ["sunhi"],
-    male: ["injoon"],
-  },
-  nl: {
-    female: ["fenna", "colette"],
-    male: ["maarten"],
-  },
-};
-
 const MUSIC_TRACKS = {
-  intro: "Intro.mp3",
-  town1: "Town1.mp3",
-  town2: "Town2.mp3",
-  trail1: "Trail1.mp3",
-  trail2: "Trail2.mp3",
+  intro: "assets/audio/Intro.mp3",
+  town1: "assets/audio/Town1.mp3",
+  town2: "assets/audio/Town2.mp3",
+  town3: "assets/audio/Intro.mp3",
+  trail1: "assets/audio/Trail1.mp3",
+  trail2: "assets/audio/Trail2.mp3",
 };
 
 const musicState = {
@@ -2603,6 +2583,573 @@ Object.assign(TEXT.nl, {
   "route.trail2.pending": "Het volgende pad ligt voorbij de stadspoort, maar is nog niet klaar.",
 });
 
+Object.assign(TEXT.en, {
+  "dictionary.hangul.category.aspirated": "Aspirated Signs",
+  "dictionary.hangul.category.basicConsonants": "Basic Consonants",
+  "dictionary.hangul.category.basicVowels": "Basic Vowels",
+  "dictionary.hangul.category.batchim": "Batchim",
+  "dictionary.hangul.category.doubleConsonants": "Double Consonants",
+  "dictionary.hangul.category.firstSyllables": "First Syllables",
+  "dictionary.hangul.empty": "No entries seen yet.",
+  "dictionary.hangul.page": "{page}/{pages}",
+  "dictionary.hangul.panelSummary": "{seen}/{total} seen, {mastered} M",
+  "dictionary.hangul.status.learning": "Learning",
+  "dictionary.hangul.status.mastered": "Mastered",
+  "dictionary.hangul.status.seen": "Seen",
+  "dictionary.hangul.status.unseen": "Unseen",
+  "dictionary.hangul.summary": "Seen {seen}/{total}  Mastered {mastered}/{total}",
+  "dictionary.hangul.title": "Hangul Dictionary",
+  "dictionary.hangul.unseenValue": "???",
+  "drill.hangul.choice.literal": "{value}",
+  "drill.hangul.feedback.correctBatchim": "{glyph}: {answer}.",
+  "drill.hangul.feedback.correctMatch": "{glyph} matches {answer}.",
+  "drill.hangul.feedback.correctSyllable": "{left} + {right} makes {glyph}, read {answer}.",
+  "drill.hangul.feedback.correctTransform": "{base} becomes {glyph}, read {answer}.",
+  "drill.hangul.feedback.incorrectBatchim": "Look under the block: {glyph}: {answer}.",
+  "drill.hangul.feedback.incorrectMatch": "Correct match: {glyph} is {answer}.",
+  "drill.hangul.feedback.incorrectSyllable": "Build it left to right: {left} + {right} makes {glyph}, read {answer}.",
+  "drill.hangul.feedback.incorrectTransform": "The correct sign is {glyph}, read {answer}.",
+  "drill.hangul.prompt.aspiratedToSign": "Which aspirated sign comes from {base} + ㅎ?",
+  "drill.hangul.prompt.aspiratedToSound": "Which sound fits aspirated {glyph}?",
+  "drill.hangul.prompt.batchimFinal": "Which final sound does {glyph} use?",
+  "drill.hangul.prompt.batchimPresence": "Does {glyph} have batchim?",
+  "drill.hangul.prompt.consonantToName": "Which letter name fits {glyph}?",
+  "drill.hangul.prompt.doubleBatchimFinal": "For {glyph} with {cluster}, which final is used here?",
+  "drill.hangul.prompt.doubleToSign": "Which double sign comes from {base} + {base}?",
+  "drill.hangul.prompt.doubleToSound": "Which tense sound fits {glyph}?",
+  "drill.hangul.prompt.syllableToSound": "Combine {left} + {right}. Choose how {glyph} reads.",
+  "drill.hangul.prompt.vowelToSound": "Which sound name fits {glyph}?",
+  "menu.dictionary": "Hangul Dictionary",
+  "panel.hangulDex": "Hangul Dex",
+});
+
+Object.assign(TEXT.ko, {
+  "dictionary.hangul.category.aspirated": "거센소리 글자",
+  "dictionary.hangul.category.basicConsonants": "기본 자음",
+  "dictionary.hangul.category.basicVowels": "기본 모음",
+  "dictionary.hangul.category.batchim": "받침",
+  "dictionary.hangul.category.doubleConsonants": "쌍자음",
+  "dictionary.hangul.category.firstSyllables": "첫 음절",
+  "dictionary.hangul.empty": "아직 본 항목이 없습니다.",
+  "dictionary.hangul.page": "{page}/{pages}",
+  "dictionary.hangul.panelSummary": "{seen}/{total} 봄, 숙달 {mastered}",
+  "dictionary.hangul.status.learning": "연습 중",
+  "dictionary.hangul.status.mastered": "숙달",
+  "dictionary.hangul.status.seen": "봄",
+  "dictionary.hangul.status.unseen": "미발견",
+  "dictionary.hangul.summary": "봄 {seen}/{total}  숙달 {mastered}/{total}",
+  "dictionary.hangul.title": "한글 도감",
+  "dictionary.hangul.unseenValue": "???",
+  "drill.hangul.choice.literal": "{value}",
+  "drill.hangul.feedback.correctBatchim": "{glyph}: {answer}.",
+  "drill.hangul.feedback.correctMatch": "{glyph}은/는 {answer}입니다.",
+  "drill.hangul.feedback.correctSyllable": "{left} + {right}은/는 {glyph}이 되고 {answer}로 읽습니다.",
+  "drill.hangul.feedback.correctTransform": "{base}에서 {glyph}이 되고 {answer}로 읽습니다.",
+  "drill.hangul.feedback.incorrectBatchim": "글자 아래를 보세요: {glyph}: {answer}.",
+  "drill.hangul.feedback.incorrectMatch": "맞는 답은 {glyph} = {answer}입니다.",
+  "drill.hangul.feedback.incorrectSyllable": "왼쪽부터 보세요: {left} + {right}은/는 {glyph}, 읽기는 {answer}입니다.",
+  "drill.hangul.feedback.incorrectTransform": "맞는 글자는 {glyph}, 읽기는 {answer}입니다.",
+  "drill.hangul.prompt.aspiratedToSign": "{base} + ㅎ에서 나오는 거센소리 글자는 무엇인가요?",
+  "drill.hangul.prompt.aspiratedToSound": "거센소리 {glyph}에 맞는 소리는 무엇인가요?",
+  "drill.hangul.prompt.batchimFinal": "{glyph}은/는 어떤 끝소리를 쓰나요?",
+  "drill.hangul.prompt.batchimPresence": "{glyph}에 받침이 있나요?",
+  "drill.hangul.prompt.consonantToName": "{glyph}에 맞는 글자 이름은 무엇인가요?",
+  "drill.hangul.prompt.doubleBatchimFinal": "{cluster}이 있는 {glyph}에서는 어떤 받침을 쓰나요?",
+  "drill.hangul.prompt.doubleToSign": "{base} + {base}에서 나오는 쌍자음은 무엇인가요?",
+  "drill.hangul.prompt.doubleToSound": "{glyph}에 맞는 된소리는 무엇인가요?",
+  "drill.hangul.prompt.syllableToSound": "{left} + {right}을/를 합치세요. {glyph}은/는 어떻게 읽나요?",
+  "drill.hangul.prompt.vowelToSound": "{glyph}에 맞는 소리 이름은 무엇인가요?",
+  "menu.dictionary": "한글 도감",
+  "panel.hangulDex": "한글 도감",
+});
+
+Object.assign(TEXT.nl, {
+  "dictionary.hangul.category.aspirated": "Aangeblazen Tekens",
+  "dictionary.hangul.category.basicConsonants": "Basismedeklinkers",
+  "dictionary.hangul.category.basicVowels": "Basisklinkers",
+  "dictionary.hangul.category.batchim": "Batchim",
+  "dictionary.hangul.category.doubleConsonants": "Dubbele Medeklinkers",
+  "dictionary.hangul.category.firstSyllables": "Eerste Lettergrepen",
+  "dictionary.hangul.empty": "Nog geen items gezien.",
+  "dictionary.hangul.page": "{page}/{pages}",
+  "dictionary.hangul.panelSummary": "{seen}/{total} gezien, {mastered} B",
+  "dictionary.hangul.status.learning": "Aan het leren",
+  "dictionary.hangul.status.mastered": "Beheerst",
+  "dictionary.hangul.status.seen": "Gezien",
+  "dictionary.hangul.status.unseen": "Ongezien",
+  "dictionary.hangul.summary": "Gezien {seen}/{total}  Beheerst {mastered}/{total}",
+  "dictionary.hangul.title": "Hangulwoordenboek",
+  "dictionary.hangul.unseenValue": "???",
+  "drill.hangul.choice.literal": "{value}",
+  "drill.hangul.feedback.correctBatchim": "{glyph}: {answer}.",
+  "drill.hangul.feedback.correctMatch": "{glyph} hoort bij {answer}.",
+  "drill.hangul.feedback.correctSyllable": "{left} + {right} maakt {glyph}, gelezen als {answer}.",
+  "drill.hangul.feedback.correctTransform": "{base} wordt {glyph}, gelezen als {answer}.",
+  "drill.hangul.feedback.incorrectBatchim": "Kijk onder het blok: {glyph}: {answer}.",
+  "drill.hangul.feedback.incorrectMatch": "De juiste match is {glyph} = {answer}.",
+  "drill.hangul.feedback.incorrectSyllable": "Bouw van links naar rechts: {left} + {right} maakt {glyph}, gelezen als {answer}.",
+  "drill.hangul.feedback.incorrectTransform": "Het juiste teken is {glyph}, gelezen als {answer}.",
+  "drill.hangul.prompt.aspiratedToSign": "Welk aangeblazen teken komt uit {base} + ㅎ?",
+  "drill.hangul.prompt.aspiratedToSound": "Welke klank past bij aangeblazen {glyph}?",
+  "drill.hangul.prompt.batchimFinal": "Welke eindklank gebruikt {glyph}?",
+  "drill.hangul.prompt.batchimPresence": "Heeft {glyph} batchim?",
+  "drill.hangul.prompt.consonantToName": "Welke letternaam past bij {glyph}?",
+  "drill.hangul.prompt.doubleBatchimFinal": "Welke eindklank gebruik je hier voor {glyph} met {cluster}?",
+  "drill.hangul.prompt.doubleToSign": "Welk dubbel teken komt uit {base} + {base}?",
+  "drill.hangul.prompt.doubleToSound": "Welke gespannen klank past bij {glyph}?",
+  "drill.hangul.prompt.syllableToSound": "Combineer {left} + {right}. Hoe lees je {glyph}?",
+  "drill.hangul.prompt.vowelToSound": "Welke klanknaam past bij {glyph}?",
+  "menu.dictionary": "Hangulwoordenboek",
+  "panel.hangulDex": "Hangul Dex",
+});
+
+Object.assign(TEXT.en, {
+  "menu.journal": "Quest Journal",
+  "menu.words": "Word Dictionary",
+  "dictionary.hangul.category.compoundVowels": "Compound Vowels",
+  "journal.title": "Quest Journal",
+  "journal.badges": "Badges",
+  "journal.noBadges": "No badges yet",
+  "journal.complete": "Complete",
+  "journal.hint": "Next",
+  "journal.chapter.town1": "Ch.1 Haneul Town",
+  "journal.chapter.town2": "Ch.2 Name City",
+  "journal.chapter.town3": "Ch.3 Number Market",
+  "badge.firstWords": "First Words Badge",
+  "badge.numbers": "Number Badge",
+  "panel.badges": "Badges",
+  "panel.words": "Words",
+  "dictionary.words.title": "Word Dictionary",
+  "dictionary.words.summary": "Seen {seen} - Mastered {mastered}/{total}",
+  "dictionary.words.panelSummary": "{seen} seen - {mastered} done",
+  "dictionary.words.empty": "No words found here yet. Keep exploring!",
+  "dictionary.words.category.position": "Position & Place",
+  "dictionary.words.category.nature": "Nature & Trail",
+  "dictionary.words.category.numbersSino": "Sino Numbers",
+  "dictionary.words.category.numbersNative": "Native Numbers",
+  "dictionary.words.category.counters": "Counters",
+  "dictionary.words.category.shopping": "Shopping & Money",
+  "dictionary.words.category.food": "Food & Market",
+  "dictionary.words.category.colors": "Colors",
+  "dictionary.words.category.people": "People",
+  "dictionary.words.category.cafe": "Cafe & Drinks",
+  "settings.erase": "Erase Save",
+  "settings.eraseArmed": "Press again to erase!",
+  "drill.word.prompt.meaning": "What does {hangul} mean?",
+  "drill.word.prompt.hangul": "Which word means \"{meaning}\"?",
+  "drill.word.feedback.correct": "{hangul} = {meaning}.",
+  "drill.word.feedback.incorrect": "Remember: {hangul} means {meaning}.",
+  "drill.hangul.prompt.compoundCombine": "Which vowel comes from {left} + {right}?",
+  "drill.hangul.prompt.soundToVowel": "Which vowel makes the sound \"{answer}\"?",
+  "drill.hangul.prompt.nameToConsonant": "Which consonant is named {answer}?",
+  "drill.hangul.prompt.readingToSyllable": "Which block reads \"{answer}\"?",
+  "drill.word.prompt.priceToReading": "Read the price tag: {value}원",
+  "drill.word.prompt.readingToPrice": "{reading} 원 - how much is that?",
+  "drill.word.prompt.countPhrase": "{phrase} - how many?",
+  "npc.guide.next": "Next goal: {objective} ({where})",
+  "npc.guide.allDone": "Every task in this chapter is complete. The road onward is open!",
+  "panel.where": "Where",
+  "npc.mina.pool2.line1": "학교는 북서쪽에 있어요.",
+  "npc.mina.pool2.line2": "The school is northwest - that is where reading begins.",
+  "npc.joon.pool2.line1": "북쪽 길에서 다리를 건너요.",
+  "npc.joon.pool2.line2": "Cross the creek bridge on the north trail and keep going straight.",
+  "npc.sora.pool2.line1": "오늘은 하늘이 파란색이에요!",
+  "npc.sora.pool2.line2": "Photographers love a blue-sky day like this.",
+  "npc.mrHan.pool2.line1": "바다가 잔잔해요. 물이 차가워요.",
+  "npc.mrHan.pool2.line2": "Calm sea today, but the water stays cold.",
+  "npc.marketClerk.pool2.line1": "사과하고 물 있어요.",
+  "npc.marketClerk.pool2.line2": "Apples and water in stock - just say 주세요 when you are ready.",
+  "npc.teaOwner.pool2.line1": "차 한 잔 어때요?",
+  "npc.teaOwner.pool2.line2": "One warm cup, and the road feels shorter.",
+  "npc.trailKeeper.pool2.line1": "비가 오면 다리가 미끄러워요.",
+  "npc.trailKeeper.pool2.line2": "When rain comes, those footboards get slippery.",
+  "npc.town2GateGreeter.pool2.line1": "광장은 북쪽에 있어요.",
+  "npc.town2GateGreeter.pool2.line2": "The plaza is just north - start at the review board.",
+  "npc.town2LabelRunner.pool2.line1": "저건 박물관이에요!",
+  "npc.town2LabelRunner.pool2.line2": "That far building is the Label Museum - 저건 points far away.",
+  "npc.town2Resident.pool2.line1": "시청은 큰 갈색 지붕이에요.",
+  "npc.town2Resident.pool2.line2": "City Hall is the big brown roof up north.",
+  "npc.town2ReviewClerk.pool2.line1": "연습은 언제나 무료예요.",
+  "npc.town2ReviewClerk.pool2.line2": "Practice is always free - exams are the spicy part.",
+  "npc.town2ActionCoach.pool2.line1": "읽어요, 마셔요, 먹어요, 써요!",
+  "npc.town2ActionCoach.pool2.line2": "Watch the actors first, then try the board.",
+  "drill.trail2MirrorVowels.title": "Mirror Shrine: Compound Vowels",
+  "drill.town3SinoNumbers.title": "Abacus: Sino-Korean Numbers",
+  "drill.town3NativeNumbers.title": "Abacus: Native Korean Numbers",
+  "drill.town3SinoExam.title": "Board Check: Sino Numbers",
+  "drill.town3NativeExam.title": "Board Check: Native Numbers",
+  "drill.town3MarketReview.title": "Market Review Board",
+  "study.compoundVowels.title": "Compound Vowels",
+  "study.compoundVowels.subtitle": "Two vowel shapes combine into one sound.",
+  "study.sinoNumbers.title": "Sino-Korean Numbers",
+  "study.sinoNumbers.subtitle": "Used for money, minutes, dates, and phone numbers.",
+  "study.nativeNumbers.title": "Native Korean Numbers",
+  "study.nativeNumbers.subtitle": "Used for counting things, people, and hours.",
+  "study.counters.title": "Counters",
+  "study.counters.subtitle": "Korean counts with native number + counter word.",
+  "study.counters.entry.gae": "things (사과 두 개)",
+  "study.counters.entry.myeong": "people (학생 세 명)",
+  "study.counters.entry.mari": "animals (고양이 한 마리)",
+  "study.counters.entry.byeong": "bottles (물 두 병)",
+  "study.counters.entry.jan": "cups (차 한 잔)",
+  "study.counters.entry.gwon": "books (책 네 권)",
+  "study.counters.entry.sal": "years of age (다섯 살)",
+  "quest.town2.arrival": "Arrive in Name City",
+  "quest.town2.arrival.greet": "Talk to the gate greeter.",
+  "quest.town2.identity": "Identity Office",
+  "quest.town2.identity.pass": "Pass the registration task.",
+  "quest.town2.lostFound": "Lost and Found",
+  "quest.town2.lostFound.pass": "Pass the presence check.",
+  "quest.town2.labels": "Label Museum",
+  "quest.town2.labels.pass": "Pass the distance labels task.",
+  "quest.town2.actions": "Action Park",
+  "quest.town2.actions.pass": "Pass the action task.",
+  "quest.town2.readingReview": "Reading Review",
+  "quest.town2.readingReview.pass": "Pass the reading review.",
+  "quest.town2.firstWordsBadge": "First Words Badge",
+  "quest.town2.firstWordsBadge.podium": "Pass the badge exam at the City Hall podium.",
+  "quest.trail2.mirrorVowels": "Mirror Shrine",
+  "quest.trail2.mirrorVowels.theory": "Read the mirror shrine board.",
+  "quest.trail2.mirrorVowels.practice": "Pass the mirror vowel practice.",
+  "quest.trail2.location": "Where Is It?",
+  "quest.trail2.location.pass": "Pass the location post drill.",
+  "quest.trail2.also": "Me Too!",
+  "quest.trail2.also.pass": "Pass the echo twins drill.",
+  "quest.trail2.lostKey": "The Lost Key",
+  "quest.trail2.lostKey.start": "Talk to the shrine keeper.",
+  "quest.trail2.lostKey.find": "Search under the rocks for the key.",
+  "quest.trail2.lostKey.return": "Return the key to the shrine keeper.",
+  "quest.town3.sino": "Sino Numbers",
+  "quest.town3.sino.theory": "Read the sino number board.",
+  "quest.town3.sino.practice": "Pass abacus sino practice.",
+  "quest.town3.sino.exam": "Pass the sino board check.",
+  "quest.town3.native": "Native Numbers",
+  "quest.town3.native.theory": "Read the native number board.",
+  "quest.town3.native.practice": "Pass abacus native practice.",
+  "quest.town3.native.exam": "Pass the native board check.",
+  "quest.town3.counters": "Counters",
+  "quest.town3.counters.theory": "Read the counter board.",
+  "quest.town3.counters.practice": "Pass the counter stall drill.",
+  "quest.town3.prices": "Market Prices",
+  "quest.town3.prices.theory": "Read the plaza price board.",
+  "quest.town3.prices.practice": "Pass the price reading drill.",
+  "quest.town3.shoppingList": "Grandma's Shopping List",
+  "quest.town3.shoppingList.help": "Help the grandma read her list.",
+  "quest.town3.cafe": "Cafe Order",
+  "quest.town3.cafe.order": "Order at the snack cafe counter.",
+  "quest.town3.numberBadge": "Number Badge",
+  "quest.town3.numberBadge.podium": "Pass the guild badge exam.",
+  "npc.town2RoadGuard.noBadge1": "The north trail is open only to badge holders.",
+  "npc.town2RoadGuard.noBadge2": "Pass the City Hall exam first. 시청에 가요!",
+  "npc.town2RoadGuard.badge1": "That is the First Words Badge! The road is open.",
+  "npc.town2RoadGuard.badge2": "Follow the mirror path north. 조심하세요!",
+  "npc.town2CityLeader.intro1": "Our five station rooms test everything Chapter 1 taught.",
+  "npc.town2CityLeader.intro2": "Pass all five stations, then face the badge podium.",
+  "npc.town2CityLeader.ready1": "All stations passed! The podium in the center awaits you.",
+  "npc.town2CityLeader.done1": "You carry the First Words Badge. The north road is yours.",
+  "object.town2BadgePodium.locked.line1": "The podium is sealed. Five station lights are not all lit yet.",
+  "route.trail2.locked": "A gate blocks the trail. Only First Words Badge holders may pass.",
+  "route.trail3.pending": "The road north is still buried under market crates. Come back later.",
+});
+
+Object.assign(TEXT.ko, {
+  "menu.journal": "퀘스트 일지",
+  "menu.words": "단어 사전",
+  "dictionary.hangul.category.compoundVowels": "복합 모음",
+  "journal.title": "퀘스트 일지",
+  "journal.badges": "배지",
+  "journal.noBadges": "아직 배지가 없어요",
+  "journal.complete": "완료",
+  "journal.hint": "다음",
+  "journal.chapter.town1": "1장 하늘 마을",
+  "journal.chapter.town2": "2장 이름시",
+  "journal.chapter.town3": "3장 숫자 시장",
+  "badge.firstWords": "첫말 배지",
+  "badge.numbers": "숫자 배지",
+  "panel.badges": "배지",
+  "panel.words": "단어",
+  "dictionary.words.title": "단어 사전",
+  "dictionary.words.summary": "본 단어 {seen} - 마스터 {mastered}/{total}",
+  "dictionary.words.panelSummary": "{seen} 봄 - {mastered} 완료",
+  "dictionary.words.empty": "아직 여기에는 단어가 없어요. 계속 탐험하세요!",
+  "dictionary.words.category.position": "위치",
+  "dictionary.words.category.nature": "자연과 길",
+  "dictionary.words.category.numbersSino": "한자어 숫자",
+  "dictionary.words.category.numbersNative": "고유어 숫자",
+  "dictionary.words.category.counters": "단위 명사",
+  "dictionary.words.category.shopping": "쇼핑과 돈",
+  "dictionary.words.category.food": "음식과 시장",
+  "dictionary.words.category.colors": "색깔",
+  "dictionary.words.category.people": "사람",
+  "dictionary.words.category.cafe": "카페와 음료",
+  "settings.erase": "저장 지우기",
+  "settings.eraseArmed": "지우려면 다시 누르세요!",
+  "drill.word.prompt.meaning": "{hangul}은/는 무슨 뜻인가요?",
+  "drill.word.prompt.hangul": "\"{meaning}\"을/를 뜻하는 단어는 무엇인가요?",
+  "drill.word.feedback.correct": "{hangul} = {meaning}.",
+  "drill.word.feedback.incorrect": "{hangul}은/는 {meaning}라는 뜻이에요.",
+  "drill.hangul.prompt.compoundCombine": "{left} + {right}에서 나오는 모음은 무엇인가요?",
+  "drill.hangul.prompt.soundToVowel": "\"{answer}\" 소리를 내는 모음은 무엇인가요?",
+  "drill.hangul.prompt.nameToConsonant": "이름이 {answer}인 자음은 무엇인가요?",
+  "drill.hangul.prompt.readingToSyllable": "\"{answer}\"로 읽는 글자는 무엇인가요?",
+  "drill.word.prompt.priceToReading": "가격표를 읽으세요: {value}원",
+  "drill.word.prompt.readingToPrice": "{reading} 원 - 얼마인가요?",
+  "drill.word.prompt.countPhrase": "{phrase} - 몇 개인가요?",
+  "npc.guide.next": "다음 목표: {objective} ({where})",
+  "npc.guide.allDone": "이 장의 모든 과제를 끝냈어요. 다음 길이 열려 있어요!",
+  "panel.where": "장소",
+  "npc.mina.pool2.line1": "학교는 북서쪽에 있어요.",
+  "npc.mina.pool2.line2": "읽기는 학교에서 시작해요.",
+  "npc.joon.pool2.line1": "북쪽 길에서 다리를 건너요.",
+  "npc.joon.pool2.line2": "개울 다리를 건너서 곧장 가세요.",
+  "npc.sora.pool2.line1": "오늘은 하늘이 파란색이에요!",
+  "npc.sora.pool2.line2": "사진가는 이런 파란 하늘을 좋아해요.",
+  "npc.mrHan.pool2.line1": "바다가 잔잔해요. 물이 차가워요.",
+  "npc.mrHan.pool2.line2": "오늘 바다는 잔잔하지만 물은 차가워요.",
+  "npc.marketClerk.pool2.line1": "사과하고 물 있어요.",
+  "npc.marketClerk.pool2.line2": "준비되면 주세요라고 말해 주세요.",
+  "npc.teaOwner.pool2.line1": "차 한 잔 어때요?",
+  "npc.teaOwner.pool2.line2": "따뜻한 차 한 잔이면 길이 짧게 느껴져요.",
+  "npc.trailKeeper.pool2.line1": "비가 오면 다리가 미끄러워요.",
+  "npc.trailKeeper.pool2.line2": "비가 오면 발판이 미끄러우니 조심하세요.",
+  "npc.town2GateGreeter.pool2.line1": "광장은 북쪽에 있어요.",
+  "npc.town2GateGreeter.pool2.line2": "광장은 바로 북쪽이에요. 복습 게시판부터 보세요.",
+  "npc.town2LabelRunner.pool2.line1": "저건 박물관이에요!",
+  "npc.town2LabelRunner.pool2.line2": "저 멀리 건물이 라벨 박물관이에요. 저건은 먼 것을 가리켜요.",
+  "npc.town2Resident.pool2.line1": "시청은 큰 갈색 지붕이에요.",
+  "npc.town2Resident.pool2.line2": "북쪽의 큰 갈색 지붕이 시청이에요.",
+  "npc.town2ReviewClerk.pool2.line1": "연습은 언제나 무료예요.",
+  "npc.town2ReviewClerk.pool2.line2": "연습은 공짜지만 시험은 매워요.",
+  "npc.town2ActionCoach.pool2.line1": "읽어요, 마셔요, 먹어요, 써요!",
+  "npc.town2ActionCoach.pool2.line2": "먼저 배우들을 보고 게시판에 도전하세요.",
+  "drill.trail2MirrorVowels.title": "거울 사당: 복합 모음",
+  "drill.town3SinoNumbers.title": "주판: 한자어 숫자",
+  "drill.town3NativeNumbers.title": "주판: 고유어 숫자",
+  "drill.town3SinoExam.title": "칠판 시험: 한자어 숫자",
+  "drill.town3NativeExam.title": "칠판 시험: 고유어 숫자",
+  "drill.town3MarketReview.title": "시장 복습 게시판",
+  "study.compoundVowels.title": "복합 모음",
+  "study.compoundVowels.subtitle": "두 모음이 합쳐져 하나의 소리가 됩니다.",
+  "study.sinoNumbers.title": "한자어 숫자",
+  "study.sinoNumbers.subtitle": "돈, 분, 날짜, 전화번호에 씁니다.",
+  "study.nativeNumbers.title": "고유어 숫자",
+  "study.nativeNumbers.subtitle": "물건, 사람, 시간을 셀 때 씁니다.",
+  "study.counters.title": "단위 명사",
+  "study.counters.subtitle": "고유어 숫자 + 단위 명사로 셉니다.",
+  "study.counters.entry.gae": "물건 (사과 두 개)",
+  "study.counters.entry.myeong": "사람 (학생 세 명)",
+  "study.counters.entry.mari": "동물 (고양이 한 마리)",
+  "study.counters.entry.byeong": "병 (물 두 병)",
+  "study.counters.entry.jan": "잔 (차 한 잔)",
+  "study.counters.entry.gwon": "책 (책 네 권)",
+  "study.counters.entry.sal": "나이 (다섯 살)",
+  "quest.town2.arrival": "이름시 도착",
+  "quest.town2.arrival.greet": "문지기와 이야기하세요.",
+  "quest.town2.identity": "정보 센터",
+  "quest.town2.identity.pass": "등록 과제를 통과하세요.",
+  "quest.town2.lostFound": "분실물 센터",
+  "quest.town2.lostFound.pass": "있어요/없어요 과제를 통과하세요.",
+  "quest.town2.labels": "라벨 박물관",
+  "quest.town2.labels.pass": "이건/그건/저건 과제를 통과하세요.",
+  "quest.town2.actions": "동작 공원",
+  "quest.town2.actions.pass": "동작 과제를 통과하세요.",
+  "quest.town2.readingReview": "읽기 복습",
+  "quest.town2.readingReview.pass": "읽기 복습을 통과하세요.",
+  "quest.town2.firstWordsBadge": "첫말 배지",
+  "quest.town2.firstWordsBadge.podium": "시청 단상에서 배지 시험을 통과하세요.",
+  "quest.trail2.mirrorVowels": "거울 사당",
+  "quest.trail2.mirrorVowels.theory": "거울 사당 게시판을 읽으세요.",
+  "quest.trail2.mirrorVowels.practice": "거울 모음 연습을 통과하세요.",
+  "quest.trail2.location": "어디에 있어요?",
+  "quest.trail2.location.pass": "위치 표지판 연습을 통과하세요.",
+  "quest.trail2.also": "저도요!",
+  "quest.trail2.also.pass": "메아리 쌍둥이 연습을 통과하세요.",
+  "quest.trail2.lostKey": "잃어버린 열쇠",
+  "quest.trail2.lostKey.start": "사당지기와 이야기하세요.",
+  "quest.trail2.lostKey.find": "바위 아래에서 열쇠를 찾으세요.",
+  "quest.trail2.lostKey.return": "열쇠를 사당지기에게 돌려주세요.",
+  "quest.town3.sino": "한자어 숫자",
+  "quest.town3.sino.theory": "한자어 숫자 게시판을 읽으세요.",
+  "quest.town3.sino.practice": "주판 한자어 연습을 통과하세요.",
+  "quest.town3.sino.exam": "한자어 칠판 시험을 통과하세요.",
+  "quest.town3.native": "고유어 숫자",
+  "quest.town3.native.theory": "고유어 숫자 게시판을 읽으세요.",
+  "quest.town3.native.practice": "주판 고유어 연습을 통과하세요.",
+  "quest.town3.native.exam": "고유어 칠판 시험을 통과하세요.",
+  "quest.town3.counters": "단위 명사",
+  "quest.town3.counters.theory": "단위 명사 게시판을 읽으세요.",
+  "quest.town3.counters.practice": "단위 가게 연습을 통과하세요.",
+  "quest.town3.prices": "시장 가격",
+  "quest.town3.prices.theory": "광장 가격 게시판을 읽으세요.",
+  "quest.town3.prices.practice": "가격 읽기 연습을 통과하세요.",
+  "quest.town3.shoppingList": "할머니의 장보기",
+  "quest.town3.shoppingList.help": "할머니가 목록을 읽도록 도와주세요.",
+  "quest.town3.cafe": "카페 주문",
+  "quest.town3.cafe.order": "간식 카페 카운터에서 주문하세요.",
+  "quest.town3.numberBadge": "숫자 배지",
+  "quest.town3.numberBadge.podium": "조합 배지 시험을 통과하세요.",
+  "npc.town2RoadGuard.noBadge1": "북쪽 길은 배지가 있는 사람만 갈 수 있어요.",
+  "npc.town2RoadGuard.noBadge2": "먼저 시청 시험을 통과하세요. 시청에 가요!",
+  "npc.town2RoadGuard.badge1": "첫말 배지네요! 길이 열려 있어요.",
+  "npc.town2RoadGuard.badge2": "거울 길을 따라 북쪽으로 가세요. 조심하세요!",
+  "npc.town2CityLeader.intro1": "다섯 개의 시험실이 1장의 모든 내용을 확인해요.",
+  "npc.town2CityLeader.intro2": "다섯 시험을 모두 통과한 뒤 단상에 도전하세요.",
+  "npc.town2CityLeader.ready1": "모든 시험을 통과했어요! 가운데 단상이 기다려요.",
+  "npc.town2CityLeader.done1": "첫말 배지를 가지고 있군요. 북쪽 길은 당신의 것이에요.",
+  "object.town2BadgePodium.locked.line1": "단상이 잠겨 있어요. 다섯 개의 불이 아직 다 켜지지 않았어요.",
+  "route.trail2.locked": "문이 길을 막고 있어요. 첫말 배지가 있어야 지나갈 수 있어요.",
+  "route.trail3.pending": "북쪽 길은 아직 시장 상자에 묻혀 있어요. 나중에 다시 오세요.",
+});
+
+Object.assign(TEXT.nl, {
+  "menu.journal": "Questdagboek",
+  "menu.words": "Woordenboek",
+  "dictionary.hangul.category.compoundVowels": "Samengestelde klinkers",
+  "journal.title": "Questdagboek",
+  "journal.badges": "Badges",
+  "journal.noBadges": "Nog geen badges",
+  "journal.complete": "Voltooid",
+  "journal.hint": "Volgende",
+  "journal.chapter.town1": "H.1 Haneulstad",
+  "journal.chapter.town2": "H.2 Naamstad",
+  "journal.chapter.town3": "H.3 Cijfermarkt",
+  "badge.firstWords": "Eerste-Woorden-Badge",
+  "badge.numbers": "Cijferbadge",
+  "panel.badges": "Badges",
+  "panel.words": "Woorden",
+  "dictionary.words.title": "Woordenboek",
+  "dictionary.words.summary": "Gezien {seen} - Beheerst {mastered}/{total}",
+  "dictionary.words.panelSummary": "{seen} gezien - {mastered} klaar",
+  "dictionary.words.empty": "Hier zijn nog geen woorden. Blijf verkennen!",
+  "dictionary.words.category.position": "Positie & plaats",
+  "dictionary.words.category.nature": "Natuur & pad",
+  "dictionary.words.category.numbersSino": "Sino-getallen",
+  "dictionary.words.category.numbersNative": "Inheemse getallen",
+  "dictionary.words.category.counters": "Telwoorden",
+  "dictionary.words.category.shopping": "Winkelen & geld",
+  "dictionary.words.category.food": "Eten & markt",
+  "dictionary.words.category.colors": "Kleuren",
+  "dictionary.words.category.people": "Mensen",
+  "dictionary.words.category.cafe": "Café & drankjes",
+  "settings.erase": "Opslag wissen",
+  "settings.eraseArmed": "Druk nogmaals om te wissen!",
+  "drill.word.prompt.meaning": "Wat betekent {hangul}?",
+  "drill.word.prompt.hangul": "Welk woord betekent \"{meaning}\"?",
+  "drill.word.feedback.correct": "{hangul} = {meaning}.",
+  "drill.word.feedback.incorrect": "Onthoud: {hangul} betekent {meaning}.",
+  "drill.hangul.prompt.compoundCombine": "Welke klinker komt uit {left} + {right}?",
+  "drill.hangul.prompt.soundToVowel": "Welke klinker maakt de klank \"{answer}\"?",
+  "drill.hangul.prompt.nameToConsonant": "Welke medeklinker heet {answer}?",
+  "drill.hangul.prompt.readingToSyllable": "Welk blok lees je als \"{answer}\"?",
+  "drill.word.prompt.priceToReading": "Lees het prijskaartje: {value}원",
+  "drill.word.prompt.readingToPrice": "{reading} 원 - hoeveel is dat?",
+  "drill.word.prompt.countPhrase": "{phrase} - hoeveel?",
+  "npc.guide.next": "Volgend doel: {objective} ({where})",
+  "npc.guide.allDone": "Alle taken van dit hoofdstuk zijn klaar. De weg verder is open!",
+  "panel.where": "Waar",
+  "npc.mina.pool2.line1": "학교는 북서쪽에 있어요.",
+  "npc.mina.pool2.line2": "De school ligt in het noordwesten - daar begint het lezen.",
+  "npc.joon.pool2.line1": "북쪽 길에서 다리를 건너요.",
+  "npc.joon.pool2.line2": "Steek de beekbrug op het noordpad over en ga rechtdoor.",
+  "npc.sora.pool2.line1": "오늘은 하늘이 파란색이에요!",
+  "npc.sora.pool2.line2": "Fotografen houden van zo'n blauwe lucht.",
+  "npc.mrHan.pool2.line1": "바다가 잔잔해요. 물이 차가워요.",
+  "npc.mrHan.pool2.line2": "Kalme zee vandaag, maar het water blijft koud.",
+  "npc.marketClerk.pool2.line1": "사과하고 물 있어요.",
+  "npc.marketClerk.pool2.line2": "Appels en water op voorraad - zeg maar 주세요 als je klaar bent.",
+  "npc.teaOwner.pool2.line1": "차 한 잔 어때요?",
+  "npc.teaOwner.pool2.line2": "Eén warm kopje en de weg voelt korter.",
+  "npc.trailKeeper.pool2.line1": "비가 오면 다리가 미끄러워요.",
+  "npc.trailKeeper.pool2.line2": "Als het regent worden die planken glad.",
+  "npc.town2GateGreeter.pool2.line1": "광장은 북쪽에 있어요.",
+  "npc.town2GateGreeter.pool2.line2": "Het plein is vlak naar het noorden - begin bij het herhalingsbord.",
+  "npc.town2LabelRunner.pool2.line1": "저건 박물관이에요!",
+  "npc.town2LabelRunner.pool2.line2": "Dat verre gebouw is het Labelmuseum - 저건 wijst ver weg.",
+  "npc.town2Resident.pool2.line1": "시청은 큰 갈색 지붕이에요.",
+  "npc.town2Resident.pool2.line2": "Het stadhuis is het grote bruine dak in het noorden.",
+  "npc.town2ReviewClerk.pool2.line1": "연습은 언제나 무료예요.",
+  "npc.town2ReviewClerk.pool2.line2": "Oefenen is altijd gratis - examens zijn het pittige deel.",
+  "npc.town2ActionCoach.pool2.line1": "읽어요, 마셔요, 먹어요, 써요!",
+  "npc.town2ActionCoach.pool2.line2": "Kijk eerst naar de acteurs en probeer dan het bord.",
+  "drill.trail2MirrorVowels.title": "Spiegelschrijn: samengestelde klinkers",
+  "drill.town3SinoNumbers.title": "Telraam: Sino-Koreaanse getallen",
+  "drill.town3NativeNumbers.title": "Telraam: inheemse getallen",
+  "drill.town3SinoExam.title": "Bordtoets: Sino-getallen",
+  "drill.town3NativeExam.title": "Bordtoets: inheemse getallen",
+  "drill.town3MarketReview.title": "Marktherhalingsbord",
+  "study.compoundVowels.title": "Samengestelde klinkers",
+  "study.compoundVowels.subtitle": "Twee klinkervormen worden één klank.",
+  "study.sinoNumbers.title": "Sino-Koreaanse getallen",
+  "study.sinoNumbers.subtitle": "Voor geld, minuten, datums en telefoonnummers.",
+  "study.nativeNumbers.title": "Inheemse getallen",
+  "study.nativeNumbers.subtitle": "Voor het tellen van dingen, mensen en uren.",
+  "study.counters.title": "Telwoorden",
+  "study.counters.subtitle": "Koreaans telt met inheems getal + telwoord.",
+  "study.counters.entry.gae": "dingen (사과 두 개)",
+  "study.counters.entry.myeong": "mensen (학생 세 명)",
+  "study.counters.entry.mari": "dieren (고양이 한 마리)",
+  "study.counters.entry.byeong": "flessen (물 두 병)",
+  "study.counters.entry.jan": "kopjes (차 한 잔)",
+  "study.counters.entry.gwon": "boeken (책 네 권)",
+  "study.counters.entry.sal": "leeftijd (다섯 살)",
+  "quest.town2.arrival": "Aankomst in Naamstad",
+  "quest.town2.arrival.greet": "Praat met de poortwachter.",
+  "quest.town2.identity": "Informatiecentrum",
+  "quest.town2.identity.pass": "Haal de registratietaak.",
+  "quest.town2.lostFound": "Gevonden voorwerpen",
+  "quest.town2.lostFound.pass": "Haal de aanwezigheidstaak.",
+  "quest.town2.labels": "Labelmuseum",
+  "quest.town2.labels.pass": "Haal de afstandslabels-taak.",
+  "quest.town2.actions": "Actiepark",
+  "quest.town2.actions.pass": "Haal de actietaak.",
+  "quest.town2.readingReview": "Leesherhaling",
+  "quest.town2.readingReview.pass": "Haal de leesherhaling.",
+  "quest.town2.firstWordsBadge": "Eerste-Woorden-Badge",
+  "quest.town2.firstWordsBadge.podium": "Haal het badge-examen bij het stadhuispodium.",
+  "quest.trail2.mirrorVowels": "Spiegelschrijn",
+  "quest.trail2.mirrorVowels.theory": "Lees het bord bij de spiegelschrijn.",
+  "quest.trail2.mirrorVowels.practice": "Haal de spiegelklinker-oefening.",
+  "quest.trail2.location": "Waar is het?",
+  "quest.trail2.location.pass": "Haal de locatiepaal-oefening.",
+  "quest.trail2.also": "Ik ook!",
+  "quest.trail2.also.pass": "Haal de echo-tweeling-oefening.",
+  "quest.trail2.lostKey": "De verloren sleutel",
+  "quest.trail2.lostKey.start": "Praat met de schrijnwachter.",
+  "quest.trail2.lostKey.find": "Zoek onder de rotsen naar de sleutel.",
+  "quest.trail2.lostKey.return": "Breng de sleutel terug naar de schrijnwachter.",
+  "quest.town3.sino": "Sino-getallen",
+  "quest.town3.sino.theory": "Lees het Sino-getallenbord.",
+  "quest.town3.sino.practice": "Haal de telraam-Sino-oefening.",
+  "quest.town3.sino.exam": "Haal de Sino-bordtoets.",
+  "quest.town3.native": "Inheemse getallen",
+  "quest.town3.native.theory": "Lees het inheemse-getallenbord.",
+  "quest.town3.native.practice": "Haal de telraam-oefening.",
+  "quest.town3.native.exam": "Haal de inheemse bordtoets.",
+  "quest.town3.counters": "Telwoorden",
+  "quest.town3.counters.theory": "Lees het telwoordenbord.",
+  "quest.town3.counters.practice": "Haal de telwoord-oefening.",
+  "quest.town3.prices": "Marktprijzen",
+  "quest.town3.prices.theory": "Lees het prijzenbord op het plein.",
+  "quest.town3.prices.practice": "Haal de prijslees-oefening.",
+  "quest.town3.shoppingList": "Oma's boodschappenlijst",
+  "quest.town3.shoppingList.help": "Help oma haar lijst te lezen.",
+  "quest.town3.cafe": "Cafébestelling",
+  "quest.town3.cafe.order": "Bestel bij de toonbank van het snackcafé.",
+  "quest.town3.numberBadge": "Cijferbadge",
+  "quest.town3.numberBadge.podium": "Haal het gilde-badge-examen.",
+  "npc.town2RoadGuard.noBadge1": "Het noordpad is alleen open voor badgehouders.",
+  "npc.town2RoadGuard.noBadge2": "Haal eerst het stadhuisexamen. 시청에 가요!",
+  "npc.town2RoadGuard.badge1": "Dat is de Eerste-Woorden-Badge! De weg is open.",
+  "npc.town2RoadGuard.badge2": "Volg het spiegelpad naar het noorden. 조심하세요!",
+  "npc.town2CityLeader.intro1": "Onze vijf examenkamers toetsen alles uit hoofdstuk 1.",
+  "npc.town2CityLeader.intro2": "Haal alle vijf stations en ga dan naar het podium.",
+  "npc.town2CityLeader.ready1": "Alle stations gehaald! Het podium in het midden wacht.",
+  "npc.town2CityLeader.done1": "Je draagt de Eerste-Woorden-Badge. De noordweg is van jou.",
+  "object.town2BadgePodium.locked.line1": "Het podium is verzegeld. Nog niet alle vijf lampen branden.",
+  "route.trail2.locked": "Een poort verspert het pad. Alleen badgehouders mogen door.",
+  "route.trail3.pending": "De weg naar het noorden ligt nog vol marktkratten. Kom later terug.",
+});
+
 const settings = {
   primary: "en",
   secondary: "ko",
@@ -2614,16 +3161,26 @@ const ui = {
   menuOpen: false,
   menuScreen: "main",
   menuIndex: 0,
+  dictionaryCategoryIndex: 0,
+  dictionaryPage: 0,
+  wordCategoryIndex: 0,
+  wordPage: 0,
+  journalChapterIndex: 0,
+  journalQuestIndex: 0,
+  eraseArmed: false,
   quit: false,
 };
 
 const mainMenuItems = [
   { key: "menu.return", action: "return" },
+  { key: "menu.journal", action: "journal" },
+  { key: "menu.dictionary", action: "dictionary" },
+  { key: "menu.words", action: "words" },
   { key: "menu.settings", action: "settings" },
   { key: "menu.quit", action: "quit" },
 ];
 
-const settingsRows = ["primary", "secondary", "speech", "back"];
+const settingsRows = ["primary", "secondary", "speech", "erase", "back"];
 
 const DRILLS = {
   alphabetBlocks: {
@@ -3594,6 +4151,254 @@ const STUDY_BOARDS = {
       { glyph: "?", nameKey: "study.doubleBatchim.entry.rule" },
     ],
   },
+  compoundVowels: {
+    titleKey: "study.compoundVowels.title",
+    subtitleKey: "study.compoundVowels.subtitle",
+    entries: [
+      { glyph: "ㅐ", name: "ae (ㅏ+ㅣ)" },
+      { glyph: "ㅔ", name: "e (ㅓ+ㅣ)" },
+      { glyph: "ㅒ", name: "yae (ㅑ+ㅣ)" },
+      { glyph: "ㅖ", name: "ye (ㅕ+ㅣ)" },
+      { glyph: "ㅘ", name: "wa (ㅗ+ㅏ)" },
+      { glyph: "ㅙ", name: "wae (ㅗ+ㅐ)" },
+      { glyph: "ㅚ", name: "oe (ㅗ+ㅣ)" },
+      { glyph: "ㅝ", name: "wo (ㅜ+ㅓ)" },
+      { glyph: "ㅞ", name: "we (ㅜ+ㅔ)" },
+      { glyph: "ㅟ", name: "wi (ㅜ+ㅣ)" },
+      { glyph: "ㅢ", name: "ui (ㅡ+ㅣ)" },
+    ],
+  },
+  sinoNumbers: {
+    titleKey: "study.sinoNumbers.title",
+    subtitleKey: "study.sinoNumbers.subtitle",
+    entries: [
+      { glyph: "일", name: "1 (il)" },
+      { glyph: "이", name: "2 (i)" },
+      { glyph: "삼", name: "3 (sam)" },
+      { glyph: "사", name: "4 (sa)" },
+      { glyph: "오", name: "5 (o)" },
+      { glyph: "육", name: "6 (yuk)" },
+      { glyph: "칠", name: "7 (chil)" },
+      { glyph: "팔", name: "8 (pal)" },
+      { glyph: "구", name: "9 (gu)" },
+      { glyph: "십", name: "10 (sip)" },
+      { glyph: "백", name: "100 (baek)" },
+      { glyph: "천", name: "1,000 (cheon)" },
+      { glyph: "만", name: "10,000 (man)" },
+    ],
+  },
+  nativeNumbers: {
+    titleKey: "study.nativeNumbers.title",
+    subtitleKey: "study.nativeNumbers.subtitle",
+    entries: [
+      { glyph: "하나", name: "1 (hana / 한)" },
+      { glyph: "둘", name: "2 (dul / 두)" },
+      { glyph: "셋", name: "3 (set / 세)" },
+      { glyph: "넷", name: "4 (net / 네)" },
+      { glyph: "다섯", name: "5 (daseot)" },
+      { glyph: "여섯", name: "6 (yeoseot)" },
+      { glyph: "일곱", name: "7 (ilgop)" },
+      { glyph: "여덟", name: "8 (yeodeol)" },
+      { glyph: "아홉", name: "9 (ahop)" },
+      { glyph: "열", name: "10 (yeol)" },
+    ],
+  },
+  counters: {
+    titleKey: "study.counters.title",
+    subtitleKey: "study.counters.subtitle",
+    entries: [
+      { glyph: "개", nameKey: "study.counters.entry.gae" },
+      { glyph: "명", nameKey: "study.counters.entry.myeong" },
+      { glyph: "마리", nameKey: "study.counters.entry.mari" },
+      { glyph: "병", nameKey: "study.counters.entry.byeong" },
+      { glyph: "잔", nameKey: "study.counters.entry.jan" },
+      { glyph: "권", nameKey: "study.counters.entry.gwon" },
+      { glyph: "살", nameKey: "study.counters.entry.sal" },
+    ],
+  },
+};
+
+const HANGUL_MASTERY_CORRECT_TARGET = 3;
+const HANGUL_MASTERY_STREAK_TARGET = 2;
+const HANGUL_SYLLABLE_BASE_CODE = 0xac00;
+const HANGUL_VOWEL_STRIDE = 28;
+const HANGUL_INITIAL_STRIDE = 588;
+
+const HANGUL_BASIC_VOWELS = [
+  { id: "hangul.vowel.a", category: "basicVowels", glyph: "ㅏ", answer: "a", vowelIndex: 0 },
+  { id: "hangul.vowel.ya", category: "basicVowels", glyph: "ㅑ", answer: "ya", vowelIndex: 2 },
+  { id: "hangul.vowel.eo", category: "basicVowels", glyph: "ㅓ", answer: "eo", vowelIndex: 4 },
+  { id: "hangul.vowel.yeo", category: "basicVowels", glyph: "ㅕ", answer: "yeo", vowelIndex: 6 },
+  { id: "hangul.vowel.o", category: "basicVowels", glyph: "ㅗ", answer: "o", vowelIndex: 8 },
+  { id: "hangul.vowel.yo", category: "basicVowels", glyph: "ㅛ", answer: "yo", vowelIndex: 12 },
+  { id: "hangul.vowel.u", category: "basicVowels", glyph: "ㅜ", answer: "u", vowelIndex: 13 },
+  { id: "hangul.vowel.yu", category: "basicVowels", glyph: "ㅠ", answer: "yu", vowelIndex: 17 },
+  { id: "hangul.vowel.eu", category: "basicVowels", glyph: "ㅡ", answer: "eu", vowelIndex: 18 },
+  { id: "hangul.vowel.i", category: "basicVowels", glyph: "ㅣ", answer: "i", vowelIndex: 20 },
+];
+
+const HANGUL_COMPOUND_VOWELS = [
+  { id: "hangul.compoundVowel.ae", category: "compoundVowels", glyph: "ㅐ", answer: "ae", vowelIndex: 1, parts: ["ㅏ", "ㅣ"] },
+  { id: "hangul.compoundVowel.yae", category: "compoundVowels", glyph: "ㅒ", answer: "yae", vowelIndex: 3, parts: ["ㅑ", "ㅣ"] },
+  { id: "hangul.compoundVowel.e", category: "compoundVowels", glyph: "ㅔ", answer: "e", vowelIndex: 5, parts: ["ㅓ", "ㅣ"] },
+  { id: "hangul.compoundVowel.ye", category: "compoundVowels", glyph: "ㅖ", answer: "ye", vowelIndex: 7, parts: ["ㅕ", "ㅣ"] },
+  { id: "hangul.compoundVowel.wa", category: "compoundVowels", glyph: "ㅘ", answer: "wa", vowelIndex: 9, parts: ["ㅗ", "ㅏ"] },
+  { id: "hangul.compoundVowel.wae", category: "compoundVowels", glyph: "ㅙ", answer: "wae", vowelIndex: 10, parts: ["ㅗ", "ㅐ"] },
+  { id: "hangul.compoundVowel.oe", category: "compoundVowels", glyph: "ㅚ", answer: "oe", vowelIndex: 11, parts: ["ㅗ", "ㅣ"] },
+  { id: "hangul.compoundVowel.wo", category: "compoundVowels", glyph: "ㅝ", answer: "wo", vowelIndex: 14, parts: ["ㅜ", "ㅓ"] },
+  { id: "hangul.compoundVowel.we", category: "compoundVowels", glyph: "ㅞ", answer: "we", vowelIndex: 15, parts: ["ㅜ", "ㅔ"] },
+  { id: "hangul.compoundVowel.wi", category: "compoundVowels", glyph: "ㅟ", answer: "wi", vowelIndex: 16, parts: ["ㅜ", "ㅣ"] },
+  { id: "hangul.compoundVowel.ui", category: "compoundVowels", glyph: "ㅢ", answer: "ui", vowelIndex: 19, parts: ["ㅡ", "ㅣ"] },
+];
+
+const HANGUL_BASIC_CONSONANTS = [
+  { id: "hangul.consonant.giyeok", category: "basicConsonants", glyph: "ㄱ", answer: "giyeok", sound: "g", initialIndex: 0 },
+  { id: "hangul.consonant.nieun", category: "basicConsonants", glyph: "ㄴ", answer: "nieun", sound: "n", initialIndex: 2 },
+  { id: "hangul.consonant.digeut", category: "basicConsonants", glyph: "ㄷ", answer: "digeut", sound: "d", initialIndex: 3 },
+  { id: "hangul.consonant.rieul", category: "basicConsonants", glyph: "ㄹ", answer: "rieul", sound: "r", initialIndex: 5 },
+  { id: "hangul.consonant.mieum", category: "basicConsonants", glyph: "ㅁ", answer: "mieum", sound: "m", initialIndex: 6 },
+  { id: "hangul.consonant.bieup", category: "basicConsonants", glyph: "ㅂ", answer: "bieup", sound: "b", initialIndex: 7 },
+  { id: "hangul.consonant.siot", category: "basicConsonants", glyph: "ㅅ", answer: "siot", sound: "s", initialIndex: 9 },
+  { id: "hangul.consonant.ieung", category: "basicConsonants", glyph: "ㅇ", answer: "ieung", sound: "", initialIndex: 11 },
+  { id: "hangul.consonant.jieut", category: "basicConsonants", glyph: "ㅈ", answer: "jieut", sound: "j", initialIndex: 12 },
+  { id: "hangul.consonant.chieut", category: "basicConsonants", glyph: "ㅊ", answer: "chieut", sound: "ch", initialIndex: 14 },
+  { id: "hangul.consonant.kieuk", category: "basicConsonants", glyph: "ㅋ", answer: "kieuk", sound: "k", initialIndex: 15 },
+  { id: "hangul.consonant.tieut", category: "basicConsonants", glyph: "ㅌ", answer: "tieut", sound: "t", initialIndex: 16 },
+  { id: "hangul.consonant.pieup", category: "basicConsonants", glyph: "ㅍ", answer: "pieup", sound: "p", initialIndex: 17 },
+  { id: "hangul.consonant.hieut", category: "basicConsonants", glyph: "ㅎ", answer: "hieut", sound: "h", initialIndex: 18 },
+];
+
+const HANGUL_ASPIRATED_SIGNS = [
+  { id: "hangul.aspirated.kieuk", category: "aspirated", glyph: "ㅋ", answer: "k", base: "ㄱ", signName: "kieuk" },
+  { id: "hangul.aspirated.tieut", category: "aspirated", glyph: "ㅌ", answer: "t", base: "ㄷ", signName: "tieut" },
+  { id: "hangul.aspirated.pieup", category: "aspirated", glyph: "ㅍ", answer: "p", base: "ㅂ", signName: "pieup" },
+  { id: "hangul.aspirated.chieut", category: "aspirated", glyph: "ㅊ", answer: "ch", base: "ㅈ", signName: "chieut" },
+];
+
+const HANGUL_DOUBLE_CONSONANTS = [
+  { id: "hangul.double.ssangGiyeok", category: "doubleConsonants", glyph: "ㄲ", answer: "kk", base: "ㄱ", signName: "ssang giyeok", initialIndex: 1 },
+  { id: "hangul.double.ssangDigeut", category: "doubleConsonants", glyph: "ㄸ", answer: "tt", base: "ㄷ", signName: "ssang digeut", initialIndex: 4 },
+  { id: "hangul.double.ssangBieup", category: "doubleConsonants", glyph: "ㅃ", answer: "pp", base: "ㅂ", signName: "ssang bieup", initialIndex: 8 },
+  { id: "hangul.double.ssangSiot", category: "doubleConsonants", glyph: "ㅆ", answer: "ss", base: "ㅅ", signName: "ssang siot", initialIndex: 10 },
+  { id: "hangul.double.ssangJieut", category: "doubleConsonants", glyph: "ㅉ", answer: "jj", base: "ㅈ", signName: "ssang jieut", initialIndex: 13 },
+];
+
+const HANGUL_FIRST_SYLLABLE_CONSONANTS = HANGUL_BASIC_CONSONANTS.filter((item) =>
+  ["giyeok", "nieun", "digeut", "rieul", "mieum", "bieup", "siot", "jieut", "hieut"].includes(item.answer),
+);
+const HANGUL_FIRST_SYLLABLE_VOWELS = HANGUL_BASIC_VOWELS.filter((item) =>
+  ["a", "eo", "o", "u", "eu", "i"].includes(item.answer),
+);
+
+function composeHangulSyllable(consonant, vowel) {
+  return String.fromCharCode(HANGUL_SYLLABLE_BASE_CODE + consonant.initialIndex * HANGUL_INITIAL_STRIDE + vowel.vowelIndex * HANGUL_VOWEL_STRIDE);
+}
+
+const HANGUL_FIRST_SYLLABLES = HANGUL_FIRST_SYLLABLE_CONSONANTS.flatMap((consonant) =>
+  HANGUL_FIRST_SYLLABLE_VOWELS.map((vowel) => ({
+    id: `hangul.syllable.${consonant.answer}.${vowel.answer}`,
+    category: "firstSyllables",
+    glyph: composeHangulSyllable(consonant, vowel),
+    answer: `${consonant.sound}${vowel.answer}`,
+    consonant,
+    vowel,
+  })),
+);
+
+const HANGUL_SINGLE_BATCHIM_ITEMS = [
+  { id: "hangul.batchim.gan", category: "batchim", glyph: "간", answer: "final n", hasBatchim: true, finalAnswer: "final n" },
+  { id: "hangul.batchim.mun", category: "batchim", glyph: "문", answer: "final n", hasBatchim: true, finalAnswer: "final n" },
+  { id: "hangul.batchim.san", category: "batchim", glyph: "산", answer: "final n", hasBatchim: true, finalAnswer: "final n" },
+  { id: "hangul.batchim.nun", category: "batchim", glyph: "눈", answer: "final n", hasBatchim: true, finalAnswer: "final n" },
+  { id: "hangul.batchim.son", category: "batchim", glyph: "손", answer: "final n", hasBatchim: true, finalAnswer: "final n" },
+  { id: "hangul.batchim.na", category: "batchim", glyph: "나", answer: "no batchim", hasBatchim: false, finalAnswer: "no batchim" },
+  { id: "hangul.batchim.ma", category: "batchim", glyph: "마", answer: "no batchim", hasBatchim: false, finalAnswer: "no batchim" },
+  { id: "hangul.batchim.uBlock", category: "batchim", glyph: "우", answer: "no batchim", hasBatchim: false, finalAnswer: "no batchim" },
+];
+
+const HANGUL_DOUBLE_BATCHIM_ITEMS = [
+  { id: "hangul.doubleBatchim.anj", category: "batchim", glyph: "앉", answer: "first final ㄴ", cluster: "ㄵ" },
+  { id: "hangul.doubleBatchim.dalk", category: "batchim", glyph: "닭", answer: "second final ㄱ", cluster: "ㄺ" },
+  { id: "hangul.doubleBatchim.gap", category: "batchim", glyph: "값", answer: "first final ㅂ", cluster: "ㅄ" },
+];
+
+const HANGUL_ALL_ITEMS = [
+  ...HANGUL_BASIC_VOWELS,
+  ...HANGUL_COMPOUND_VOWELS,
+  ...HANGUL_BASIC_CONSONANTS,
+  ...HANGUL_FIRST_SYLLABLES,
+  ...HANGUL_ASPIRATED_SIGNS,
+  ...HANGUL_DOUBLE_CONSONANTS,
+  ...HANGUL_SINGLE_BATCHIM_ITEMS,
+  ...HANGUL_DOUBLE_BATCHIM_ITEMS,
+];
+
+const HANGUL_ITEMS = Object.fromEntries(HANGUL_ALL_ITEMS.map((item) => [item.id, item]));
+
+const HANGUL_DICTIONARY_CATEGORIES = [
+  {
+    id: "basicVowels",
+    titleKey: "dictionary.hangul.category.basicVowels",
+    itemIds: HANGUL_BASIC_VOWELS.map((item) => item.id),
+  },
+  {
+    id: "compoundVowels",
+    titleKey: "dictionary.hangul.category.compoundVowels",
+    itemIds: HANGUL_COMPOUND_VOWELS.map((item) => item.id),
+  },
+  {
+    id: "basicConsonants",
+    titleKey: "dictionary.hangul.category.basicConsonants",
+    itemIds: HANGUL_BASIC_CONSONANTS.map((item) => item.id),
+  },
+  {
+    id: "firstSyllables",
+    titleKey: "dictionary.hangul.category.firstSyllables",
+    itemIds: HANGUL_FIRST_SYLLABLES.map((item) => item.id),
+    encounteredOnly: true,
+  },
+  {
+    id: "aspirated",
+    titleKey: "dictionary.hangul.category.aspirated",
+    itemIds: HANGUL_ASPIRATED_SIGNS.map((item) => item.id),
+  },
+  {
+    id: "doubleConsonants",
+    titleKey: "dictionary.hangul.category.doubleConsonants",
+    itemIds: HANGUL_DOUBLE_CONSONANTS.map((item) => item.id),
+  },
+  {
+    id: "batchim",
+    titleKey: "dictionary.hangul.category.batchim",
+    itemIds: [...HANGUL_SINGLE_BATCHIM_ITEMS, ...HANGUL_DOUBLE_BATCHIM_ITEMS].map((item) => item.id),
+    encounteredOnly: true,
+  },
+];
+
+const STUDY_BOARD_WORD_ITEMS = {
+  sinoNumbers: [
+    "word.il", "word.i", "word.sam", "word.sa", "word.o2",
+    "word.yuk", "word.chil", "word.pal", "word.gu", "word.sip",
+    "word.baek", "word.cheon", "word.man",
+  ],
+  nativeNumbers: [
+    "word.hana", "word.dul", "word.set", "word.net", "word.daseot",
+    "word.yeoseot", "word.ilgop", "word.yeodeol", "word.ahop", "word.yeol",
+  ],
+  counters: [
+    "word.gae", "word.myeong", "word.mari", "word.byeong",
+    "word.jan", "word.gwon", "word.sal",
+  ],
+};
+
+const STUDY_BOARD_DICTIONARY_ITEMS = {
+  basicVowels: HANGUL_BASIC_VOWELS.map((item) => item.id),
+  compoundVowels: HANGUL_COMPOUND_VOWELS.map((item) => item.id),
+  basicConsonants: HANGUL_BASIC_CONSONANTS.map((item) => item.id),
+  aspiratedConsonants: HANGUL_ASPIRATED_SIGNS.map((item) => item.id),
+  doubleConsonants: HANGUL_DOUBLE_CONSONANTS.map((item) => item.id),
+  singleBatchim: ["hangul.batchim.gan", "hangul.batchim.mun", "hangul.batchim.na"],
+  doubleBatchim: HANGUL_DOUBLE_BATCHIM_ITEMS.map((item) => item.id),
 };
 
 const TOWN1_FLAGS = {
@@ -3626,6 +4431,8 @@ const TOWN1_FLAGS = {
 const progress = {
   flags: new Set(),
   questLevels: {},
+  dictionary: {},
+  words: {},
 };
 
 const TOWN1_QUESTS = [
@@ -3633,74 +4440,280 @@ const TOWN1_QUESTS = [
     id: "basicVowels",
     titleKey: "quest.town1.basicVowels",
     steps: [
-      { flag: TOWN1_FLAGS.vowelMapRead, objectiveKey: "quest.town1.basicVowels.theory" },
-      { flag: TOWN1_FLAGS.vowelPracticePassed1, objectiveKey: "quest.town1.basicVowels.practice" },
-      { flag: TOWN1_FLAGS.vowelExamPassed, objectiveKey: "quest.town1.basicVowels.exam" },
+      { flag: TOWN1_FLAGS.vowelMapRead, objectiveKey: "quest.town1.basicVowels.theory", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.vowelPracticePassed1, objectiveKey: "quest.town1.basicVowels.practice", whereKey: "area.haneulTown" },
+      { flag: TOWN1_FLAGS.vowelExamPassed, objectiveKey: "quest.town1.basicVowels.exam", whereKey: "area.elementarySchool" },
     ],
   },
   {
     id: "basicConsonants",
     titleKey: "quest.town1.basicConsonants",
     steps: [
-      { flag: TOWN1_FLAGS.consonantMapRead, objectiveKey: "quest.town1.basicConsonants.theory" },
-      { flag: TOWN1_FLAGS.consonantPracticePassed1, objectiveKey: "quest.town1.basicConsonants.practice" },
-      { flag: TOWN1_FLAGS.consonantExamPassed, objectiveKey: "quest.town1.basicConsonants.exam" },
+      { flag: TOWN1_FLAGS.consonantMapRead, objectiveKey: "quest.town1.basicConsonants.theory", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.consonantPracticePassed1, objectiveKey: "quest.town1.basicConsonants.practice", whereKey: "area.haneulTown" },
+      { flag: TOWN1_FLAGS.consonantExamPassed, objectiveKey: "quest.town1.basicConsonants.exam", whereKey: "area.elementarySchool" },
     ],
   },
   {
     id: "firstSyllables",
     titleKey: "quest.town1.firstSyllables",
     steps: [
-      { flag: TOWN1_FLAGS.firstSyllablePracticePassed1, objectiveKey: "quest.town1.firstSyllables.practice" },
-      { flag: TOWN1_FLAGS.firstSyllablesPassed, objectiveKey: "quest.town1.firstSyllables.exam" },
+      { flag: TOWN1_FLAGS.firstSyllablePracticePassed1, objectiveKey: "quest.town1.firstSyllables.practice", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.firstSyllablesPassed, objectiveKey: "quest.town1.firstSyllables.exam", whereKey: "area.elementarySchool" },
     ],
   },
   {
     id: "aspiratedConsonants",
     titleKey: "quest.town1.aspiratedConsonants",
     steps: [
-      { flag: TOWN1_FLAGS.aspiratedIntroDone, objectiveKey: "quest.town1.aspiratedConsonants.theory" },
-      { flag: TOWN1_FLAGS.aspiratedBookRead, objectiveKey: "quest.town1.aspiratedConsonants.book" },
-      { flag: TOWN1_FLAGS.aspiratedPracticePassed1, objectiveKey: "quest.town1.aspiratedConsonants.practice" },
-      { flag: TOWN1_FLAGS.aspiratedExamPassed, objectiveKey: "quest.town1.aspiratedConsonants.exam" },
+      { flag: TOWN1_FLAGS.aspiratedIntroDone, objectiveKey: "quest.town1.aspiratedConsonants.theory", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.aspiratedBookRead, objectiveKey: "quest.town1.aspiratedConsonants.book", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.aspiratedPracticePassed1, objectiveKey: "quest.town1.aspiratedConsonants.practice", whereKey: "area.haneulTown" },
+      { flag: TOWN1_FLAGS.aspiratedExamPassed, objectiveKey: "quest.town1.aspiratedConsonants.exam", whereKey: "area.elementarySchool" },
     ],
   },
   {
     id: "doubleConsonants",
     titleKey: "quest.town1.doubleConsonants",
     steps: [
-      { flag: TOWN1_FLAGS.doubleConsonantIntroDone, objectiveKey: "quest.town1.doubleConsonants.theory" },
-      { flag: TOWN1_FLAGS.doubleConsonantBookRead, objectiveKey: "quest.town1.doubleConsonants.book" },
-      { flag: TOWN1_FLAGS.doubleConsonantPracticePassed1, objectiveKey: "quest.town1.doubleConsonants.practice" },
-      { flag: TOWN1_FLAGS.doubleConsonantExamPassed, objectiveKey: "quest.town1.doubleConsonants.exam" },
+      { flag: TOWN1_FLAGS.doubleConsonantIntroDone, objectiveKey: "quest.town1.doubleConsonants.theory", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.doubleConsonantBookRead, objectiveKey: "quest.town1.doubleConsonants.book", whereKey: "area.elementarySchool" },
+      { flag: TOWN1_FLAGS.doubleConsonantPracticePassed1, objectiveKey: "quest.town1.doubleConsonants.practice", whereKey: "area.haneulTown" },
+      { flag: TOWN1_FLAGS.doubleConsonantExamPassed, objectiveKey: "quest.town1.doubleConsonants.exam", whereKey: "area.elementarySchool" },
     ],
   },
   {
     id: "singleBatchim",
     titleKey: "quest.town1.singleBatchim",
     steps: [
-      { flag: TOWN1_FLAGS.batchimSingleIntroDone, objectiveKey: "quest.town1.singleBatchim.theory" },
-      { flag: TOWN1_FLAGS.batchimSingleBookRead, objectiveKey: "quest.town1.singleBatchim.book" },
-      { flag: TOWN1_FLAGS.batchimSinglePracticePassed1, objectiveKey: "quest.town1.singleBatchim.practice" },
+      { flag: TOWN1_FLAGS.batchimSingleIntroDone, objectiveKey: "quest.town1.singleBatchim.theory", whereKey: "area.rivalGuesthouse" },
+      { flag: TOWN1_FLAGS.batchimSingleBookRead, objectiveKey: "quest.town1.singleBatchim.book", whereKey: "area.rivalGuesthouse" },
+      { flag: TOWN1_FLAGS.batchimSinglePracticePassed1, objectiveKey: "quest.town1.singleBatchim.practice", whereKey: "area.haneulTown" },
     ],
   },
   {
     id: "doubleBatchim",
     titleKey: "quest.town1.doubleBatchim",
     steps: [
-      { flag: TOWN1_FLAGS.batchimDoubleIntroDone, objectiveKey: "quest.town1.doubleBatchim.theory" },
-      { flag: TOWN1_FLAGS.batchimDoubleBookRead, objectiveKey: "quest.town1.doubleBatchim.book" },
-      { flag: TOWN1_FLAGS.batchimDoublePracticePassed1, objectiveKey: "quest.town1.doubleBatchim.practice" },
+      { flag: TOWN1_FLAGS.batchimDoubleIntroDone, objectiveKey: "quest.town1.doubleBatchim.theory", whereKey: "area.rivalGuesthouse" },
+      { flag: TOWN1_FLAGS.batchimDoubleBookRead, objectiveKey: "quest.town1.doubleBatchim.book", whereKey: "area.rivalGuesthouse" },
+      { flag: TOWN1_FLAGS.batchimDoublePracticePassed1, objectiveKey: "quest.town1.doubleBatchim.practice", whereKey: "area.haneulTown" },
     ],
   },
   {
     id: "readingBadge",
     titleKey: "quest.town1.readingBadge",
     steps: [
-      { flag: TOWN1_FLAGS.batchimDoublePracticePassed1, objectiveKey: "quest.town1.readingBadge.ready" },
+      { flag: TOWN1_FLAGS.batchimDoublePracticePassed1, objectiveKey: "quest.town1.readingBadge.ready", whereKey: "area.haneulTown" },
     ],
   },
 ];
+
+const TOWN2_FLAGS = {
+  arrived: "town2.arrived",
+  mixedReviewPassed: "town2.mixedReviewPassed",
+  identityPassed: "town2.identityPassed",
+  lostFoundPassed: "town2.lostFoundPassed",
+  labelsPassed: "town2.labelsPassed",
+  actionsPassed: "town2.actionsPassed",
+  readingReviewPassed: "town2.readingReviewPassed",
+  finalBadgePassed: "town2.finalBadgePassed",
+};
+
+const TOWN2_QUESTS = [
+  {
+    id: "town2Arrival",
+    titleKey: "quest.town2.arrival",
+    steps: [{ flag: TOWN2_FLAGS.arrived, objectiveKey: "quest.town2.arrival.greet", whereKey: "area.town2" }],
+  },
+  {
+    id: "town2Identity",
+    titleKey: "quest.town2.identity",
+    steps: [{ flag: TOWN2_FLAGS.identityPassed, objectiveKey: "quest.town2.identity.pass", whereKey: "area.town2InfoCenter" }],
+  },
+  {
+    id: "town2LostFound",
+    titleKey: "quest.town2.lostFound",
+    steps: [{ flag: TOWN2_FLAGS.lostFoundPassed, objectiveKey: "quest.town2.lostFound.pass", whereKey: "area.town2LostFound" }],
+  },
+  {
+    id: "town2Labels",
+    titleKey: "quest.town2.labels",
+    steps: [{ flag: TOWN2_FLAGS.labelsPassed, objectiveKey: "quest.town2.labels.pass", whereKey: "area.town2LabelMuseum" }],
+  },
+  {
+    id: "town2Actions",
+    titleKey: "quest.town2.actions",
+    steps: [{ flag: TOWN2_FLAGS.actionsPassed, objectiveKey: "quest.town2.actions.pass", whereKey: "area.town2" }],
+  },
+  {
+    id: "town2ReadingReview",
+    titleKey: "quest.town2.readingReview",
+    steps: [{ flag: TOWN2_FLAGS.readingReviewPassed, objectiveKey: "quest.town2.readingReview.pass", whereKey: "area.town2ReviewLibrary" }],
+  },
+  {
+    id: "town2FirstWordsBadge",
+    titleKey: "quest.town2.firstWordsBadge",
+    steps: [{ flag: TOWN2_FLAGS.finalBadgePassed, objectiveKey: "quest.town2.firstWordsBadge.podium", whereKey: "area.town2CityHall" }],
+  },
+];
+
+const TRAIL2_FLAGS = {
+  mirrorBoardRead: "trail2.mirrorBoardRead",
+  mirrorPracticePassed: "trail2.mirrorPracticePassed",
+  locationPostsPassed: "trail2.locationPostsPassed",
+  echoTwinsPassed: "trail2.echoTwinsPassed",
+  keyQuestStarted: "trail2.keyQuestStarted",
+  keyFound: "trail2.keyFound",
+  keyReturned: "trail2.keyReturned",
+};
+
+const TOWN3_FLAGS = {
+  arrived: "town3.arrived",
+  sinoBoardRead: "town3.sinoBoardRead",
+  sinoPracticePassed: "town3.sinoPracticePassed",
+  sinoExamPassed: "town3.sinoExamPassed",
+  nativeBoardRead: "town3.nativeBoardRead",
+  nativePracticePassed: "town3.nativePracticePassed",
+  nativeExamPassed: "town3.nativeExamPassed",
+  counterBoardRead: "town3.counterBoardRead",
+  countersPracticePassed: "town3.countersPracticePassed",
+  priceBoardRead: "town3.priceBoardRead",
+  pricesPracticePassed: "town3.pricesPracticePassed",
+  shoppingListDone: "town3.shoppingListDone",
+  cafeOrderDone: "town3.cafeOrderDone",
+  numberBadgePassed: "town3.numberBadgePassed",
+};
+
+const CHAPTER3_QUESTS = [
+  {
+    id: "trail2MirrorVowels",
+    titleKey: "quest.trail2.mirrorVowels",
+    steps: [
+      { flag: TRAIL2_FLAGS.mirrorBoardRead, objectiveKey: "quest.trail2.mirrorVowels.theory", whereKey: "area.trail2" },
+      { flag: TRAIL2_FLAGS.mirrorPracticePassed, objectiveKey: "quest.trail2.mirrorVowels.practice", whereKey: "area.trail2" },
+    ],
+  },
+  {
+    id: "trail2Location",
+    titleKey: "quest.trail2.location",
+    steps: [{ flag: TRAIL2_FLAGS.locationPostsPassed, objectiveKey: "quest.trail2.location.pass", whereKey: "area.trail2" }],
+  },
+  {
+    id: "trail2Also",
+    titleKey: "quest.trail2.also",
+    steps: [{ flag: TRAIL2_FLAGS.echoTwinsPassed, objectiveKey: "quest.trail2.also.pass", whereKey: "area.trail2" }],
+  },
+  {
+    id: "trail2LostKey",
+    titleKey: "quest.trail2.lostKey",
+    steps: [
+      { flag: TRAIL2_FLAGS.keyQuestStarted, objectiveKey: "quest.trail2.lostKey.start", whereKey: "area.trail2" },
+      { flag: TRAIL2_FLAGS.keyFound, objectiveKey: "quest.trail2.lostKey.find", whereKey: "area.trail2" },
+      { flag: TRAIL2_FLAGS.keyReturned, objectiveKey: "quest.trail2.lostKey.return", whereKey: "area.trail2" },
+    ],
+  },
+  {
+    id: "town3Sino",
+    titleKey: "quest.town3.sino",
+    steps: [
+      { flag: TOWN3_FLAGS.sinoBoardRead, objectiveKey: "quest.town3.sino.theory", whereKey: "area.town3CountingHouse" },
+      { flag: TOWN3_FLAGS.sinoPracticePassed, objectiveKey: "quest.town3.sino.practice", whereKey: "area.town3CountingHouse" },
+      { flag: TOWN3_FLAGS.sinoExamPassed, objectiveKey: "quest.town3.sino.exam", whereKey: "area.town3CountingHouse" },
+    ],
+  },
+  {
+    id: "town3Native",
+    titleKey: "quest.town3.native",
+    steps: [
+      { flag: TOWN3_FLAGS.nativeBoardRead, objectiveKey: "quest.town3.native.theory", whereKey: "area.town3CountingHouse" },
+      { flag: TOWN3_FLAGS.nativePracticePassed, objectiveKey: "quest.town3.native.practice", whereKey: "area.town3CountingHouse" },
+      { flag: TOWN3_FLAGS.nativeExamPassed, objectiveKey: "quest.town3.native.exam", whereKey: "area.town3CountingHouse" },
+    ],
+  },
+  {
+    id: "town3Counters",
+    titleKey: "quest.town3.counters",
+    steps: [
+      { flag: TOWN3_FLAGS.counterBoardRead, objectiveKey: "quest.town3.counters.theory", whereKey: "area.town3CountingHouse" },
+      { flag: TOWN3_FLAGS.countersPracticePassed, objectiveKey: "quest.town3.counters.practice", whereKey: "area.town3" },
+    ],
+  },
+  {
+    id: "town3Prices",
+    titleKey: "quest.town3.prices",
+    steps: [
+      { flag: TOWN3_FLAGS.priceBoardRead, objectiveKey: "quest.town3.prices.theory", whereKey: "area.town3" },
+      { flag: TOWN3_FLAGS.pricesPracticePassed, objectiveKey: "quest.town3.prices.practice", whereKey: "area.town3" },
+    ],
+  },
+  {
+    id: "town3ShoppingList",
+    titleKey: "quest.town3.shoppingList",
+    steps: [{ flag: TOWN3_FLAGS.shoppingListDone, objectiveKey: "quest.town3.shoppingList.help", whereKey: "area.town3" }],
+  },
+  {
+    id: "town3Cafe",
+    titleKey: "quest.town3.cafe",
+    steps: [{ flag: TOWN3_FLAGS.cafeOrderDone, objectiveKey: "quest.town3.cafe.order", whereKey: "area.town3SnackCafe" }],
+  },
+  {
+    id: "town3NumberBadge",
+    titleKey: "quest.town3.numberBadge",
+    steps: [{ flag: TOWN3_FLAGS.numberBadgePassed, objectiveKey: "quest.town3.numberBadge.podium", whereKey: "area.town3GuildHall" }],
+  },
+];
+
+const QUEST_CHAPTERS = [
+  { id: "town1", titleKey: "journal.chapter.town1", sceneIds: ["town", "trail1"], quests: TOWN1_QUESTS },
+  { id: "town2", titleKey: "journal.chapter.town2", sceneIds: ["town2"], quests: TOWN2_QUESTS },
+  { id: "town3", titleKey: "journal.chapter.town3", sceneIds: ["trail2", "town3"], quests: CHAPTER3_QUESTS },
+];
+
+const BADGES = [
+  { id: "firstWords", titleKey: "badge.firstWords", flag: TOWN2_FLAGS.finalBadgePassed },
+  { id: "numbers", titleKey: "badge.numbers", flag: TOWN3_FLAGS.numberBadgePassed },
+];
+
+const WORD_MASTERY_CORRECT_TARGET = 3;
+const WORD_MASTERY_STREAK_TARGET = 2;
+
+const WORD_CATEGORY_IDS = [
+  "position",
+  "nature",
+  "numbersSino",
+  "numbersNative",
+  "counters",
+  "shopping",
+  "food",
+  "colors",
+  "people",
+  "cafe",
+];
+
+const WORD_ITEMS = {};
+
+function registerWordItems(words = []) {
+  words.forEach((word) => {
+    if (!word || !word.id || !word.hangul) return;
+    WORD_ITEMS[word.id] = {
+      id: word.id,
+      hangul: word.hangul,
+      category: word.category || "people",
+      translations: { en: word.en || word.hangul, nl: word.nl || word.en || word.hangul },
+    };
+  });
+}
+
+function wordItemsByCategory(categoryId) {
+  return Object.values(WORD_ITEMS).filter((item) => item.category === categoryId);
+}
+
+function wordMeaning(item, language = settings.primary) {
+  if (!item) return "";
+  if (language === "ko") return item.hangul;
+  return item.translations[language] || item.translations.en;
+}
 
 function hasProgressFlag(flag) {
   return progress.flags.has(flag);
@@ -3710,6 +4723,7 @@ function setProgressFlag(flag) {
   if (!flag || progress.flags.has(flag)) return false;
   progress.flags.add(flag);
   refreshQuestLevels();
+  scheduleSave();
   return true;
 }
 
@@ -3717,27 +4731,369 @@ function setProgressFlags(flags = []) {
   flags.forEach((flag) => setProgressFlag(flag));
 }
 
-function refreshQuestLevels() {
-  TOWN1_QUESTS.forEach((quest) => {
-    let level = 0;
-    for (const step of quest.steps) {
-      if (!hasProgressFlag(step.flag)) break;
-      level += 1;
+function ensureHangulDictionaryEntry(itemId) {
+  if (!HANGUL_ITEMS[itemId]) return null;
+  if (!progress.dictionary[itemId]) {
+    progress.dictionary[itemId] = {
+      seen: false,
+      attempts: 0,
+      correct: 0,
+      streak: 0,
+      mastered: false,
+    };
+  }
+  return progress.dictionary[itemId];
+}
+
+function markHangulItemSeen(itemId) {
+  const entry = ensureHangulDictionaryEntry(itemId);
+  if (!entry) return;
+  entry.seen = true;
+}
+
+function markHangulItemsSeen(itemIds = []) {
+  itemIds.forEach((itemId) => markHangulItemSeen(itemId));
+}
+
+function markStudyBoardHangulItemsSeen(studyBoardKey) {
+  markHangulItemsSeen(STUDY_BOARD_DICTIONARY_ITEMS[studyBoardKey] || []);
+}
+
+function hangulStepSeenItemIds(step) {
+  return [...(step.seenItemIds || []), ...(step.dictionaryItemIds || [])];
+}
+
+function hangulStepMasteryItemIds(step) {
+  return step.masteryItemIds || step.dictionaryItemIds || [];
+}
+
+function recordHangulAnswer(itemIds = [], correct) {
+  itemIds.forEach((itemId) => {
+    const entry = ensureHangulDictionaryEntry(itemId);
+    if (!entry) return;
+    entry.seen = true;
+    entry.attempts += 1;
+    if (correct) {
+      entry.correct += 1;
+      entry.streak += 1;
+    } else {
+      entry.streak = 0;
     }
-    progress.questLevels[quest.id] = level;
+    entry.mastered = entry.correct >= HANGUL_MASTERY_CORRECT_TARGET && entry.streak >= HANGUL_MASTERY_STREAK_TARGET;
+  });
+  scheduleSave();
+}
+
+function hangulItemProgress(itemId) {
+  return progress.dictionary[itemId] || null;
+}
+
+function hangulItemSeen(itemId) {
+  return !!hangulItemProgress(itemId)?.seen;
+}
+
+function hangulItemMastered(itemId) {
+  return !!hangulItemProgress(itemId)?.mastered;
+}
+
+function hangulDictionaryTotals(itemIds = HANGUL_ALL_ITEMS.map((item) => item.id)) {
+  return itemIds.reduce(
+    (totals, itemId) => {
+      totals.total += 1;
+      if (hangulItemSeen(itemId)) totals.seen += 1;
+      if (hangulItemMastered(itemId)) totals.mastered += 1;
+      return totals;
+    },
+    { total: 0, seen: 0, mastered: 0 },
+  );
+}
+
+function hangulDictionarySummary() {
+  const totals = hangulDictionaryTotals();
+  return t("dictionary.hangul.summary", totals);
+}
+
+function hangulDictionaryPanelSummary() {
+  const totals = hangulDictionaryTotals();
+  return t("dictionary.hangul.panelSummary", totals);
+}
+
+function ensureWordEntry(wordId) {
+  if (!WORD_ITEMS[wordId]) return null;
+  if (!progress.words[wordId]) {
+    progress.words[wordId] = {
+      seen: false,
+      attempts: 0,
+      correct: 0,
+      streak: 0,
+      mastered: false,
+    };
+  }
+  return progress.words[wordId];
+}
+
+function markWordSeen(wordId) {
+  const entry = ensureWordEntry(wordId);
+  if (!entry) return;
+  entry.seen = true;
+}
+
+function markWordsSeen(wordIds = []) {
+  wordIds.forEach((wordId) => markWordSeen(wordId));
+}
+
+function recordWordAnswer(wordIds = [], correct) {
+  wordIds.forEach((wordId) => {
+    const entry = ensureWordEntry(wordId);
+    if (!entry) return;
+    entry.seen = true;
+    entry.attempts += 1;
+    if (correct) {
+      entry.correct += 1;
+      entry.streak += 1;
+    } else {
+      entry.streak = 0;
+    }
+    entry.mastered = entry.correct >= WORD_MASTERY_CORRECT_TARGET && entry.streak >= WORD_MASTERY_STREAK_TARGET;
+  });
+  scheduleSave();
+}
+
+function wordProgressEntry(wordId) {
+  return progress.words[wordId] || null;
+}
+
+function wordSeen(wordId) {
+  return !!wordProgressEntry(wordId)?.seen;
+}
+
+function wordMastered(wordId) {
+  return !!wordProgressEntry(wordId)?.mastered;
+}
+
+function wordDictionaryTotals(wordIds = Object.keys(WORD_ITEMS)) {
+  return wordIds.reduce(
+    (totals, wordId) => {
+      totals.total += 1;
+      if (wordSeen(wordId)) totals.seen += 1;
+      if (wordMastered(wordId)) totals.mastered += 1;
+      return totals;
+    },
+    { total: 0, seen: 0, mastered: 0 },
+  );
+}
+
+function wordDictionaryPanelSummary() {
+  const totals = wordDictionaryTotals();
+  return t("dictionary.words.panelSummary", totals);
+}
+
+function wordDictionaryStatusKey(wordId) {
+  const entry = wordProgressEntry(wordId);
+  if (!entry?.seen) return "dictionary.hangul.status.unseen";
+  if (entry.mastered) return "dictionary.hangul.status.mastered";
+  if (entry.attempts > 0) return "dictionary.hangul.status.learning";
+  return "dictionary.hangul.status.seen";
+}
+
+function earnedBadges() {
+  return BADGES.filter((badge) => hasProgressFlag(badge.flag));
+}
+
+function badgePanelSummary() {
+  return `${earnedBadges().length}/${BADGES.length}`;
+}
+
+function refreshQuestLevels() {
+  QUEST_CHAPTERS.forEach((chapter) => {
+    chapter.quests.forEach((quest) => {
+      let level = 0;
+      for (const step of quest.steps) {
+        if (!hasProgressFlag(step.flag)) break;
+        level += 1;
+      }
+      progress.questLevels[quest.id] = level;
+    });
   });
 }
 
-function currentTown1QuestStatus() {
-  for (const quest of TOWN1_QUESTS) {
+function firstIncompleteQuest(quests) {
+  for (const quest of quests) {
     const level = progress.questLevels[quest.id] || 0;
     if (level < quest.steps.length) {
-      return { titleKey: quest.titleKey, objectiveKey: quest.steps[level].objectiveKey };
+      return {
+        titleKey: quest.titleKey,
+        objectiveKey: quest.steps[level].objectiveKey,
+        whereKey: quest.steps[level].whereKey || null,
+      };
     }
   }
+  return null;
+}
 
-  const finalQuest = TOWN1_QUESTS[TOWN1_QUESTS.length - 1];
-  return { titleKey: finalQuest.titleKey, objectiveKey: "quest.town1.readingBadge.ready" };
+function chapterGuideLines(chapterId, introKey) {
+  const chapter = QUEST_CHAPTERS.find((candidate) => candidate.id === chapterId);
+  const status = chapter ? firstIncompleteQuest(chapter.quests) : null;
+  if (!status) return [introKey, "npc.guide.allDone"];
+  return [
+    introKey,
+    {
+      key: "npc.guide.next",
+      params: {
+        objective: t(status.objectiveKey),
+        where: status.whereKey ? t(status.whereKey) : t(chapter.titleKey),
+      },
+    },
+  ];
+}
+
+function currentQuestStatus() {
+  const sceneId = currentSceneId;
+  const sceneChapter = QUEST_CHAPTERS.find((chapter) => chapter.sceneIds.some((id) => sceneId.startsWith(id)));
+  if (sceneChapter) {
+    const local = firstIncompleteQuest(sceneChapter.quests);
+    if (local) return local;
+  }
+
+  for (const chapter of QUEST_CHAPTERS) {
+    const status = firstIncompleteQuest(chapter.quests);
+    if (status) return status;
+  }
+
+  const lastChapter = QUEST_CHAPTERS[QUEST_CHAPTERS.length - 1];
+  const finalQuest = lastChapter.quests[lastChapter.quests.length - 1];
+  return { titleKey: finalQuest.titleKey, objectiveKey: "journal.complete" };
+}
+
+const SAVE_KEY = "koreaAdventure.save";
+const SAVE_VERSION = 1;
+let saveTimer = null;
+let saveLoaded = false;
+let pendingPlayerState = null;
+
+function saveAvailable() {
+  try {
+    return typeof window !== "undefined" && !!window.localStorage;
+  } catch (error) {
+    return false;
+  }
+}
+
+function serializeSave() {
+  return JSON.stringify({
+    version: SAVE_VERSION,
+    settings: { ...settings },
+    flags: [...progress.flags],
+    questLevels: { ...progress.questLevels },
+    dictionary: progress.dictionary,
+    words: progress.words,
+    player: {
+      sceneId: currentSceneId,
+      x: player.tileX,
+      y: player.tileY,
+      dir: player.dir,
+    },
+  });
+}
+
+function persistSaveNow() {
+  if (!saveAvailable() || !saveLoaded) return;
+  if (saveTimer) {
+    clearTimeout(saveTimer);
+    saveTimer = null;
+  }
+  try {
+    window.localStorage.setItem(SAVE_KEY, serializeSave());
+  } catch (error) {
+    // Storage may be full or blocked; the game keeps running without saving.
+  }
+}
+
+function scheduleSave() {
+  if (!saveAvailable() || !saveLoaded) return;
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(persistSaveNow, 500);
+}
+
+function loadSave() {
+  saveLoaded = true;
+  if (!saveAvailable()) return;
+
+  let payload = null;
+  try {
+    const raw = window.localStorage.getItem(SAVE_KEY);
+    if (!raw) return;
+    payload = JSON.parse(raw);
+  } catch (error) {
+    return;
+  }
+  if (!payload || payload.version !== SAVE_VERSION) return;
+
+  const savedSettings = payload.settings || {};
+  ["primary", "secondary", "speech"].forEach((key) => {
+    if (LANGUAGES.some((language) => language.code === savedSettings[key])) {
+      settings[key] = savedSettings[key];
+    }
+  });
+
+  (payload.flags || []).forEach((flag) => {
+    if (typeof flag === "string") progress.flags.add(flag);
+  });
+  Object.assign(progress.questLevels, payload.questLevels || {});
+  Object.entries(payload.dictionary || {}).forEach(([itemId, entry]) => {
+    if (HANGUL_ITEMS[itemId] && entry) progress.dictionary[itemId] = entry;
+  });
+  Object.entries(payload.words || {}).forEach(([wordId, entry]) => {
+    if (WORD_ITEMS[wordId] && entry) progress.words[wordId] = entry;
+  });
+
+  if (payload.player && typeof payload.player.sceneId === "string") {
+    pendingPlayerState = payload.player;
+  }
+
+  refreshQuestLevels();
+}
+
+function applySavedPlayerState() {
+  if (!pendingPlayerState) return;
+  const target = scenes[pendingPlayerState.sceneId];
+  if (target) {
+    const x = Math.min(Math.max(0, pendingPlayerState.x ?? 0), target.width - 1);
+    const y = Math.min(Math.max(0, pendingPlayerState.y ?? 0), target.height - 1);
+    const dir = DIRS[pendingPlayerState.dir] ? pendingPlayerState.dir : "down";
+    if (!isBlockedInScene(target, x, y)) {
+      changeScene(target.id, x, y, dir);
+    }
+  }
+  pendingPlayerState = null;
+}
+
+function isBlockedInScene(scene, x, y) {
+  const tile = scene.map[y]?.[x];
+  if (!tile || SOLID_TILES.has(tile)) return true;
+  if (scene.interactables.some((item) => item.solid && item.x === x && item.y === y)) return true;
+  if (scene.npcs.some((npc) => npc.x === x && npc.y === y)) return true;
+  if (scene.kind === "outdoor" && (scene.buildings || []).some((building) => isBuildingBlockedAt(building, x, y))) return true;
+  return false;
+}
+
+function isBuildingBlockedAt(building, x, y) {
+  if (x < building.x || x >= building.x + building.w || y < building.y || y >= building.y + building.h) {
+    return false;
+  }
+  return !(x === building.doorX && y === building.doorY);
+}
+
+function eraseSaveAndReload() {
+  if (saveAvailable()) {
+    try {
+      window.localStorage.removeItem(SAVE_KEY);
+    } catch (error) {
+      // Ignore storage errors during erase.
+    }
+  }
+  saveLoaded = false;
+  window.location.reload();
 }
 
 function resolveTown1FountainDrill() {
@@ -3955,6 +5311,7 @@ function mergeExternalDrillPacks() {
     });
 
     Object.assign(DRILLS, pack.drills || {});
+    registerWordItems(pack.words || []);
   });
 }
 
@@ -3971,7 +5328,773 @@ function shuffledCopy(items) {
   return copy;
 }
 
+function literalChoice(value) {
+  return {
+    id: `literal:${value}`,
+    key: "drill.hangul.choice.literal",
+    params: { value },
+  };
+}
+
+function keyedChoice(key, params = {}) {
+  return {
+    id: `key:${key}:${JSON.stringify(params)}`,
+    key,
+    params,
+  };
+}
+
+function choiceIdentity(choice) {
+  if (typeof choice === "string") return `key:${choice}`;
+  return choice.id || `key:${choice.key}:${JSON.stringify(choice.params || {})}`;
+}
+
+function createChoiceSet(correctChoice, candidateChoices, count = 4) {
+  const choices = [correctChoice];
+  const used = new Set([choiceIdentity(correctChoice)]);
+
+  shuffledCopy(candidateChoices).forEach((choice) => {
+    if (choices.length >= count) return;
+    const id = choiceIdentity(choice);
+    if (used.has(id)) return;
+    choices.push(choice);
+    used.add(id);
+  });
+
+  return { choices, answer: 0 };
+}
+
+function hangulPracticeScore(item) {
+  const entry = hangulItemProgress(item.id);
+  if (!entry?.seen) return -100;
+  if (!entry.mastered) return entry.correct + entry.attempts * 0.25;
+  return 100 + entry.correct + entry.attempts * 0.1;
+}
+
+function selectHangulPracticeItems(items, count) {
+  return shuffledCopy(items)
+    .sort((left, right) => hangulPracticeScore(left) - hangulPracticeScore(right))
+    .slice(0, Math.min(count, items.length));
+}
+
+function createGeneratedHangulStep({
+  item,
+  promptKey,
+  promptParams = {},
+  correctChoice,
+  candidateChoices,
+  correctKey = "drill.hangul.feedback.correctMatch",
+  incorrectKey = "drill.hangul.feedback.incorrectMatch",
+  feedbackParams = {},
+  seenItemIds = [],
+  masteryItemIds = null,
+  choiceCount = 4,
+}) {
+  const choiceSet = createChoiceSet(correctChoice, candidateChoices, choiceCount);
+  return {
+    promptKey,
+    promptParams,
+    choices: choiceSet.choices,
+    answer: choiceSet.answer,
+    correctKey,
+    correctParams: feedbackParams,
+    incorrectKey,
+    incorrectParams: feedbackParams,
+    dictionaryItemIds: [item.id],
+    seenItemIds,
+    masteryItemIds: masteryItemIds || [item.id],
+  };
+}
+
+function buildVowelQuestion(item) {
+  if (Math.random() < 0.5) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.soundToVowel",
+      promptParams: { answer: item.answer },
+      correctChoice: literalChoice(item.glyph),
+      candidateChoices: HANGUL_BASIC_VOWELS.map((candidate) => literalChoice(candidate.glyph)),
+      feedbackParams: { glyph: item.glyph, answer: item.answer },
+    });
+  }
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.vowelToSound",
+    promptParams: { glyph: item.glyph },
+    correctChoice: literalChoice(item.answer),
+    candidateChoices: HANGUL_BASIC_VOWELS.map((candidate) => literalChoice(candidate.answer)),
+    feedbackParams: { glyph: item.glyph, answer: item.answer },
+  });
+}
+
+function buildConsonantQuestion(item) {
+  if (Math.random() < 0.5) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.nameToConsonant",
+      promptParams: { answer: item.answer },
+      correctChoice: literalChoice(item.glyph),
+      candidateChoices: HANGUL_BASIC_CONSONANTS.map((candidate) => literalChoice(candidate.glyph)),
+      feedbackParams: { glyph: item.glyph, answer: item.answer },
+    });
+  }
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.consonantToName",
+    promptParams: { glyph: item.glyph },
+    correctChoice: literalChoice(item.answer),
+    candidateChoices: HANGUL_BASIC_CONSONANTS.map((candidate) => literalChoice(candidate.answer)),
+    feedbackParams: { glyph: item.glyph, answer: item.answer },
+  });
+}
+
+function buildSyllableQuestion(item) {
+  if (Math.random() < 0.5) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.readingToSyllable",
+      promptParams: { answer: item.answer },
+      correctChoice: literalChoice(item.glyph),
+      candidateChoices: HANGUL_FIRST_SYLLABLES.map((candidate) => literalChoice(candidate.glyph)),
+      correctKey: "drill.hangul.feedback.correctSyllable",
+      incorrectKey: "drill.hangul.feedback.incorrectSyllable",
+      feedbackParams: {
+        glyph: item.glyph,
+        left: item.consonant.glyph,
+        right: item.vowel.glyph,
+        answer: item.answer,
+      },
+      seenItemIds: [item.consonant.id, item.vowel.id],
+    });
+  }
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.syllableToSound",
+    promptParams: { glyph: item.glyph, left: item.consonant.glyph, right: item.vowel.glyph },
+    correctChoice: literalChoice(item.answer),
+    candidateChoices: HANGUL_FIRST_SYLLABLES.map((candidate) => literalChoice(candidate.answer)),
+    correctKey: "drill.hangul.feedback.correctSyllable",
+    incorrectKey: "drill.hangul.feedback.incorrectSyllable",
+    feedbackParams: {
+      glyph: item.glyph,
+      left: item.consonant.glyph,
+      right: item.vowel.glyph,
+      answer: item.answer,
+    },
+    seenItemIds: [item.consonant.id, item.vowel.id],
+  });
+}
+
+function buildAspiratedQuestion(item) {
+  if (Math.random() < 0.55) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.aspiratedToSign",
+      promptParams: { base: item.base },
+      correctChoice: literalChoice(item.glyph),
+      candidateChoices: HANGUL_ASPIRATED_SIGNS.map((candidate) => literalChoice(candidate.glyph)),
+      correctKey: "drill.hangul.feedback.correctTransform",
+      incorrectKey: "drill.hangul.feedback.incorrectTransform",
+      feedbackParams: { base: item.base, glyph: item.glyph, answer: item.answer },
+    });
+  }
+
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.aspiratedToSound",
+    promptParams: { glyph: item.glyph },
+    correctChoice: literalChoice(item.answer),
+    candidateChoices: HANGUL_ASPIRATED_SIGNS.map((candidate) => literalChoice(candidate.answer)),
+    feedbackParams: { glyph: item.glyph, answer: item.answer },
+  });
+}
+
+function buildDoubleConsonantQuestion(item) {
+  if (Math.random() < 0.55) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.doubleToSign",
+      promptParams: { base: item.base },
+      correctChoice: literalChoice(item.glyph),
+      candidateChoices: HANGUL_DOUBLE_CONSONANTS.map((candidate) => literalChoice(candidate.glyph)),
+      correctKey: "drill.hangul.feedback.correctTransform",
+      incorrectKey: "drill.hangul.feedback.incorrectTransform",
+      feedbackParams: { base: item.base, glyph: item.glyph, answer: item.answer },
+    });
+  }
+
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.doubleToSound",
+    promptParams: { glyph: item.glyph },
+    correctChoice: literalChoice(item.answer),
+    candidateChoices: HANGUL_DOUBLE_CONSONANTS.map((candidate) => literalChoice(candidate.answer)),
+    feedbackParams: { glyph: item.glyph, answer: item.answer },
+  });
+}
+
+function buildSingleBatchimQuestion(item) {
+  if (Math.random() < 0.45) {
+    const correctKey = item.hasBatchim ? "drill.town1.choice.hasBatchim" : "drill.town1.choice.noBatchim";
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.batchimPresence",
+      promptParams: { glyph: item.glyph },
+      correctChoice: keyedChoice(correctKey),
+      candidateChoices: [keyedChoice("drill.town1.choice.hasBatchim"), keyedChoice("drill.town1.choice.noBatchim")],
+      correctKey: "drill.hangul.feedback.correctBatchim",
+      incorrectKey: "drill.hangul.feedback.incorrectBatchim",
+      feedbackParams: { glyph: item.glyph, answer: item.answer },
+      choiceCount: 2,
+    });
+  }
+
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.batchimFinal",
+    promptParams: { glyph: item.glyph },
+    correctChoice: literalChoice(item.finalAnswer),
+    candidateChoices: ["final n", "final k", "final p", "no batchim"].map((value) => literalChoice(value)),
+    correctKey: "drill.hangul.feedback.correctBatchim",
+    incorrectKey: "drill.hangul.feedback.incorrectBatchim",
+    feedbackParams: { glyph: item.glyph, answer: item.answer },
+  });
+}
+
+function buildDoubleBatchimQuestion(item) {
+  const answerKey = item.answer.startsWith("first") ? "drill.town1.choice.firstFinal" : "drill.town1.choice.secondFinal";
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.doubleBatchimFinal",
+    promptParams: { glyph: item.glyph, cluster: item.cluster },
+    correctChoice: keyedChoice(answerKey),
+    candidateChoices: [
+      keyedChoice("drill.town1.choice.firstFinal"),
+      keyedChoice("drill.town1.choice.secondFinal"),
+      keyedChoice("drill.town1.choice.wordDecides"),
+    ],
+    correctKey: "drill.hangul.feedback.correctBatchim",
+    incorrectKey: "drill.hangul.feedback.incorrectBatchim",
+    feedbackParams: { glyph: item.glyph, answer: item.answer },
+    choiceCount: 3,
+  });
+}
+
+function buildCompoundVowelQuestion(item) {
+  const variant = Math.floor(Math.random() * 3);
+
+  if (variant === 0) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.vowelToSound",
+      promptParams: { glyph: item.glyph },
+      correctChoice: literalChoice(item.answer),
+      candidateChoices: HANGUL_COMPOUND_VOWELS.map((candidate) => literalChoice(candidate.answer)),
+      feedbackParams: { glyph: item.glyph, answer: item.answer },
+    });
+  }
+
+  if (variant === 1) {
+    return createGeneratedHangulStep({
+      item,
+      promptKey: "drill.hangul.prompt.compoundCombine",
+      promptParams: { left: item.parts[0], right: item.parts[1] },
+      correctChoice: literalChoice(item.glyph),
+      candidateChoices: HANGUL_COMPOUND_VOWELS.map((candidate) => literalChoice(candidate.glyph)),
+      feedbackParams: { glyph: item.glyph, answer: item.answer },
+    });
+  }
+
+  const consonant = shuffledCopy(
+    HANGUL_BASIC_CONSONANTS.filter((candidate) => ["ieung", "giyeok", "nieun", "mieum"].includes(candidate.answer)),
+  )[0];
+  const syllable = composeHangulSyllable(consonant, item);
+  const reading = `${consonant.sound}${item.answer}`;
+  const candidateReadings = HANGUL_COMPOUND_VOWELS.map((candidate) =>
+    literalChoice(`${consonant.sound}${candidate.answer}`),
+  );
+  return createGeneratedHangulStep({
+    item,
+    promptKey: "drill.hangul.prompt.syllableToSound",
+    promptParams: { left: consonant.glyph, right: item.glyph, glyph: syllable },
+    correctChoice: literalChoice(reading),
+    candidateChoices: candidateReadings,
+    correctKey: "drill.hangul.feedback.correctSyllable",
+    incorrectKey: "drill.hangul.feedback.incorrectSyllable",
+    feedbackParams: { left: consonant.glyph, right: item.glyph, glyph: syllable, answer: reading },
+  });
+}
+
+function buildHangulQuestionForItem(item) {
+  if (item.category === "basicVowels") return buildVowelQuestion(item);
+  if (item.category === "compoundVowels") return buildCompoundVowelQuestion(item);
+  if (item.category === "basicConsonants") return buildConsonantQuestion(item);
+  if (item.category === "firstSyllables") return buildSyllableQuestion(item);
+  if (item.category === "aspirated") return buildAspiratedQuestion(item);
+  if (item.category === "doubleConsonants") return buildDoubleConsonantQuestion(item);
+  if (item.cluster) return buildDoubleBatchimQuestion(item);
+  return buildSingleBatchimQuestion(item);
+}
+
+function generateHangulStepsFromPool(items, data) {
+  const count = data.stepCount || Math.min(5, items.length);
+  return selectHangulPracticeItems(items, count).map((item) => buildHangulQuestionForItem(item));
+}
+
+function town1ReviewItems() {
+  const items = [];
+  if (hasProgressFlag(TOWN1_FLAGS.vowelMapRead)) items.push(...HANGUL_BASIC_VOWELS);
+  if (hasProgressFlag(TOWN1_FLAGS.consonantMapRead)) items.push(...HANGUL_BASIC_CONSONANTS);
+  if (hasProgressFlag(TOWN1_FLAGS.firstSyllablePracticePassed1)) items.push(...HANGUL_FIRST_SYLLABLES);
+  if (hasProgressFlag(TOWN1_FLAGS.aspiratedBookRead)) items.push(...HANGUL_ASPIRATED_SIGNS);
+  if (hasProgressFlag(TOWN1_FLAGS.doubleConsonantBookRead)) items.push(...HANGUL_DOUBLE_CONSONANTS);
+  if (hasProgressFlag(TOWN1_FLAGS.batchimSingleBookRead)) items.push(...HANGUL_SINGLE_BATCHIM_ITEMS);
+  if (hasProgressFlag(TOWN1_FLAGS.batchimDoubleBookRead)) items.push(...HANGUL_DOUBLE_BATCHIM_ITEMS);
+  return items.length ? items : HANGUL_BASIC_VOWELS;
+}
+
+function configureTown1HangulDrills() {
+  Object.assign(DRILLS.town1FountainVowels, {
+    stepCount: 6,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_BASIC_VOWELS, data),
+  });
+  Object.assign(DRILLS.town1BlackboardVowels, {
+    stepCount: 5,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_BASIC_VOWELS, data),
+  });
+  Object.assign(DRILLS.town1FountainConsonants, {
+    stepCount: 7,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_BASIC_CONSONANTS, data),
+  });
+  Object.assign(DRILLS.town1BlackboardConsonants, {
+    stepCount: 6,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_BASIC_CONSONANTS, data),
+  });
+  Object.assign(DRILLS.town1DeskSyllables, {
+    stepCount: 6,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_FIRST_SYLLABLES, data),
+  });
+  Object.assign(DRILLS.town1BlackboardSyllables, {
+    stepCount: 5,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_FIRST_SYLLABLES, data),
+  });
+  Object.assign(DRILLS.town1FountainAspirated, {
+    stepCount: 4,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_ASPIRATED_SIGNS, data),
+  });
+  Object.assign(DRILLS.town1BlackboardAspirated, {
+    stepCount: 4,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_ASPIRATED_SIGNS, data),
+  });
+  Object.assign(DRILLS.town1FountainDoubleConsonants, {
+    stepCount: 5,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_DOUBLE_CONSONANTS, data),
+  });
+  Object.assign(DRILLS.town1BlackboardDoubleConsonants, {
+    stepCount: 4,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_DOUBLE_CONSONANTS, data),
+  });
+  Object.assign(DRILLS.town1FountainBatchimSingle, {
+    stepCount: 5,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_SINGLE_BATCHIM_ITEMS, data),
+  });
+  Object.assign(DRILLS.town1FountainBatchimDouble, {
+    stepCount: 3,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_DOUBLE_BATCHIM_ITEMS, data),
+  });
+  Object.assign(DRILLS.town1FountainReview, {
+    stepCount: 6,
+    shuffleChoices: true,
+    generateSteps: (data) => generateHangulStepsFromPool(town1ReviewItems(), data),
+  });
+}
+
+configureTown1HangulDrills();
+
+function wordPracticeScore(item) {
+  const entry = wordProgressEntry(item.id);
+  if (!entry?.seen) return -100;
+  if (!entry.mastered) return entry.correct + entry.attempts * 0.25;
+  return 100 + entry.correct + entry.attempts * 0.1;
+}
+
+function selectWordPracticeItems(items, count) {
+  return shuffledCopy(items)
+    .sort((left, right) => wordPracticeScore(left) - wordPracticeScore(right))
+    .slice(0, Math.min(count, items.length));
+}
+
+function createGeneratedWordStep({ item, promptKey, promptParams, correctChoice, candidateChoices, feedbackParams }) {
+  const choiceSet = createChoiceSet(correctChoice, candidateChoices, 4);
+  return {
+    promptKey,
+    promptParams,
+    choices: choiceSet.choices,
+    answer: choiceSet.answer,
+    correctKey: "drill.word.feedback.correct",
+    correctParams: feedbackParams,
+    incorrectKey: "drill.word.feedback.incorrect",
+    incorrectParams: feedbackParams,
+    wordIds: [item.id],
+  };
+}
+
+function buildWordQuestion(item, pool) {
+  const meaning = wordMeaning(item);
+  const candidates = pool.filter((candidate) => candidate.id !== item.id);
+  const showHangul = Math.random() < 0.5;
+
+  if (showHangul) {
+    return createGeneratedWordStep({
+      item,
+      promptKey: "drill.word.prompt.meaning",
+      promptParams: { hangul: item.hangul },
+      correctChoice: literalChoice(meaning),
+      candidateChoices: candidates.map((candidate) => literalChoice(wordMeaning(candidate))),
+      feedbackParams: { hangul: item.hangul, meaning },
+    });
+  }
+
+  return createGeneratedWordStep({
+    item,
+    promptKey: "drill.word.prompt.hangul",
+    promptParams: { meaning },
+    correctChoice: literalChoice(item.hangul),
+    candidateChoices: candidates.map((candidate) => literalChoice(candidate.hangul)),
+    feedbackParams: { hangul: item.hangul, meaning },
+  });
+}
+
+function generateWordStepsFromCategories(categoryIds, data) {
+  const pool = categoryIds.flatMap((categoryId) => wordItemsByCategory(categoryId));
+  if (!pool.length) return [];
+  const count = data.stepCount || Math.min(5, pool.length);
+  return selectWordPracticeItems(pool, count).map((item) => buildWordQuestion(item, pool));
+}
+
+const SINO_DIGIT_READINGS = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
+const SINO_DIGIT_WORD_IDS = [null, "word.il", "word.i", "word.sam", "word.sa", "word.o2", "word.yuk", "word.chil", "word.pal", "word.gu"];
+const SINO_UNITS = [
+  [10000, "만", "word.man"],
+  [1000, "천", "word.cheon"],
+  [100, "백", "word.baek"],
+  [10, "십", "word.sip"],
+];
+const PRICE_POOL = [100, 200, 300, 500, 700, 900, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000, 7000, 7500, 8000, 9000, 10000, 12000, 15000, 20000, 23000, 30000, 50000];
+const NATIVE_CONTRACTIONS = { "word.hana": "한", "word.dul": "두", "word.set": "세", "word.net": "네" };
+const COUNT_NOUN_WORD_IDS = ["word.sagwa", "word.gyul", "word.podo", "word.banana", "word.ppang", "word.tteok", "word.gamja", "word.oi"];
+
+function composeSinoReading(value) {
+  let rest = value;
+  let reading = "";
+  const usedWordIds = new Set();
+
+  for (const [unit, label, wordId] of SINO_UNITS) {
+    const digit = Math.floor(rest / unit);
+    if (digit > 0) {
+      if (digit > 1) {
+        reading += SINO_DIGIT_READINGS[digit];
+        if (SINO_DIGIT_WORD_IDS[digit]) usedWordIds.add(SINO_DIGIT_WORD_IDS[digit]);
+      }
+      reading += label;
+      usedWordIds.add(wordId);
+      rest %= unit;
+    }
+  }
+  if (rest > 0) {
+    reading += SINO_DIGIT_READINGS[rest];
+    if (SINO_DIGIT_WORD_IDS[rest]) usedWordIds.add(SINO_DIGIT_WORD_IDS[rest]);
+  }
+
+  return { reading, wordIds: [...usedWordIds] };
+}
+
+function formatPriceDigits(value) {
+  return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function buildSinoPriceStep() {
+  const value = PRICE_POOL[Math.floor(Math.random() * PRICE_POOL.length)];
+  const { reading, wordIds } = composeSinoReading(value);
+  const distractorValues = shuffledCopy(PRICE_POOL.filter((candidate) => candidate !== value));
+  const toReading = Math.random() < 0.5;
+
+  if (toReading) {
+    const choiceSet = createChoiceSet(
+      literalChoice(reading),
+      distractorValues.map((candidate) => literalChoice(composeSinoReading(candidate).reading)),
+      4,
+    );
+    return {
+      promptKey: "drill.word.prompt.priceToReading",
+      promptParams: { value: formatPriceDigits(value) },
+      choices: choiceSet.choices,
+      answer: choiceSet.answer,
+      correctKey: "drill.word.feedback.correct",
+      correctParams: { hangul: `${reading} 원`, meaning: `${formatPriceDigits(value)}원` },
+      incorrectKey: "drill.word.feedback.incorrect",
+      incorrectParams: { hangul: `${reading} 원`, meaning: `${formatPriceDigits(value)}원` },
+      wordIds,
+    };
+  }
+
+  const choiceSet = createChoiceSet(
+    literalChoice(`${formatPriceDigits(value)}원`),
+    distractorValues.map((candidate) => literalChoice(`${formatPriceDigits(candidate)}원`)),
+    4,
+  );
+  return {
+    promptKey: "drill.word.prompt.readingToPrice",
+    promptParams: { reading },
+    choices: choiceSet.choices,
+    answer: choiceSet.answer,
+    correctKey: "drill.word.feedback.correct",
+    correctParams: { hangul: `${reading} 원`, meaning: `${formatPriceDigits(value)}원` },
+    incorrectKey: "drill.word.feedback.incorrect",
+    incorrectParams: { hangul: `${reading} 원`, meaning: `${formatPriceDigits(value)}원` },
+    wordIds,
+  };
+}
+
+function buildNativeCountStep() {
+  const nativePool = wordItemsByCategory("numbersNative");
+  const numberItem = nativePool[Math.floor(Math.random() * nativePool.length)];
+  const nounId = COUNT_NOUN_WORD_IDS[Math.floor(Math.random() * COUNT_NOUN_WORD_IDS.length)];
+  const noun = WORD_ITEMS[nounId];
+  const numberIndex = nativePool.indexOf(numberItem) + 1;
+  const countForm = NATIVE_CONTRACTIONS[numberItem.id] || numberItem.hangul;
+  const phrase = `${noun ? noun.hangul : "사과"} ${countForm} 개`;
+  const digits = Array.from({ length: 10 }, (_, index) => String(index + 1));
+  const choiceSet = createChoiceSet(
+    literalChoice(String(numberIndex)),
+    digits.filter((digit) => digit !== String(numberIndex)).map((digit) => literalChoice(digit)),
+    4,
+  );
+  return {
+    promptKey: "drill.word.prompt.countPhrase",
+    promptParams: { phrase },
+    choices: choiceSet.choices,
+    answer: choiceSet.answer,
+    correctKey: "drill.word.feedback.correct",
+    correctParams: { hangul: phrase, meaning: String(numberIndex) },
+    incorrectKey: "drill.word.feedback.incorrect",
+    incorrectParams: { hangul: phrase, meaning: String(numberIndex) },
+    wordIds: [numberItem.id, nounId, "word.gae"].filter((wordId) => WORD_ITEMS[wordId]),
+  };
+}
+
+function generateSinoSteps(data) {
+  const pool = wordItemsByCategory("numbersSino");
+  const count = data.stepCount || 6;
+  const queue = selectWordPracticeItems(pool, count);
+  return Array.from({ length: count }, () => {
+    if (Math.random() < 0.5 && queue.length) return buildWordQuestion(queue.shift(), pool);
+    return buildSinoPriceStep();
+  });
+}
+
+function generateNativeSteps(data) {
+  const pool = wordItemsByCategory("numbersNative");
+  const count = data.stepCount || 6;
+  const queue = selectWordPracticeItems(pool, count);
+  return Array.from({ length: count }, () => {
+    if (Math.random() < 0.5 && queue.length) return buildWordQuestion(queue.shift(), pool);
+    return buildNativeCountStep();
+  });
+}
+
+function town3ReviewCategories() {
+  const categories = ["position", "nature"];
+  if (hasProgressFlag(TOWN3_FLAGS.sinoBoardRead)) categories.push("numbersSino");
+  if (hasProgressFlag(TOWN3_FLAGS.nativeBoardRead)) categories.push("numbersNative");
+  if (hasProgressFlag(TOWN3_FLAGS.counterBoardRead)) categories.push("counters");
+  categories.push("shopping", "food", "colors", "people", "cafe");
+  return categories;
+}
+
+function town2FinalStationsPassed() {
+  return [
+    TOWN2_FLAGS.identityPassed,
+    TOWN2_FLAGS.lostFoundPassed,
+    TOWN2_FLAGS.labelsPassed,
+    TOWN2_FLAGS.actionsPassed,
+    TOWN2_FLAGS.readingReviewPassed,
+  ].every((flag) => hasProgressFlag(flag));
+}
+
+function resolveTown2RoadGuardConversation() {
+  if (hasProgressFlag(TOWN2_FLAGS.finalBadgePassed)) {
+    return ["npc.town2RoadGuard.badge1", "npc.town2RoadGuard.badge2"];
+  }
+  return ["npc.town2RoadGuard.noBadge1", "npc.town2RoadGuard.noBadge2"];
+}
+
+function resolveTown2CityLeaderConversation() {
+  if (hasProgressFlag(TOWN2_FLAGS.finalBadgePassed)) {
+    return ["npc.town2CityLeader.done1"];
+  }
+  if (town2FinalStationsPassed()) {
+    return ["npc.town2CityLeader.ready1"];
+  }
+  return ["npc.town2CityLeader.intro1", "npc.town2CityLeader.intro2"];
+}
+
+function resolveTrail2KeeperConversation() {
+  if (hasProgressFlag(TRAIL2_FLAGS.keyReturned)) {
+    return ["npc.trail2Keeper.done1"];
+  }
+  if (hasProgressFlag(TRAIL2_FLAGS.keyFound)) {
+    setProgressFlag(TRAIL2_FLAGS.keyReturned);
+    return ["npc.trail2Keeper.thanks1", "npc.trail2Keeper.thanks2"];
+  }
+  if (hasProgressFlag(TRAIL2_FLAGS.keyQuestStarted)) {
+    return ["npc.trail2Keeper.hint1", "npc.trail2Keeper.hint2"];
+  }
+  setProgressFlag(TRAIL2_FLAGS.keyQuestStarted);
+  return ["npc.trail2Keeper.start1", "npc.trail2Keeper.start2"];
+}
+
+function resolveTrail2KeyRockConversation() {
+  if (!hasProgressFlag(TRAIL2_FLAGS.keyQuestStarted) || hasProgressFlag(TRAIL2_FLAGS.keyReturned)) {
+    return ["object.trail2KeyRock.idle"];
+  }
+  if (hasProgressFlag(TRAIL2_FLAGS.keyFound)) {
+    return ["object.trail2KeyRock.alreadyFound"];
+  }
+  setProgressFlag(TRAIL2_FLAGS.keyFound);
+  return ["object.trail2KeyRock.found1", "object.trail2KeyRock.found2"];
+}
+
+function resolveTrail2EmptyRockConversation() {
+  if (hasProgressFlag(TRAIL2_FLAGS.keyQuestStarted) && !hasProgressFlag(TRAIL2_FLAGS.keyFound)) {
+    return ["object.trail2EmptyRock.searching"];
+  }
+  return ["object.trail2EmptyRock.idle"];
+}
+
+function resolveTown3GrandmaConversation() {
+  if (hasProgressFlag(TOWN3_FLAGS.shoppingListDone)) {
+    return ["npc.town3Grandma.done1"];
+  }
+  return ["npc.town3Grandma.line1", "npc.town3Grandma.line2"];
+}
+
+function resolveTown3AbacusDrill() {
+  if (!hasProgressFlag(TOWN3_FLAGS.sinoBoardRead)) return null;
+  if (!hasProgressFlag(TOWN3_FLAGS.sinoPracticePassed)) return "town3SinoNumbers";
+  if (!hasProgressFlag(TOWN3_FLAGS.nativeBoardRead)) return "town3SinoNumbers";
+  if (!hasProgressFlag(TOWN3_FLAGS.nativePracticePassed)) return "town3NativeNumbers";
+  return Math.random() < 0.5 ? "town3SinoNumbers" : "town3NativeNumbers";
+}
+
+function resolveTown3AbacusConversation() {
+  if (!hasProgressFlag(TOWN3_FLAGS.sinoBoardRead)) return ["object.town3AbacusDesk.locked"];
+  return null;
+}
+
+function resolveTown3BlackboardDrill() {
+  if (!hasProgressFlag(TOWN3_FLAGS.sinoPracticePassed)) return null;
+  if (!hasProgressFlag(TOWN3_FLAGS.sinoExamPassed)) return "town3SinoExam";
+  if (!hasProgressFlag(TOWN3_FLAGS.nativePracticePassed)) return null;
+  if (!hasProgressFlag(TOWN3_FLAGS.nativeExamPassed)) return "town3NativeExam";
+  return null;
+}
+
+function resolveTown3BlackboardConversation() {
+  if (!hasProgressFlag(TOWN3_FLAGS.sinoPracticePassed)) return ["object.town3PriceBlackboard.locked"];
+  if (hasProgressFlag(TOWN3_FLAGS.sinoExamPassed) && !hasProgressFlag(TOWN3_FLAGS.nativePracticePassed)) {
+    return ["object.town3PriceBlackboard.nextNative"];
+  }
+  if (hasProgressFlag(TOWN3_FLAGS.sinoExamPassed) && hasProgressFlag(TOWN3_FLAGS.nativeExamPassed)) {
+    return ["object.town3PriceBlackboard.done"];
+  }
+  return null;
+}
+
+function resolveTown3GuildLeaderConversation() {
+  if (hasProgressFlag(TOWN3_FLAGS.numberBadgePassed)) {
+    return ["npc.town3GuildLeader.done1"];
+  }
+  if (hasProgressFlag(TOWN3_FLAGS.sinoExamPassed) && hasProgressFlag(TOWN3_FLAGS.nativeExamPassed)) {
+    return ["npc.town3GuildLeader.ready1"];
+  }
+  return ["npc.town3GuildLeader.intro1", "npc.town3GuildLeader.intro2"];
+}
+
+function configureChapter3GeneratedDrills() {
+  DRILLS.trail2MirrorVowels = {
+    titleKey: "drill.trail2MirrorVowels.title",
+    shuffleChoices: true,
+    completionFlags: [TRAIL2_FLAGS.mirrorPracticePassed],
+    passCorrectCount: 5,
+    stepCount: 6,
+    generateSteps: (data) => generateHangulStepsFromPool(HANGUL_COMPOUND_VOWELS, data),
+  };
+  DRILLS.town3SinoNumbers = {
+    titleKey: "drill.town3SinoNumbers.title",
+    shuffleChoices: true,
+    completionFlags: [TOWN3_FLAGS.sinoPracticePassed],
+    passCorrectCount: 5,
+    stepCount: 6,
+    generateSteps: generateSinoSteps,
+  };
+  DRILLS.town3NativeNumbers = {
+    titleKey: "drill.town3NativeNumbers.title",
+    shuffleChoices: true,
+    completionFlags: [TOWN3_FLAGS.nativePracticePassed],
+    passCorrectCount: 5,
+    stepCount: 6,
+    generateSteps: generateNativeSteps,
+  };
+  DRILLS.town3SinoExam = {
+    titleKey: "drill.town3SinoExam.title",
+    shuffleChoices: true,
+    completionFlags: [TOWN3_FLAGS.sinoExamPassed],
+    passCorrectCount: 6,
+    stepCount: 7,
+    generateSteps: generateSinoSteps,
+  };
+  DRILLS.town3NativeExam = {
+    titleKey: "drill.town3NativeExam.title",
+    shuffleChoices: true,
+    completionFlags: [TOWN3_FLAGS.nativeExamPassed],
+    passCorrectCount: 6,
+    stepCount: 7,
+    generateSteps: generateNativeSteps,
+  };
+  DRILLS.town3MarketReview = {
+    titleKey: "drill.town3MarketReview.title",
+    shuffleChoices: true,
+    stepCount: 6,
+    generateSteps: (data) => generateWordStepsFromCategories(town3ReviewCategories(), data),
+  };
+  if (DRILLS.town3Prices) {
+    Object.assign(DRILLS.town3Prices, {
+      shuffleChoices: true,
+      stepCount: 5,
+      passCorrectCount: 4,
+      generateSteps: (data) => Array.from({ length: data.stepCount || 5 }, () => buildSinoPriceStep()),
+    });
+  }
+}
+
+configureChapter3GeneratedDrills();
+
 function selectDrillSteps(data) {
+  if (typeof data.generateSteps === "function") return data.generateSteps(data);
+
   const steps = data.steps || [];
   const targetCount = Math.min(data.stepCount || steps.length, steps.length);
   if (targetCount <= 0) return [];
@@ -4056,6 +6179,8 @@ function createRouteTriggers({
   targetY,
   targetDir,
   conversationKeys = null,
+  requiredFlags = null,
+  lockedConversationKeys = null,
 }) {
   const centerX = Math.floor((fromX + toX) / 2);
   const triggers = [];
@@ -4072,6 +6197,8 @@ function createRouteTriggers({
       targetY,
       targetDir,
       conversationKeys,
+      requiredFlags,
+      lockedConversationKeys,
       hidden: x !== centerX,
     });
   }
@@ -4263,7 +6390,10 @@ const npcs = [
     jacket: "#e48d3d",
     voiceGender: "female",
     voiceId: "mina",
-    conversationKeys: ["npc.mina.line1", "npc.mina.line2"],
+    conversationPools: [
+      ["npc.mina.line1", "npc.mina.line2"],
+      ["npc.mina.pool2.line1", "npc.mina.pool2.line2"],
+    ],
   },
   {
     nameKey: "npc.joon",
@@ -4274,7 +6404,10 @@ const npcs = [
     jacket: "#4f8cc9",
     voiceGender: "male",
     voiceId: "joon",
-    conversationKeys: ["npc.joon.line1", "npc.joon.line2"],
+    conversationPools: [
+      ["npc.joon.line1", "npc.joon.line2"],
+      ["npc.joon.pool2.line1", "npc.joon.pool2.line2"],
+    ],
   },
   {
     nameKey: "npc.sora",
@@ -4285,7 +6418,10 @@ const npcs = [
     jacket: "#8a6bb7",
     voiceGender: "female",
     voiceId: "sora",
-    conversationKeys: ["npc.sora.line1", "npc.sora.line2"],
+    conversationPools: [
+      ["npc.sora.line1", "npc.sora.line2"],
+      ["npc.sora.pool2.line1", "npc.sora.pool2.line2"],
+    ],
   },
   {
     nameKey: "npc.mrHan",
@@ -4296,7 +6432,10 @@ const npcs = [
     jacket: "#497a4d",
     voiceGender: "male",
     voiceId: "mrHan",
-    conversationKeys: ["npc.mrHan.line1", "npc.mrHan.line2"],
+    conversationPools: [
+      ["npc.mrHan.line1", "npc.mrHan.line2"],
+      ["npc.mrHan.pool2.line1", "npc.mrHan.pool2.line2"],
+    ],
   },
 ];
 
@@ -4367,112 +6506,31 @@ function t(key, params = {}, language = activeLanguage()) {
   return template.replace(/\{(\w+)\}/g, (_, paramKey) => params[paramKey] ?? "");
 }
 
+function uiText(ref, params = {}) {
+  if (!ref) return "";
+  if (typeof ref === "string") return t(ref, params);
+  return t(ref.key, ref.params || params);
+}
+
 function languageName(code) {
   const language = LANGUAGES.find((candidate) => candidate.code === code);
   return language ? t(language.key) : code;
 }
 
+function textToSpeech() {
+  return window.KOREA_ADVENTURE_TTS;
+}
+
 function speechSupported() {
-  return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  return !!textToSpeech()?.supported();
 }
 
 function speechLanguageOptions() {
-  if (!speechSupported()) return [];
-  const voices = speechVoices();
-  if (!voices.length) return LANGUAGES;
-
-  const voicedLanguages = LANGUAGES.filter(({ code }) =>
-    voices.some((voice) => voiceMatchesLanguage(voice, code)),
-  );
-  return voicedLanguages.length ? voicedLanguages : LANGUAGES;
-}
-
-function speechVoices() {
-  return speechSupported() ? window.speechSynthesis.getVoices() : [];
-}
-
-function voiceMatchesLanguage(voice, languageCode) {
-  const voiceLang = voice.lang.toLowerCase();
-  const tag = (SPEECH_LANGUAGE_TAGS[languageCode] || languageCode).toLowerCase();
-  return voiceLang === tag || voiceLang.startsWith(`${languageCode.toLowerCase()}-`);
-}
-
-function bestSpeechVoice(languageCode, profile = {}) {
-  const scoredVoices = speechVoices()
-    .filter((voice) => voiceMatchesLanguage(voice, languageCode))
-    .map((voice) => ({
-      voice,
-      score: speechVoiceScore(voice, languageCode, profile),
-      genderScore: voiceGenderScore(voice, languageCode, profile.gender),
-    }));
-
-  if (!scoredVoices.length) return null;
-
-  const genderedVoices = profile.gender
-    ? scoredVoices.filter((candidate) => candidate.genderScore > 0)
-    : [];
-  const candidates = genderedVoices.length ? genderedVoices : scoredVoices;
-  candidates.sort((a, b) => b.score - a.score);
-
-  const bestScore = candidates[0].score;
-  const bestCandidates = candidates.filter((candidate) => candidate.score >= bestScore - 4);
-  const personaIndex = stableHash(profile.id || profile.nameKey || "") % bestCandidates.length;
-  return bestCandidates[personaIndex].voice;
-}
-
-function speechVoiceScore(voice, languageCode, profile = {}) {
-  const name = String(voice.name || "").toLowerCase();
-  const lang = String(voice.lang || "").toLowerCase();
-  const preferredTag = (SPEECH_LANGUAGE_TAGS[languageCode] || languageCode).toLowerCase();
-  const allHints = Object.values(EDGE_NATURAL_VOICE_HINTS[languageCode] || {}).flat();
-  let score = 0;
-
-  if (lang === preferredTag) score += 12;
-  if (name.includes("microsoft")) score += 20;
-  if (name.includes("online")) score += 35;
-  if (name.includes("natural")) score += 50;
-  if (name.includes("neural")) score += 45;
-  if (name.includes("online (natural)")) score += 40;
-  if (voice.localService === false) score += 12;
-  if (allHints.some((hint) => name.includes(hint))) score += 10;
-  if (profile.gender) score += voiceGenderScore(voice, languageCode, profile.gender);
-  if (name.includes("desktop")) score -= 25;
-
-  return score;
-}
-
-function voiceGenderScore(voice, languageCode, gender) {
-  if (!gender) return 0;
-
-  const name = String(voice.name || "").toLowerCase();
-  const hints = EDGE_NATURAL_VOICE_HINTS[languageCode]?.[gender] || [];
-  const oppositeGender = gender === "male" ? "female" : "male";
-  const oppositeHints = EDGE_NATURAL_VOICE_HINTS[languageCode]?.[oppositeGender] || [];
-  let score = 0;
-
-  if (hints.some((hint) => name.includes(hint))) score += 80;
-  if (oppositeHints.some((hint) => name.includes(hint))) score -= 80;
-  if (name.includes(gender)) score += 25;
-  if (name.includes(oppositeGender)) score -= 25;
-
-  return score;
-}
-
-function stableHash(value) {
-  let hash = 0;
-  for (let i = 0; i < value.length; i += 1) {
-    hash = (hash * 31 + value.charCodeAt(i)) >>> 0;
-  }
-  return hash;
+  return textToSpeech()?.languageOptions(LANGUAGES) || [];
 }
 
 function normalizeSpeechLanguage() {
-  const options = speechLanguageOptions();
-  if (!options.length) return false;
-  if (!options.some((language) => language.code === settings.speech)) {
-    settings.speech = options[0].code;
-  }
-  return true;
+  return !!textToSpeech()?.normalizeLanguage(settings, LANGUAGES);
 }
 
 function speechLanguageName() {
@@ -4481,15 +6539,7 @@ function speechLanguageName() {
 }
 
 function cycleSpeechLanguage(delta) {
-  const options = speechLanguageOptions();
-  if (!options.length) return;
-
-  const currentIndex = Math.max(
-    0,
-    options.findIndex((language) => language.code === settings.speech),
-  );
-  const nextIndex = (currentIndex + delta + options.length) % options.length;
-  settings.speech = options[nextIndex].code;
+  textToSpeech()?.cycleLanguage(settings, LANGUAGES, delta);
 }
 
 function speakDialogLine() {
@@ -4507,7 +6557,7 @@ function speakDialogLine() {
     return;
   }
 
-  if (!speechVoices().length && !dialog.voiceRetry) {
+  if (!textToSpeech().voices().length && !dialog.voiceRetry) {
     dialog.voiceRetry = true;
     clearTimeout(speechRetryTimer);
     speechRetryTimer = setTimeout(() => speakDialogLine(), 180);
@@ -4520,18 +6570,12 @@ function speakDialogLine() {
   dialog.speechToken = (dialog.speechToken || 0) + 1;
   const speechToken = dialog.speechToken;
 
-  const utterance = new SpeechSynthesisUtterance(text);
-  const voice = bestSpeechVoice(settings.speech, dialog.voiceProfile);
-
-  utterance.lang = voice?.lang || SPEECH_LANGUAGE_TAGS[settings.speech] || settings.speech;
-  utterance.voice = voice || null;
-  utterance.rate = settings.speech === "ko" ? 0.92 : 0.98;
-  utterance.pitch = 1;
-  utterance.onend = () => finishDialogSpeech(speechToken);
-  utterance.onerror = () => finishDialogSpeech(speechToken);
-
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utterance);
+  textToSpeech().speak({
+    text,
+    languageCode: settings.speech,
+    voiceProfile: dialog.voiceProfile,
+    onComplete: () => finishDialogSpeech(speechToken),
+  });
 }
 
 function finishDialogSpeech(speechToken) {
@@ -4542,7 +6586,7 @@ function finishDialogSpeech(speechToken) {
 
 function stopSpeech() {
   clearTimeout(speechRetryTimer);
-  if (speechSupported()) window.speechSynthesis.cancel();
+  textToSpeech()?.stop();
 }
 
 function musicTrack(key) {
@@ -4634,6 +6678,7 @@ function setPlayerTile(x, y, dirName) {
 }
 
 function changeScene(sceneId, x, y, dirName) {
+  scheduleSave();
   stopSpeech();
   currentSceneId = sceneId;
   if (sceneId === "elementarySchool") setProgressFlag(TOWN1_FLAGS.schoolEntered);
@@ -4772,9 +6817,12 @@ function buildScenes() {
 
   scenes.trail1 = createTrail1Scene();
   scenes.town2 = createTown2Scene();
+  scenes.trail2 = createTrail2Scene();
+  scenes.town3 = createTown3Scene();
 
   Object.assign(scenes, createInteriorScenes());
   Object.assign(scenes, createTown2InteriorScenes(scenes.town2.buildings));
+  Object.assign(scenes, createTown3InteriorScenes(scenes.town3.buildings));
 }
 
 function buildTown2Map(town2Map, width, height) {
@@ -5091,6 +7139,8 @@ function createTown2Scene() {
       targetY: 52,
       targetDir: "up",
       conversationKeys: ["route.trail2.pending"],
+      requiredFlags: [TOWN2_FLAGS.finalBadgePassed],
+      lockedConversationKeys: ["route.trail2.locked"],
     }),
     ...town2Buildings.map((building) => ({
       labelKey: `${building.labelKey}.door`,
@@ -5112,7 +7162,11 @@ function createTown2Scene() {
       jacket: "#4f8cc9",
       voiceGender: "female",
       voiceId: "town2GateGreeter",
-      conversationKeys: ["npc.town2GateGreeter.line1", "npc.town2GateGreeter.line2"],
+      conversationPools: [
+        ["npc.town2GateGreeter.line1", "npc.town2GateGreeter.line2"],
+        ["npc.town2GateGreeter.pool2.line1", "npc.town2GateGreeter.pool2.line2"],
+      ],
+      progressFlagOnTalk: TOWN2_FLAGS.arrived,
     },
     {
       nameKey: "npc.town2PlazaGuide",
@@ -5123,7 +7177,7 @@ function createTown2Scene() {
       jacket: "#a65d3e",
       voiceGender: "male",
       voiceId: "town2PlazaGuide",
-      conversationKeys: ["npc.town2PlazaGuide.line1", "npc.town2PlazaGuide.line2"],
+      conversationResolver: () => chapterGuideLines("town2", "npc.town2PlazaGuide.line1"),
     },
     {
       nameKey: "npc.town2ReviewClerk",
@@ -5134,7 +7188,10 @@ function createTown2Scene() {
       jacket: "#6c9a50",
       voiceGender: "female",
       voiceId: "town2ReviewClerk",
-      conversationKeys: ["npc.town2ReviewClerk.line1", "npc.town2ReviewClerk.line2"],
+      conversationPools: [
+        ["npc.town2ReviewClerk.line1", "npc.town2ReviewClerk.line2"],
+        ["npc.town2ReviewClerk.pool2.line1", "npc.town2ReviewClerk.pool2.line2"],
+      ],
     },
     {
       nameKey: "npc.town2LabelRunner",
@@ -5145,7 +7202,10 @@ function createTown2Scene() {
       jacket: "#8a6bb7",
       voiceGender: "female",
       voiceId: "town2LabelRunner",
-      conversationKeys: ["npc.town2LabelRunner.line1", "npc.town2LabelRunner.line2"],
+      conversationPools: [
+        ["npc.town2LabelRunner.line1", "npc.town2LabelRunner.line2"],
+        ["npc.town2LabelRunner.pool2.line1", "npc.town2LabelRunner.pool2.line2"],
+      ],
       wander: true,
     },
     {
@@ -5169,7 +7229,10 @@ function createTown2Scene() {
       jacket: "#497a4d",
       voiceGender: "male",
       voiceId: "town2ActionCoach",
-      conversationKeys: ["npc.town2ActionCoach.line1", "npc.town2ActionCoach.line2"],
+      conversationPools: [
+        ["npc.town2ActionCoach.line1", "npc.town2ActionCoach.line2"],
+        ["npc.town2ActionCoach.pool2.line1", "npc.town2ActionCoach.pool2.line2"],
+      ],
     },
     {
       nameKey: "npc.town2ReaderActor",
@@ -5225,7 +7288,7 @@ function createTown2Scene() {
       jacket: "#5f7f9a",
       voiceGender: "male",
       voiceId: "town2RoadGuard",
-      conversationKeys: ["npc.town2RoadGuard.line1", "npc.town2RoadGuard.line2"],
+      conversationResolver: resolveTown2RoadGuardConversation,
     },
     {
       nameKey: "npc.town2Resident",
@@ -5236,7 +7299,10 @@ function createTown2Scene() {
       jacket: "#b65c7a",
       voiceGender: "female",
       voiceId: "town2Resident",
-      conversationKeys: ["npc.town2Resident.line1", "npc.town2Resident.line2"],
+      conversationPools: [
+        ["npc.town2Resident.line1", "npc.town2Resident.line2"],
+        ["npc.town2Resident.pool2.line1", "npc.town2Resident.pool2.line2"],
+      ],
       wander: true,
     },
   ];
@@ -5418,11 +7484,815 @@ function createTrail1Scene() {
         jacket: "#a6633f",
         voiceGender: "male",
         voiceId: "trailKeeper",
-        conversationKeys: ["npc.trailKeeper.line1", "npc.trailKeeper.line2"],
+        conversationPools: [
+          ["npc.trailKeeper.line1", "npc.trailKeeper.line2"],
+          ["npc.trailKeeper.pool2.line1", "npc.trailKeeper.pool2.line2"],
+        ],
       },
     ],
     areaKey: "area.haneulTrail",
     musicKey: "trail1",
+  };
+}
+
+function createTrail2Scene() {
+  const width = 34;
+  const height = 54;
+  const trailMap = createTileMap(width, height, "grass");
+
+  fillMapRect(trailMap, 15, 46, 5, 8, "path");
+  fillMapRect(trailMap, 12, 40, 8, 6, "path");
+  fillMapRect(trailMap, 12, 34, 5, 6, "path");
+  fillMapRect(trailMap, 6, 26, 14, 8, "sand");
+  fillMapRect(trailMap, 16, 20, 3, 8, "path");
+  fillMapRect(trailMap, 16, 8, 3, 12, "path");
+  fillMapRect(trailMap, 15, 1, 5, 9, "path");
+
+  fillMapRect(trailMap, 24, 14, 7, 5, "water");
+  fillMapRect(trailMap, 4, 12, 6, 6, "tallGrass");
+  fillMapRect(trailMap, 22, 30, 6, 4, "tallGrass");
+  fillMapRect(trailMap, 25, 44, 5, 4, "flowers");
+
+  for (let x = 0; x < width; x += 1) {
+    if (x < 15 || x > 19) {
+      setMapTile(trailMap, x, 0, "tree");
+      setMapTile(trailMap, x, height - 1, "tree");
+    }
+  }
+  for (let y = 1; y < height - 1; y += 1) {
+    setMapTile(trailMap, 0, y, "tree");
+    setMapTile(trailMap, width - 1, y, "tree");
+  }
+
+  const treeSpots = [
+    [4, 6], [8, 5], [24, 6], [28, 8], [6, 21], [26, 24],
+    [4, 40], [7, 44], [26, 36], [29, 40], [10, 48], [24, 50],
+  ];
+  for (const [x, y] of treeSpots) setMapTile(trailMap, x, y, "tree");
+
+  setMapTile(trailMap, 5, 30, "stone");
+  setMapTile(trailMap, 8, 35, "stone");
+  setMapTile(trailMap, 19, 31, "stone");
+
+  return {
+    id: "trail2",
+    kind: "outdoor",
+    map: trailMap,
+    width,
+    height,
+    buildings: [],
+    objects: [
+      { x: 10, y: 28, w: 3, h: 2, type: "soundFountain" },
+      { x: 25, y: 40, w: 3, h: 2, type: "trailRestTable" },
+      { x: 13, y: 1, w: 9, h: 2, type: "trailGate" },
+    ],
+    interactables: [
+      {
+        labelKey: "object.trail2MirrorBoard",
+        x: 15,
+        y: 27,
+        solid: true,
+        kind: "sign",
+        studyBoardKey: "compoundVowels",
+        progressFlagOnStudyBoard: TRAIL2_FLAGS.mirrorBoardRead,
+      },
+      ...createRectInteractions({
+        labelKey: "object.trail2MirrorPool",
+        x: 10,
+        y: 28,
+        w: 3,
+        h: 2,
+        conversationKeys: ["object.trail2MirrorPool.locked"],
+        drillResolver: () => (hasProgressFlag(TRAIL2_FLAGS.mirrorBoardRead) ? "trail2MirrorVowels" : null),
+      }),
+      {
+        labelKey: "object.trail2LocationPost",
+        x: 14,
+        y: 41,
+        solid: true,
+        kind: "sign",
+        conversationKeys: ["object.trail2LocationPost.line1"],
+        drillKey: "trail2LocationPosts",
+      },
+      {
+        labelKey: "object.trail2EchoSign",
+        x: 23,
+        y: 21,
+        solid: true,
+        kind: "sign",
+        conversationKeys: ["object.trail2EchoSign.line1"],
+        drillKey: "trail2EchoTwins",
+      },
+      {
+        labelKey: "object.trail2KeyRock",
+        x: 5,
+        y: 30,
+        solid: true,
+        kind: "object",
+        hidden: true,
+        conversationResolver: resolveTrail2KeyRockConversation,
+      },
+      {
+        labelKey: "object.trail2EmptyRock",
+        x: 8,
+        y: 35,
+        solid: true,
+        kind: "object",
+        hidden: true,
+        conversationResolver: resolveTrail2EmptyRockConversation,
+      },
+      {
+        labelKey: "object.trail2EmptyRock",
+        x: 19,
+        y: 31,
+        solid: true,
+        kind: "object",
+        hidden: true,
+        conversationResolver: resolveTrail2EmptyRockConversation,
+      },
+      ...createRectInteractions({
+        labelKey: "object.trailRestTable",
+        x: 25,
+        y: 40,
+        w: 3,
+        h: 2,
+        conversationKeys: ["object.trailRestTable.line1"],
+      }),
+      {
+        labelKey: "object.trail2SouthSign",
+        x: 20,
+        y: 50,
+        solid: true,
+        kind: "sign",
+        conversationKeys: ["sign.trail2South.line1"],
+      },
+      {
+        labelKey: "object.trail2NorthSign",
+        x: 20,
+        y: 4,
+        solid: true,
+        kind: "sign",
+        conversationKeys: ["sign.trail2North.line1"],
+      },
+      ...createRouteTriggers({
+        labelKey: "object.routeSouth",
+        fromX: 15,
+        toX: 19,
+        y: height - 1,
+        targetSceneId: "town2",
+        targetX: 40,
+        targetY: 1,
+        targetDir: "down",
+      }),
+      ...createRouteTriggers({
+        labelKey: "object.routeTown3",
+        fromX: 15,
+        toX: 19,
+        y: 0,
+        targetSceneId: "town3",
+        targetX: 24,
+        targetY: 37,
+        targetDir: "up",
+      }),
+    ],
+    npcs: [
+      {
+        nameKey: "npc.trail2Keeper",
+        x: 8,
+        y: 27,
+        dir: "down",
+        nextTurn: 0,
+        jacket: "#7a6093",
+        voiceGender: "female",
+        voiceId: "trail2Keeper",
+        conversationResolver: resolveTrail2KeeperConversation,
+      },
+      {
+        nameKey: "npc.trail2EchoTwinA",
+        x: 22,
+        y: 22,
+        dir: "right",
+        nextTurn: 0,
+        jacket: "#4f8cc9",
+        voiceGender: "female",
+        voiceId: "trail2EchoTwinA",
+        kind: "child",
+        conversationKeys: ["npc.trail2EchoTwinA.line1", "npc.trail2EchoTwinA.line2"],
+      },
+      {
+        nameKey: "npc.trail2EchoTwinB",
+        x: 24,
+        y: 22,
+        dir: "left",
+        nextTurn: 0,
+        jacket: "#5fa069",
+        voiceGender: "female",
+        voiceId: "trail2EchoTwinB",
+        kind: "child",
+        conversationKeys: ["npc.trail2EchoTwinB.line1", "npc.trail2EchoTwinB.line2"],
+      },
+      {
+        nameKey: "npc.trail2Hiker",
+        x: 17,
+        y: 44,
+        dir: "down",
+        nextTurn: 0,
+        jacket: "#b56b48",
+        voiceGender: "male",
+        voiceId: "trail2Hiker",
+        wander: true,
+        conversationPools: [
+          ["npc.trail2Hiker.line1", "npc.trail2Hiker.line2"],
+          ["npc.trail2Hiker.pool2.line1", "npc.trail2Hiker.pool2.line2"],
+        ],
+      },
+    ],
+    areaKey: "area.trail2",
+    musicKey: "trail2",
+  };
+}
+
+function createTown3Scene() {
+  const width = 48;
+  const height = 40;
+  const town3Map = createTileMap(width, height, "grass");
+
+  for (let x = 0; x < width; x += 1) {
+    if (x < 22 || x > 26) {
+      setMapTile(town3Map, x, 0, "stone");
+      setMapTile(town3Map, x, height - 1, "stone");
+    }
+  }
+  for (let y = 0; y < height; y += 1) {
+    setMapTile(town3Map, 0, y, "stone");
+    setMapTile(town3Map, width - 1, y, "stone");
+  }
+
+  fillMapRect(town3Map, 14, 13, 22, 11, "path");
+  fillMapRect(town3Map, 22, 24, 5, 15, "path");
+  fillMapRect(town3Map, 22, 1, 5, 12, "path");
+  fillMapRect(town3Map, 6, 16, 8, 3, "path");
+  fillMapRect(town3Map, 11, 10, 2, 6, "path");
+  fillMapRect(town3Map, 25, 10, 3, 3, "path");
+  fillMapRect(town3Map, 38, 10, 3, 6, "path");
+  fillMapRect(town3Map, 36, 16, 8, 3, "path");
+  fillMapRect(town3Map, 10, 33, 3, 2, "path");
+  fillMapRect(town3Map, 13, 33, 9, 2, "path");
+  fillMapRect(town3Map, 8, 19, 5, 4, "path");
+  fillMapRect(town3Map, 15, 25, 6, 4, "path");
+  fillMapRect(town3Map, 28, 25, 6, 4, "path");
+  fillMapRect(town3Map, 36, 19, 5, 4, "path");
+
+  const treeSpots = [
+    [3, 4], [4, 12], [3, 24], [5, 36], [44, 4], [44, 22], [43, 36], [33, 31],
+    [16, 5], [31, 2], [44, 13],
+  ];
+  for (const [x, y] of treeSpots) setMapTile(town3Map, x, y, "tree");
+
+  const flowerSpots = [
+    [14, 11], [15, 11], [34, 11], [35, 11], [16, 31], [17, 31], [30, 31], [31, 31],
+  ];
+  for (const [x, y] of flowerSpots) setMapTile(town3Map, x, y, "flowers");
+
+  const town3Buildings = [
+    {
+      labelKey: "object.town3CountingHouse",
+      sceneId: "town3CountingHouse",
+      x: 6,
+      y: 4,
+      w: 10,
+      h: 6,
+      doorX: 11,
+      doorY: 10,
+      roof: COLORS.roofTeal,
+      trim: "#287368",
+      important: true,
+    },
+    {
+      labelKey: "object.town3GuildHall",
+      sceneId: "town3GuildHall",
+      x: 20,
+      y: 3,
+      w: 12,
+      h: 7,
+      doorX: 26,
+      doorY: 10,
+      roof: COLORS.roofViolet,
+      trim: "#5f4b86",
+      important: true,
+    },
+    {
+      labelKey: "object.town3SnackCafe",
+      sceneId: "town3SnackCafe",
+      x: 36,
+      y: 5,
+      w: 8,
+      h: 5,
+      doorX: 39,
+      doorY: 10,
+      roof: COLORS.roofRed,
+      trim: "#7d3137",
+    },
+    {
+      labelKey: "object.town3Guesthouse",
+      sceneId: "town3Guesthouse",
+      x: 8,
+      y: 28,
+      w: 7,
+      h: 5,
+      doorX: 11,
+      doorY: 33,
+      roof: "#d18a3f",
+      trim: "#8a5624",
+    },
+  ];
+
+  const town3Objects = [
+    { x: 9, y: 20, w: 3, h: 2, type: "routeObjectStall" },
+    { x: 16, y: 26, w: 3, h: 2, type: "routeObjectStall" },
+    { x: 29, y: 26, w: 3, h: 2, type: "routeObjectStall" },
+    { x: 37, y: 20, w: 3, h: 2, type: "routeObjectStall" },
+    { x: 30, y: 14, w: 3, h: 2, type: "routeObjectStall" },
+    { x: 17, y: 28, w: 3, h: 2, type: "trailRestTable" },
+    { x: 19, y: 18, w: 3, h: 1, type: "speechBench" },
+  ];
+
+  const town3Interactables = [
+    {
+      labelKey: "object.town3WelcomeSign",
+      x: 21,
+      y: 35,
+      solid: true,
+      kind: "sign",
+      conversationKeys: ["sign.town3Welcome.line1", "sign.town3Welcome.line2"],
+    },
+    {
+      labelKey: "object.town3PriceBoard",
+      x: 24,
+      y: 12,
+      solid: true,
+      kind: "sign",
+      studyBoardKey: "sinoNumbers",
+      progressFlagOnStudyBoard: TOWN3_FLAGS.priceBoardRead,
+    },
+    {
+      labelKey: "object.town3ReviewBoard",
+      x: 17,
+      y: 14,
+      solid: true,
+      kind: "sign",
+      conversationKeys: ["object.town3ReviewBoard.line1"],
+      drillKey: "town3MarketReview",
+    },
+    ...createRectInteractions({
+      labelKey: "object.town3FishStall",
+      x: 9,
+      y: 20,
+      w: 3,
+      h: 2,
+      conversationKeys: ["object.town3FishStall.line1"],
+      drillKey: "town3FishStall",
+    }),
+    ...createRectInteractions({
+      labelKey: "object.town3FruitStall",
+      x: 16,
+      y: 26,
+      w: 3,
+      h: 2,
+      conversationKeys: ["object.town3FruitStall.line1"],
+      drillKey: "town3FruitStall",
+    }),
+    ...createRectInteractions({
+      labelKey: "object.town3ClothStall",
+      x: 29,
+      y: 26,
+      w: 3,
+      h: 2,
+      conversationKeys: ["object.town3ClothStall.line1"],
+      drillKey: "town3ColorStall",
+    }),
+    ...createRectInteractions({
+      labelKey: "object.town3CounterStall",
+      x: 37,
+      y: 20,
+      w: 3,
+      h: 2,
+      conversationKeys: ["object.town3CounterStall.line1"],
+      drillKey: "town3CounterStall",
+      requiredFlags: [TOWN3_FLAGS.counterBoardRead],
+      lockedConversationKeys: ["object.town3CounterStall.locked"],
+    }),
+    ...createRectInteractions({
+      labelKey: "object.town3PriceStall",
+      x: 30,
+      y: 14,
+      w: 3,
+      h: 2,
+      conversationKeys: ["object.town3PriceStall.line1"],
+      drillKey: "town3Prices",
+      requiredFlags: [TOWN3_FLAGS.priceBoardRead],
+      lockedConversationKeys: ["object.town3PriceStall.locked"],
+    }),
+    ...createRectInteractions({
+      labelKey: "object.town3GrandmaBasket",
+      x: 17,
+      y: 28,
+      w: 3,
+      h: 2,
+      conversationKeys: ["object.town3GrandmaBasket.line1"],
+      drillKey: "town3ShoppingList",
+    }),
+    ...createRectInteractions({
+      labelKey: "object.town3PlazaBench",
+      x: 19,
+      y: 18,
+      w: 3,
+      h: 1,
+      conversationKeys: ["object.town3PlazaBench.line1"],
+    }),
+    ...createRouteTriggers({
+      labelKey: "object.routeSouth",
+      fromX: 22,
+      toX: 26,
+      y: height - 1,
+      targetSceneId: "trail2",
+      targetX: 17,
+      targetY: 1,
+      targetDir: "down",
+    }),
+    ...createRouteTriggers({
+      labelKey: "object.routeTrail3",
+      fromX: 22,
+      toX: 26,
+      y: 0,
+      targetSceneId: "trail3",
+      targetX: 17,
+      targetY: 52,
+      targetDir: "up",
+      conversationKeys: ["route.trail3.pending"],
+    }),
+    ...town3Buildings.map((building) => ({
+      labelKey: `${building.labelKey}.door`,
+      sceneId: building.sceneId,
+      x: building.doorX,
+      y: building.doorY,
+      solid: false,
+      kind: "door",
+    })),
+  ];
+
+  const town3Npcs = [
+    {
+      nameKey: "npc.town3GateGreeter",
+      x: 24,
+      y: 34,
+      dir: "down",
+      nextTurn: 0,
+      jacket: "#4f8cc9",
+      voiceGender: "male",
+      voiceId: "town3GateGreeter",
+      conversationKeys: ["npc.town3GateGreeter.line1", "npc.town3GateGreeter.line2"],
+      progressFlagOnTalk: TOWN3_FLAGS.arrived,
+    },
+    {
+      nameKey: "npc.town3PlazaGuide",
+      x: 24,
+      y: 16,
+      dir: "down",
+      nextTurn: 0,
+      jacket: "#a65d3e",
+      voiceGender: "female",
+      voiceId: "town3PlazaGuide",
+      conversationResolver: () => chapterGuideLines("town3", "npc.town3PlazaGuide.line1"),
+    },
+    {
+      nameKey: "npc.town3FruitSeller",
+      x: 17,
+      y: 25,
+      dir: "down",
+      nextTurn: 0,
+      jacket: "#c9554f",
+      voiceGender: "female",
+      voiceId: "town3FruitSeller",
+      conversationPools: [
+        ["npc.town3FruitSeller.line1", "npc.town3FruitSeller.line2"],
+        ["npc.town3FruitSeller.pool2.line1", "npc.town3FruitSeller.pool2.line2"],
+      ],
+    },
+    {
+      nameKey: "npc.town3ClothSeller",
+      x: 30,
+      y: 25,
+      dir: "down",
+      nextTurn: 0,
+      jacket: "#8a6bb7",
+      voiceGender: "male",
+      voiceId: "town3ClothSeller",
+      conversationPools: [
+        ["npc.town3ClothSeller.line1", "npc.town3ClothSeller.line2"],
+        ["npc.town3ClothSeller.pool2.line1", "npc.town3ClothSeller.pool2.line2"],
+      ],
+    },
+    {
+      nameKey: "npc.town3FishSeller",
+      x: 10,
+      y: 19,
+      dir: "down",
+      nextTurn: 0,
+      jacket: "#3f7fb1",
+      voiceGender: "male",
+      voiceId: "town3FishSeller",
+      conversationPools: [
+        ["npc.town3FishSeller.line1", "npc.town3FishSeller.line2"],
+        ["npc.town3FishSeller.pool2.line1", "npc.town3FishSeller.pool2.line2"],
+      ],
+    },
+    {
+      nameKey: "npc.town3CounterCoach",
+      x: 38,
+      y: 19,
+      dir: "down",
+      nextTurn: 0,
+      jacket: "#497a4d",
+      voiceGender: "female",
+      voiceId: "town3CounterCoach",
+      conversationKeys: ["npc.town3CounterCoach.line1", "npc.town3CounterCoach.line2"],
+    },
+    {
+      nameKey: "npc.town3Grandma",
+      x: 20,
+      y: 27,
+      dir: "left",
+      nextTurn: 0,
+      jacket: "#b65c7a",
+      voiceGender: "female",
+      voiceId: "town3Grandma",
+      conversationResolver: resolveTown3GrandmaConversation,
+    },
+    {
+      nameKey: "npc.town3CountingKidA",
+      x: 26,
+      y: 20,
+      dir: "right",
+      nextTurn: 0,
+      jacket: "#e2a843",
+      voiceGender: "female",
+      voiceId: "town3CountingKidA",
+      kind: "child",
+      wander: true,
+      conversationPools: [
+        ["npc.town3CountingKidA.line1", "npc.town3CountingKidA.line2"],
+        ["npc.town3CountingKidA.pool2.line1", "npc.town3CountingKidA.pool2.line2"],
+      ],
+    },
+    {
+      nameKey: "npc.town3CountingKidB",
+      x: 28,
+      y: 21,
+      dir: "left",
+      nextTurn: 0,
+      jacket: "#5fa069",
+      voiceGender: "male",
+      voiceId: "town3CountingKidB",
+      kind: "child",
+      wander: true,
+      conversationKeys: ["npc.town3CountingKidB.line1", "npc.town3CountingKidB.line2"],
+    },
+    {
+      nameKey: "npc.town3Shopper",
+      x: 33,
+      y: 17,
+      dir: "left",
+      nextTurn: 0,
+      jacket: "#b56b84",
+      voiceGender: "female",
+      voiceId: "town3Shopper",
+      wander: true,
+      conversationPools: [
+        ["npc.town3Shopper.line1", "npc.town3Shopper.line2"],
+        ["npc.town3Shopper.pool2.line1", "npc.town3Shopper.pool2.line2"],
+      ],
+    },
+  ];
+
+  return {
+    id: "town3",
+    kind: "outdoor",
+    map: town3Map,
+    width,
+    height,
+    buildings: town3Buildings,
+    objects: town3Objects,
+    interactables: town3Interactables,
+    npcs: town3Npcs,
+    areaKey: "area.town3",
+    musicKey: "town3",
+  };
+}
+
+function createTown3InteriorScenes(town3Buildings) {
+  const bySceneId = Object.fromEntries(town3Buildings.map((building) => [building.sceneId, building]));
+
+  const countingHouse = createInteriorScene({
+    id: "town3CountingHouse",
+    areaKey: "area.town3CountingHouse",
+    width: 20,
+    height: 14,
+    entryX: 10,
+    returnBuilding: bySceneId.town3CountingHouse,
+    returnSceneId: "town3",
+    musicKey: "town3",
+  });
+  fillInteriorTile(countingHouse, 2, 7, 16, 4, "carpetBlue");
+  fillInteriorObject(countingHouse, 3, 2, 3, 1, "mapBoard", "object.town3SinoBoard", {
+    studyBoardKey: "sinoNumbers",
+    progressFlagOnStudyBoard: TOWN3_FLAGS.sinoBoardRead,
+  });
+  fillInteriorObject(countingHouse, 8, 2, 3, 1, "mapBoard", "object.town3NativeBoard", {
+    studyBoardKey: "nativeNumbers",
+    progressFlagOnStudyBoard: TOWN3_FLAGS.nativeBoardRead,
+    requiredFlags: [TOWN3_FLAGS.sinoPracticePassed],
+    lockedConversationKeys: ["object.town3NativeBoard.locked"],
+  });
+  fillInteriorObject(countingHouse, 13, 2, 2, 1, "bookcase", "object.town3CounterBoard", {
+    studyBoardKey: "counters",
+    progressFlagOnStudyBoard: TOWN3_FLAGS.counterBoardRead,
+    requiredFlags: [TOWN3_FLAGS.nativePracticePassed],
+    lockedConversationKeys: ["object.town3CounterBoard.locked"],
+  });
+  fillInteriorObject(countingHouse, 16, 2, 3, 1, "blackboard", "object.town3PriceBlackboard", {
+    drillResolver: resolveTown3BlackboardDrill,
+    conversationResolver: resolveTown3BlackboardConversation,
+  });
+  fillInteriorObject(countingHouse, 5, 8, 2, 1, "desk", "object.town3AbacusDesk", {
+    drillResolver: resolveTown3AbacusDrill,
+    conversationResolver: resolveTown3AbacusConversation,
+  });
+  fillInteriorObject(countingHouse, 9, 8, 2, 1, "desk", "object.town3AbacusDesk", {
+    drillResolver: resolveTown3AbacusDrill,
+    conversationResolver: resolveTown3AbacusConversation,
+  });
+  fillInteriorObject(countingHouse, 13, 8, 2, 1, "desk", "object.town3AbacusDesk", {
+    drillResolver: resolveTown3AbacusDrill,
+    conversationResolver: resolveTown3AbacusConversation,
+  });
+  addInteriorNpc(countingHouse, {
+    nameKey: "npc.town3AbacusMaster",
+    x: 10,
+    y: 5,
+    dir: "down",
+    jacket: "#287368",
+    voiceGender: "male",
+    voiceId: "town3AbacusMaster",
+    conversationKeys: ["npc.town3AbacusMaster.line1", "npc.town3AbacusMaster.line2"],
+  });
+  addInteriorNpc(countingHouse, {
+    nameKey: "npc.town3AbacusPupilA",
+    x: 6,
+    y: 10,
+    dir: "up",
+    jacket: "#4f8cc9",
+    voiceGender: "female",
+    voiceId: "town3AbacusPupilA",
+    kind: "child",
+    conversationKeys: ["npc.town3AbacusPupilA.line1", "npc.town3AbacusPupilA.line2"],
+  });
+  addInteriorNpc(countingHouse, {
+    nameKey: "npc.town3AbacusPupilB",
+    x: 14,
+    y: 10,
+    dir: "up",
+    jacket: "#e2a843",
+    voiceGender: "male",
+    voiceId: "town3AbacusPupilB",
+    kind: "child",
+    conversationKeys: ["npc.town3AbacusPupilB.line1", "npc.town3AbacusPupilB.line2"],
+  });
+
+  const guildHall = createInteriorScene({
+    id: "town3GuildHall",
+    areaKey: "area.town3GuildHall",
+    width: 18,
+    height: 12,
+    entryX: 9,
+    returnBuilding: bySceneId.town3GuildHall,
+    returnSceneId: "town3",
+    musicKey: "town3",
+  });
+  fillInteriorTile(guildHall, 6, 5, 6, 3, "carpetRed");
+  fillInteriorObject(guildHall, 7, 3, 4, 1, "counter", "object.town3BadgePodium", {
+    conversationKeys: ["object.town3BadgePodium.line1"],
+    drillKey: "town3NumberBadge",
+    requiredFlags: [
+      TOWN3_FLAGS.sinoExamPassed,
+      TOWN3_FLAGS.nativeExamPassed,
+      TOWN3_FLAGS.countersPracticePassed,
+      TOWN3_FLAGS.pricesPracticePassed,
+    ],
+    lockedConversationKeys: ["object.town3BadgePodium.locked"],
+  });
+  fillInteriorObject(guildHall, 2, 6, 2, 1, "bookcase", "object.town3GuildLedger", {
+    conversationKeys: ["object.town3GuildLedger.line1"],
+  });
+  addInteriorNpc(guildHall, {
+    nameKey: "npc.town3GuildLeader",
+    x: 9,
+    y: 2,
+    dir: "down",
+    jacket: "#5f4b86",
+    voiceGender: "female",
+    voiceId: "town3GuildLeader",
+    conversationResolver: resolveTown3GuildLeaderConversation,
+  });
+  addInteriorNpc(guildHall, {
+    nameKey: "npc.town3GuildClerk",
+    x: 4,
+    y: 8,
+    dir: "right",
+    jacket: "#6c9a50",
+    voiceGender: "male",
+    voiceId: "town3GuildClerk",
+    conversationKeys: ["npc.town3GuildClerk.line1", "npc.town3GuildClerk.line2"],
+  });
+
+  const snackCafe = createInteriorScene({
+    id: "town3SnackCafe",
+    areaKey: "area.town3SnackCafe",
+    width: 14,
+    height: 10,
+    entryX: 7,
+    returnBuilding: bySceneId.town3SnackCafe,
+    returnSceneId: "town3",
+    musicKey: "town3",
+  });
+  fillInteriorTile(snackCafe, 2, 5, 10, 3, "tatami");
+  fillInteriorObject(snackCafe, 4, 2, 6, 1, "counter", "object.town3CafeCounter", {
+    conversationKeys: ["object.town3CafeCounter.line1"],
+    drillKey: "town3CafeOrder",
+  });
+  fillInteriorObject(snackCafe, 3, 6, 2, 2, "table", "object.town3CafeTable", {
+    conversationKeys: ["object.town3CafeTable.line1"],
+  });
+  fillInteriorObject(snackCafe, 9, 6, 2, 2, "table", "object.town3CafeTable", {
+    conversationKeys: ["object.town3CafeTable.line1"],
+  });
+  addInteriorNpc(snackCafe, {
+    nameKey: "npc.town3Barista",
+    x: 6,
+    y: 1,
+    dir: "down",
+    jacket: "#7d3137",
+    voiceGender: "female",
+    voiceId: "town3Barista",
+    conversationPools: [
+      ["npc.town3Barista.line1", "npc.town3Barista.line2"],
+      ["npc.town3Barista.pool2.line1", "npc.town3Barista.pool2.line2"],
+    ],
+  });
+  addInteriorNpc(snackCafe, {
+    nameKey: "npc.town3CafeCustomer",
+    x: 6,
+    y: 5,
+    dir: "left",
+    jacket: "#b56b48",
+    voiceGender: "male",
+    voiceId: "town3CafeCustomer",
+    conversationKeys: ["npc.town3CafeCustomer.line1", "npc.town3CafeCustomer.line2"],
+  });
+
+  const town3Guesthouse = createInteriorScene({
+    id: "town3Guesthouse",
+    areaKey: "area.town3Guesthouse",
+    width: 12,
+    height: 9,
+    entryX: 6,
+    returnBuilding: bySceneId.town3Guesthouse,
+    returnSceneId: "town3",
+    musicKey: "town3",
+  });
+  fillInteriorTile(town3Guesthouse, 2, 4, 8, 3, "carpetGreen");
+  placeInteriorObject(town3Guesthouse, 2, 2, "bed", "object.bed", {
+    conversationKeys: ["object.town3GuesthouseBed.line1"],
+  });
+  fillInteriorObject(town3Guesthouse, 7, 4, 2, 2, "table", "object.familyTable", {
+    conversationKeys: ["object.town3GuesthouseTable.line1"],
+  });
+  addInteriorNpc(town3Guesthouse, {
+    nameKey: "npc.town3GuesthouseHost",
+    x: 8,
+    y: 2,
+    dir: "down",
+    jacket: "#8a5624",
+    voiceGender: "male",
+    voiceId: "town3GuesthouseHost",
+    conversationKeys: ["npc.town3GuesthouseHost.line1", "npc.town3GuesthouseHost.line2"],
+  });
+
+  return {
+    town3CountingHouse: countingHouse,
+    town3GuildHall: guildHall,
+    town3SnackCafe: snackCafe,
+    town3Guesthouse: town3Guesthouse,
   };
 }
 
@@ -5654,7 +8524,10 @@ function createInteriorScenes() {
     jacket: "#4b8f79",
     voiceGender: "female",
     voiceId: "teaOwner",
-    conversationKeys: ["npc.teaOwner.line1", "npc.teaOwner.line2"],
+    conversationPools: [
+      ["npc.teaOwner.line1", "npc.teaOwner.line2"],
+      ["npc.teaOwner.pool2.line1", "npc.teaOwner.pool2.line2"],
+    ],
   });
   addInteriorNpc(hanokTeaHouse, {
     nameKey: "npc.teaCustomer",
@@ -5692,7 +8565,10 @@ function createInteriorScenes() {
     jacket: "#3f7fb1",
     voiceGender: "female",
     voiceId: "marketClerk",
-    conversationKeys: ["npc.marketClerk.line1", "npc.marketClerk.line2"],
+    conversationPools: [
+      ["npc.marketClerk.line1", "npc.marketClerk.line2"],
+      ["npc.marketClerk.pool2.line1", "npc.marketClerk.pool2.line2"],
+    ],
   });
   addInteriorNpc(cornerMarket, {
     nameKey: "npc.marketStocker",
@@ -5753,7 +8629,7 @@ function createInteriorScenes() {
     jacket: "#a65d3e",
     voiceGender: "male",
     voiceId: "travelGuide",
-    conversationKeys: ["npc.travelGuide.line1", "npc.travelGuide.line2"],
+    conversationResolver: () => chapterGuideLines("town1", "npc.travelGuide.line1"),
   });
   addInteriorNpc(travelCenter, {
     nameKey: "npc.travelTrainee",
@@ -5808,6 +8684,14 @@ function createTown2InteriorScenes(town2Buildings) {
   fillInteriorObject(town2CityHall, 11, 3, 4, 1, "counter", "object.town2BadgePodium", {
     conversationKeys: ["object.town2BadgePodium.line1"],
     drillKey: "town2FinalBadge",
+    requiredFlags: [
+      TOWN2_FLAGS.identityPassed,
+      TOWN2_FLAGS.lostFoundPassed,
+      TOWN2_FLAGS.labelsPassed,
+      TOWN2_FLAGS.actionsPassed,
+      TOWN2_FLAGS.readingReviewPassed,
+    ],
+    lockedConversationKeys: ["object.town2BadgePodium.locked.line1"],
   });
   fillInteriorObject(town2CityHall, 3, 3, 3, 1, "bookcase", "object.town2FinalReadingStation", {
     conversationKeys: ["object.town2FinalReadingStation.line1"],
@@ -5837,7 +8721,7 @@ function createTown2InteriorScenes(town2Buildings) {
     jacket: "#a65d3e",
     voiceGender: "male",
     voiceId: "town2CityLeader",
-    conversationKeys: ["npc.town2CityLeader.line1", "npc.town2CityLeader.line2"],
+    conversationResolver: resolveTown2CityLeaderConversation,
   });
   addInteriorNpc(town2CityHall, {
     nameKey: "npc.town2ReadingAttendant",
@@ -6354,7 +9238,14 @@ function resolveInteractionConversationKeys(source) {
   if (!source) return null;
   if (typeof source.conversationResolver === "function") return source.conversationResolver();
   if (!hasRequiredProgress(source) && source.lockedConversationKeys) return source.lockedConversationKeys;
+  if (source.conversationPools?.length) {
+    return source.conversationPools[Math.floor(Math.random() * source.conversationPools.length)];
+  }
   return source.conversationKeys || null;
+}
+
+function toDialogLines(entries) {
+  return entries.map((entry) => (typeof entry === "string" ? { key: entry } : entry));
 }
 
 function openDialogFor(target) {
@@ -6382,7 +9273,7 @@ function openDialogFor(target) {
     target.npc.dir = opposite[player.dir];
     const conversationKeys = resolveInteractionConversationKeys(target.npc) || ["interaction.default"];
     dialog = {
-      lines: conversationKeys.map((key) => ({ key })),
+      lines: toDialogLines(conversationKeys),
       index: 0,
       spoken: true,
       textVisible: false,
@@ -6415,7 +9306,7 @@ function openDialogFor(target) {
   const conversationKeys = resolveInteractionConversationKeys(target.item);
   if (conversationKeys) {
     dialog = {
-      lines: conversationKeys.map((key) => ({ key })),
+      lines: toDialogLines(conversationKeys),
       index: 0,
       spoken: false,
       textVisible: true,
@@ -6437,6 +9328,9 @@ function openStudyBoard(studyBoardKey) {
   dialog = null;
   drill = null;
   studyBoard = studyBoardKey;
+  markStudyBoardHangulItemsSeen(studyBoardKey);
+  markWordsSeen(STUDY_BOARD_WORD_ITEMS[studyBoardKey] || []);
+  scheduleSave();
   clearMovementInput();
 }
 
@@ -6494,6 +9388,9 @@ function startDrill(drillKey) {
   if (!data) return;
   const runData = buildDrillRun(data);
   if (!runData.steps.length) return;
+  markHangulItemsSeen(runData.steps.flatMap((step) => hangulStepSeenItemIds(step)));
+  markWordsSeen(runData.steps.flatMap((step) => step.wordIds || []));
+  markWordsSeen(runData.wordIds || []);
 
   stopSpeech();
   dialog = null;
@@ -6505,6 +9402,7 @@ function startDrill(drillKey) {
     answered: false,
     complete: false,
     feedbackKey: null,
+    feedbackParams: null,
     correctCount: 0,
     passed: false,
     completionApplied: false,
@@ -6540,6 +9438,7 @@ function advanceDrill() {
   drill.selected = 0;
   drill.answered = false;
   drill.feedbackKey = null;
+  drill.feedbackParams = null;
 }
 
 function drillPassThreshold(data) {
@@ -6559,6 +9458,7 @@ function completeDrillRun() {
   drill.complete = true;
   drill.answered = false;
   drill.feedbackKey = null;
+  drill.feedbackParams = null;
   drill.passed = drillRunPassed();
 
   if (!drill.completionApplied) {
@@ -6573,8 +9473,11 @@ function answerDrillStep() {
 
   const correct = drill.selected === step.answer;
   if (correct) drill.correctCount += 1;
+  recordHangulAnswer(hangulStepMasteryItemIds(step), correct);
+  recordWordAnswer(step.wordIds || [], correct);
   drill.answered = true;
   drill.feedbackKey = correct ? step.correctKey : step.incorrectKey;
+  drill.feedbackParams = correct ? step.correctParams : step.incorrectParams;
 }
 
 function moveDrillCursor(delta) {
@@ -6614,6 +9517,7 @@ function handleDrillInput(event) {
 }
 
 function toggleMainMenu() {
+  ui.eraseArmed = false;
   if (ui.menuOpen) {
     ui.menuOpen = false;
     return;
@@ -6627,8 +9531,24 @@ function toggleMainMenu() {
 function handleMenuInput(event) {
   const dir = keyToDir[event.code];
 
+  if (ui.menuScreen === "dictionary") {
+    handleDictionaryMenuInput(event, dir);
+    return;
+  }
+
+  if (ui.menuScreen === "words") {
+    handleWordMenuInput(event, dir);
+    return;
+  }
+
+  if (ui.menuScreen === "journal") {
+    handleJournalMenuInput(event, dir);
+    return;
+  }
+
   if (dir === "up" || dir === "down") {
     event.preventDefault();
+    ui.eraseArmed = false;
     moveMenuCursor(dir === "down" ? 1 : -1);
     return;
   }
@@ -6645,6 +9565,63 @@ function handleMenuInput(event) {
   }
 }
 
+function handleWordMenuInput(event, dir) {
+  if (dir === "left" || dir === "right") {
+    event.preventDefault();
+    moveWordCategory(dir === "right" ? 1 : -1);
+    return;
+  }
+
+  if (dir === "up" || dir === "down") {
+    event.preventDefault();
+    moveWordPage(dir === "down" ? 1 : -1);
+    return;
+  }
+
+  if (event.code === "Space" || event.code === "Escape") {
+    event.preventDefault();
+    ui.menuScreen = "main";
+    ui.menuIndex = mainMenuItems.findIndex((item) => item.action === "words");
+  }
+}
+
+function moveWordCategory(delta) {
+  const count = WORD_CATEGORY_IDS.length;
+  ui.wordCategoryIndex = (ui.wordCategoryIndex + delta + count) % count;
+  ui.wordPage = 0;
+}
+
+function moveWordPage(delta) {
+  const categoryId = WORD_CATEGORY_IDS[ui.wordCategoryIndex];
+  const totalRows = wordItemsByCategory(categoryId).length;
+  const pages = Math.max(1, Math.ceil(totalRows / hangulDictionaryPageSize()));
+  ui.wordPage = (ui.wordPage + delta + pages) % pages;
+}
+
+function handleJournalMenuInput(event, dir) {
+  if (dir === "left" || dir === "right") {
+    event.preventDefault();
+    const count = QUEST_CHAPTERS.length;
+    ui.journalChapterIndex = (ui.journalChapterIndex + (dir === "right" ? 1 : -1) + count) % count;
+    ui.journalQuestIndex = 0;
+    return;
+  }
+
+  if (dir === "up" || dir === "down") {
+    event.preventDefault();
+    const chapter = QUEST_CHAPTERS[ui.journalChapterIndex];
+    const count = chapter.quests.length;
+    ui.journalQuestIndex = (ui.journalQuestIndex + (dir === "down" ? 1 : -1) + count) % count;
+    return;
+  }
+
+  if (event.code === "Space" || event.code === "Escape") {
+    event.preventDefault();
+    ui.menuScreen = "main";
+    ui.menuIndex = mainMenuItems.findIndex((item) => item.action === "journal");
+  }
+}
+
 function moveMenuCursor(delta) {
   const count = ui.menuScreen === "main" ? mainMenuItems.length : settingsRows.length;
   ui.menuIndex = (ui.menuIndex + delta + count) % count;
@@ -6657,9 +9634,19 @@ function selectMenuItem() {
       ui.quit = false;
       ui.menuOpen = false;
       updateMusicForScene();
+    } else if (action === "journal") {
+      ui.menuScreen = "journal";
+      ui.journalQuestIndex = 0;
+    } else if (action === "dictionary") {
+      ui.menuScreen = "dictionary";
+      ui.dictionaryPage = 0;
+    } else if (action === "words") {
+      ui.menuScreen = "words";
+      ui.wordPage = 0;
     } else if (action === "settings") {
       ui.menuScreen = "settings";
       ui.menuIndex = 0;
+      ui.eraseArmed = false;
     } else if (action === "quit") {
       dialog = null;
       stopSpeech();
@@ -6672,21 +9659,65 @@ function selectMenuItem() {
 
   const row = settingsRows[ui.menuIndex];
   if (row === "back") {
+    ui.eraseArmed = false;
     ui.menuScreen = "main";
-    ui.menuIndex = 1;
+    ui.menuIndex = mainMenuItems.findIndex((item) => item.action === "settings");
+  } else if (row === "erase") {
+    if (ui.eraseArmed) {
+      eraseSaveAndReload();
+    } else {
+      ui.eraseArmed = true;
+    }
   } else if (row === "speech") {
     cycleSpeechLanguage(1);
+    scheduleSave();
   } else {
     cycleLanguage(row, 1);
+    scheduleSave();
   }
+}
+
+function handleDictionaryMenuInput(event, dir) {
+  if (dir === "left" || dir === "right") {
+    event.preventDefault();
+    moveDictionaryCategory(dir === "right" ? 1 : -1);
+    return;
+  }
+
+  if (dir === "up" || dir === "down") {
+    event.preventDefault();
+    moveDictionaryPage(dir === "down" ? 1 : -1);
+    return;
+  }
+
+  if (event.code === "Space" || event.code === "Escape") {
+    event.preventDefault();
+    ui.menuScreen = "main";
+    ui.menuIndex = mainMenuItems.findIndex((item) => item.action === "dictionary");
+  }
+}
+
+function moveDictionaryCategory(delta) {
+  const count = HANGUL_DICTIONARY_CATEGORIES.length;
+  ui.dictionaryCategoryIndex = (ui.dictionaryCategoryIndex + delta + count) % count;
+  ui.dictionaryPage = 0;
+}
+
+function moveDictionaryPage(delta) {
+  const category = currentHangulDictionaryCategory();
+  const totalRows = hangulDictionaryDisplayItemIds(category).length;
+  const pages = Math.max(1, Math.ceil(totalRows / hangulDictionaryPageSize()));
+  ui.dictionaryPage = (ui.dictionaryPage + delta + pages) % pages;
 }
 
 function adjustCurrentSetting(delta) {
   const row = settingsRows[ui.menuIndex];
   if (row === "primary" || row === "secondary") {
     cycleLanguage(row, delta);
+    scheduleSave();
   } else if (row === "speech") {
     cycleSpeechLanguage(delta);
+    scheduleSave();
   }
 }
 
@@ -6694,6 +9725,29 @@ function cycleLanguage(settingName, delta) {
   const currentIndex = LANGUAGES.findIndex((language) => language.code === settings[settingName]);
   const nextIndex = (currentIndex + delta + LANGUAGES.length) % LANGUAGES.length;
   settings[settingName] = LANGUAGES[nextIndex].code;
+}
+
+function currentHangulDictionaryCategory() {
+  return HANGUL_DICTIONARY_CATEGORIES[ui.dictionaryCategoryIndex] || HANGUL_DICTIONARY_CATEGORIES[0];
+}
+
+function hangulDictionaryDisplayItemIds(category) {
+  const itemIds = (category?.itemIds || []).filter((itemId) => HANGUL_ITEMS[itemId]);
+  if (!category?.encounteredOnly) return itemIds;
+  return itemIds.filter((itemId) => hangulItemSeen(itemId));
+}
+
+function hangulDictionaryPageSize() {
+  const rowHeight = window.innerWidth < 520 ? 24 : 26;
+  return Math.max(4, Math.floor((window.innerHeight - 190) / rowHeight));
+}
+
+function hangulDictionaryStatusKey(itemId) {
+  const entry = hangulItemProgress(itemId);
+  if (!entry?.seen) return "dictionary.hangul.status.unseen";
+  if (entry.mastered) return "dictionary.hangul.status.mastered";
+  if (entry.attempts > 0) return "dictionary.hangul.status.learning";
+  return "dictionary.hangul.status.seen";
 }
 
 function handleMovementPress(dirName) {
@@ -6777,6 +9831,17 @@ function handleStepTrigger() {
   );
 
   if (item?.kind === "route" && item.targetSceneId) {
+    if (!hasRequiredProgress(item)) {
+      if (item.lockedConversationKeys && !dialog) {
+        dialog = {
+          lines: item.lockedConversationKeys.map((key) => ({ key })),
+          index: 0,
+          spoken: false,
+          textVisible: true,
+        };
+      }
+      return false;
+    }
     const nextScene = scenes[item.targetSceneId];
     if (nextScene) {
       changeScene(
@@ -7888,13 +10953,17 @@ function drawPerson(x, y, dir, palette) {
 }
 
 function drawInfoPanel() {
-  const questStatus = currentTown1QuestStatus();
+  const questStatus = currentQuestStatus();
   const rows = [
     [t("panel.area"), t(currentScene().areaKey)],
     [t("panel.facing"), t(`direction.${player.dir}`)],
     [t("panel.tile"), `${player.tileX}, ${player.tileY}`],
     [t("panel.quest"), t(questStatus.titleKey)],
     [t("panel.questStep"), t(questStatus.objectiveKey)],
+    [t("panel.where"), questStatus.whereKey ? t(questStatus.whereKey) : "-"],
+    [t("panel.badges"), badgePanelSummary()],
+    [t("panel.hangulDex"), hangulDictionaryPanelSummary()],
+    [t("panel.words"), wordDictionaryPanelSummary()],
     [t("panel.primary"), languageName(settings.primary)],
     [t("panel.secondary"), languageName(settings.secondary)],
   ];
@@ -7927,6 +10996,18 @@ function drawQuitScreen() {
 }
 
 function drawMenu() {
+  if (ui.menuScreen === "dictionary") {
+    drawHangulDictionaryMenu();
+    return;
+  }
+  if (ui.menuScreen === "words") {
+    drawWordDictionaryMenu();
+    return;
+  }
+  if (ui.menuScreen === "journal") {
+    drawJournalMenu();
+    return;
+  }
   if (ui.menuScreen === "settings") {
     drawSettingsMenu();
     return;
@@ -7961,6 +11042,7 @@ function drawSettingsMenu() {
     { label: t("settings.primary"), value: `< ${languageName(settings.primary)} >` },
     { label: t("settings.secondary"), value: `< ${languageName(settings.secondary)} >` },
     { label: t("settings.speech"), value: speechSupported() ? `< ${speechLanguageName()} >` : t("settings.speechUnavailable") },
+    { label: ui.eraseArmed ? t("settings.eraseArmed") : t("settings.erase"), value: "" },
     { label: t("menu.back"), value: "" },
   ];
 
@@ -7968,13 +11050,172 @@ function drawSettingsMenu() {
     const rowY = y + 54 + index * 32;
     drawMenuCursor(x + 18, rowY + 3, index === ui.menuIndex);
 
-    if (index < labels.length - 1) {
+    if (row.value) {
       drawFittedText(row.label, x + 42, rowY, Math.max(94, w * 0.42), 14, false);
       drawFittedText(row.value, x + Math.max(178, w * 0.5), rowY, w - Math.max(198, w * 0.5), 14, false);
     } else {
       drawFittedText(row.label, x + 42, rowY, w - 62, 14, false);
     }
   });
+}
+
+function drawWordDictionaryMenu() {
+  const categoryId = WORD_CATEGORY_IDS[ui.wordCategoryIndex];
+  const items = wordItemsByCategory(categoryId);
+  const totals = wordDictionaryTotals(items.map((item) => item.id));
+  const rowHeight = window.innerWidth < 520 ? 24 : 26;
+  const pageSize = hangulDictionaryPageSize();
+  const pages = Math.max(1, Math.ceil(items.length / pageSize));
+  ui.wordPage = Math.min(ui.wordPage, pages - 1);
+  const pageStart = ui.wordPage * pageSize;
+  const pageItems = items.slice(pageStart, pageStart + pageSize);
+  const w = Math.min(620, window.innerWidth - 36);
+  const h = Math.min(window.innerHeight - 36, 124 + Math.max(4, pageItems.length) * rowHeight + 40);
+  const x = (window.innerWidth - w) / 2;
+  const y = (window.innerHeight - h) / 2;
+  const narrow = w < 460;
+
+  drawUiBox(x, y, w, h);
+  drawCenteredFittedText(t("dictionary.words.title"), x + w / 2, y + 22, w - 60, narrow ? 17 : 20, true);
+  drawCenteredFittedText(t(`dictionary.words.category.${categoryId}`), x + w / 2, y + 50, w - 60, narrow ? 13 : 15, false);
+  drawCenteredFittedText(t("dictionary.words.summary", totals), x + w / 2, y + 74, w - 60, 12, false);
+
+  const pageLabel = t("dictionary.hangul.page", { page: ui.wordPage + 1, pages });
+  drawFittedText(pageLabel, x + w - 76, y + 51, 52, 12, false);
+
+  const rowsY = y + 104;
+  if (!pageItems.length) {
+    drawCenteredFittedText(t("dictionary.words.empty"), x + w / 2, rowsY + 20, w - 60, 14, false);
+    drawDrillPulse(x + w - 42, y + h - 40);
+    return;
+  }
+
+  pageItems.forEach((item, index) => {
+    const entry = wordProgressEntry(item.id);
+    const seen = !!entry?.seen;
+    const rowY = rowsY + index * rowHeight;
+    const status = t(wordDictionaryStatusKey(item.id));
+    const score = seen ? `${entry.correct}/${WORD_MASTERY_CORRECT_TARGET}` : "";
+    const hangul = seen ? item.hangul : t("dictionary.hangul.unseenValue");
+    const meaning = seen ? wordMeaning(item) : t("dictionary.hangul.unseenValue");
+
+    ctx.fillStyle = index % 2 === 0 ? "rgba(255, 250, 240, 0.46)" : "rgba(225, 201, 147, 0.24)";
+    ctx.fillRect(x + 24, rowY - 4, w - 48, rowHeight - 2);
+    drawFittedText(hangul, x + 34, rowY, narrow ? 70 : 92, narrow ? 14 : 16, true);
+    drawFittedText(meaning, x + (narrow ? 110 : 138), rowY, narrow ? w - 250 : w - 352, 13, false);
+    drawFittedText(status, x + w - (narrow ? 130 : 170), rowY, narrow ? 82 : 108, 12, false);
+    drawFittedText(score, x + w - 58, rowY, 32, 12, false);
+  });
+
+  drawDrillPulse(x + w - 42, y + h - 40);
+}
+
+function drawJournalMenu() {
+  const chapter = QUEST_CHAPTERS[ui.journalChapterIndex];
+  const quests = chapter.quests;
+  ui.journalQuestIndex = Math.min(ui.journalQuestIndex, quests.length - 1);
+  const rowHeight = window.innerWidth < 520 ? 24 : 26;
+  const w = Math.min(620, window.innerWidth - 36);
+  const h = Math.min(window.innerHeight - 36, 150 + Math.max(4, quests.length) * rowHeight + 56);
+  const x = (window.innerWidth - w) / 2;
+  const y = (window.innerHeight - h) / 2;
+  const narrow = w < 460;
+
+  drawUiBox(x, y, w, h);
+  drawCenteredFittedText(t("journal.title"), x + w / 2, y + 22, w - 60, narrow ? 17 : 20, true);
+  drawCenteredFittedText(t(chapter.titleKey), x + w / 2, y + 50, w - 60, narrow ? 13 : 15, false);
+
+  const badges = earnedBadges();
+  const badgeText = badges.length
+    ? `${t("journal.badges")}: ${badges.map((badge) => t(badge.titleKey)).join(" - ")}`
+    : `${t("journal.badges")}: ${t("journal.noBadges")}`;
+  drawCenteredFittedText(badgeText, x + w / 2, y + 74, w - 60, 12, false);
+
+  const rowsY = y + 104;
+  quests.forEach((quest, index) => {
+    const level = progress.questLevels[quest.id] || 0;
+    const total = quest.steps.length;
+    const complete = level >= total;
+    const rowY = rowsY + index * rowHeight;
+    const selected = index === ui.journalQuestIndex;
+
+    ctx.fillStyle = selected
+      ? "rgba(192, 68, 68, 0.18)"
+      : index % 2 === 0
+        ? "rgba(255, 250, 240, 0.46)"
+        : "rgba(225, 201, 147, 0.24)";
+    ctx.fillRect(x + 24, rowY - 4, w - 48, rowHeight - 2);
+
+    const mark = complete ? "O" : level > 0 ? "-" : " ";
+    drawFittedText(`[${mark}]`, x + 32, rowY, 34, 13, complete);
+    drawFittedText(t(quest.titleKey), x + 72, rowY, narrow ? w - 200 : w - 260, 13, selected);
+    drawFittedText(`${Math.min(level, total)}/${total}`, x + w - 78, rowY, 44, 12, false);
+  });
+
+  const selectedQuest = quests[ui.journalQuestIndex];
+  const selectedLevel = progress.questLevels[selectedQuest.id] || 0;
+  const hintY = rowsY + quests.length * rowHeight + 14;
+  let hintText = `${t("journal.hint")}: ${t("journal.complete")}`;
+  if (selectedLevel < selectedQuest.steps.length) {
+    const step = selectedQuest.steps[selectedLevel];
+    const wherePart = step.whereKey ? ` - ${t(step.whereKey)}` : "";
+    hintText = `${t("journal.hint")}: ${t(step.objectiveKey)}${wherePart}`;
+  }
+  drawFittedText(hintText, x + 28, hintY, w - 56, 12, false);
+
+  drawDrillPulse(x + w - 42, y + h - 40);
+}
+
+function drawHangulDictionaryMenu() {
+  const category = currentHangulDictionaryCategory();
+  const itemIds = hangulDictionaryDisplayItemIds(category);
+  const totals = hangulDictionaryTotals(category.itemIds);
+  const rowHeight = window.innerWidth < 520 ? 24 : 26;
+  const pageSize = hangulDictionaryPageSize();
+  const pages = Math.max(1, Math.ceil(itemIds.length / pageSize));
+  ui.dictionaryPage = Math.min(ui.dictionaryPage, pages - 1);
+  const pageStart = ui.dictionaryPage * pageSize;
+  const pageItems = itemIds.slice(pageStart, pageStart + pageSize);
+  const w = Math.min(620, window.innerWidth - 36);
+  const h = Math.min(window.innerHeight - 36, 124 + Math.max(4, pageItems.length) * rowHeight + 40);
+  const x = (window.innerWidth - w) / 2;
+  const y = (window.innerHeight - h) / 2;
+  const narrow = w < 460;
+
+  drawUiBox(x, y, w, h);
+  drawCenteredFittedText(t("dictionary.hangul.title"), x + w / 2, y + 22, w - 60, narrow ? 17 : 20, true);
+  drawCenteredFittedText(t(category.titleKey), x + w / 2, y + 50, w - 60, narrow ? 13 : 15, false);
+  drawCenteredFittedText(t("dictionary.hangul.summary", totals), x + w / 2, y + 74, w - 60, 12, false);
+
+  const pageLabel = t("dictionary.hangul.page", { page: ui.dictionaryPage + 1, pages });
+  drawFittedText(pageLabel, x + w - 76, y + 51, 52, 12, false);
+
+  const rowsY = y + 104;
+  if (!pageItems.length) {
+    drawCenteredFittedText(t("dictionary.hangul.empty"), x + w / 2, rowsY + 20, w - 60, 14, false);
+    drawDrillPulse(x + w - 42, y + h - 40);
+    return;
+  }
+
+  pageItems.forEach((itemId, index) => {
+    const item = HANGUL_ITEMS[itemId];
+    const entry = hangulItemProgress(itemId);
+    const seen = !!entry?.seen;
+    const rowY = rowsY + index * rowHeight;
+    const status = t(hangulDictionaryStatusKey(itemId));
+    const score = seen ? `${entry.correct}/${HANGUL_MASTERY_CORRECT_TARGET}` : "";
+    const glyph = seen ? item.glyph : t("dictionary.hangul.unseenValue");
+    const answer = seen ? item.answer : t("dictionary.hangul.unseenValue");
+
+    ctx.fillStyle = index % 2 === 0 ? "rgba(255, 250, 240, 0.46)" : "rgba(225, 201, 147, 0.24)";
+    ctx.fillRect(x + 24, rowY - 4, w - 48, rowHeight - 2);
+    drawFittedText(glyph, x + 34, rowY, narrow ? 54 : 66, narrow ? 15 : 17, true);
+    drawFittedText(answer, x + (narrow ? 92 : 112), rowY, narrow ? w - 232 : w - 326, 13, false);
+    drawFittedText(status, x + w - (narrow ? 130 : 170), rowY, narrow ? 82 : 108, 12, false);
+    drawFittedText(score, x + w - 58, rowY, 32, 12, false);
+  });
+
+  drawDrillPulse(x + w - 42, y + h - 40);
 }
 
 function drawDialog(text) {
@@ -8131,7 +11372,7 @@ function drawDrill() {
 
   if (!step) return;
 
-  const promptLines = wrapText(t(step.promptKey), w - 56, `18px ${UI_FONT}`);
+  const promptLines = wrapText(t(step.promptKey, step.promptParams || {}), w - 56, `18px ${UI_FONT}`);
   promptLines.slice(0, 3).forEach((line, index) => {
     drawFittedText(line, x + 28, y + 64 + index * 24, w - 56, 18, false);
   });
@@ -8148,12 +11389,12 @@ function drawDrill() {
     }
 
     drawMenuCursor(x + 30, rowY + 1, !drill.answered && index === drill.selected);
-    drawFittedText(t(choiceKey), x + 56, rowY, w - 86, 17, false);
+    drawFittedText(uiText(choiceKey), x + 56, rowY, w - 86, 17, false);
   });
 
   if (drill.answered && drill.feedbackKey) {
     const feedbackY = choicesY + choiceCount * 34 + 12;
-    drawFittedText(t(drill.feedbackKey), x + 28, feedbackY, w - 56, 15, false);
+    drawFittedText(t(drill.feedbackKey, drill.feedbackParams || {}), x + 28, feedbackY, w - 56, 15, false);
     drawDrillPulse(x + w - 42, y + h - 40);
   }
 }
@@ -8348,16 +11589,17 @@ window.addEventListener("keyup", (event) => {
 
 window.addEventListener("resize", resize);
 if (speechSupported()) {
-  window.speechSynthesis.getVoices();
   const handleVoicesChanged = () => normalizeSpeechLanguage();
-  if (typeof window.speechSynthesis.addEventListener === "function") {
-    window.speechSynthesis.addEventListener("voiceschanged", handleVoicesChanged);
-  } else {
-    window.speechSynthesis.onvoiceschanged = handleVoicesChanged;
-  }
+  textToSpeech().prepare(handleVoicesChanged);
 }
+
+window.addEventListener("beforeunload", () => {
+  persistSaveNow();
+});
 
 buildMap();
 buildScenes();
+loadSave();
+applySavedPlayerState();
 resize();
 requestAnimationFrame(loop);

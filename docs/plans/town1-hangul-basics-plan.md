@@ -11,9 +11,11 @@ Town 1 now has:
 - A playable outdoor map with houses, NPCs, fountain practice, and route links.
 - An elementary school building in the northwest part of town.
 - In-memory Town 1 progress flags and quest-level tracking.
+- In-memory Hangul dictionary tracking for seen items, answer attempts, streaks, and mastered items.
 - A compact quest/status readout in the existing info panel.
 - Progress-aware school interactions for the wall maps, teacher intro, desks, fountain, and blackboard.
-- Levelled Town 1 drills for basic vowel romanization, basic consonant names, first open syllables, aspirated consonants, double consonants, and blackboard checks.
+- Randomized levelled Town 1 drills for basic vowel romanization, basic consonant names, first open syllables, aspirated consonants, double consonants, batchim examples, and blackboard checks.
+- A Hangul Dictionary menu screen that shows encountered Hangul items and mastery state by category.
 - Aspirated consonants and double consonants in the school sequence, while batchim moves to a separate Final Sound House converted from the current Rival Guesthouse.
 - Final Sound House batchim theory for first final `ㄴ` and starter double-batchim examples, with fountain practice levels.
 - A classroom interior with:
@@ -127,7 +129,7 @@ Keep physical map access open. Unlock learning levels and quest steps, not basic
 
 ### Fountain Practice
 
-The fountain is now the first progress-gated practice station.
+The fountain is now the first progress-gated practice station. Hangul fountain levels are generated from shared item pools instead of fixed question lists. Each run favors unseen or weaker items first, then shuffles prompts and choices so repeat practice covers the full taught set over time.
 
 Next fountain levels:
 
@@ -141,6 +143,8 @@ Next fountain levels:
 8. Mixed review: choose between close visual or sound contrasts.
 
 The first fountain update replaced the active Town 1 fountain interaction with romanization-style recognition. It currently runs vowel practice first, then consonant practice after the consonant map flag, then mixed review.
+
+Study boards mark their Hangul items as seen in the Hangul Dictionary. Exercise answers update item attempts, correct counts, streaks, and mastery. An item is currently mastered after three correct answers with an active correct streak.
 
 Examples:
 
@@ -260,6 +264,7 @@ Next improvements:
 - Keep mobile layout readable.
 - Avoid long paragraphs inside the board.
 - Prefer short examples and tables.
+- Keep the Hangul Dictionary as the item/mastery view for encountered Hangul content. Use study boards for theory and drills for mastery changes.
 
 Do not add scrolling UI until it is necessary. Keep each board small enough to fit one screen.
 
@@ -299,7 +304,8 @@ Treat this shaping work as part of the feature, not polish after the fact.
 9. Done: Add double-consonant teacher/book/fountain/blackboard flow.
 10. Done: Convert Rival Guesthouse into the Final Sound House for batchim theory.
 11. Done: Add fountain practice levels for single and double batchim.
-12. Next: Revisit map shaping, NPC placement, and the eventual Town 1 badge exam.
+12. Done: Convert Town 1 Hangul exercises to randomized item-pool generation and link study boards/drill answers to the Hangul Dictionary.
+13. Next: Revisit map shaping, NPC placement, and the eventual Town 1 badge exam.
 
 ## Document Hygiene
 

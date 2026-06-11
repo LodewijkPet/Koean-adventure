@@ -574,6 +574,8 @@
     drills: {
       town2MixedReview: {
         titleKey: "drill.town2MixedReview.title",
+        completionFlags: ["town2.mixedReviewPassed"],
+        passCorrectCount: 4,
         stepCount: 5,
         shuffleChoices: true,
         difficultyMix: { easy: 1, standard: 3, hard: 1 },
@@ -647,6 +649,8 @@
       },
       town2IdentityOffice: {
         titleKey: "drill.town2IdentityOffice.title",
+        completionFlags: ["town2.identityPassed"],
+        passCorrectCount: 3,
         stepCount: 4,
         shuffleChoices: true,
         difficultyMix: { easy: 1, standard: 2, hard: 1 },
@@ -691,6 +695,8 @@
       },
       town2LostFound: {
         titleKey: "drill.town2LostFound.title",
+        completionFlags: ["town2.lostFoundPassed"],
+        passCorrectCount: 4,
         stepCount: 5,
         shuffleChoices: true,
         difficultyMix: { easy: 2, standard: 2, hard: 1 },
@@ -752,6 +758,8 @@
       },
       town2DistanceLabels: {
         titleKey: "drill.town2DistanceLabels.title",
+        completionFlags: ["town2.labelsPassed"],
+        passCorrectCount: 4,
         stepCount: 5,
         shuffleChoices: true,
         difficultyMix: { easy: 1, standard: 3, hard: 1 },
@@ -821,6 +829,8 @@
       },
       town2ActionPark: {
         titleKey: "drill.town2ActionPark.title",
+        completionFlags: ["town2.actionsPassed"],
+        passCorrectCount: 4,
         stepCount: 5,
         shuffleChoices: true,
         difficultyMix: { easy: 2, standard: 2, hard: 1 },
@@ -886,6 +896,8 @@
       },
       town2ReadingReview: {
         titleKey: "drill.town2ReadingReview.title",
+        completionFlags: ["town2.readingReviewPassed"],
+        passCorrectCount: 3,
         stepCount: 4,
         shuffleChoices: true,
         difficultyMix: { easy: 1, standard: 2, hard: 1 },
@@ -930,6 +942,8 @@
       },
       town2FinalBadge: {
         titleKey: "drill.town2FinalBadge.title",
+        completionFlags: ["town2.finalBadgePassed"],
+        passCorrectCount: 5,
         stepCount: 6,
         shuffleChoices: true,
         difficultyMix: { easy: 1, standard: 4, hard: 1 },

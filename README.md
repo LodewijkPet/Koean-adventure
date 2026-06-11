@@ -1,6 +1,6 @@
 # Korea Adventure
 
-Korea Adventure is a browser-based mini game for learning Korean. It runs from the files in this folder and does not require a build step.
+Korea Adventure is a browser-based RPG for learning Korean from zero. It runs from the files in this folder and does not require a build step.
 
 ## Start the Game
 
@@ -39,8 +39,33 @@ http://localhost:8000
 - Close drills: `Escape`
 - Hold translation view: `T`
 
+## Folder Structure
+
+```text
+index.html          entry point (open this)
+src/                game engine (game.js), speech (tts.js), styles
+assets/audio/       music tracks
+data/drills/        per-chapter content packs (text, drills, word lists)
+docs/design/        the design bible: vision, curriculum, world, quests, NPCs, roadmap
+docs/guides/        how-to guides for adding towns, drills, objects
+docs/plans/         active working plans
+docs/archive/       completed/superseded plans
+tools/              smoke test and prototypes
+```
+
+## Verify Changes
+
+After editing any JavaScript, run:
+
+```powershell
+node tools/smoke-test.js
+```
+
+It boots the whole game headlessly and checks scenes, all EN/KO/NL text keys, drill answers, quest/badge flow, saves, and route walkability.
+
 ## Notes
 
 - No installation is needed.
-- Keep the `.mp3`, `data`, `game.js`, `styles.css`, and `index.html` files together in the same project folder.
+- Progress is saved automatically in your browser (localStorage). Use Settings > Erase Save to start over.
 - Music starts after the first key press because browsers require user input before playing audio.
+- Keep `index.html` together with the `src/`, `assets/`, and `data/` folders.

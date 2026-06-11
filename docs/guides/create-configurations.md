@@ -2,7 +2,7 @@
 
 This guide explains the configuration patterns currently used by the game: music, language text, speech, map constants, colors, tiles, menu settings, and scene-level configuration.
 
-The game is a single-file JavaScript project, so "configuration" means named constants and data objects near the top of `game.js` or scene-level fields inside scene objects.
+Most game configuration still lives in `game.js`, with speech provider configuration split into `tts.js`.
 
 ## Configuration Areas
 
@@ -13,8 +13,7 @@ Current configuration lives in these places:
 - `MUSIC_TRACKS`
 - `musicState`
 - `LANGUAGES`
-- `SPEECH_LANGUAGE_TAGS`
-- `EDGE_NATURAL_VOICE_HINTS`
+- Speech language tags and voice-provider hints in `tts.js`
 - `TEXT`
 - `settings`
 - `ui`
@@ -163,8 +162,8 @@ The current input pattern:
 To add a language:
 
 1. Add it to `LANGUAGES`.
-2. Add a speech tag to `SPEECH_LANGUAGE_TAGS`.
-3. Add voice hints to `EDGE_NATURAL_VOICE_HINTS` if useful.
+2. Add a speech tag to `LANGUAGE_TAGS` in `tts.js`.
+3. Add voice hints to `EDGE_NATURAL_VOICE_HINTS` in `tts.js` if useful.
 4. Add a new `TEXT.xx` object or assign block.
 5. Add `"language.xx"` labels in all language groups.
 6. Test primary, secondary, and speech settings.
@@ -176,7 +175,7 @@ const LANGUAGES = [
   { code: "fr", key: "language.french" },
 ];
 
-const SPEECH_LANGUAGE_TAGS = {
+const LANGUAGE_TAGS = {
   fr: "fr-FR",
 };
 
@@ -191,8 +190,9 @@ The language code must match the key used in `settings`.
 
 Voice selection uses:
 
-- `SPEECH_LANGUAGE_TAGS`
-- `EDGE_NATURAL_VOICE_HINTS`
+- `LANGUAGE_TAGS` in `tts.js`
+- `EDGE_NATURAL_VOICE_HINTS` in `tts.js`
+- Provider fallback settings in `tts.js`
 - NPC `voiceGender`
 - NPC `voiceId`
 
@@ -210,6 +210,8 @@ Rules:
 
 - Use stable `voiceId` values.
 - Use `voiceGender` as a hint, not a guarantee.
+- The demo keeps the lower-quality Edge desktop fallback enabled; later it can become a slow-provider backup.
+- `tts.js` prefers high-quality Edge natural voices when online and can fall back to generic native browser voices when offline.
 - Browser voices vary by system.
 - If speech is unavailable, dialogue still appears as text.
 
