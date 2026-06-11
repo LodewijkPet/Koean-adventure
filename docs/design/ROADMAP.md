@@ -2,6 +2,8 @@
 
 From the current build (Town 1 + Trail 1 + Town 2, no persistence) to 1.0 (twelve chapters, capital finale). Each milestone is shippable: the game must boot clean (`node tools/smoke-test.js` with zero failures) and remain save-compatible at every step.
 
+> **Execution detail lives in `docs/project-plan/`** — the task-level breakdown of everything below into parallel multi-agent workstreams (file ownership, dependency graph, per-chapter specs, claim board). Start there to build; this file stays the milestone summary.
+
 ## Current State (v0.3)
 
 - Engine: scenes, interiors, drills (multiple choice + generated Hangul), study boards, flags/quests, Hangul Dictionary, TTS, i18n EN/KO/NL, music.

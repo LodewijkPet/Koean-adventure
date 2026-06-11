@@ -4,12 +4,12 @@ Korea Adventure is a browser-based Korean-learning RPG (no build step). Three ch
 
 ## Start Here
 
-1. `docs/design/MASTER_VISION.md` — what the game is and the design rules.
-2. `docs/design/ROADMAP.md` — what is shipped and what comes next.
+1. **`docs/project-plan/00-MASTER-PLAN.md`** — the executable plan to 1.0: pick a workstream, claim it in `docs/project-plan/STATUS.md`, follow your stream doc. Built for multiple agents in parallel (strict file ownership — read `01-WORKSTREAMS.md` + `02-CONVENTIONS.md` before touching anything).
+2. `docs/design/MASTER_VISION.md` — what the game is and the design rules.
 3. `docs/design/CURRICULUM_MAP.md` — the chapter-by-chapter language curriculum.
 4. `docs/guides/create-a-town.md` and `docs/guides/create-a-drill.md` — implementation patterns.
 
-`docs/design/` is the source of truth. `docs/plans/` holds active working notes; `docs/archive/` holds finished plans.
+`docs/design/` is the vision source of truth; `docs/project-plan/` is the work breakdown; `docs/plans/` holds legacy working notes; `docs/archive/` holds finished plans.
 
 ## Layout
 

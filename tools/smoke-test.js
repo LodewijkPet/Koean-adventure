@@ -81,19 +81,31 @@ sandbox.removeEventListener = () => {};
 
 const context = vm.createContext(sandbox);
 
-const files = [
-  "data/drills/start-town.js",
-  "data/drills/trail-1.js",
-  "data/drills/town-2.js",
-  "data/drills/trail-2.js",
-  "data/drills/town-3.js",
-  "src/tts.js",
-  "src/game.js",
-];
+function discoverScriptFilesFromIndex() {
+  let html = "";
+  try {
+    html = fs.readFileSync(path.join(root, "index.html"), "utf-8");
+  } catch (error) {
+    fail(`index.html could not be read: ${error.message}`);
+    return [];
+  }
+
+  const files = [];
+  const executableHtml = html.replace(/<!--[\s\S]*?-->/g, "");
+  const scriptPattern = /<script\b[^>]*\bsrc=(["'])([^"']+\.js)\1[^>]*>/gi;
+  for (const match of executableHtml.matchAll(scriptPattern)) {
+    files.push(match[2].replace(/^\.\//, "").replace(/\\/g, "/"));
+  }
+
+  if (!files.length) fail("index.html has no script tags ending in .js");
+  return files;
+}
+
+const files = discoverScriptFilesFromIndex();
 
 for (const file of files) {
-  const source = fs.readFileSync(path.join(root, file), "utf-8");
   try {
+    const source = fs.readFileSync(path.join(root, file), "utf-8");
     vm.runInContext(source, context, { filename: file });
   } catch (error) {
     fail(`${file} threw during load: ${error.stack}`);

@@ -47,8 +47,9 @@ src/                game engine (game.js), speech (tts.js), styles
 assets/audio/       music tracks
 data/drills/        per-chapter content packs (text, drills, word lists)
 docs/design/        the design bible: vision, curriculum, world, quests, NPCs, roadmap
+docs/project-plan/  the executable plan to 1.0: parallel workstreams, chapter specs, claim board
 docs/guides/        how-to guides for adding towns, drills, objects
-docs/plans/         active working plans
+docs/plans/         legacy working plans
 docs/archive/       completed/superseded plans
 tools/              smoke test and prototypes
 ```
