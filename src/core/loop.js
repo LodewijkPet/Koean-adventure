@@ -199,6 +199,9 @@ const progress = {
   questLevels: {},
   dictionary: {},
   words: {},
+  won: 0,
+  items: {},
+  rewarded: new Set(),
 };
 
 refreshQuestLevels();
@@ -234,6 +237,7 @@ let cameraY = 0;
 let dialog = null;
 let drill = null;
 let studyBoard = null;
+let shop = null;
 let lastTime = performance.now();
 function currentScene() {
   return scenes[currentSceneId] || scenes.town;
@@ -274,6 +278,7 @@ function changeScene(sceneId, x, y, dirName) {
   if (sceneId === "elementarySchool") setProgressFlag(TOWN1_FLAGS.schoolEntered);
   dialog = null;
   studyBoard = null;
+  shop = null;
   ui.menuOpen = false;
   ui.quit = false;
   clearMovementInput();
@@ -296,7 +301,7 @@ function resize() {
 }
 
 function handleMovementPress(dirName) {
-  if (ui.menuOpen || ui.quit || dialog || drill || studyBoard || player.moving) return;
+  if (ui.menuOpen || ui.quit || dialog || drill || studyBoard || shop || player.moving) return;
 
   if (player.dir !== dirName) {
     player.dir = dirName;
@@ -347,7 +352,7 @@ function updatePlayer(dt) {
 }
 
 function processHeldMovement(dt) {
-  if (ui.menuOpen || ui.quit || dialog || drill || studyBoard || player.moving) return;
+  if (ui.menuOpen || ui.quit || dialog || drill || studyBoard || shop || player.moving) return;
 
   const dir = currentHeldDirection();
   if (!dir) {
@@ -479,6 +484,7 @@ function draw() {
   if (ui.quit) drawQuitScreen();
   if (dialog && !ui.quit) drawDialog(dialogDisplayText());
   if (studyBoard && !ui.quit) drawStudyBoard();
+  if (shop && !ui.quit) drawShop();
   if (drill && !ui.quit) drawDrill();
   if (ui.menuOpen) drawMenu();
 }
@@ -523,8 +529,18 @@ window.addEventListener("keydown", (event) => {
     return;
   }
 
+  if (shop) {
+    handleShopInput(event);
+    return;
+  }
+
   if (studyBoard) {
     handleStudyBoardInput(event);
+    return;
+  }
+
+  if (dialog) {
+    handleDialogInput(event);
     return;
   }
 
@@ -541,8 +557,7 @@ window.addEventListener("keydown", (event) => {
 
   if (event.code === "Space") {
     event.preventDefault();
-    if (dialog) advanceDialog();
-    else if (!ui.quit) openDialogFor(getInteractionTarget());
+    if (!ui.quit) openDialogFor(getInteractionTarget());
     return;
   }
 

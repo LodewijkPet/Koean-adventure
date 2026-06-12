@@ -1188,7 +1188,10 @@ function completeDrillRun() {
   drill.passed = drillRunPassed();
 
   if (!drill.completionApplied) {
-    if (drill.passed) setProgressFlags(data.completionFlags || []);
+    if (drill.passed) {
+      setProgressFlags(data.completionFlags || []);
+      if (typeof grantRewardOnce === "function") grantRewardOnce(`drill:${drill.key}`, data);
+    }
     drill.completionApplied = true;
   }
 }

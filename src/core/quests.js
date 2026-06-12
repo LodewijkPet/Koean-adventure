@@ -37,17 +37,39 @@ function badgePanelSummary() {
   return `${earnedBadges().length}/${BADGES.length}`;
 }
 
+function questStepItemRequirement(step) {
+  return step.requiredItem || step.requiredItems || step.requiresItem || step.requiresItems || null;
+}
+
+function questStepItemsComplete(step) {
+  const requirement = questStepItemRequirement(step);
+  return requirement && typeof hasRequiredItems === "function" && hasRequiredItems(requirement);
+}
+
+function questStepComplete(step) {
+  return hasProgressFlag(step.flag) || questStepItemsComplete(step);
+}
+
 function refreshQuestLevels() {
+  let flagsChanged = false;
   QUEST_CHAPTERS.forEach((chapter) => {
     chapter.quests.forEach((quest) => {
       let level = 0;
       for (const step of quest.steps) {
-        if (!hasProgressFlag(step.flag)) break;
+        if (!questStepComplete(step)) break;
+        if (!hasProgressFlag(step.flag) && questStepItemsComplete(step)) {
+          progress.flags.add(step.flag);
+          flagsChanged = true;
+        }
         level += 1;
       }
       progress.questLevels[quest.id] = level;
+      if (level >= quest.steps.length && typeof grantRewardOnce === "function") {
+        grantRewardOnce(`quest:${quest.id}`, quest, { refresh: false });
+      }
     });
   });
+  if (flagsChanged) scheduleSave();
 }
 
 function firstIncompleteQuest(quests) {

@@ -9,6 +9,7 @@ function drawInfoPanel() {
     [t("panel.quest"), t(questStatus.titleKey)],
     [t("panel.questStep"), t(questStatus.objectiveKey)],
     [t("panel.where"), questStatus.whereKey ? t(questStatus.whereKey) : "-"],
+    [t("panel.won"), economySummary().wonText],
     [t("panel.badges"), badgePanelSummary()],
     [t("panel.hangulDex"), hangulDictionaryPanelSummary()],
     [t("panel.words"), wordDictionaryPanelSummary()],
@@ -28,6 +29,45 @@ function drawInfoPanel() {
     drawFittedText(`${label}:`, x + 18, rowY, 82, 12, false);
     drawFittedText(value, x + 104, rowY, w - 122, 12, false);
   });
+}
+
+function drawShop() {
+  const state = currentShop();
+  if (!state) return;
+  const items = shopItems(state);
+
+  ctx.fillStyle = "rgba(10, 10, 14, 0.38)";
+  ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+  const w = Math.min(560, window.innerWidth - 36);
+  const rowHeight = window.innerWidth < 520 ? 42 : 46;
+  const h = Math.min(window.innerHeight - 36, 150 + items.length * rowHeight + 56);
+  const x = (window.innerWidth - w) / 2;
+  const y = (window.innerHeight - h) / 2;
+  const innerX = x + 28;
+  const innerW = w - 56;
+  const listY = y + 86;
+
+  drawUiBox(x, y, w, h);
+  drawFittedText(t(state.data.titleKey), innerX, y + 24, innerW * 0.58, 20, true);
+  drawFittedText(t("shop.balance", { balance: economySummary().wonText }), x + w - 190, y + 28, 162, 13, false);
+
+  items.forEach((item, index) => {
+    const rowY = listY + index * rowHeight;
+    const selected = index === state.selectedIndex;
+    if (selected) {
+      ctx.fillStyle = "rgba(244, 231, 196, 0.78)";
+      ctx.fillRect(innerX, rowY - 7, innerW, rowHeight - 4);
+    }
+    drawMenuCursor(innerX + 6, rowY, selected);
+    drawFittedText(t(item.nameKey), innerX + 32, rowY, innerW * 0.42, 17, false);
+    drawFittedText(t("shop.price", { price: formatWon(item.priceWon) }), innerX + innerW * 0.55, rowY + 1, innerW * 0.2, 14, false);
+    drawFittedText(t("shop.owned", { count: itemCount(item.id) }), innerX + innerW * 0.75, rowY + 1, innerW * 0.22, 14, false);
+  });
+
+  const statusY = Math.min(y + h - 62, listY + items.length * rowHeight + 16);
+  drawFittedText(t(state.statusKey, state.statusParams || {}), innerX, statusY, innerW, 14, false);
+  drawFittedText(t("shop.controls"), innerX, statusY + 24, innerW, 12, false);
 }
 
 function drawQuitScreen() {

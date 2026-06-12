@@ -22,7 +22,7 @@ The bridge from recognition to production: the player **orders chunks** into a s
   - [x] E1.2 order-step input + state machine + plain rendering.
   - [x] E1.3 sentence template registry + generator + weakness hook (templates carry wordIds).
   - [x] E1.4 smoke test: build run with an order step, simulate correct + incorrect submission paths.
-  - [ ] E1.5 retrofit ONE builder drill into each shipped chapter (town1 chunk sentences, town2 SOV, town3 orders: "사과 두 개 주세요") — these live in world files; do via TODO(E1) handoff rows in STATUS, content owners apply.
+  - [x] E1.5 retrofit ONE builder drill into each shipped chapter (town1 chunk sentences, town2 SOV, town3 orders: "사과 두 개 주세요") — implemented as optional generated builder drills on existing practice interactables.
 
 ## E2 — Conversation challenges (dialog-embedded choices)
 
@@ -30,10 +30,10 @@ NPC asks in Korean; the player answers by choosing among **Korean-only** replies
 
 - Data: `KA.story.registerConversation({ id, npcVoice, turns: [{say, choices: [{ko, correct, replyKey}]}], onPass: flags, onFailKey })`. Triggered via NPC `conversationChallengeId` (interactions.js).
 - Engine: dialog gets a `choice` mode (render 2–3 Korean options under the spoken line; ↑/↓ + Space). Wrong choice → gentle correction line (`replyKey`), retry same turn (max 2 retries then show answer, continue, mark fail). Pass sets flags; TTS speaks NPC lines, not choices.
-- [ ] E2.1 dialog choice-mode state + input + render (engine-plain).
-- [ ] E2.2 conversation registry + NPC hook + flag rewards.
-- [ ] E2.3 smoke test: scripted conversation completes via correct path and via retry path; keys exist in 3 languages.
-- [ ] E2.4 authoring guide `docs/guides/create-a-conversation.md`.
+- [x] E2.1 dialog choice-mode state + input + render (engine-plain).
+- [x] E2.2 conversation registry + NPC hook + flag rewards.
+- [x] E2.3 smoke test: scripted conversation completes via correct path and via retry path; keys exist in 3 languages.
+- [x] E2.4 authoring guide `docs/guides/create-a-conversation.md`.
 
 ## E3 — Economy: won, inventory, shops
 
@@ -41,11 +41,11 @@ NPC asks in Korean; the player answers by choosing among **Korean-only** replies
 - Rewards: quest/drill completion may carry `rewardWon`, `rewardItems` (drills.js applies on first pass only — store `progress.rewarded` set of drill keys).
 - Shop UI: interactable `shopId` opens shop overlay: list (nameKey, price, owned), ↑/↓ select, Space buy (checks won, decrements, increments item), shows "won" balance. **Buying speaks the transaction**: on purchase, TTS the Korean line `"<item> 주세요"` → clerk reply `"<price> 원이에요"` — the shop IS the listening drill.
 - Buy-quest support: quest steps can require `{item: id, count}` (quests.js checks inventory in refresh).
-- [ ] E3.1 state + item registry + save fields + panel won display (UI row exists? hand UI/UX U5 the hook `KA.economy.summary()`).
-- [ ] E3.2 reward plumbing in drills/quests + retrofit badge exams to pay won (amounts in chapter docs).
-- [ ] E3.3 shop overlay + input + transaction speech.
-- [ ] E3.4 smoke test: earn → buy → inventory → buy-quest step completes; insufficient-funds path.
-- [ ] E3.5 CH3 retrofit handoff: grandma's list becomes a real buy-quest (TODO(E3) row).
+- [x] E3.1 state + item registry + save fields + panel won display (UI row exists? hand UI/UX U5 the hook `KA.economy.summary()`).
+- [x] E3.2 reward plumbing in drills/quests + retrofit badge exams to pay won (amounts in chapter docs).
+- [x] E3.3 shop overlay + input + transaction speech.
+- [x] E3.4 smoke test: earn → buy → inventory → buy-quest step completes; insufficient-funds path.
+- [x] E3.5 CH3 retrofit handoff: grandma's list becomes a real buy-quest (TODO(E3) row).
 
 ## E4 — Title screen, intro engine & cutscenes
 
@@ -133,5 +133,7 @@ Quiz race vs. the rival: alternating questions from BOTH players' weakest items 
 
 | Feature | Merged on | Consumers notified (STATUS row) |
 | --- | --- | --- |
-| E1 order drill steps | 2026-06-11 | E1.5 remains for content owners: register templates and retrofit one builder drill per shipped chapter; see `docs/guides/create-order-drill.md` |
+| E3 economy, inventory, shops | 2026-06-11 | `KA.items`, `KA.shops`, and `KA.economy.summary()` landed; Town 3 fruit shop and Grandma buy-quest are wired; see `docs/guides/create-a-shop.md` |
+| E2 conversation challenges | 2026-06-11 | Registry, NPC hook, dialog choice runtime, guide, and smoke coverage landed; content owners can add optional NPC challenges via `docs/guides/create-a-conversation.md` |
+| E1 order drill steps | 2026-06-11 | E1.5 content retrofit landed in Town 1, Town 2, and Town 3; see `docs/guides/create-order-drill.md` |
 | — | — | — |

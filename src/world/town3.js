@@ -80,7 +80,14 @@ const CHAPTER3_QUESTS = [
   {
     id: "town3ShoppingList",
     titleKey: "quest.town3.shoppingList",
-    steps: [{ flag: TOWN3_FLAGS.shoppingListDone, objectiveKey: "quest.town3.shoppingList.help", whereKey: "area.town3" }],
+    steps: [
+      {
+        flag: TOWN3_FLAGS.shoppingListDone,
+        objectiveKey: "quest.town3.shoppingList.buyApples",
+        whereKey: "area.town3",
+        requiredItem: { item: "town3.apple", count: 2 },
+      },
+    ],
   },
   {
     id: "town3Cafe",
@@ -98,6 +105,62 @@ window.KA.quests.registerChapter({ id: "town3", titleKey: "journal.chapter.town3
 
 window.KA.badges.register({ id: "numbers", titleKey: "badge.numbers", flag: TOWN3_FLAGS.numberBadgePassed });
 
+window.KA.items.register([
+  { id: "town3.apple", nameKey: "item.town3.apple", priceWon: 500, category: "food", orderNameKo: "사과" },
+  { id: "town3.tangerine", nameKey: "item.town3.tangerine", priceWon: 300, category: "food", orderNameKo: "귤" },
+  { id: "town3.grapes", nameKey: "item.town3.grapes", priceWon: 1000, category: "food", orderNameKo: "포도" },
+]);
+
+window.KA.shops.register([
+  {
+    id: "town3FruitShop",
+    titleKey: "shop.town3Fruit.title",
+    items: ["town3.apple", "town3.tangerine", "town3.grapes"],
+    clerkVoice: { id: "town3FruitSeller", gender: "female", nameKey: "npc.town3FruitSeller" },
+  },
+]);
+
+window.KA.drills.sentences.register("town3", [
+  {
+    promptKey: "drill.town3MarketOrderBuilder.prompt",
+    chunks: ["사과", "두 개", "주세요"],
+    wordIds: ["word.sagwa", "word.dul", "word.gae", "word.juseyo"],
+    teaches: ["town3.marketOrder"],
+  },
+  {
+    promptKey: "drill.town3MarketOrderBuilder.prompt",
+    chunks: ["물", "두 병", "주세요"],
+    wordIds: ["word.dul", "word.byeong", "word.juseyo"],
+    teaches: ["town3.marketOrder"],
+  },
+  {
+    promptKey: "drill.town3MarketOrderBuilder.prompt",
+    chunks: ["커피", "한 잔", "주세요"],
+    wordIds: ["word.keopi", "word.hana", "word.jan", "word.juseyo"],
+    teaches: ["town3.marketOrder"],
+  },
+  {
+    promptKey: "drill.town3MarketOrderBuilder.prompt",
+    chunks: ["주스", "두 잔", "주세요"],
+    wordIds: ["word.juseu", "word.dul", "word.jan", "word.juseyo"],
+    teaches: ["town3.marketOrder"],
+  },
+]);
+
+window.KA.drills.register({
+  town3MarketOrderBuilder: {
+    titleKey: "drill.town3MarketOrderBuilder.title",
+    shuffleChoices: true,
+    stepCount: 3,
+    generateSteps: () =>
+      window.KA.drills.sentences.generate({
+        chapterIds: ["town3"],
+        count: 3,
+        promptKey: "drill.town3MarketOrderBuilder.prompt",
+      }),
+  },
+});
+
 function town3ReviewCategories() {
   const categories = ["position", "nature"];
   if (hasProgressFlag(TOWN3_FLAGS.sinoBoardRead)) categories.push("numbersSino");
@@ -112,6 +175,15 @@ function resolveTown3GrandmaConversation() {
     return ["npc.town3Grandma.done1"];
   }
   return ["npc.town3Grandma.line1", "npc.town3Grandma.line2"];
+}
+
+function resolveTown3FruitShop() {
+  return hasProgressFlag(TOWN3_FLAGS.pricesPracticePassed) ? "town3FruitShop" : null;
+}
+
+function resolveTown3GrandmaBasketConversation() {
+  if (hasProgressFlag(TOWN3_FLAGS.shoppingListDone)) return ["object.town3GrandmaBasket.done"];
+  return ["object.town3GrandmaBasket.line1", "object.town3GrandmaBasket.buyApples"];
 }
 
 function resolveTown3AbacusDrill() {
@@ -364,6 +436,7 @@ function createTown3Scene() {
       h: 2,
       conversationKeys: ["object.town3FruitStall.line1"],
       drillKey: "town3FruitStall",
+      shopResolver: resolveTown3FruitShop,
     }),
     ...createRectInteractions({
       labelKey: "object.town3ClothStall",
@@ -402,8 +475,7 @@ function createTown3Scene() {
       y: 28,
       w: 3,
       h: 2,
-      conversationKeys: ["object.town3GrandmaBasket.line1"],
-      drillKey: "town3ShoppingList",
+      conversationResolver: resolveTown3GrandmaBasketConversation,
     }),
     ...createRectInteractions({
       labelKey: "object.town3PlazaBench",
@@ -412,6 +484,7 @@ function createTown3Scene() {
       w: 3,
       h: 1,
       conversationKeys: ["object.town3PlazaBench.line1"],
+      drillKey: "town3MarketOrderBuilder",
     }),
     ...createRouteTriggers({
       labelKey: "object.routeSouth",

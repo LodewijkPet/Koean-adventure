@@ -131,7 +131,7 @@ const api = vm.runInContext(
   `({
     KA,
     TEXT, DRILLS, STUDY_BOARDS, scenes, WORD_ITEMS, WORD_CATEGORY_IDS,
-    STUDY_BOARD_WORD_ITEMS, QUEST_CHAPTERS, BADGES, progress,
+    STUDY_BOARD_WORD_ITEMS, QUEST_CHAPTERS, BADGES, progress, ITEMS, SHOPS,
     setProgressFlag, hasProgressFlag, buildDrillRun, earnedBadges,
     startDrillFn: startDrill, drillRef: () => drill, answerDrillStepFn: answerDrillStep,
     advanceDrillFn: advanceDrill, currentDrillStepFn: currentDrillStep,
@@ -194,6 +194,14 @@ function checkApiFunction(pathName) {
   "world.buildRegisteredScenes",
   "music.registerTracks",
   "speech.speakDialogLine",
+  "story.registerConversation",
+  "story.startConversation",
+  "items.register",
+  "shops.register",
+  "economy.summary",
+  "economy.openShop",
+  "economy.buySelectedShopItem",
+  "economy.hasRequiredItems",
   "interactions.isBlockedInScene",
   "save.load",
   "t",
@@ -286,6 +294,131 @@ try {
   fail(`E1 order drill registration threw: ${error.stack}`);
 }
 
+// 3c. Register smoke-only E2 conversation challenges through the public story API.
+try {
+  vm.runInContext(
+    `
+    KA.text.register({
+      en: {
+        "engine.conversation.question": "안녕하세요? Choose the Korean answer.",
+        "engine.conversation.correct": "좋아요. The answer fits.",
+        "engine.conversation.retry": "Listen again and try the other answer.",
+        "engine.conversation.fail": "The challenge can be retried.",
+      },
+      ko: {
+        "engine.conversation.question": "안녕하세요? 한국어 대답을 고르세요.",
+        "engine.conversation.correct": "좋아요. 대답이 맞아요.",
+        "engine.conversation.retry": "다시 듣고 다른 대답을 고르세요.",
+        "engine.conversation.fail": "다시 도전할 수 있어요.",
+      },
+      nl: {
+        "engine.conversation.question": "안녕하세요? Kies het Koreaanse antwoord.",
+        "engine.conversation.correct": "좋아요. Het antwoord past.",
+        "engine.conversation.retry": "Luister opnieuw en probeer het andere antwoord.",
+        "engine.conversation.fail": "Je kunt de uitdaging opnieuw proberen.",
+      },
+    });
+    KA.story.registerConversation({
+      id: "engineConversationSmokePass",
+      turns: [
+        {
+          say: "engine.conversation.question",
+          choices: [
+            { ko: "안녕하세요.", correct: true, replyKey: "engine.conversation.correct" },
+            { ko: "아니요.", correct: false, replyKey: "engine.conversation.retry" },
+          ],
+        },
+      ],
+      onPass: ["feature.conversationSmokePassed"],
+      onFailKey: "engine.conversation.fail",
+    });
+    KA.story.registerConversation({
+      id: "engineConversationSmokeRetry",
+      turns: [
+        {
+          say: "engine.conversation.question",
+          choices: [
+            { ko: "아니요.", correct: false, replyKey: "engine.conversation.retry" },
+            { ko: "안녕하세요.", correct: true, replyKey: "engine.conversation.correct" },
+          ],
+        },
+      ],
+      onPass: ["feature.conversationSmokeRetryPassed"],
+      onFailKey: "engine.conversation.fail",
+    });
+    KA.story.registerConversation({
+      id: "engineConversationSmokeFail",
+      turns: [
+        {
+          say: "engine.conversation.question",
+          choices: [
+            { ko: "아니요.", correct: false, replyKey: "engine.conversation.retry" },
+            { ko: "안녕하세요.", correct: true, replyKey: "engine.conversation.correct" },
+          ],
+        },
+      ],
+      onPass: ["feature.conversationSmokeShouldNotPass"],
+      onFailKey: "engine.conversation.fail",
+    });
+    `,
+    context,
+  );
+} catch (error) {
+  fail(`E2 conversation challenge registration threw: ${error.stack}`);
+}
+
+// 3d. Register smoke-only E3 reward drill text.
+try {
+  vm.runInContext(
+    `
+    KA.text.register({
+      en: {
+        "engine.economy.title": "Economy Smoke",
+        "engine.economy.prompt": "Pick the market word.",
+        "engine.economy.choice.market": "시장",
+        "engine.economy.choice.house": "집",
+        "engine.economy.correct": "시장 means market.",
+        "engine.economy.incorrect": "The market word is 시장.",
+      },
+      ko: {
+        "engine.economy.title": "경제 점검",
+        "engine.economy.prompt": "시장 단어를 고르세요.",
+        "engine.economy.choice.market": "시장",
+        "engine.economy.choice.house": "집",
+        "engine.economy.correct": "시장은 market입니다.",
+        "engine.economy.incorrect": "시장 단어는 시장입니다.",
+      },
+      nl: {
+        "engine.economy.title": "Economietest",
+        "engine.economy.prompt": "Kies het marktwoord.",
+        "engine.economy.choice.market": "시장",
+        "engine.economy.choice.house": "집",
+        "engine.economy.correct": "시장 betekent markt.",
+        "engine.economy.incorrect": "Het marktwoord is 시장.",
+      },
+    });
+    KA.drills.register({
+      engineEconomyReward: {
+        titleKey: "engine.economy.title",
+        rewardWon: 1000,
+        steps: [
+          {
+            promptKey: "engine.economy.prompt",
+            choices: ["engine.economy.choice.market", "engine.economy.choice.house"],
+            answer: 0,
+            correctKey: "engine.economy.correct",
+            incorrectKey: "engine.economy.incorrect",
+          },
+        ],
+      },
+    });
+    `,
+    context,
+  );
+} catch (error) {
+  fail(`E3 economy smoke registration threw: ${error.stack}`);
+}
+
 // 4. Drill integrity: static steps have valid answers + keys.
 for (const [drillKey, data] of Object.entries(api.DRILLS)) {
   checkKey(data.titleKey, `drill ${drillKey}`);
@@ -313,6 +446,21 @@ for (const [drillKey, data] of Object.entries(api.DRILLS)) {
   }
 }
 
+// 4b. Conversation challenge integrity: referenced keys and Korean choices exist.
+for (const [challengeId, challenge] of Object.entries(api.KA.story.conversations || {})) {
+  if (!challenge.turns?.length) fail(`conversation ${challengeId} has no turns`);
+  for (const turn of challenge.turns || []) {
+    checkKey(turn.say, `conversation ${challengeId} say`);
+    if (!turn.choices?.length) fail(`conversation ${challengeId} turn has no choices`);
+    if (!turn.choices.some((choice) => choice.correct)) fail(`conversation ${challengeId} turn has no correct choice`);
+    for (const choice of turn.choices || []) {
+      if (typeof choice.ko !== "string" || !choice.ko) fail(`conversation ${challengeId} choice missing Korean text`);
+      if (choice.replyKey) checkKey(choice.replyKey, `conversation ${challengeId} reply`);
+    }
+  }
+  if (challenge.onFailKey) checkKey(challenge.onFailKey, `conversation ${challengeId} fail`);
+}
+
 // 5. Study board words exist.
 for (const [board, wordIds] of Object.entries(api.STUDY_BOARD_WORD_ITEMS)) {
   for (const wordId of wordIds) {
@@ -326,6 +474,19 @@ for (const categoryId of api.WORD_CATEGORY_IDS) {
   if (!api.wordItemsByCategory(categoryId).length) fail(`word category empty: ${categoryId}`);
 }
 
+// 6b. Economy items and shops are valid.
+for (const [itemId, item] of Object.entries(api.ITEMS || {})) {
+  checkKey(item.nameKey, `item ${itemId}`);
+  if (!Number.isFinite(item.priceWon) || item.priceWon < 0) fail(`item ${itemId} has invalid price`);
+}
+for (const [shopId, shop] of Object.entries(api.SHOPS || {})) {
+  checkKey(shop.titleKey, `shop ${shopId}`);
+  if (!shop.items?.length) fail(`shop ${shopId} has no items`);
+  for (const itemId of shop.items) {
+    if (!api.ITEMS[itemId]) fail(`shop ${shopId} references unknown item ${itemId}`);
+  }
+}
+
 // 7. Quest flags resolve and journal data is sane; every step names a place.
 for (const chapter of api.QUEST_CHAPTERS) {
   checkKey(chapter.titleKey, `chapter ${chapter.id}`);
@@ -336,6 +497,13 @@ for (const chapter of api.QUEST_CHAPTERS) {
       checkKey(step.objectiveKey, `quest ${quest.id} objective`);
       if (!step.whereKey) fail(`quest ${quest.id} step missing whereKey`);
       else checkKey(step.whereKey, `quest ${quest.id} where`);
+      const requiredItems = api.KA.economy.normalizeItemRequirement(
+        step.requiredItem || step.requiredItems || step.requiresItem || step.requiresItems,
+      );
+      for (const requirement of requiredItems) {
+        if (!api.ITEMS[requirement.item]) fail(`quest ${quest.id} requires unknown item ${requirement.item}`);
+        if (!requirement.count || requirement.count < 1) fail(`quest ${quest.id} has invalid item count`);
+      }
     }
   }
 }
@@ -462,6 +630,106 @@ try {
   fail(`E1 order drill smoke path threw: ${error.stack}`);
 }
 
+// 8c. E2 conversation challenge: perfect, retry, and fail paths.
+try {
+  vm.runInContext(
+    `
+    (function () {
+      function pressDialog(code) {
+        handleDialogInput({ code, preventDefault() {} });
+      }
+
+      KA.story.startConversation("engineConversationSmokePass", { npc: { nameKey: "game.title" } });
+      if (dialog?.mode !== "conversationChallenge") throw new Error("conversation challenge did not open");
+      if (!dialogDisplayText().includes("안녕하세요.")) throw new Error("Korean choice was not rendered");
+      pressDialog("Space");
+      if (dialog?.phase !== "feedback") throw new Error("correct choice did not show feedback");
+      pressDialog("Space");
+      if (dialog) throw new Error("perfect conversation did not close");
+      if (!hasProgressFlag("feature.conversationSmokePassed")) throw new Error("conversation pass flag not set");
+
+      KA.story.startConversation("engineConversationSmokeRetry", { npc: { nameKey: "game.title" } });
+      pressDialog("Space");
+      if (dialog?.phase !== "feedback" || dialog.failed) throw new Error("first wrong answer should show retry feedback");
+      pressDialog("Space");
+      if (dialog?.phase !== "question" || dialog.turnAttempts !== 1) throw new Error("retry did not return to same turn");
+      pressDialog("ArrowDown");
+      pressDialog("Space");
+      pressDialog("Space");
+      if (dialog) throw new Error("retry conversation did not close");
+      if (!hasProgressFlag("feature.conversationSmokeRetryPassed")) throw new Error("retry pass flag not set");
+
+      KA.story.startConversation("engineConversationSmokeFail", { npc: { nameKey: "game.title" } });
+      pressDialog("Space");
+      pressDialog("Space");
+      pressDialog("Space");
+      if (!dialog?.failed || dialog.phase !== "feedback") throw new Error("second wrong answer did not mark fail");
+      if (!dialogDisplayText().includes("안녕하세요.")) throw new Error("failed conversation did not show the correct answer");
+      pressDialog("Space");
+      if (dialog?.phase !== "finalFail") throw new Error("fail line did not show");
+      pressDialog("Space");
+      if (dialog) throw new Error("fail conversation did not close");
+      if (hasProgressFlag("feature.conversationSmokeShouldNotPass")) throw new Error("fail path set pass flag");
+    })();
+    `,
+    context,
+  );
+} catch (error) {
+  fail(`E2 conversation challenge smoke path threw: ${error.stack}`);
+}
+
+// 8d. E3 economy: one-time reward, shop purchase, buy-quest completion, insufficient funds.
+try {
+  vm.runInContext(
+    `
+    (function () {
+      function passDrill(key) {
+        startDrill(key);
+        let guard = 0;
+        while (drill && !drill.complete && guard < 20) {
+          const step = currentDrillStep();
+          if (!step) break;
+          drill.selected = step.answer;
+          answerDrillStep();
+          advanceDrill();
+          guard += 1;
+        }
+        if (drill) closeDrill();
+      }
+
+      progress.won = 0;
+      progress.items = {};
+      progress.rewarded.delete("drill:engineEconomyReward");
+      progress.flags.delete("town3.shoppingListDone");
+      refreshQuestLevels();
+
+      passDrill("engineEconomyReward");
+      if (progress.won !== 1000) throw new Error("drill reward did not grant won once");
+      passDrill("engineEconomyReward");
+      if (progress.won !== 1000) throw new Error("drill reward duplicated");
+
+      if (!KA.economy.openShop("town3FruitShop")) throw new Error("fruit shop did not open");
+      if (KA.economy.selectedShopItem()?.id !== "town3.apple") throw new Error("fruit shop first item should be apple");
+      KA.economy.buySelectedShopItem();
+      KA.economy.buySelectedShopItem();
+      if (progress.won !== 0) throw new Error("apple purchases did not spend expected won");
+      if (KA.economy.itemCount("town3.apple") !== 2) throw new Error("apple inventory count wrong");
+      if (!hasProgressFlag("town3.shoppingListDone")) throw new Error("buy quest flag not set from inventory");
+
+      shop.selectedIndex = 2;
+      const grapesBefore = KA.economy.itemCount("town3.grapes");
+      KA.economy.buySelectedShopItem();
+      if (KA.economy.itemCount("town3.grapes") !== grapesBefore) throw new Error("insufficient funds still bought grapes");
+      if (shop.statusKey !== "shop.status.insufficient") throw new Error("insufficient funds status not set");
+      KA.economy.closeShop();
+    })();
+    `,
+    context,
+  );
+} catch (error) {
+  fail(`E3 economy smoke path threw: ${error.stack}`);
+}
+
 // 9. Badge flow: complete town2 stations, run final badge drill to passing.
 ["town2.identityPassed", "town2.lostFoundPassed", "town2.labelsPassed", "town2.actionsPassed", "town2.readingReviewPassed"].forEach(api.setProgressFlag);
 vm.runInContext(`startDrill("town2FinalBadge")`, context);
@@ -492,6 +760,9 @@ if (!raw) {
   const payload = JSON.parse(raw);
   if (!payload.flags.includes("town2.finalBadgePassed")) fail("save payload missing badge flag");
   if (payload.version !== 1) fail("save payload version mismatch");
+  if (!Number.isFinite(payload.won) || payload.won < 1000) fail("save payload missing won balance");
+  if (payload.items?.["town3.apple"] !== 2) fail("save payload missing inventory item count");
+  if (!payload.rewarded?.includes("drill:town2FinalBadge")) fail("save payload missing rewarded drill key");
 }
 
 // 11. Route landing tiles are walkable.

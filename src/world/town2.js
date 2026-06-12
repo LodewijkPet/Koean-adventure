@@ -51,6 +51,27 @@ window.KA.quests.registerChapter({ id: "town2", titleKey: "journal.chapter.town2
 
 window.KA.badges.register({ id: "firstWords", titleKey: "badge.firstWords", flag: TOWN2_FLAGS.finalBadgePassed });
 
+window.KA.drills.sentences.register("town2", [
+  { promptKey: "drill.town2SentenceBuilder.prompt", chunks: ["저는", "책을", "읽어요"], teaches: ["town2.sov"] },
+  { promptKey: "drill.town2SentenceBuilder.prompt", chunks: ["민수는", "물을", "마셔요"], teaches: ["town2.sov"] },
+  { promptKey: "drill.town2SentenceBuilder.prompt", chunks: ["하나는", "사과를", "먹어요"], teaches: ["town2.sov"] },
+  { promptKey: "drill.town2SentenceBuilder.prompt", chunks: ["지우는", "이름을", "써요"], teaches: ["town2.sov"] },
+]);
+
+window.KA.drills.register({
+  town2SentenceBuilder: {
+    titleKey: "drill.town2SentenceBuilder.title",
+    shuffleChoices: true,
+    stepCount: 3,
+    generateSteps: () =>
+      window.KA.drills.sentences.generate({
+        chapterIds: ["town2"],
+        count: 3,
+        promptKey: "drill.town2SentenceBuilder.prompt",
+      }),
+  },
+});
+
 function town2FinalStationsPassed() {
   return [
     TOWN2_FLAGS.identityPassed,
@@ -334,7 +355,7 @@ function createTown2Scene() {
       w: 3,
       h: 1,
       conversationKeys: ["object.town2SpeechBench.line1"],
-      drillKey: "town2MixedReview",
+      drillKey: "town2SentenceBuilder",
     }),
     ...createRectInteractions({
       labelKey: "object.town2SearchBasket",

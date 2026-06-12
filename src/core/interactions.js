@@ -1,4 +1,42 @@
 window.KA = window.KA || {};
+window.KA.story = window.KA.story || {};
+
+const CONVERSATION_CHALLENGES = {};
+
+function toArray(value) {
+  if (Array.isArray(value)) return value;
+  if (typeof value === "string") return [value];
+  return [];
+}
+
+function registerConversationChallenge(challenge) {
+  if (!challenge?.id || !Array.isArray(challenge.turns)) return;
+  CONVERSATION_CHALLENGES[challenge.id] = {
+    ...challenge,
+    turns: challenge.turns
+      .filter((turn) => turn?.say && Array.isArray(turn.choices) && turn.choices.length)
+      .map((turn) => ({
+        say: turn.say,
+        params: turn.params || null,
+        choices: turn.choices
+          .filter((choice) => typeof choice?.ko === "string" && choice.ko)
+          .map((choice) => ({
+            ko: choice.ko,
+            correct: !!choice.correct,
+            replyKey: choice.replyKey || null,
+            replyParams: choice.replyParams || null,
+          })),
+      }))
+      .filter((turn) => turn.choices.length),
+    onPass: toArray(challenge.onPass),
+    onFailKey: challenge.onFailKey || null,
+    onFailParams: challenge.onFailParams || null,
+  };
+}
+
+function conversationChallenge(challengeId) {
+  return CONVERSATION_CHALLENGES[challengeId] || null;
+}
 
 function isBlockedInScene(scene, x, y) {
   const tile = scene.map[y]?.[x];
@@ -99,6 +137,12 @@ function resolveInteractionDrill(source) {
   return source.drillKey || null;
 }
 
+function resolveInteractionShop(source) {
+  if (!source || !hasRequiredProgress(source)) return null;
+  if (typeof source.shopResolver === "function") return source.shopResolver();
+  return source.shopId || null;
+}
+
 function resolveInteractionStudyBoard(source) {
   if (!source || !hasRequiredProgress(source)) return null;
   if (typeof source.studyBoardResolver === "function") return source.studyBoardResolver();
@@ -129,6 +173,161 @@ function toDialogLines(entries) {
   return entries.map((entry) => (typeof entry === "string" ? { key: entry } : entry));
 }
 
+function npcVoiceProfile(npc, challenge) {
+  if (challenge?.npcVoice && typeof challenge.npcVoice === "object") {
+    return { ...challenge.npcVoice };
+  }
+  if (typeof challenge?.npcVoice === "string") {
+    return { id: challenge.npcVoice, nameKey: npc?.nameKey || challenge.npcVoice };
+  }
+  return {
+    gender: npc?.voiceGender,
+    id: npc?.voiceId || npc?.nameKey || challenge?.id,
+    nameKey: npc?.nameKey || challenge?.id,
+  };
+}
+
+function setDialogSpeechState(spoken = true) {
+  dialog.index = 0;
+  dialog.spoken = spoken;
+  dialog.textVisible = !spoken;
+  dialog.speaking = false;
+  dialog.speechToken = 0;
+  dialog.voiceRetry = false;
+}
+
+function currentConversationTurn() {
+  if (dialog?.mode !== "conversationChallenge") return null;
+  return dialog.challenge.turns[dialog.turnIndex] || null;
+}
+
+function loadConversationTurn(turnIndex, { resetAttempts = true } = {}) {
+  const turn = dialog.challenge.turns[turnIndex];
+  if (!turn) return false;
+  stopSpeech();
+  dialog.turnIndex = turnIndex;
+  dialog.lines = [{ key: turn.say, params: turn.params || null }];
+  dialog.phase = "question";
+  dialog.selectedChoice = 0;
+  dialog.feedbackAdvances = false;
+  if (resetAttempts) dialog.turnAttempts = 0;
+  setDialogSpeechState(true);
+  speakDialogLine();
+  return true;
+}
+
+function showConversationLine(key, params, phase, feedbackAdvances = false) {
+  if (!key) return false;
+  stopSpeech();
+  dialog.lines = [{ key, params: params || null }];
+  dialog.phase = phase;
+  dialog.feedbackAdvances = feedbackAdvances;
+  setDialogSpeechState(true);
+  speakDialogLine();
+  return true;
+}
+
+function finishConversationChallenge() {
+  const challenge = dialog.challenge;
+  if (!dialog.failed) {
+    setProgressFlags(challenge.onPass);
+    dialog = null;
+    clearMovementInput();
+    return;
+  }
+
+  if (challenge.onFailKey && showConversationLine(challenge.onFailKey, challenge.onFailParams, "finalFail")) {
+    return;
+  }
+
+  dialog = null;
+  clearMovementInput();
+}
+
+function continueConversationAfterFeedback() {
+  if (!dialog.feedbackAdvances) {
+    loadConversationTurn(dialog.turnIndex, { resetAttempts: false });
+    return;
+  }
+
+  const nextTurn = dialog.turnIndex + 1;
+  if (nextTurn < dialog.challenge.turns.length) {
+    loadConversationTurn(nextTurn);
+    return;
+  }
+
+  finishConversationChallenge();
+}
+
+function selectedConversationChoice() {
+  const turn = currentConversationTurn();
+  if (!turn?.choices.length) return null;
+  return turn.choices[dialog.selectedChoice] || turn.choices[0];
+}
+
+function correctConversationChoice() {
+  const turn = currentConversationTurn();
+  return turn?.choices.find((choice) => choice.correct) || null;
+}
+
+function submitConversationChoice() {
+  const choice = selectedConversationChoice();
+  if (!choice) return;
+
+  if (choice.correct) {
+    dialog.feedbackAdvances = true;
+    if (!showConversationLine(choice.replyKey, choice.replyParams, "feedback", true)) {
+      continueConversationAfterFeedback();
+    }
+    return;
+  }
+
+  dialog.turnAttempts += 1;
+  const outOfRetries = dialog.turnAttempts >= 2;
+  if (outOfRetries) dialog.failed = true;
+  dialog.feedbackAdvances = outOfRetries;
+  const feedbackKey = outOfRetries ? "conversation.answer" : choice.replyKey;
+  const feedbackParams = outOfRetries ? { answer: correctConversationChoice()?.ko || "" } : choice.replyParams;
+  if (!showConversationLine(feedbackKey, feedbackParams, "feedback", outOfRetries)) {
+    if (outOfRetries) continueConversationAfterFeedback();
+    else loadConversationTurn(dialog.turnIndex, { resetAttempts: false });
+  }
+}
+
+function startConversationChallenge(challengeId, source = {}) {
+  const challenge = conversationChallenge(challengeId);
+  if (!challenge?.turns.length) return false;
+
+  dialog = {
+    mode: "conversationChallenge",
+    challengeId,
+    challenge,
+    turnIndex: 0,
+    turnAttempts: 0,
+    selectedChoice: 0,
+    failed: false,
+    feedbackAdvances: false,
+    lines: [],
+    index: 0,
+    spoken: true,
+    textVisible: false,
+    speaking: false,
+    speechToken: 0,
+    voiceRetry: false,
+    voiceProfile: npcVoiceProfile(source.npc, challenge),
+    phase: "question",
+  };
+  loadConversationTurn(0);
+  clearMovementInput();
+  return true;
+}
+
+function resolveInteractionConversationChallengeId(source) {
+  if (!source || !hasRequiredProgress(source)) return null;
+  if (typeof source.conversationChallengeResolver === "function") return source.conversationChallengeResolver();
+  return source.conversationChallengeId || null;
+}
+
 function openDialogFor(target) {
   if (!target) return;
   stopSpeech();
@@ -137,6 +336,18 @@ function openDialogFor(target) {
     if (target.npc.progressFlagOnTalk) setProgressFlag(target.npc.progressFlagOnTalk);
     if (typeof target.npc.progressFlagsOnTalkResolver === "function") {
       setProgressFlags(target.npc.progressFlagsOnTalkResolver());
+    }
+
+    const challengeId = resolveInteractionConversationChallengeId(target.npc);
+    if (challengeId && startConversationChallenge(challengeId, { npc: target.npc })) {
+      const opposite = {
+        up: "down",
+        down: "up",
+        left: "right",
+        right: "left",
+      };
+      target.npc.dir = opposite[player.dir];
+      return;
     }
 
     const npcDrillKey = resolveInteractionDrill(target.npc);
@@ -175,6 +386,11 @@ function openDialogFor(target) {
   if (itemStudyBoardKey) {
     setProgressFlags(resolveInteractionStudyBoardProgressFlags(target.item));
     openStudyBoard(itemStudyBoardKey);
+    return;
+  }
+
+  const itemShopId = resolveInteractionShop(target.item);
+  if (itemShopId && openShop(itemShopId)) {
     return;
   }
 
@@ -235,18 +451,47 @@ function handleStudyBoardInput(event) {
 function dialogLineText(language = activeLanguage()) {
   if (!dialog) return "";
   const line = dialog.lines[dialog.index];
+  if (!line) return "";
   const params = { ...(line.params || {}) };
   if (line.targetKey) params.target = t(line.targetKey, {}, language);
   return t(line.key, params, language);
 }
 
+function conversationChoiceText() {
+  if (dialog?.mode !== "conversationChallenge" || dialog.phase !== "question" || !dialog.textVisible) return "";
+  const turn = currentConversationTurn();
+  if (!turn) return "";
+  return turn.choices
+    .map((choice, index) => `${index === dialog.selectedChoice ? ">" : " "} ${choice.ko}`)
+    .join("   ");
+}
+
 function dialogDisplayText() {
   if (!dialog) return "";
-  return dialog.textVisible ? dialogLineText() : "";
+  if (!dialog.textVisible) return "";
+  const choiceText = conversationChoiceText();
+  return choiceText ? `${dialogLineText()}   ${choiceText}` : dialogLineText();
 }
 
 function advanceDialog() {
   if (!dialog) return;
+  if (dialog.mode === "conversationChallenge") {
+    if (dialog.spoken && !dialog.textVisible) {
+      dialog.textVisible = true;
+      return;
+    }
+    if (dialog.phase === "question") {
+      submitConversationChoice();
+      return;
+    }
+    if (dialog.phase === "feedback") {
+      continueConversationAfterFeedback();
+      return;
+    }
+    dialog = null;
+    clearMovementInput();
+    return;
+  }
   if (dialog.spoken && !dialog.textVisible) {
     dialog.textVisible = true;
     return;
@@ -262,6 +507,41 @@ function advanceDialog() {
     return;
   }
   dialog = null;
+}
+
+function handleConversationChallengeInput(event) {
+  const dir = keyToDir[event.code];
+  if (dir === "up" || dir === "down") {
+    event.preventDefault();
+    if (!dialog.textVisible || dialog.phase !== "question") return;
+    const choices = currentConversationTurn()?.choices || [];
+    if (!choices.length) return;
+    const delta = dir === "down" ? 1 : -1;
+    dialog.selectedChoice = (dialog.selectedChoice + delta + choices.length) % choices.length;
+    return;
+  }
+
+  if (dir === "left" || dir === "right") {
+    event.preventDefault();
+    return;
+  }
+
+  if (event.code === "Space" || event.code === "Enter") {
+    event.preventDefault();
+    advanceDialog();
+  }
+}
+
+function handleDialogInput(event) {
+  if (!dialog) return;
+  if (dialog.mode === "conversationChallenge") {
+    handleConversationChallengeInput(event);
+    return;
+  }
+  if (event.code === "Space") {
+    event.preventDefault();
+    advanceDialog();
+  }
 }
 
 function handleStepTrigger() {
@@ -326,8 +606,16 @@ window.KA.interactions = {
   openStudyBoard,
   closeStudyBoard,
   handleStudyBoardInput,
+  handleDialogInput,
   dialogLineText,
   dialogDisplayText,
   advanceDialog,
   handleStepTrigger,
 };
+
+Object.assign(window.KA.story, {
+  conversations: CONVERSATION_CHALLENGES,
+  registerConversation: registerConversationChallenge,
+  conversation: conversationChallenge,
+  startConversation: startConversationChallenge,
+});

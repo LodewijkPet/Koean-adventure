@@ -102,6 +102,8 @@
         "drill.sentenceBlocks.8.choice.c": "마셔요",
         "drill.sentenceBlocks.8.correct": "마셔요 is the action chunk.",
         "drill.sentenceBlocks.8.incorrect": "Korean action words usually come at the end.",
+        "drill.town1SentenceBuilder.title": "Haneul Chunk Builder",
+        "drill.town1SentenceBuilder.prompt": "Put the chunks into a short polite Korean sentence.",
       },
       ko: {
         "drill.alphabetBlocks.4.prompt": "ㅁ + ㅜ + ㄴ을 하나의 음절 블록으로 만드세요.",
@@ -199,6 +201,8 @@
         "drill.sentenceBlocks.8.choice.c": "마셔요",
         "drill.sentenceBlocks.8.correct": "마셔요가 동작 덩어리입니다.",
         "drill.sentenceBlocks.8.incorrect": "한국어 동작 말은 보통 끝에 옵니다.",
+        "drill.town1SentenceBuilder.title": "하늘 덩어리 만들기",
+        "drill.town1SentenceBuilder.prompt": "덩어리를 짧고 공손한 한국어 문장 순서로 놓으세요.",
       },
       nl: {
         "drill.alphabetBlocks.4.prompt": "Smeed ㅁ + ㅜ + ㄴ tot een lettergreepblok.",
@@ -296,6 +300,8 @@
         "drill.sentenceBlocks.8.choice.c": "마셔요",
         "drill.sentenceBlocks.8.correct": "마셔요 is het actieblok.",
         "drill.sentenceBlocks.8.incorrect": "Koreaanse actiewoorden staan meestal aan het einde.",
+        "drill.town1SentenceBuilder.title": "Haneul blokbouwer",
+        "drill.town1SentenceBuilder.prompt": "Zet de blokken in een korte beleefde Koreaanse zin.",
       },
     },
     drills: {

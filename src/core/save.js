@@ -22,6 +22,9 @@ function serializeSave() {
     questLevels: { ...progress.questLevels },
     dictionary: progress.dictionary,
     words: progress.words,
+    won: progress.won,
+    items: progress.items,
+    rewarded: [...progress.rewarded],
     player: {
       sceneId: currentSceneId,
       x: player.tileX,
@@ -75,11 +78,18 @@ function loadSave() {
     if (typeof flag === "string") progress.flags.add(flag);
   });
   Object.assign(progress.questLevels, payload.questLevels || {});
+  progress.won = Number.isFinite(payload.won) ? Math.max(0, Math.floor(payload.won)) : 0;
   Object.entries(payload.dictionary || {}).forEach(([itemId, entry]) => {
     if (HANGUL_ITEMS[itemId] && entry) progress.dictionary[itemId] = entry;
   });
   Object.entries(payload.words || {}).forEach(([wordId, entry]) => {
     if (WORD_ITEMS[wordId] && entry) progress.words[wordId] = entry;
+  });
+  Object.entries(payload.items || {}).forEach(([itemId, count]) => {
+    if (ITEMS[itemId] && Number.isFinite(count)) progress.items[itemId] = Math.max(0, Math.floor(count));
+  });
+  (payload.rewarded || []).forEach((key) => {
+    if (typeof key === "string") progress.rewarded.add(key);
   });
 
   if (payload.player && typeof payload.player.sceneId === "string") {

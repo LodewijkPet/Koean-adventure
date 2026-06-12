@@ -47,11 +47,20 @@ const TEXT = {
     "panel.questStep": "Step",
     "panel.secondary": "Secondary",
     "panel.tile": "Tile",
+    "panel.won": "Won",
     "quit.message": "Game quit.",
     "quit.subtext": "Open the menu to return.",
     "settings.primary": "Primary Language",
     "settings.secondary": "Secondary Language",
     "settings.title": "Settings",
+    "shop.balance": "Balance: {balance}",
+    "shop.controls": "Arrows choose. Space buys. Esc closes.",
+    "shop.owned": "Owned: {count}",
+    "shop.price": "{price}",
+    "shop.status.bought": "Bought {item}. Balance: {balance}",
+    "shop.status.insufficient": "Need {price} for {item}. Balance: {balance}",
+    "shop.status.ready": "Choose an item.",
+    "shop.title": "Shop",
   },
   ko: {
     "area.haneulTown": "하늘 마을",
@@ -99,11 +108,20 @@ const TEXT = {
     "panel.questStep": "단계",
     "panel.secondary": "보조",
     "panel.tile": "위치",
+    "panel.won": "원",
     "quit.message": "게임을 종료했습니다.",
     "quit.subtext": "메뉴를 열면 돌아갈 수 있습니다.",
     "settings.primary": "기본 언어",
     "settings.secondary": "보조 언어",
     "settings.title": "설정",
+    "shop.balance": "잔액: {balance}",
+    "shop.controls": "화살표 선택. Space 구매. Esc 닫기.",
+    "shop.owned": "보유: {count}",
+    "shop.price": "{price}",
+    "shop.status.bought": "{item} 샀어요. 잔액: {balance}",
+    "shop.status.insufficient": "{item}에는 {price} 필요해요. 잔액: {balance}",
+    "shop.status.ready": "물건을 고르세요.",
+    "shop.title": "가게",
   },
   nl: {
     "area.haneulTown": "Haneulstad",
@@ -151,11 +169,20 @@ const TEXT = {
     "panel.questStep": "Stap",
     "panel.secondary": "Secundair",
     "panel.tile": "Tegel",
+    "panel.won": "Won",
     "quit.message": "Spel gestopt.",
     "quit.subtext": "Open het menu om terug te keren.",
     "settings.primary": "Primaire taal",
     "settings.secondary": "Secundaire taal",
     "settings.title": "Instellingen",
+    "shop.balance": "Saldo: {balance}",
+    "shop.controls": "Pijlen kiezen. Space koopt. Esc sluit.",
+    "shop.owned": "In bezit: {count}",
+    "shop.price": "{price}",
+    "shop.status.bought": "{item} gekocht. Saldo: {balance}",
+    "shop.status.insufficient": "{price} nodig voor {item}. Saldo: {balance}",
+    "shop.status.ready": "Kies een item.",
+    "shop.title": "Winkel",
   },
 };
 
@@ -460,6 +487,7 @@ Object.assign(TEXT.nl, {
 });
 
 Object.assign(TEXT.en, {
+  "conversation.answer": "Correct answer: {answer}",
   "drill.order.available": "Choose from",
   "drill.order.correct": "Correct order.",
   "drill.order.emptyAvailable": "All chunks placed.",
@@ -605,6 +633,7 @@ Object.assign(TEXT.en, {
 });
 
 Object.assign(TEXT.ko, {
+  "conversation.answer": "정답: {answer}",
   "drill.order.available": "?? ?",
   "drill.order.correct": "??? ????.",
   "drill.order.emptyAvailable": "?? ??? ?????.",
@@ -750,6 +779,7 @@ Object.assign(TEXT.ko, {
 });
 
 Object.assign(TEXT.nl, {
+  "conversation.answer": "Juiste antwoord: {answer}",
   "drill.order.available": "Kies uit",
   "drill.order.correct": "Juiste volgorde.",
   "drill.order.emptyAvailable": "Alle stukjes zijn geplaatst.",
@@ -2780,6 +2810,7 @@ Object.assign(TEXT.en, {
   "quest.town3.prices.theory": "Read the plaza price board.",
   "quest.town3.prices.practice": "Pass the price reading drill.",
   "quest.town3.shoppingList": "Grandma's Shopping List",
+  "quest.town3.shoppingList.buyApples": "Buy two apples for Grandma.",
   "quest.town3.shoppingList.help": "Help the grandma read her list.",
   "quest.town3.cafe": "Cafe Order",
   "quest.town3.cafe.order": "Order at the snack cafe counter.",
@@ -2929,6 +2960,7 @@ Object.assign(TEXT.ko, {
   "quest.town3.prices.theory": "광장 가격 게시판을 읽으세요.",
   "quest.town3.prices.practice": "가격 읽기 연습을 통과하세요.",
   "quest.town3.shoppingList": "할머니의 장보기",
+  "quest.town3.shoppingList.buyApples": "할머니에게 줄 사과 두 개를 사세요.",
   "quest.town3.shoppingList.help": "할머니가 목록을 읽도록 도와주세요.",
   "quest.town3.cafe": "카페 주문",
   "quest.town3.cafe.order": "간식 카페 카운터에서 주문하세요.",
@@ -3078,6 +3110,7 @@ Object.assign(TEXT.nl, {
   "quest.town3.prices.theory": "Lees het prijzenbord op het plein.",
   "quest.town3.prices.practice": "Haal de prijslees-oefening.",
   "quest.town3.shoppingList": "Oma's boodschappenlijst",
+  "quest.town3.shoppingList.buyApples": "Koop twee appels voor oma.",
   "quest.town3.shoppingList.help": "Help oma haar lijst te lezen.",
   "quest.town3.cafe": "Cafébestelling",
   "quest.town3.cafe.order": "Bestel bij de toonbank van het snackcafé.",

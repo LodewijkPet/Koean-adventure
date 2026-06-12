@@ -384,7 +384,31 @@ function configureTown1HangulDrills() {
   });
 }
 
+function registerTown1SentenceBuilderDrill() {
+  window.KA.drills.sentences.register("town1", [
+    { promptKey: "drill.town1SentenceBuilder.prompt", chunks: ["저는", "민수예요"], teaches: ["town1.identity"] },
+    { promptKey: "drill.town1SentenceBuilder.prompt", chunks: ["저는", "학생이에요"], teaches: ["town1.identity"] },
+    { promptKey: "drill.town1SentenceBuilder.prompt", chunks: ["이건", "책이에요"], teaches: ["town1.objectLabel"] },
+    { promptKey: "drill.town1SentenceBuilder.prompt", chunks: ["가방이", "없어요"], teaches: ["town1.presence"] },
+  ]);
+
+  window.KA.drills.register({
+    town1SentenceBuilder: {
+      titleKey: "drill.town1SentenceBuilder.title",
+      shuffleChoices: true,
+      stepCount: 3,
+      generateSteps: () =>
+        window.KA.drills.sentences.generate({
+          chapterIds: ["town1"],
+          count: 3,
+          promptKey: "drill.town1SentenceBuilder.prompt",
+        }),
+    },
+  });
+}
+
 configureTown1HangulDrills();
+registerTown1SentenceBuilderDrill();
 
 const map = createTileMap(WORLD_WIDTH, WORLD_HEIGHT, "grass");
 
@@ -490,7 +514,7 @@ const interactables = [
     w: 3,
     h: 1,
     conversationKeys: ["object.speechBench.line1"],
-    drillKey: "sentenceBlocks",
+    drillKey: "town1SentenceBuilder",
   }),
   ...createRouteTriggers({
     labelKey: "object.routeNorth",
@@ -1002,7 +1026,7 @@ function createInteriorScenes() {
   });
   fillInteriorObject(travelCenter, 12, 8, 2, 2, "desk", "object.patternDesk", {
     conversationKeys: ["object.patternDesk.line1"],
-    drillKey: "sentenceBlocks",
+    drillKey: "town1SentenceBuilder",
   });
   placeInteriorObject(travelCenter, 4, 8, "chair", "object.letterBlockTable");
   placeInteriorObject(travelCenter, 7, 9, "chair", "object.letterBlockTable");

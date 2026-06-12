@@ -159,6 +159,8 @@
         "drill.town2ActionPark.5.prompt": "Which Korean sentence means Minsu reads a book?",
         "drill.town2ActionPark.5.correct": "민수는 책을 읽어요 means Minsu reads a book.",
         "drill.town2ActionPark.5.incorrect": "Choose the sentence with 책을 and 읽어요.",
+        "drill.town2SentenceBuilder.title": "SOV Sentence Builder",
+        "drill.town2SentenceBuilder.prompt": "Build the Korean sentence in subject-object-action order.",
 
         "drill.town2ReadingReview.title": "Review Library Reading",
         "drill.town2ReadingReview.1.prompt": "Which block has batchim?",
@@ -347,6 +349,8 @@
         "drill.town2ActionPark.5.prompt": "민수가 책을 읽는다는 한국어 문장은 무엇인가요?",
         "drill.town2ActionPark.5.correct": "민수는 책을 읽어요는 Minsu reads a book입니다.",
         "drill.town2ActionPark.5.incorrect": "책을과 읽어요가 있는 문장을 고르세요.",
+        "drill.town2SentenceBuilder.title": "주어-목적어-동작 문장 만들기",
+        "drill.town2SentenceBuilder.prompt": "주어, 목적어, 동작 순서로 한국어 문장을 만드세요.",
 
         "drill.town2ReadingReview.title": "복습 도서관 읽기",
         "drill.town2ReadingReview.1.prompt": "어떤 글자에 받침이 있나요?",
@@ -535,6 +539,8 @@
         "drill.town2ActionPark.5.prompt": "Welke Koreaanse zin betekent Minsu leest een boek?",
         "drill.town2ActionPark.5.correct": "민수는 책을 읽어요 betekent Minsu leest een boek.",
         "drill.town2ActionPark.5.incorrect": "Kies de zin met 책을 en 읽어요.",
+        "drill.town2SentenceBuilder.title": "SOV-zinsbouwer",
+        "drill.town2SentenceBuilder.prompt": "Bouw de Koreaanse zin in onderwerp-object-actievolgorde.",
 
         "drill.town2ReadingReview.title": "Leesherhaling Bibliotheek",
         "drill.town2ReadingReview.1.prompt": "Welk blok heeft batchim?",
@@ -943,6 +949,7 @@
       town2FinalBadge: {
         titleKey: "drill.town2FinalBadge.title",
         completionFlags: ["town2.finalBadgePassed"],
+        rewardWon: 1200,
         passCorrectCount: 5,
         stepCount: 6,
         shuffleChoices: true,
